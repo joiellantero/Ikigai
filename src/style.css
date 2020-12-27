@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap");
+html,
+body {
+    font-family: "Nunito", sans-serif;
+}
+
+.rectangle-container {
+    background: #e1e5ff;
+    width: 40vw;
+    height: 40vh;
+    float: left;
+    margin-top: 10px;
+    overflow: scroll;
+}
+
+.container {
+    justify-content: center;
+}
+
+.rounded-pill {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 7px 15px 7px 15px;
+    margin: 5px;
+    display: flex;
+}
+
+.form.rounded-pill {
+    width: 10rem;
+    margin: 0 auto;
+}
+
+.pill-container {
+    /* width: fit-content; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.btn-delete-container {
+    display: none;
+    visibility: hidden;
+    border-radius: 50%;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    transition-delay: 0.1s;
+}
+
+.rounded-pill:hover .btn-delete-container {
+    visibility: visible;
+    cursor: pointer;
+    display: flex;
+}
+
+.text-center {
+    overflow: scroll;
+}
+
+.dark-blue {
+    color: #283972;
+    margin-top: 10px;
+}
+
+.main-header-text {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.main-logo {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.main-logo img {
+    width: 12vw;
+    margin: 20px;
+}
