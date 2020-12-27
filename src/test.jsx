@@ -13,7 +13,7 @@ const rect1 = [
 
   ];
   const rect2 = [
-    { id: v4(), intext: ['hello i am a first note']},
+    { id: v4(), intext: ['hello i am a second note']},
 
   ];
   const rect3 = [
