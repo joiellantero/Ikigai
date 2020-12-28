@@ -10,48 +10,55 @@ import { v4 } from 'uuid';
 
 const cir1 = [
     { id: v4(), intext: ['hello i am a first note']},
+];
 
-  ];
-  const cir2 = [
+const cir2 = [
     { id: v4(), intext: ['hello i am a second note']},
+];
 
-  ];
-  const cir3 = [
+const cir3 = [
     { id: v4(), intext: ['hello i am a first note']},
+];
 
-  ];
-  const cir4 = [
+const cir4 = [
     { id: v4(), intext: ['hello i am a first note']},
-
-  ];
+];
   
 const circleItems = {
     [v4()]: {
+        id: "c1",
         heading1: "What the world",
         heading2: "NEEDS",
         headingColor: '#283972',
         color: '#E1E5FF',
+        border: '10px solid #293972',
         items: []
     },
     [v4()]: {
+        id: "c2",
         heading1: "What you",
         heading2: "LOVE",
         headingColor: '#009F6F',
         color: '#CCFFF0',
+        border: '10px solid #009F6F',
         items: []
     },
     [v4()]: {
+        id: "c3",
         heading1: "What you are",
         heading2: "GOOD AT",
         headingColor: '#FF5B5B',
         color: '#FFE4E4',
+        border: '10px solid #FF5C5B',
         items: []
     },
     [v4()]: {
+        id: "c4",
         heading1: "What You Can Be",
         heading2: "PAID FOR",
         headingColor: '#E5C908',
         color: '#FFFCCC',
+        border: '10px solid #E5C907',
         items: []
     }
 };
@@ -67,16 +74,20 @@ const Far = ()=> {
             <div className="main-logo">
                 <img src={logo} alt="cs-logo" />
             </div>
-            {Object.entries(circleItems).map(([itemId, item], index) => {
-                console.log(item);
-                return (<Circle 
-                    data = {item} 
-                    key = {itemId} 
-                    heading1 = {item.heading1}
-                    heading2 = {item.heading2}
-                    color = {item.color} 
-                    headingColor = {item.headingColor}/>);
-            })}
+            <div className="container circle">
+                {Object.entries(circleItems).map(([itemId, item], index) => {
+                    console.log(item);
+                    return (<Circle 
+                        id = {item.id}
+                        data = {item} 
+                        key = {itemId} 
+                        heading1 = {item.heading1}
+                        heading2 = {item.heading2}
+                        color = {item.color} 
+                        border = {item.border}
+                        headingColor = {item.headingColor}/>);
+                })}
+            </div>
         </>
     );
 }
