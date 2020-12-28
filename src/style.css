@@ -137,7 +137,7 @@ body {
     margin-top: 30px;
 }
 
-/* ----- PAGE 1 ----- */
+/* ----- PAGE 4 ----- */
 
 .rectangle-container {
     background: #e1e5ff;
@@ -148,7 +148,11 @@ body {
     overflow: scroll;
 }
 
-/* ----- PAGE 2 ----- */
+/* ----- PAGE 5 ----- */
+
+.page-container-5{
+    height: 120vh;
+}
 
 .container.circle{
     width: fit-content;
@@ -167,6 +171,7 @@ body {
     -moz-border-radius: 225px;
     -webkit-border-radius: 225px;
     border-radius: 225px;
+    position: relative;
 }
 
 /* .circle{
@@ -176,29 +181,84 @@ body {
     stroke-opacity: 1;
 } */
 
+.page-container-5 .pill-container{
+    margin-bottom: 0;
+}
+
+.pills-location{
+    width: fit-content;
+    max-width: 20rem;
+    margin: 0 auto;
+}
+
 /* blue */
 .c1 {
     position: absolute;
-    transform: translate(-350px, 250px);
+    transform: translate(-400px, 250px);
+    z-index: 2;
 }
+
+.c1 .pills-location{
+    transform: translate(-150px, 50px);
+}
+
+.c1 .title-container{
+    position: absolute;
+    left: -40px;
+}
+
 
 /* green */
 .c2 {
     text-align: center;
     position: absolute;
-    transform: translate(-200px, 400px);
+    transform: translate(-225px, 400px);
+    z-index: 4;
+}
+
+.c2 .pills-location{
+    transform: translate(0, 250px);
+}
+
+.c2 .title-container{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -70px;
 }
 
 /* red */
 .c3 {
     text-align: right;
     position: absolute;
-    transform: translate(-30px, 250px);
+    transform: translate(-60px, 250px);
+    z-index: 3;
+}
+
+.c3 .pills-location{
+    transform: translate(150px, 50px);
+}
+
+.c3 .title-container{
+    position: absolute;
+    right: -20px;
 }
 
 /* yellow */
 .c4 {
     text-align: center;
     position: absolute;
-    transform: translate(-200px, 100px);
+    transform: translate(-225px, 100px);
+    z-index: 1;
+}
+
+.c4 .pills-location{
+    transform: translate(0px, -10px);
+}
+
+.c4 .title-container{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -65px
 }
