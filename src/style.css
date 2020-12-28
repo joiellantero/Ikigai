@@ -17,6 +17,29 @@ body {
     justify-content: center;
 }
 
+.rounded-pill.with-btn-delete{
+    padding: 7px 25px 7px 25px;
+    position: relative;
+    transform: translateX(0px);
+}
+
+.rounded-pill .intext{
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.rounded-pill:hover .intext{
+    transform: translateX(-10px);
+    color: #FF5B5B;
+}
+
+.rounded-pill.with-btn-delete .btn-delete-container{
+    position: absolute;
+    right: 12px;
+}
+
+
 .rounded-pill {
     background: #ffffff;
     border-radius: 20px;
@@ -39,8 +62,9 @@ body {
 }
 
 .btn-delete-container {
-    display: none;
-    visibility: hidden;
+    /* display: none; */
+    /* visibility: hidden; */
+    opacity: 0;
     border-radius: 50%;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
@@ -49,9 +73,10 @@ body {
 }
 
 .rounded-pill:hover .btn-delete-container {
-    visibility: visible;
+    /* visibility: visible; */
     cursor: pointer;
-    display: flex;
+    /* display: flex; */
+    opacity: 1;
 }
 
 .text-center {

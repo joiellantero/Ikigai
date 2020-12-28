@@ -14,10 +14,9 @@ const Rectangle = ()=> {
 
     const [isShown, setIsShown] = useState(false);
 
-
     function handleChange(event) {
         setText(event.target.value);
-      }
+    }
 
     function handleAdd(event) {
         if (!text){
@@ -34,15 +33,17 @@ const Rectangle = ()=> {
         return (
         <div 
             variant = 'light' 
-            className='rounded-pill' 
+            className='rounded-pill with-btn-delete' 
             onMouseEnter={() => setIsShown(true)}
             onMouseLeave={() => setIsShown(false)}
         >
-            {props.intext}
+            <span className="intext">
+                {props.intext}
+            </span>
             {isShown && (
-                <div className="btn-delete-container" onClick={() => props.deleteNote(props.id)}>
+                <span className="btn-delete-container" onClick={() => props.deleteNote(props.id)}>
                     <Trash />
-                </div>
+                </span>
             )}
         </div>
         )
