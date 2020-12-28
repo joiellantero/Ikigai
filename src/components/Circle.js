@@ -8,7 +8,7 @@ const initialNotes = [
     {intext : 'hello i am a first note', id: v4()},
 ]
 
-const Rectangle = (props)=> {
+const Circle = (props)=> {
     const [notes, setNote] = React.useState(initialNotes);
     const [text, setText] = React.useState('');
 
@@ -71,7 +71,7 @@ const Rectangle = (props)=> {
     return ( 
         <>
             <div className="container" >
-                <div className="rectangle-container text-center" style = {{background: props.color}}>
+                {/* <div className="rectangle-container text-center" style = {{background: props.color}}>
                     <h3 className="dark-blue" style = {{color: props.headingColor}}>
                         {props.heading1}<br></br><strong>{props.heading2}</strong>
                         <OverlayTrigger
@@ -96,10 +96,26 @@ const Rectangle = (props)=> {
                     <Container>
                         <Form.Control className='form rounded-pill' value={text} onChange={handleChange} onBlur={handleAdd} onKeyPress={handleKeyPress} placeholder="Type here..."/>
                     </Container>
+                </div> */}
+
+                <div className="circle-container" style={{background: props.color}}>
+                    <div className="cirlce c1">
+                        <span className="dark-blue" style={{color: props.headingColor}}>
+                            {props.heading1}<br></br><strong>{props.heading2}</strong>
+                        </span>
+
+                        <Container className="pill-container">
+                        {notes.map((element) => <Note key={element.id.toString()} intext={element.intext} id={element.id} deleteNote={deleteNote}></Note>)}
+                        </Container>
+
+                        <Container>
+                            <Form.Control className='form rounded-pill' value={text} onChange={handleChange} onBlur={handleAdd} onKeyPress={handleKeyPress} placeholder="Type here..."/>
+                        </Container>
+                    </div>
                 </div>
             </div>
         </>
     );
 }
  
-export default Rectangle; 
+export default Circle; 
