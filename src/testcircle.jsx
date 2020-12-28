@@ -5,6 +5,7 @@ import './style.css';
 
 import logo from './images/logo.png'; 
 import Rectangle from './components/Rectangle.js';
+import Circle from './components/Circle.js'; 
 
 import { v4 } from 'uuid';
 
@@ -25,7 +26,7 @@ const rect1 = [
 
   ];
   
-  const rectangleColumns = {
+const rectangleColumns = {
     [v4()]: {
         heading1: "What the world",
         heading2: "NEEDS",
@@ -54,7 +55,7 @@ const rect1 = [
         headingColor: '#E5C908',
         items: []
     }
-  };
+};
 
 const Far = ()=> {
     return ( 
@@ -68,7 +69,10 @@ const Far = ()=> {
                 <img src={logo} alt="cs-logo" />
             </div>
             {Object.entries(rectangleColumns).map(([columnId, column], index) => {
-                return (<Rectangle 
+                // replace Circle with "Rectangle" after router is added
+                console.log(column);
+                return (<Circle 
+                    // remove className after router is added
                     data = {column} 
                     key = {columnId} 
                     heading1 = {column.heading1}
@@ -76,7 +80,6 @@ const Far = ()=> {
                     color = {column.color} 
                     headingColor = {column.headingColor}/>);
             })}
-
         </>
     );
 }

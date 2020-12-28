@@ -92,21 +92,17 @@ body {
 }
 
 .btn-delete-container {
-    /* display: none; */
-    /* visibility: hidden; */
-    opacity: 0;
     border-radius: 50%;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     transition-delay: 0.1s;
+    transform: scale(0);
 }
 
 .rounded-pill:hover .btn-delete-container {
-    /* visibility: visible; */
+    transform: scale(1);
     cursor: pointer;
-    /* display: flex; */
-    opacity: 1;
 }
 
 .text-center {
@@ -145,4 +141,48 @@ body {
 
 .p-pg-2 {
     margin-top: 30px;
+}
+
+/* ----- PAGE 1 ----- */
+
+.rectangle-container {
+    background: #e1e5ff;
+    width: 40vw;
+    height: 40vh;
+    float: left;
+    margin-top: 10px;
+    overflow: scroll;
+}
+
+/* ----- PAGE 2 ----- */
+
+.circle{
+    opacity: 0.6;
+    fill-opacity: .3;
+    stroke-width: 3;
+    stroke-opacity: 1;
+}
+
+.c1 {
+    fill: #283972;
+    fill-opacity: 0;
+    stroke: #283972;
+}
+
+.c2 {
+    fill: #FF5B5B;
+    fill-opacity: 0;
+    stroke: #FF5B5B;
+}
+
+.c3 {
+    fill: #0EEEAB;
+    fill-opacity: 0;
+    stroke: #0EEEAB;
+}
+
+.c4 {
+    fill: #FFDF00;
+    fill-opacity: 0;
+    stroke: #FFDF00;
 }
