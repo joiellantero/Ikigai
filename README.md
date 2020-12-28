@@ -12,25 +12,25 @@ Ikigai is a Japanese concept meaning "a reason for being". In this project, we a
 1. Clone the repository
 
 ```bash
-    git clone https://github.com/joiellantero/Ikigai.git
+    $ git clone https://github.com/joiellantero/Ikigai.git
 ```
 
 2. Navigate to the repository
 
 ```bash
-    cd Ikigai
+    $ cd Ikigai
 ```
 
 3. Install all the dependencies
 
 ```bash
-    npm install
+    $ npm install
 ```
 
 4. Run the website
 
 ```bash
-    npm start
+    $ npm start
 ```
 
 5. Find your Ikigai
