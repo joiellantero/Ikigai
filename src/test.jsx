@@ -71,7 +71,8 @@ const Far = ()=> {
                 return (<Rectangle 
                             data = {column} 
                             key = {columnId} 
-                            heading = {<>{column.heading1}<br></br><strong>{column.heading2}</strong></>} 
+                            heading1 = {column.heading1}
+                            heading2 = {column.heading2}
                             color = {column.color} 
                             headingColor = {column.headingColor}/>);
             })}
