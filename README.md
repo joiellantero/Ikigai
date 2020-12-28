@@ -1,5 +1,7 @@
 # Ikigai Project
 
+> This project is being built for Code for Asia
+
 Ikigai is a Japanese concept meaning "a reason for being". In this project, we are building a React webapp which aims to helps you find your ikigai.
 
 ### Web Technologies
