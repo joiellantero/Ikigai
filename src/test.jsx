@@ -13,29 +13,45 @@ const rect1 = [
 
   ];
   const rect2 = [
-    { id: v4(), intext: ['hello i am a first note']},
+    { id: v4(), intext: ['hello i am a second note']},
 
   ];
   const rect3 = [
     { id: v4(), intext: ['hello i am a first note']},
 
   ];
+  const rect4 = [
+    { id: v4(), intext: ['hello i am a first note']},
+
+  ];
   
-  const columnsFromBackend = {
+  const rectangleColumns = {
     [v4()]: {
-        heading: "What the world <br></br><strong>NEEDS </strong>",
+        heading1: "What the world",
+        heading2: "NEEDS",
+        color: '#E1E5FF',
+        headingColor: '#283972',
         items: []
     },
     [v4()]: {
-        heading: "What you <br></br><strong>LOVE </strong>",
+        heading1: "What you",
+        heading2: "LOVE",
+        color: '#CCFFF0',
+        headingColor: '#009F6F',
         items: []
     },
     [v4()]: {
-        heading: "What you are <br></br><strong>GOOD AT</strong>",
+        heading1: "What you are",
+        heading2: "GOOD AT",
+        color: '#FFE4E4',
+        headingColor: '#FF5B5B',
         items: []
     },
     [v4()]: {
-        heading: "What You Can Be <br></br><strong>PAID FOR</strong>",
+        heading1: "What You Can Be",
+        heading2: "PAID FOR",
+        color: '#FFFCCC',
+        headingColor: '#E5C908',
         items: []
     }
   };
@@ -51,8 +67,15 @@ const Far = ()=> {
             <div className="main-logo">
                 <img src={logo} alt="cs-logo" />
             </div>
-            <Rectangle text = {rect1} />
-            <Rectangle text = {rect2} />
+            {Object.entries(rectangleColumns).map(([columnId, column], index) => {
+                return (<Rectangle 
+                            data = {column} 
+                            key = {columnId} 
+                            heading1 = {column.heading1}
+                            heading2 = {column.heading2}
+                            color = {column.color} 
+                            headingColor = {column.headingColor}/>);
+            })}
 
         </>
     );
