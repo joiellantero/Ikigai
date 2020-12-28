@@ -34,7 +34,7 @@ body {
     margin-top: 10px;
 }
 
-.btn-container.center{
+.btn-container.center {
     text-align: center;
 }
 
@@ -51,28 +51,27 @@ body {
     justify-content: center;
 }
 
-.rounded-pill.with-btn-delete{
+.rounded-pill.with-btn-delete {
     padding: 7px 25px 7px 25px;
     position: relative;
     transform: translateX(0px);
 }
 
-.rounded-pill .intext{
+.rounded-pill .intext {
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
 
-.rounded-pill:hover .intext{
+.rounded-pill:hover .intext {
     transform: translateX(-10px);
     color: #FF5B5B;
 }
 
-.rounded-pill.with-btn-delete .btn-delete-container{
+.rounded-pill.with-btn-delete .btn-delete-container {
     position: absolute;
     right: 12px;
 }
-
 
 .rounded-pill {
     background: #ffffff;
@@ -134,8 +133,7 @@ body {
     margin: 20px;
 }
 
-.img-pg-2 {
-    margin-top: 200px;
+.center {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -145,9 +143,19 @@ body {
 
 .p-pg-2 {
     margin-top: 30px;
+    font-family: "Nunito", sans-serif;
 }
 
-/* ----- PAGE 1 ----- */
+.title-4 {
+    font-family: "Nunito", sans-serif;
+}
+
+.mt-20 {
+    margin-top: 130px;
+}
+
+
+/* ----- PAGE 1 - Rectangles ----- */
 
 .rectangle-container {
     background: #e1e5ff;
@@ -158,9 +166,10 @@ body {
     overflow: scroll;
 }
 
-/* ----- PAGE 2 ----- */
 
-.circle-container{
+/* ----- PAGE 2 - Circles ----- */
+
+.circle-container {
     width: 400px;
     height: 400px;
     background: red;
@@ -169,7 +178,7 @@ body {
     border-radius: 200px;
 }
 
-.circle{
+.circle {
     opacity: 0.6;
     fill-opacity: .3;
     stroke-width: 3;
