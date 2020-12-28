@@ -73,7 +73,7 @@ const Rectangle = (props)=> {
             <div className="container" >
                 <div className="rectangle-container text-center" style = {{background: props.color}}>
                     <h3 className="dark-blue" style = {{color: props.headingColor}}>
-                        <>{props.heading1}<br></br><strong>{props.heading2}</strong></>
+                        {props.heading1}<br></br><strong>{props.heading2}</strong>
                         <OverlayTrigger
                             key="bottom"
                             placement="bottom"

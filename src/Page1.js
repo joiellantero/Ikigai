@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import './style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import bg1 from './images/background-1.png';
+// import bg1 from './images/background-1.png';
 
 function Page1() {
 

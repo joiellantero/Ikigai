@@ -14,7 +14,7 @@ function Page2() {
                     <img src={logo} alt="cs-logo" />
                 </div>
                 <div className="img-pg-2">
-                    <img src={img2} alt="image-page-2" />
+                    <img src={img2} alt="page-2" />
                 </div>
                 <p className="p-pg-2">Follow this digital interactive as we explain the concept of ikigai and
                     <br /> discoveer how you can use ikigai to help you find meaning in the work you do.

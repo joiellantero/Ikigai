@@ -4,55 +4,54 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 
 import logo from './images/logo.png'; 
-import Rectangle from './components/Rectangle.js';
 import Circle from './components/Circle.js'; 
 
 import { v4 } from 'uuid';
 
-const rect1 = [
+const cir1 = [
     { id: v4(), intext: ['hello i am a first note']},
 
   ];
-  const rect2 = [
+  const cir2 = [
     { id: v4(), intext: ['hello i am a second note']},
 
   ];
-  const rect3 = [
+  const cir3 = [
     { id: v4(), intext: ['hello i am a first note']},
 
   ];
-  const rect4 = [
+  const cir4 = [
     { id: v4(), intext: ['hello i am a first note']},
 
   ];
   
-const rectangleColumns = {
+const circleItems = {
     [v4()]: {
         heading1: "What the world",
         heading2: "NEEDS",
-        color: '#E1E5FF',
         headingColor: '#283972',
+        color: '#E1E5FF',
         items: []
     },
     [v4()]: {
         heading1: "What you",
         heading2: "LOVE",
-        color: '#CCFFF0',
         headingColor: '#009F6F',
+        color: '#CCFFF0',
         items: []
     },
     [v4()]: {
         heading1: "What you are",
         heading2: "GOOD AT",
-        color: '#FFE4E4',
         headingColor: '#FF5B5B',
+        color: '#FFE4E4',
         items: []
     },
     [v4()]: {
         heading1: "What You Can Be",
         heading2: "PAID FOR",
-        color: '#FFFCCC',
         headingColor: '#E5C908',
+        color: '#FFFCCC',
         items: []
     }
 };
@@ -68,17 +67,15 @@ const Far = ()=> {
             <div className="main-logo">
                 <img src={logo} alt="cs-logo" />
             </div>
-            {Object.entries(rectangleColumns).map(([columnId, column], index) => {
-                // replace Circle with "Rectangle" after router is added
-                console.log(column);
+            {Object.entries(circleItems).map(([itemId, item], index) => {
+                console.log(item);
                 return (<Circle 
-                    // remove className after router is added
-                    data = {column} 
-                    key = {columnId} 
-                    heading1 = {column.heading1}
-                    heading2 = {column.heading2}
-                    color = {column.color} 
-                    headingColor = {column.headingColor}/>);
+                    data = {item} 
+                    key = {itemId} 
+                    heading1 = {item.heading1}
+                    heading2 = {item.heading2}
+                    color = {item.color} 
+                    headingColor = {item.headingColor}/>);
             })}
         </>
     );

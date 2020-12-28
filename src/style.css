@@ -156,6 +156,15 @@ body {
 
 /* ----- PAGE 2 ----- */
 
+.circle-container{
+    width: 400px;
+    height: 400px;
+    background: red;
+    -moz-border-radius: 200px;
+    -webkit-border-radius: 200px;
+    border-radius: 200px;
+}
+
 .circle{
     opacity: 0.6;
     fill-opacity: .3;

@@ -73,7 +73,7 @@ const Circle = (props)=> {
             <div className="container" >
                 {/* <div className="rectangle-container text-center" style = {{background: props.color}}>
                     <h3 className="dark-blue" style = {{color: props.headingColor}}>
-                        <>{props.heading1}<br></br><strong>{props.heading2}</strong></>
+                        {props.heading1}<br></br><strong>{props.heading2}</strong>
                         <OverlayTrigger
                             key="bottom"
                             placement="bottom"
@@ -98,9 +98,19 @@ const Circle = (props)=> {
                     </Container>
                 </div> */}
 
-                <div className="circle-container">
+                <div className="circle-container" style={{background: props.color}}>
                     <div className="cirlce c1">
-                        lorem
+                        <span className="dark-blue" style={{color: props.headingColor}}>
+                            {props.heading1}<br></br><strong>{props.heading2}</strong>
+                        </span>
+
+                        <Container className="pill-container">
+                        {notes.map((element) => <Note key={element.id.toString()} intext={element.intext} id={element.id} deleteNote={deleteNote}></Note>)}
+                        </Container>
+
+                        <Container>
+                            <Form.Control className='form rounded-pill' value={text} onChange={handleChange} onBlur={handleAdd} onKeyPress={handleKeyPress} placeholder="Type here..."/>
+                        </Container>
                     </div>
                 </div>
             </div>
