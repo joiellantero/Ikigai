@@ -4,6 +4,36 @@ body {
     font-family: "Nunito", sans-serif;
 }
 
+.background-1 {
+    background-image: url("./images/background-1.png");
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+.background-2 {
+    text-align: center;
+}
+
+.btn-default {
+    background-color: #283972 !important;
+    border-radius: 0 0 0 0;
+    color: white;
+    width: 15%;
+    margin-top: 600px;
+}
+
+.btn-2 {
+    margin-top: 10px;
+}
+
 .rectangle-container {
     background: #e1e5ff;
     width: 40vw;
@@ -100,6 +130,19 @@ body {
 }
 
 .main-logo img {
-    width: 12vw;
+    width: 14vw;
     margin: 20px;
+}
+
+.img-pg-2 {
+    margin-top: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    height: 40%;
+}
+
+.p-pg-2 {
+    margin-top: 30px;
 }
