@@ -4,13 +4,38 @@ body {
     font-family: "Nunito", sans-serif;
 }
 
-.rectangle-container {
-    background: #e1e5ff;
-    width: 40vw;
-    height: 40vh;
-    float: left;
+.background-1 {
+    background-image: url("./images/background-1.png");
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+.background-2 {
+    text-align: center;
+}
+
+.btn-default {
+    background-color: #283972 !important;
+    border-radius: 0 0 0 0;
+    color: white;
+    width: 15%;
+    margin-top: 600px;
+}
+
+.btn-2 {
     margin-top: 10px;
-    overflow: scroll;
+}
+
+.btn-container.center{
+    text-align: center;
 }
 
 .container {
@@ -54,7 +79,6 @@ body {
 }
 
 .pill-container {
-    /* width: fit-content; */
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -62,21 +86,17 @@ body {
 }
 
 .btn-delete-container {
-    /* display: none; */
-    /* visibility: hidden; */
-    opacity: 0;
     border-radius: 50%;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     transition-delay: 0.1s;
+    transform: scale(0);
 }
 
 .rounded-pill:hover .btn-delete-container {
-    /* visibility: visible; */
+    transform: scale(1);
     cursor: pointer;
-    /* display: flex; */
-    opacity: 1;
 }
 
 .text-center {
@@ -100,6 +120,85 @@ body {
 }
 
 .main-logo img {
-    width: 12vw;
+    width: 14vw;
     margin: 20px;
+}
+
+.img-pg-2 {
+    margin-top: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    height: 40%;
+}
+
+.p-pg-2 {
+    margin-top: 30px;
+}
+
+/* ----- PAGE 1 ----- */
+
+.rectangle-container {
+    background: #e1e5ff;
+    width: 40vw;
+    height: 40vh;
+    float: left;
+    margin-top: 10px;
+    overflow: scroll;
+}
+
+/* ----- PAGE 2 ----- */
+
+.container.circle{
+    width: fit-content;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle.rounded-pill{
+    background: rgb(240, 240, 240);
+}
+
+.circle-container{
+    width: 450px;
+    height: 450px;
+    -moz-border-radius: 225px;
+    -webkit-border-radius: 225px;
+    border-radius: 225px;
+}
+
+/* .circle{
+    opacity: 0.6;
+    fill-opacity: .3;
+    stroke-width: 3;
+    stroke-opacity: 1;
+} */
+
+/* blue */
+.c1 {
+    position: absolute;
+    transform: translate(-350px, 250px);
+}
+
+/* green */
+.c2 {
+    text-align: center;
+    position: absolute;
+    transform: translate(-200px, 400px);
+}
+
+/* red */
+.c3 {
+    text-align: right;
+    position: absolute;
+    transform: translate(-30px, 250px);
+}
+
+/* yellow */
+.c4 {
+    text-align: center;
+    position: absolute;
+    transform: translate(-200px, 100px);
 }
