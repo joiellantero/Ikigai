@@ -8,7 +8,7 @@ const initialNotes = [
     {intext : 'hello i am a first note', id: v4()},
 ]
 
-const Rectangle = ()=> {
+const Rectangle = (props)=> {
     const [notes, setNote] = React.useState(initialNotes);
     const [text, setText] = React.useState('');
 
@@ -69,11 +69,10 @@ const Rectangle = ()=> {
     
     return ( 
         <>
-            <div className="container">
-                <div className="rectangle-container text-center">
-                    <h3 className="dark-blue">
-                        What the world <br></br><strong>NEEDS </strong>
-                        
+            <div className="container" >
+                <div className="rectangle-container text-center" style = {{background: props.color}}>
+                    <h3 className="dark-blue" style = {{color: props.headingColor}}>
+                        {props.heading}
                         <OverlayTrigger
                             key="bottom"
                             placement="bottom"
