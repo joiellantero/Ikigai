@@ -34,6 +34,10 @@ body {
     margin-top: 10px;
 }
 
+.btn-container.center{
+    text-align: center;
+}
+
 .rectangle-container {
     background: #e1e5ff;
     width: 40vw;

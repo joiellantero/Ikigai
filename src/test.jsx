@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
@@ -76,7 +77,12 @@ const Far = ()=> {
                     color = {column.color} 
                     headingColor = {column.headingColor}/>);
             })}
-
+            
+            <div class="btn-container center">
+                <Link to="/introducing-your-ikigai-chart">
+                    <button type="button" className="btn-default btn-2 btn-lg">Next</button>
+                </Link>
+            </div>
         </>
     );
 }

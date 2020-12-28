@@ -9,12 +9,8 @@ import Page3 from "./Page3";
 import Page4 from "./test";
 import Page5 from "./testcircle";
 
-/*import Far from './test';
-
-ReactDOM.render( < Far / > , document.getElementById('root')); */
-
 const rootElement = document.getElementById("root");
-ReactDOM.render(
+ReactDOM.render( 
     <BrowserRouter>
         <Switch>
             <Route exact path="/" component={Page1} />
