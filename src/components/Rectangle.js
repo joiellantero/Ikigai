@@ -9,7 +9,7 @@ import { Draggable } from 'react-beautiful-dnd';
 
 const Rectangle = (props)=> {
     console.log(props.data)
-    const [notes, setNote] = React.useState(props.data.items);
+    const [notes, setNote] = React.useState(props.data);
     const [text, setText] = React.useState('');
     const [isShown, setIsShown] = useState(false);
 

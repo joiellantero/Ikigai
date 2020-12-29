@@ -59,9 +59,9 @@ const rectangleColumns = {
   }
 
 
-// const onDragEnd = ()=>{
-//     //
-// }
+const onDragEnd = ()=>{
+    //
+}
 
 const Far = ()=> {
     return ( 
@@ -106,3 +106,6 @@ const Far = ()=> {
         </>
     );
 }
+
+
+export default Far;
