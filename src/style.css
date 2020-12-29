@@ -6,8 +6,9 @@ body {
 
 .background-1 {
     background-image: url("./images/background-1.png");
-    background-size: cover;
+    background-size: cover  ;
     background-position: center;
+    background-repeat: no-repeat;
     width: 100%;
     height: 100%;
     text-align: center;
@@ -26,7 +27,7 @@ body {
     background-color: #283972 !important;
     border-radius: 0 0 0 0;
     color: white;
-    width: 25px;
+    width: 150px;
     margin-top: 600px;
 }
 
@@ -48,15 +49,16 @@ body {
     transform: translateX(0px);
 }
 
-.rounded-pill .intext {
-    -webkit-transition: all 0.3s ease-in-out;
+.intext {
+    /* -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
+    transition-duration: 0.3s; */
+    opacity: 0;
 }
 
-.rounded-pill:hover .intext {
+.pill-container:hover .intext {
     transform: translateX(-10px);
-    color: #FF5B5B;
 }
 
 .rounded-pill.with-btn-delete .btn-delete-container {
@@ -82,20 +84,23 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     margin-bottom: 20px;
+    position: relative;
 }
 
 .btn-delete-container {
     border-radius: 50%;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
+    -webkit-transition: transform 0.3s ease-in-out;
+    -moz-transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
     transition-delay: 0.1s;
     transform: scale(0);
+    opacity: 0;
 }
 
 .rounded-pill:hover .btn-delete-container {
     transform: scale(1);
     cursor: pointer;
+    opacity: 1;
 }
 
 .text-center {
@@ -147,13 +152,36 @@ body {
 
 /* ----- PAGE 4 ----- */
 
+.rectangle{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
 .rectangle-container {
     background: #e1e5ff;
     width: 40vw;
     height: 40vh;
-    float: left;
     margin-top: 10px;
     overflow: scroll;
+}
+
+.edit-text{
+    position: absolute;
+    z-index: 1;
+    -webkit-transition: transform 0.3s ease-in-out;
+    -moz-transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
+}
+
+.rounded-pill:hover .edit-text{
+    transform: translateX(-10px);
+}
+
+.edit-text:focus{
+    border: none;
+    outline: none;
+    background: none;
 }
 
 /* ----- PAGE 5 ----- */

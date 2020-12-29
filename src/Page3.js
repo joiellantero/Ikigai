@@ -15,8 +15,8 @@ function Page3() {
                     <img src={logo} alt="cs-logo" />
                 </div>
                 <Container className="mt-20" fluid="md">
-                    <Col className="justify-content-md-center">
-                        <Row md={1}> <h4 className="title-4"><strong>What is ikigai?</strong> </h4></Row>
+                    <Col className="text-center">
+                        <Row> <h4 className="title-4"><strong>What is ikigai?</strong> </h4></Row>
                         <Row md={3}> <img src={img3} alt="page-3" className="center" /> </Row>
                         <Row md={1}><p className="p-pg-2">Ikigai is a Japanese concept to achieving a long and happy life.
                         <br /> <br /> Ikigai can be described as: <br /> <br /> The practice of <strong>
@@ -27,7 +27,7 @@ function Page3() {
                         </p>
 
                         </Row>
-                        <Row md={1}> <Link to="/lets-find-out-ikigai">
+                        <Row> <Link to="/lets-find-out-ikigai">
                             <button type="button" class="btn-default btn-2 btn-lg">Next</button>
                         </Link>
                         </Row>
