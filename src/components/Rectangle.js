@@ -9,8 +9,8 @@ import { Draggable } from 'react-beautiful-dnd';
 
 const Rectangle = (props)=> {
     console.log(props.data)
-    const [notes, setNote] = React.useState(props.data);
-    const [text, setText] = React.useState('');
+    const [notes, setNote] = useState(props.data);
+    const [text, setText] = useState('');
     const [isShown, setIsShown] = useState(false);
 
     function handleChange(event) {
@@ -109,9 +109,7 @@ const Rectangle = (props)=> {
 
                 <Container className="pill-container">
                     {notes.map((element) => 
-                        <>
-                            <Note key={element.id.toString()} intext={element.intext} id={element.id} deleteNote={deleteNote}></Note>
-                        </>
+                        <Note key={element.id.toString()} intext={element.intext} id={element.id} deleteNote={deleteNote}></Note>
                     )}
                 </Container>
 
