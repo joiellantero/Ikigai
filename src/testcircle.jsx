@@ -66,28 +66,30 @@ const circleItems = {
 const Far = ()=> {
     return ( 
         <>  
-            <div className = "main-header-text">
-                <p>Let’s find our ikigai! <br /> <br /> Start by adding activites or values you are currently doing into each of these four quadrants.
-                <br /> Feel free to add as many as you can think of!
-                </p> 
-            </div>
-            <div className="main-logo">
-                <img src={logo} alt="cs-logo" />
-            </div>
-            <div className="container circle">
-                {Object.entries(circleItems).map(([itemId, item], index) => {
-                    console.log(item);
-                    return (<Circle 
-                        id = {item.id}
-                        data = {item} 
-                        key = {itemId} 
-                        heading1 = {item.heading1}
-                        heading2 = {item.heading2}
-                        color = {item.color} 
-                        border = {item.border}
-                        headingColor = {item.headingColor}/>);
-                })}
-            </div>
+            <section className="page-container-5"> 
+                <div className = "main-header-text">
+                    <p>Let’s find our ikigai! <br /> <br /> Start by adding activites or values you are currently doing into each of these four quadrants.
+                    <br /> Feel free to add as many as you can think of!
+                    </p> 
+                </div>
+                <div className="main-logo">
+                    <img src={logo} alt="cs-logo" />
+                </div>
+                <div className="container circle">
+                    {Object.entries(circleItems).map(([itemId, item], index) => {
+                        console.log(item);
+                        return (<Circle 
+                            id = {item.id}
+                            data = {item} 
+                            key = {itemId} 
+                            heading1 = {item.heading1}
+                            heading2 = {item.heading2}
+                            color = {item.color} 
+                            border = {item.border}
+                            headingColor = {item.headingColor}/>);
+                    })}
+                </div>
+            </section>
         </>
     );
 }
