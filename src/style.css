@@ -6,7 +6,7 @@ body {
 
 .background-1 {
     background-image: url("./images/background-1.png");
-    background-size: cover  ;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     width: 100%;
@@ -27,18 +27,13 @@ body {
     background-color: #283972 !important;
     border-radius: 0 0 0 0;
     color: white;
-<<<<<<< HEAD
-    width: 150px;
-=======
     width: 100px;
->>>>>>> bea
     margin-top: 600px;
     border: none;
     outline: none;
     padding: 10px 20px 10px 20px !important;
     text-transform: uppercase;
     font-size: 13px !important;
-
     display: inline-block;
     vertical-align: middle;
     -webkit-transform: perspective(1px) translateZ(0);
@@ -52,12 +47,12 @@ body {
     transition-timing-function: ease-out;
 }
 
-.btn-default:hover{
+.btn-default:hover {
     -webkit-transform: translateY(-2px);
     transform: translateY(-2px);
 }
 
-.btn-default:focus{
+.btn-default:focus {
     border: none;
     outline: none;
 }
@@ -183,15 +178,15 @@ body {
 
 /* ----- PAGE 4 ----- */
 
-.page-container-4{
+.page-container-4 {
     height: 60vh;
 }
 
-.page-container-4 .btn-container{
+.page-container-4 .btn-container {
     margin: 50px auto;
 }
 
-.rectangle{
+.rectangle {
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
@@ -205,9 +200,7 @@ body {
     overflow: scroll;
 }
 
-<<<<<<< HEAD
-=======
-.edit-text{
+.edit-text {
     position: absolute;
     z-index: 1;
     -webkit-transition: transform 0.3s ease-in-out;
@@ -215,16 +208,16 @@ body {
     transition: transform 0.3s ease-in-out;
 }
 
-.rounded-pill:hover .edit-text{
+.rounded-pill:hover .edit-text {
     transform: translateX(-10px);
 }
 
-.edit-text:focus{
+.edit-text:focus {
     border: none;
     outline: none;
     background: none;
 }
->>>>>>> bea
+
 
 /* ----- PAGE 5 ----- */
 
