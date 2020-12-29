@@ -11,19 +11,18 @@ import { v4 } from 'uuid';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 const rect1 = [
-    { id: v4(), intext: ['first rectangle']},
-
+    { id: v4(), intext: 'first rectangle'},
   ];
   const rect2 = [
-    { id: v4(), intext: ['second rectangle']},
+    { id: v4(), intext: 'second rectangle'},
 
   ];
   const rect3 = [
-    { id: v4(), intext: ['third rectangle']},
+    { id: v4(), intext: 'third rectangle'},
 
   ];
   const rect4 = [
-    { id: v4(), intext: ['forth rectangle']},
+    { id: v4(), intext: 'forth rectangle'},
 
   ];
   
@@ -56,10 +55,14 @@ const rectangleColumns = {
         headingColor: '#E5C908',
         items: rect4
     }
-  };
-const onDragEnd = ()=>{
-    //
-}
+ 
+  }
+
+
+// const onDragEnd = ()=>{
+//     //
+// }
+
 const Far = ()=> {
     return ( 
         <>  
@@ -103,5 +106,3 @@ const Far = ()=> {
         </>
     );
 }
- 
-export default Far;
