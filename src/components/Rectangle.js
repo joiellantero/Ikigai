@@ -5,9 +5,7 @@ import { v4 } from 'uuid';
 import Trash from '../components/trash.js';
 import Info from '../components/info.js';
 
-const initialNotes = [
-    {intext : 'hello i am a first note', id: v4()},
-]
+const initialNotes = []
 
 const Rectangle = (props) => {
     const [notes, setNote] = useState(initialNotes);

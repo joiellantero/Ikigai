@@ -27,8 +27,35 @@ body {
     background-color: #283972 !important;
     border-radius: 0 0 0 0;
     color: white;
-    width: 150px;
+    width: 100px;
     margin-top: 600px;
+    border: none;
+    outline: none;
+    padding: 10px 20px 10px 20px !important;
+    text-transform: uppercase;
+    font-size: 13px !important;
+
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+
+.btn-default:hover{
+    -webkit-transform: translateY(-2px);
+    transform: translateY(-2px);
+}
+
+.btn-default:focus{
+    border: none;
+    outline: none;
 }
 
 .btn-2 {
@@ -151,6 +178,14 @@ body {
 
 
 /* ----- PAGE 4 ----- */
+
+.page-container-4{
+    height: 60vh;
+}
+
+.page-container-4 .btn-container{
+    margin: 50px auto;
+}
 
 .rectangle{
     display: flex;

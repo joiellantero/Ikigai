@@ -48,37 +48,39 @@ const rectangleColumns = {
 const Far = () => {
   return (
     <>
-      <div className="main-header-text">
-        <p>
-          Let’s find our ikigai! <br /> <br /> Start by adding activites or
-          values you are currently doing into each of these four quadrants.
-          <br /> Feel free to add as many as you can think of!
-        </p>
-      </div>
-      <div className="main-logo">
-        <img src={logo} alt="cs-logo" />
-      </div>
-      <div className="rectangle container">
-        {Object.entries(rectangleColumns).map(([columnId, column], index) => {
-          return (
-            <Rectangle
-              data={column}
-              key={columnId}
-              heading1={column.heading1}
-              heading2={column.heading2}
-              color={column.color}
-              headingColor={column.headingColor}
-            />
-          );
-        })}
-      </div>
+      <div className="page-container-4">
+        <div className="main-header-text">
+          <p>
+            Let’s find our ikigai! <br /> <br /> Start by adding activites or
+            values you are currently doing into each of these four quadrants.
+            <br /> Feel free to add as many as you can think of!
+          </p>
+        </div>
+        <div className="main-logo">
+          <img src={logo} alt="cs-logo" />
+        </div>
+        <div className="rectangle container">
+          {Object.entries(rectangleColumns).map(([columnId, column], index) => {
+            return (
+              <Rectangle
+                data={column}
+                key={columnId}
+                heading1={column.heading1}
+                heading2={column.heading2}
+                color={column.color}
+                headingColor={column.headingColor}
+              />
+            );
+          })}
+        </div>
 
-      <div class="btn-container center">
-        <Link to="/introducing-your-ikigai-chart">
-          <button type="button" className="btn-default btn-2 btn-lg">
-            Next
-          </button>
-        </Link>
+        <div class="btn-container center">
+          <Link to="/introducing-your-ikigai-chart">
+            <button type="button" className="btn-default btn-2 btn-lg">
+              Next
+            </button>
+          </Link>
+        </div>
       </div>
     </>
   );
