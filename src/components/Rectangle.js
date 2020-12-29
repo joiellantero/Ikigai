@@ -109,7 +109,9 @@ const Rectangle = (props)=> {
 
                 <Container className="pill-container">
                     {notes.map((element) => 
+                        <>
                             <Note key={element.id.toString()} intext={element.intext} id={element.id} deleteNote={deleteNote}></Note>
+                        </>
                     )}
                 </Container>
 
