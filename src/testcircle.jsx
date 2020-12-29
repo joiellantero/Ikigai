@@ -1,29 +1,29 @@
 import React from 'react';
-
+import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 
-import logo from './images/logo.png'; 
-import Circle from './components/Circle.js'; 
+import logo from './images/logo.png';
+import Circle from './components/Circle.js';
 
 import { v4 } from 'uuid';
 
 const cir1 = [
-    { id: v4(), intext: ['hello i am a first note']},
+    { id: v4(), intext: ['hello i am a first note'] },
 ];
 
 const cir2 = [
-    { id: v4(), intext: ['hello i am a second note']},
+    { id: v4(), intext: ['hello i am a second note'] },
 ];
 
 const cir3 = [
-    { id: v4(), intext: ['hello i am a first note']},
+    { id: v4(), intext: ['hello i am a first note'] },
 ];
 
 const cir4 = [
-    { id: v4(), intext: ['hello i am a first note']},
+    { id: v4(), intext: ['hello i am a first note'] },
 ];
-  
+
 const circleItems = {
     [v4()]: {
         id: "c1",
@@ -63,14 +63,14 @@ const circleItems = {
     }
 };
 
-const Far = ()=> {
-    return ( 
-        <>  
-            <section className="page-container-5"> 
-                <div className = "main-header-text">
+const Far = () => {
+    return (
+        <>
+            <section className="page-container-5">
+                <div className="main-header-text">
                     <p>Let’s find our ikigai! <br /> <br /> Start by adding activites or values you are currently doing into each of these four quadrants.
                     <br /> Feel free to add as many as you can think of!
-                    </p> 
+                    </p>
                 </div>
                 <div className="main-logo">
                     <img src={logo} alt="cs-logo" />
@@ -78,20 +78,20 @@ const Far = ()=> {
                 <div className="container circle">
                     {Object.entries(circleItems).map(([itemId, item], index) => {
                         console.log(item);
-                        return (<Circle 
-                            id = {item.id}
-                            data = {item} 
-                            key = {itemId} 
-                            heading1 = {item.heading1}
-                            heading2 = {item.heading2}
-                            color = {item.color} 
-                            border = {item.border}
-                            headingColor = {item.headingColor}/>);
+                        return (<Circle
+                            id={item.id}
+                            data={item}
+                            key={itemId}
+                            heading1={item.heading1}
+                            heading2={item.heading2}
+                            color={item.color}
+                            border={item.border}
+                            headingColor={item.headingColor} />);
                     })}
                 </div>
             </section>
         </>
     );
 }
- 
+
 export default Far;
