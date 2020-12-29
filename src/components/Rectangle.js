@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { Container, Form, OverlayTrigger, Tooltip} from 'react-bootstrap';
-import {EditText, EditTextarea } from 'react-edit-text';
+import {EditText } from 'react-edit-text';
 import { v4 } from 'uuid';
 import Trash from '../components/trash.js';
 import Info from '../components/info.js';
+import { Draggable } from 'react-beautiful-dnd';
 
-const initialNotes = []
 
-const Rectangle = (props) => {
-    const [notes, setNote] = useState(initialNotes);
-    const [text, setText] = useState('');
+const Rectangle = (props)=> {
+    console.log(props.data)
+    const [notes, setNote] = React.useState(props.data);
+    const [text, setText] = React.useState('');
     const [isShown, setIsShown] = useState(false);
 
     function handleChange(event) {
@@ -35,33 +36,38 @@ const Rectangle = (props) => {
     }
 
     function Note(props) {
-
         return (
-            <div 
-                variant = 'light' 
-                className='rounded-pill with-btn-delete' 
-                onMouseEnter={() => setIsShown(true)}
-                onMouseLeave={() => setIsShown(false)}
-            >
-                {/* the intext's opacity is 0 as it's just place here to provide the correct spacing */}
-                <span className="intext"> 
-                    {props.intext}
-                </span>
-
-                <EditText
+        <Draggable draggableId = {props.id} index ={props.index}>
+        {(provided)=>(
+        <div 
+            variant = 'light' 
+            className='rounded-pill with-btn-delete' 
+            onMouseEnter={() => setIsShown(true)}
+            onMouseLeave={() => setIsShown(false)}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+            ref ={provided.innerRef} 
+        >
+            <span className="intext">
+                {props.intext}
+            </span>
+            
+            <EditText
                     name={props.id}
                     className="edit-text"
                     value={props.intext}
                     onSave={handleEdit}
                 />
 
-                {isShown && (
-                    <span className="btn-delete-container" onClick={() => props.deleteNote(props.id)}>
-                        <Trash />
-                    </span>
-                )}
-            </div>
-        )
+            {isShown && (
+                <span className="btn-delete-container" onClick={() => props.deleteNote(props.id)}>
+                    <Trash />
+                </span>
+            )}
+        </div>
+        )}
+        </Draggable>
+        );
     }
 
     const deleteNote = (id) => {
