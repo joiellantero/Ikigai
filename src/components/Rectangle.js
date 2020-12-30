@@ -108,9 +108,9 @@ const Rectangle = (props)=> {
                 </h3>
 
                 <Container className="pill-container">
-                    {notes.map((element) => 
+                    {notes.map((element, index) => 
                         <>
-                            <Note key={element.id.toString()} intext={element.intext} id={element.id} deleteNote={deleteNote}></Note>
+                            <Note key={element.id.toString()} intext={element.intext} id={element.id} deleteNote={deleteNote} index = {index}></Note>
                         </>
                     )}
                 </Container>
