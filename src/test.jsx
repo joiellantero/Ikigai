@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -58,11 +58,49 @@ const rectangleColumns = {
   },
 };
 
-const onDragEnd = () => {
-  //
+
+const onDragEnd = (result, columns, setColumn) => {
+  if (!result.destination) return;
+  const { source, destination } = result;
+
+  if (source.droppableId !== destination.droppableId) {
+    const sourceColumn = columns[source.droppableId];
+    const destColumn = columns[destination.droppableId];
+    const sourceItems = [...sourceColumn.items];
+    const destItems = [...destColumn.items];
+    const [removed] = sourceItems.splice(source.index, 1);
+    destItems.splice(destination.index, 0, removed);
+    setColumn({
+      ...columns,
+      [source.droppableId]: {
+        ...sourceColumn,
+        items: sourceItems
+      },
+      [destination.droppableId]: {
+        ...destColumn,
+        items: destItems
+      }
+    });
+
+  } else {
+    const column = columns[source.droppableId];
+    const copiedItems = [...column.items];
+    const [removed] = copiedItems.splice(source.index, 1);
+    copiedItems.splice(destination.index, 0, removed);
+    setColumn({
+      ...columns,
+      [source.droppableId]: {
+        ...column,
+        items: copiedItems
+      }
+    });
+  }
 };
 
+
 const Far = () => {
+  const [columns, setColumn] = useState(rectangleColumns);
+
   return (
     <>
       <div className="page-container-4">
@@ -76,11 +114,13 @@ const Far = () => {
         <div className="main-logo">
           <img src={logo} alt="cs-logo" />
         </div>
-        <DragDropContext onDragEnd={onDragEnd}>
-          {Object.entries(rectangleColumns).map(([columnId, column], index) => {
+        <DragDropContext 
+          onDragEnd={result => onDragEnd(result, columns, setColumn)}
+        >
+          {Object.entries(columns).map(([columnId, column], index) => {
             return (
               <Droppable droppableId={columnId} direction="horizontal">
-                {(provided) => (
+                {(provided, snapshot) => (
                   <div ref={provided.innerRef} {...provided.droppableProps}>
                     <Rectangle
                       data={column.items}
@@ -92,7 +132,11 @@ const Far = () => {
                       headingColor={column.headingColor}
                       hover1={column.hover1}
                       hover2={column.hover2}
-                      hover3={column.hover3}>
+                      hover3={column.hover3}
+                      col = {column}
+                      columns = {columns}
+                      handleColumn={setColumn}
+                      isDraggingOver = {snapshot.isDraggingOver}>
                       </Rectangle>
                     {provided.placeholder}
                   </div>
