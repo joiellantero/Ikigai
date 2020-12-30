@@ -31,10 +31,10 @@ const Export = () => {
     });
 
     return (
-        <div>
+        < div >
             <Far ref={componentRef} />
             <button onClick={handlePrint}>Print this out!</button>
-        </div>
+        </div >
     );
 };
 
