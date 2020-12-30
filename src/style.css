@@ -340,8 +340,29 @@ body {
     width: fit-content;
 }
 
+.page-container-8 .card{
+    width: fit-content;
+    margin: 0 auto;
+}
+
 .page-container-8 .share-container{
     justify-content: center;
+}
+
+.page-container-8 .steps-container{
+    width: 70%;
+}
+
+.steps-container svg.icon-tabler-trash{
+    stroke: #DC3545;
+}
+
+.steps-container svg.icon-tabler-plus{
+    stroke: #057BFF;
+}
+
+.steps-container button:hover svg.icon-tabler-plus, .steps-container button:hover svg.icon-tabler-trash{
+    stroke: #FFFFFF;
 }
 
 .share-container ul{
@@ -349,6 +370,7 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
+    justify-content: center;
 }
 
 .share-container ul li{
