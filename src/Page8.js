@@ -35,7 +35,7 @@ class Page8 extends Component{
                         </div>
                     </div>
 
-                    <button type="button" className="btn-default btn-2 btn-lg">
+                    <button type="button" className="btn-default btn-2 btn-lg my-5">
                         Export Report
                     </button>
 
