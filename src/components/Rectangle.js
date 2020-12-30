@@ -8,7 +8,6 @@ import { Draggable } from 'react-beautiful-dnd';
 
 
 const Rectangle = (props)=> {
-    console.log(props.hover1);
     const [notes, setNote] = useState(props.data);
     const [text, setText] = useState('');
     const [isShown, setIsShown] = useState(false);
@@ -53,11 +52,11 @@ const Rectangle = (props)=> {
             </span>
             
             <EditText
-                    name={props.id}
-                    className="edit-text"
-                    value={props.intext}
-                    onSave={handleEdit}
-                />
+                name={props.id}
+                className="edit-text"
+                value={props.intext}
+                onSave={handleEdit}
+            />
 
             {isShown && (
                 <span className="btn-delete-container" onClick={() => props.deleteNote(props.id)}>
