@@ -8,7 +8,7 @@ import { Draggable } from 'react-beautiful-dnd';
 
 
 const Rectangle = (props)=> {
-    console.log(props.data)
+    console.log(props.hover1);
     const [notes, setNote] = useState(props.data);
     const [text, setText] = useState('');
     const [isShown, setIsShown] = useState(false);
@@ -17,7 +17,7 @@ const Rectangle = (props)=> {
         setText(event.target.value);
     }
 
-    function handleAdd(event) {
+    function handleAdd() {
         if (!text){
             return;
         }
@@ -97,7 +97,7 @@ const Rectangle = (props)=> {
                         placement="bottom"
                         overlay={
                             <Tooltip id={`tooltip-bottom`}>
-                                <strong> What The World Needs</strong> <br /> Are you helping to solve an actual problem? <br /> Is what you’re doing bringing beauty or utility to others, helping out, and shaping the world around you?
+                                <strong> {props.hover1}</strong> <br /> {props.hover2} <br /> {props.hover3}
                             </Tooltip>
                         }
                     >
