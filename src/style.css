@@ -332,9 +332,9 @@ body {
 /* ---- Page 8 ---- */
 
 .card-shadow {
-    -webkit-box-shadow: 0 10px 20px -3px rgb(0, 0, 0, 0.1);
-       -moz-box-shadow: 0 10px 20px -3px rgb(0, 0, 0, 0.1);
-            box-shadow: 0 10px 20px -3px rgb(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 5px 10px -3px rgb(0, 0, 0, 0.1);
+       -moz-box-shadow: 0 5px 10px -3px rgb(0, 0, 0, 0.1);
+            box-shadow: 0 5px 10px -3px rgb(0, 0, 0, 0.1);
 }
 
 .page-container-8{
