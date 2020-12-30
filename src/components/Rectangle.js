@@ -140,7 +140,7 @@ const Rectangle = (props)=> {
                         }
                     >
                         <span>
-                            <Info color={props.color} />
+                            <Info color={props.headingColor} />
                         </span>
                     </OverlayTrigger>
                 </h3>
