@@ -73,11 +73,11 @@ const Rectangle = (props)=> {
             </span>
             
             <EditText
-                    name={props.id}
-                    className="edit-text"
-                    value={props.intext}
-                    onSave={handleEdit}
-                />
+                name={props.id}
+                className="edit-text"
+                value={props.intext}
+                onSave={handleEdit}
+            />
 
             {isShown && (
                 <span className="btn-delete-container" onClick={() => props.deleteNote(props.id)}>
@@ -140,7 +140,7 @@ const Rectangle = (props)=> {
                         }
                     >
                         <span>
-                            <Info />
+                            <Info color={props.color} />
                         </span>
                     </OverlayTrigger>
                 </h3>
