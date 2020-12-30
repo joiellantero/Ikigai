@@ -15,7 +15,7 @@ class Page8 extends Component{
                     <h3>Your Ikigai, Visualised.</h3>
                     <div className="row my-5">
                         <div className="col-lg">
-                            <p>Venn Diagram Here</p>
+                            <p>***Venn Diagram Here***</p>
                         </div>
                         <div className="col-lg">
                             <p>Your steps to achieving ikigai</p>
@@ -39,7 +39,7 @@ class Page8 extends Component{
                         Export Report
                     </button>
 
-                    <div class="card mt-5">
+                    <div class="card card-shadow mt-5">
                         <div class="card-body">
                             <div className="share-container container">
                                 <p>Share:</p>
