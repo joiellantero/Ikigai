@@ -7,7 +7,7 @@ import Info from '../components/info.js';
 import { Draggable } from 'react-beautiful-dnd';
 
 
-const Rectangle = (props)=> {
+const Rectangle = (props) => {
     const [notes, setNote] = useState(props.data);
     const [text, setText] = useState('');
     const [isShown, setIsShown] = useState(false);
@@ -101,7 +101,7 @@ const Rectangle = (props)=> {
                         }
                     >
                         <span>
-                            <Info />
+                            <Info color={props.color} />
                         </span>
                     </OverlayTrigger>
                 </h3>
