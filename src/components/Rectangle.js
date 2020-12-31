@@ -63,7 +63,6 @@ const Rectangle = (props)=> {
             variant = 'light' 
             className='rounded-pill with-btn-delete' 
             onMouseEnter={() => setIsShown(true)}
-            onMouseLeave={() => setIsShown(false)}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             ref ={provided.innerRef} 
