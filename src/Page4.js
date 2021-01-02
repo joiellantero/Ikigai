@@ -60,6 +60,7 @@ const rectangleColumns = {
 
 
 const onDragEnd = (result, columns, setColumn) => {
+  console.log(result);
   if (!result.destination) return;
   const { source, destination } = result;
 
@@ -102,8 +103,9 @@ const Far = () => {
   const [columns, setColumn] = useState(rectangleColumns);
 
   return (
-    <>
       <div className="page-container-4">
+      <DragDropContext 
+      onDragEnd={result => onDragEnd(result, columns, setColumn)}>
         <div className="main-header-text">
           <p>
             Let’s find our ikigai! <br /> <br /> Start by adding activites or
@@ -114,12 +116,11 @@ const Far = () => {
         <div className="main-logo">
           <img src={logo} alt="cs-logo" />
         </div>
-        <DragDropContext 
-          onDragEnd={result => onDragEnd(result, columns, setColumn)}
-        >
+
           <div className='rectangle container'>
           {Object.entries(columns).map(([columnId, column], index) => {
             return (
+
               <Droppable droppableId={columnId} direction="horizontal">
                 {(provided, snapshot) => (
                   <div ref={provided.innerRef} {...provided.droppableProps}>
@@ -146,7 +147,6 @@ const Far = () => {
             );
           })}
           </div>
-        </DragDropContext>
         <div className="btn-container center">
           <Link to="/introducing-your-ikigai-chart">
             <button type="button" className="btn-default btn-2 btn-lg">
@@ -154,8 +154,8 @@ const Far = () => {
             </button>
           </Link>
         </div>
+        </DragDropContext>
       </div>
-    </>
   );
 };
 
