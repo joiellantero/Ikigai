@@ -2,12 +2,11 @@ import React, { useRef } from 'react';
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
-import { render } from "react-dom";
 import { useReactToPrint } from 'react-to-print';
-// import Export from "./Page6.jsx";
+import Export from "./Page6.jsx";
 import logo from './images/logo.png';
 import Circle from './components/Circle.js';
-
+import { render } from "react-dom";
 import { v4 } from 'uuid';
 
 const cir1 = [
@@ -98,22 +97,5 @@ class Far extends React.PureComponent {
     }
 }
 
-// export default Far;
+export default Far;
 
-const Export = () => {
-    const componentRef = useRef();
-    const handlePrint = useReactToPrint({
-        content: () => componentRef.current,
-    });
-
-    return (
-        < div >
-            <Far ref={componentRef} />
-            <button onClick={handlePrint}>Print this out!</button>
-        </div >
-    );
-};
-
-render(<Export />, document.querySelector("#root"));
-
-export default Export;

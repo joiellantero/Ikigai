@@ -90,7 +90,6 @@ const Far = () => {
                             headingColor={item.headingColor} />);
                     })}
                 </div>
-                <Export />
             </section>
         </>
     );
