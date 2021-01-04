@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
@@ -87,6 +88,13 @@ const Far = ()=> {
                         // border = {item.border}
                         // headingColor = {item.headingColor}
                     />
+                </div>
+                <div className="btn-container center mt-5">
+                    <Link to="/your-ikigai-chart">
+                        <button type="button" className="btn-default btn-2 btn-lg">
+                            Next
+                        </button>
+                    </Link>
                 </div>
             </section>
         </>
