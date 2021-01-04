@@ -50,7 +50,21 @@ body {
     transition-timing-function: ease-out;
 }
 
-.btn-default:hover {
+.hvr-float{
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+
+.btn-default:hover, .hvr-float:hover {
     -webkit-transform: translateY(-2px);
     transform: translateY(-2px);
 }
@@ -226,6 +240,10 @@ body {
     height: 50vh;
 }
 
+.page-container-5 .instructions p{
+    margin: 0;
+}
+
 .container.circle {
     width: fit-content;
     margin: 0 auto;
@@ -327,7 +345,12 @@ body {
     top: -65px;
 }
 
-/* ---- Page 8 ---- */
+/* ---- Page 6 ---- */
+.page-container-6{
+    height: 50vh;
+}
+
+/* ---- Page 6 ---- */
 
 .card-shadow {
     -webkit-box-shadow: 0 5px 10px -3px rgb(0, 0, 0, 0.1);
@@ -335,34 +358,34 @@ body {
     box-shadow: 0 5px 10px -3px rgb(0, 0, 0, 0.1);
 }
 
-.page-container-8 {
+.page-container-6 {
     margin-top: 10vh;
     text-align: center;
     height: 110vh;
 }
 
-.page-container-8 .btn-default {
+.page-container-6 .btn-default {
     width: fit-content;
 }
 
-.page-container-8 .card {
+.page-container-6 .card {
     width: fit-content;
     margin: 0 auto;
     outline: none;
     border: none;
 }
 
-.page-container-8 .card p {
+.page-container-6 .card p {
     text-transform: uppercase;
     font-size: 13px;
     font-weight: 600;
 }
 
-.page-container-8 .share-container {
+.page-container-6 .share-container {
     justify-content: center;
 }
 
-.page-container-8 .steps-container {
+.page-container-6 .steps-container {
     width: 70%;
 }
 
