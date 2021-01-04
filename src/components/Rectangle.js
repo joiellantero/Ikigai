@@ -57,7 +57,7 @@ const Rectangle = (props)=> {
 
     function Note(props) {
         return (
-        <Draggable draggableId = {props.id} index ={props.index}>
+        <Draggable draggableId = {props.id} key = {props.id} index ={props.index}>
         {(provided, snapshot)=>(
         <div 
             variant = 'light' 

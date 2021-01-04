@@ -28,7 +28,7 @@ function Page3() {
 
                         </Row>
                         <Row> <Link to="/lets-find-out-ikigai">
-                            <button type="button" class="btn-default btn-2 btn-lg">Next</button>
+                            <button type="button" className="btn-default btn-2 btn-lg">Next</button>
                         </Link>
                         </Row>
                     </Col>
