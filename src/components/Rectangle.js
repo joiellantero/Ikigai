@@ -7,8 +7,7 @@ import Info from '../components/info.js';
 import { Draggable } from 'react-beautiful-dnd';
 
 
-const Rectangle = (props) => {
-    const [notes, setNote] = useState(props.data);
+const Rectangle = (props)=> {
     const [text, setText] = useState('');
     const [isShown, setIsShown] = useState(false);
 
@@ -16,33 +15,54 @@ const Rectangle = (props) => {
         setText(event.target.value);
     }
 
-    function handleAdd(event) {
+    function handleAdd() {
         if (!text){
             return;
         }
-        const newList = notes.concat({ intext: text, id: v4()});
-        setNote(newList);
-     
+        const newList = props.col.items.concat({id: v4(), intext: text });
+
+        const newColumns = {
+            ...props.columns,
+            [props.id]: {
+              ...props.col,
+              items: newList
+            }
+          };
+
+        props.handleColumn(newColumns);
+        
         setText('');
     }
 
     const handleEdit = ({name, value}) => {
-        for (let i = 0; i < notes.length; i++){
-            if (name === notes[i].id){
-                notes[i].intext = value;
+        const newList = Array.from(props.data)
+
+        for (let i = 0; i < newList.length; i++){
+            if (name === newList[i].id){
+                newList[i].intext = value;
             }
         }
+
+        const newColumns = {
+            ...props.columns,
+            [props.id]: {
+              ...props.col,
+              items: newList
+            }
+          };
+
+        props.handleColumn(newColumns);
+
     }
 
     function Note(props) {
         return (
         <Draggable draggableId = {props.id} index ={props.index}>
-        {(provided)=>(
+        {(provided, snapshot)=>(
         <div 
             variant = 'light' 
             className='rounded-pill with-btn-delete' 
             onMouseEnter={() => setIsShown(true)}
-            onMouseLeave={() => setIsShown(false)}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             ref ={provided.innerRef} 
@@ -70,7 +90,17 @@ const Rectangle = (props) => {
     }
 
     const deleteNote = (id) => {
-        setNote(notes.filter((note) => note.id !== id))
+        const deleted = (props.col.items.filter((note) => note.id !== id))
+
+        const newColumns = {
+            ...props.columns,
+            [props.id]: {
+              ...props.col,
+              items: deleted
+            }
+          };
+
+        props.handleColumn(newColumns);
     }
 
     const handleKeyPress = (event) => {
@@ -78,17 +108,25 @@ const Rectangle = (props) => {
           if (!text){
             return;
         }
+            const newList = props.col.items.concat({id: v4(), intext: text });
 
-        const newList = notes.concat({ intext: text, id: v4()});
-        setNote(newList);
-     
+            const newColumns = {
+                ...props.columns,
+                [props.id]: {
+                ...props.col,
+                items: newList
+                }
+          };
+
+        props.handleColumn(newColumns);
+        
         setText('');
         }
     }
     
     return ( 
         <>
-            <div className="rectangle-container text-center" style = {{background: props.color}}>
+            <div className="rectangle-container text-center" style = {{background: props.isDraggingOver ? "skyblue" :props.color , border: props.isDraggingOver ? '2px solid green' : ''}}>
                 <h3 className="dark-blue" style = {{color: props.headingColor}}>
                     {props.heading1}<br></br><strong>{props.heading2}</strong>
                     <OverlayTrigger
@@ -96,19 +134,21 @@ const Rectangle = (props) => {
                         placement="bottom"
                         overlay={
                             <Tooltip id={`tooltip-bottom`}>
-                                <strong> What The World Needs</strong> <br /> Are you helping to solve an actual problem? <br /> Is what you’re doing bringing beauty or utility to others, helping out, and shaping the world around you?
+                                <strong> {props.hover1}</strong> <br /> {props.hover2} <br /> {props.hover3}
                             </Tooltip>
                         }
                     >
                         <span>
-                            <Info color={props.color} />
+                            <Info color={props.headingColor} />
                         </span>
                     </OverlayTrigger>
                 </h3>
 
                 <Container className="pill-container">
-                    {notes.map((element) => 
-                        <Note key={element.id.toString()} intext={element.intext} id={element.id} deleteNote={deleteNote}></Note>
+                    {props.col.items.map((element, index) => 
+                        <>
+                            <Note key={element.id} intext={element.intext} id={element.id} deleteNote={deleteNote} index = {index}></Note>
+                        </>
                     )}
                 </Container>
 

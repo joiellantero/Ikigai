@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -22,6 +22,9 @@ const rectangleColumns = {
     color: "#E1E5FF",
     headingColor: "#283972",
     items: rect1,
+    hover1: "Stuck? Try these questions:",
+    hover2: "Are you helping to solve an actual problem?",
+    hover3: "Is what you’re doing bringing beauty or utility to others, helping out, and shaping the world around you?"
   },
   [v4()]: {
     heading1: "What you",
@@ -29,6 +32,9 @@ const rectangleColumns = {
     color: "#CCFFF0",
     headingColor: "#009F6F",
     items: rect2,
+    hover1: "Stuck? Try these questions:",
+    hover2: "What are some activities truly enjoy doing about? Is there an activity or cause you enthusiastically talk about for hours on end?",
+    hover3: "If you weren’t concerned about money, what would you be doing?"
   },
   [v4()]: {
     heading1: "What you are",
@@ -36,6 +42,9 @@ const rectangleColumns = {
     color: "#FFE4E4",
     headingColor: "#FF5B5B",
     items: rect3,
+    hover1: "Stuck? Try these questions:",
+    hover2: "Is there an activity that your friends/family/community have sought your advice/opinion on before?",
+    hover3: "Are you among the best in your workplace/community at this? With some more education and experience, could you master what you do?"
   },
   [v4()]: {
     heading1: "What You Can Be",
@@ -43,17 +52,60 @@ const rectangleColumns = {
     color: "#FFFCCC",
     headingColor: "#E5C908",
     items: rect4,
+    hover1: "Stuck? Try these questions:",
+    hover2: "Lately, have you been paid for what you do? Have you ever been paid for what you do? If not, are other people being paid for this work?",
+    hover3: "Are you already making a good living doing what it is that you’re doing? Can you eventually make a good living doing this work? Are there other people who can do what you do, but better?"
   },
 };
 
-const onDragEnd = () => {
-  //
+
+const onDragEnd = (result, columns, setColumn) => {
+  console.log(result);
+  if (!result.destination) return;
+  const { source, destination } = result;
+
+  if (source.droppableId !== destination.droppableId) {
+    const sourceColumn = columns[source.droppableId];
+    const destColumn = columns[destination.droppableId];
+    const sourceItems = [...sourceColumn.items];
+    const destItems = [...destColumn.items];
+    const [removed] = sourceItems.splice(source.index, 1);
+    destItems.splice(destination.index, 0, removed);
+    setColumn({
+      ...columns,
+      [source.droppableId]: {
+        ...sourceColumn,
+        items: sourceItems
+      },
+      [destination.droppableId]: {
+        ...destColumn,
+        items: destItems
+      }
+    });
+
+  } else {
+    const column = columns[source.droppableId];
+    const copiedItems = [...column.items];
+    const [removed] = copiedItems.splice(source.index, 1);
+    copiedItems.splice(destination.index, 0, removed);
+    setColumn({
+      ...columns,
+      [source.droppableId]: {
+        ...column,
+        items: copiedItems
+      }
+    });
+  }
 };
 
+
 const Far = () => {
+  const [columns, setColumn] = useState(rectangleColumns);
+
   return (
-    <>
       <div className="page-container-4">
+      <DragDropContext 
+      onDragEnd={result => onDragEnd(result, columns, setColumn)}>
         <div className="main-header-text">
           <p>
             Let’s find our ikigai! <br /> <br /> Start by adding activites or
@@ -64,32 +116,37 @@ const Far = () => {
         <div className="main-logo">
           <img src={logo} alt="cs-logo" />
         </div>
-        <DragDropContext onDragEnd={onDragEnd}>
-          <div className="rectangle container">
-            {Object.entries(rectangleColumns).map(
-              ([columnId, column], index) => {
-                return (
-                  <Droppable droppableId={columnId} direction="horizontal">
-                    {(provided) => (
-                      <div ref={provided.innerRef} {...provided.droppableProps}>
-                        <Rectangle
-                          data={column.items}
-                          key={columnId}
-                          id={columnId}
-                          heading1={column.heading1}
-                          heading2={column.heading2}
-                          color={column.color}
-                          headingColor={column.headingColor}
-                        ></Rectangle>
-                        {provided.placeholder}
-                      </div>
-                    )}
-                  </Droppable>
-                );
-              }
-            )}
+
+          <div className='rectangle container'>
+          {Object.entries(columns).map(([columnId, column], index) => {
+            return (
+
+              <Droppable droppableId={columnId} direction="horizontal">
+                {(provided, snapshot) => (
+                  <div ref={provided.innerRef} {...provided.droppableProps}>
+                    <Rectangle
+                      data={column.items}
+                      key={columnId}
+                      id={columnId}
+                      heading1={column.heading1}
+                      heading2={column.heading2}
+                      color={column.color}
+                      headingColor={column.headingColor}
+                      hover1={column.hover1}
+                      hover2={column.hover2}
+                      hover3={column.hover3}
+                      col = {column}
+                      columns = {columns}
+                      handleColumn={setColumn}
+                      isDraggingOver = {snapshot.isDraggingOver}>
+                      </Rectangle>
+                    {provided.placeholder}
+                  </div>
+                )}
+              </Droppable>
+            );
+          })}
           </div>
-        </DragDropContext>
         <div className="btn-container center">
           <Link to="/introducing-your-ikigai-chart">
             <button type="button" className="btn-default btn-2 btn-lg">
@@ -97,8 +154,8 @@ const Far = () => {
             </button>
           </Link>
         </div>
+        </DragDropContext>
       </div>
-    </>
   );
 };
 
