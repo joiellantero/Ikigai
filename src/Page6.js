@@ -10,6 +10,43 @@ import Trash from './components/trash';
 import Add from './components/Add';
 
 class Page6 extends Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            newItem: "",
+            list: []
+        }
+    }
+
+    addItem() {
+        // create item with unique id
+        const newItem = {
+            id: 1 + Math.random(),
+            value: this.state.newItem.slice()
+        };
+
+        const list = [...this.state.list];
+
+        list.push(newItem);
+
+        this.setState({
+            list,
+            newItem:""
+        })
+    }
+
+    deleteItem(id){
+        const list = [...this.state.list];
+        const updatedList = list.filter(item => item.id !== id);
+        this.setState({list:updatedList});
+    }
+
+    handleInputChange = (key, value) => {
+        this.setState({
+            [key]: value
+        });
+    }
+
     render(){
         return (
             <>
@@ -34,17 +71,31 @@ class Page6 extends Component{
                         <div className="col-lg">
                             <p>Your steps to achieving ikigai</p>
                             <div className="steps-container container">
+                                <ul>
+                                    {this.state.list.map(item => {
+                                        return(
+                                            <li key={item.id}>
+                                                {item.value}
+                                                <button className="btn-delete" onClick={() => this.deleteItem(item.id)}><Trash /></button>
+                                            </li>
+                                        )
+                                    })}
+                                </ul>
                                 <InputGroup>
                                     <FormControl
                                         placeholder="Enter step..."
                                         aria-label="Enter step..."
                                         aria-describedby="basic-addon2"
+                                        className="steps-input"
+                                        name="step"
+                                        value={this.state.newItem}
+                                        onChange={e => this.handleInputChange("newItem", e.target.value)}
+                                        onKeyPress={e => e.key === "Enter" && this.addItem()}
                                     />
                                     <InputGroup.Append>
-                                        <Button variant="outline-danger"><Trash /></Button>
+                                        <Button className="btn-add" onClick={() => this.addItem()} disabled={!this.state.newItem}><Add /></Button>
                                     </InputGroup.Append>
                                 </InputGroup>
-                                <Button className="mt-2" variant="outline-primary"><Add /></Button>
                             </div>
                         </div>
                     </div>

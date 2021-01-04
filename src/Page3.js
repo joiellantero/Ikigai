@@ -6,7 +6,7 @@ import './style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from './images/logo.png';
 import img3 from './images/image-pg-3.png';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 
 function Page3() {
 
