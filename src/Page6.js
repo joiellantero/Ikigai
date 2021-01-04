@@ -58,10 +58,10 @@ class Page6 extends Component{
                             <div className="share-container container">
                                 <p>Share:</p>
                                 <ul>
-                                    <li className="hvr-icon-bob hvr-float"><a href="https://twitter.com/" target="__blank"><Twitter /></a></li>
-                                    <li className="hvr-icon-bob hvr-float"><a href="https://facebook.com/" target="__blank"><Facebook /></a></li>
-                                    <li className="hvr-icon-bob hvr-float"><a href="https://linkedin.com/" target="__blank"><Linkedin /></a></li>
-                                    <li className="hvr-icon-bob hvr-float"><a href="https://whatsapp.com/" target="__blank"><Whatsapp /></a></li>
+                                    <li className="hvr-float"><a href="https://twitter.com/" target="__blank"><Twitter /></a></li>
+                                    <li className="hvr-float"><a href="https://facebook.com/" target="__blank"><Facebook /></a></li>
+                                    <li className="hvr-float"><a href="https://linkedin.com/" target="__blank"><Linkedin /></a></li>
+                                    <li className="hvr-float"><a href="https://whatsapp.com/" target="__blank"><Whatsapp /></a></li>
                                 </ul>
                             </div>
                         </div>
