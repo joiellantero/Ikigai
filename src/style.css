@@ -442,6 +442,8 @@ body {
 
 .share-btn-container {
     border-radius: 50%;
+    height: 48px;
+    width: 48px;
     padding: 10px;
 }
 
