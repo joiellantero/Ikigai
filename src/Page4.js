@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
+import { Button } from 'react-bootstrap';
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
@@ -106,6 +107,18 @@ const Far = () => {
 
   return (
       <div className="page-container-4">
+        <div className="btn-back">
+            <Link to="/what-is-ikigai">
+                <Button variant="light">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#1A1A1A" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <line x1="5" y1="12" x2="11" y2="18" />
+                        <line x1="5" y1="12" x2="11" y2="6" />
+                    </svg>
+                </Button>
+            </Link>
+        </div>
       <DragDropContext 
       onDragEnd={result => onDragEnd(result, columns, setColumn)}>
         <div className="main-header-text">
@@ -150,7 +163,7 @@ const Far = () => {
           })}
           </div>
         <div className="btn-container center">
-          <Link to="/introducing-your-ikigai-chart">
+          <Link to="/your-ikigai-chart">
             <button type="button" className="btn-default btn-2 btn-lg">
               Next
             </button>
