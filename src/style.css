@@ -23,6 +23,12 @@ body {
     text-align: center;
 }
 
+.steps-input:focus{
+    border-color: #283972 !important;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 4px #283972 !important;
+    outline: 0 none !important;
+}
+
 .btn-default {
     background-color: #283972 !important;
     border-radius: 0 0 0 0;
@@ -171,6 +177,7 @@ body {
     cursor: pointer;
     opacity: 1;
 }
+
 
 .text-center {
     overflow: scroll;
@@ -420,12 +427,61 @@ body {
 }
 
 .steps-container svg.icon-tabler-plus {
-    stroke: #057bff;
+    stroke: white;
 }
 
-.steps-container button:hover svg.icon-tabler-plus,
-.steps-container button:hover svg.icon-tabler-trash {
+.steps-container button.btn-delete{
+    border: none;
+    background: none;
+    -webkit-transition: transform 0.3s ease-in-out;
+    -moz-transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
+    transition-delay: 0.1s;
+    transform: scale(0);
+    opacity: 0;
+}
+
+.steps-container li:hover button.btn-delete{
+    transform: scale(1);
+    cursor: pointer;
+    opacity: 1;
+}
+
+.steps-container button.btn-delete:hover, .steps-container button.btn-delete:active, .steps-container button.btn-delete:focus{
+    background: none;
+    outline: none;
+}
+
+.steps-container button.btn-add{
+    border: none;
+    background-color: #283972;
+}
+
+.steps-container button.btn-add:hover, .steps-container button.btn-add:active, .steps-container button.btn-add:focus{
+    background-color: #05164e;
+    border: none;
+    outline: none;
+}
+
+.steps-container button:disabled,
+.steps-container button[disabled]{
+  background-color: #c6d0f0;
+  color: #666666;
+}
+
+.steps-container button.btn-add:hover svg.icon-tabler-plus,
+.steps-container button.btn-add:hover svg.icon-tabler-trash {
     stroke: #ffffff;
+}
+
+.steps-container ul{
+    list-style-type: none;
+    margin-left: 0;
+}
+
+.steps-container ul li{
+    width: fit-content;
+    margin: 0 auto;
 }
 
 .share-container ul {
