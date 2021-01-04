@@ -34,12 +34,8 @@ body {
     padding: 12px 20px 12px 20px !important;
     text-transform: uppercase;
     font-size: 13px !important;
-<<<<<<< HEAD
-=======
     font-weight: 600;
     letter-spacing: 1px;
-
->>>>>>> master
     display: inline-block;
     vertical-align: middle;
     -webkit-transform: perspective(1px) translateZ(0);
@@ -181,6 +177,7 @@ body {
     margin-top: 130px;
 }
 
+
 /* ----- PAGE 4 ----- */
 
 .page-container-4 {
@@ -278,6 +275,7 @@ body {
     left: -40px;
 }
 
+
 /* green */
 
 .c2 {
@@ -337,6 +335,7 @@ body {
     right: 0;
     top: -65px;
 }
+
 
 /* ---- Page 8 ---- */
 
@@ -423,7 +422,9 @@ body {
     background: #00e676;
 }
 
+
 /* Icon Bob */
+
 @-webkit-keyframes hvr-icon-bob {
     0% {
         -webkit-transform: translateY(-6px);
