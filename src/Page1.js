@@ -8,7 +8,7 @@ function Page1() {
     return (
         <div className="background-1">
             <Link to="/intro">
-                <button type="button" class="btn-default btn-lg">Next</button>
+                <button type="button" className="btn-default btn-lg">Next</button>
             </Link>
         </div>
     );

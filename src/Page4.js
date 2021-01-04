@@ -10,10 +10,10 @@ import Rectangle from "./components/Rectangle.js";
 import { v4 } from "uuid";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 
-const rect1 = [{ id: v4(), intext: "first rectangle" }];
-const rect2 = [{ id: v4(), intext: "second rectangle" }];
-const rect3 = [{ id: v4(), intext: "third rectangle" }];
-const rect4 = [{ id: v4(), intext: "forth rectangle" }];
+const rect1 = [];
+const rect2 = [];
+const rect3 = [];
+const rect4 = [];
 
 const rectangleColumns = {
   [v4()]: {
@@ -60,8 +60,10 @@ const rectangleColumns = {
 
 
 const onDragEnd = (result, columns, setColumn) => {
-  console.log(result);
-  if (!result.destination) return;
+
+  if (!result.destination) {
+    return;}
+
   const { source, destination } = result;
 
   if (source.droppableId !== destination.droppableId) {
@@ -121,7 +123,7 @@ const Far = () => {
           {Object.entries(columns).map(([columnId, column], index) => {
             return (
 
-              <Droppable droppableId={columnId} direction="horizontal">
+              <Droppable droppableId={columnId} key = {columnId} direction="horizontal">
                 {(provided, snapshot) => (
                   <div ref={provided.innerRef} {...provided.droppableProps}>
                     <Rectangle
