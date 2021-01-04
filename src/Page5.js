@@ -77,6 +77,7 @@ const Far = () => {
                     <img src={logo} alt="cs-logo" />
                 </div>
                 <div className="container circle">
+<<<<<<< HEAD:src/Page5.jsx
                     {Object.entries(circleItems).map(([itemId, item], index) => {
                         console.log(item);
                         return (<Circle
@@ -89,6 +90,19 @@ const Far = () => {
                             border={item.border}
                             headingColor={item.headingColor} />);
                     })}
+=======
+                    <Circle 
+                        data={circleItems}
+                        // id = {item.id}
+                        // data = {item} 
+                        // key = {itemId} 
+                        // heading1 = {item.heading1}
+                        // heading2 = {item.heading2}
+                        // color = {item.color} 
+                        // border = {item.border}
+                        // headingColor = {item.headingColor}
+                    />
+>>>>>>> master:src/Page5.js
                 </div>
             </section>
         </>
