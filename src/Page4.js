@@ -7,11 +7,12 @@ import "./style.css";
 
 import logo from "./images/logo.png";
 import Rectangle from "./components/Rectangle.js";
+import Circle from './components/Circle.js'; 
 
 import { v4 } from "uuid";
 import { DragDropContext } from "react-beautiful-dnd";
 
-const rectangleColumns = {
+const dataColumns = {
   [v4()]: {
     heading1: "What the world",
     heading2: "NEEDS",
@@ -96,60 +97,112 @@ const onDragEnd = (result, columns, setColumn) => {
   }
 };
 
-
 const Far = () => {
-  const [columns, setColumn] = useState(rectangleColumns);
+    const [columns, setColumn] = useState(dataColumns);
+    const [showRec, setShowRec] = useState(true);
+    const [showVenn, setShowVenn] = useState(false);
 
-  return (
-      <div className="page-container-4">
-        <div className="btn-back">
-            <Link to="/what-is-ikigai">
-                <Button variant="light">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-left" width="24" height="24" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#1A1A1A" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <line x1="5" y1="12" x2="19" y2="12" />
-                        <line x1="5" y1="12" x2="11" y2="18" />
-                        <line x1="5" y1="12" x2="11" y2="6" />
-                    </svg>
-                </Button>
-            </Link>
-        </div>
-      <DragDropContext 
-      onDragEnd={result => onDragEnd(result, columns, setColumn)}>
-        <div className="main-header-text">
-          <p>
-            Let’s find our ikigai! <br /> <br /> Start by adding activites or
-            values you are currently doing into each of these four quadrants.
-            <br /> Feel free to add as many as you can think of!
-          </p>
-        </div>
-        <div className="main-logo">
-          <img src={logo} alt="cs-logo" />
-        </div>
+    const handleShowNext = () =>{
+        setShowRec(false);
+        setShowVenn(true);
+    } 
+    
+    const handleShowBack = () =>{
+        setShowRec(true);
+        setShowVenn(false);
+    }  
 
-          <div className='rectangle container'>
-          {Object.entries(columns).map(([columnId, column], index) => {
-            return (
-                    <Rectangle
-                      key={columnId}
-                      id={columnId}
-                      col = {column}
-                      columns = {columns}
-                      handleColumn={setColumn}>
-                      </Rectangle>
-            );
-          })}
-          </div>
-        <div className="btn-container center">
-          <Link to="/your-ikigai-chart">
-            <button type="button" className="btn-default btn-2 btn-lg">
-              Next
-            </button>
-          </Link>
-        </div>
-        </DragDropContext>
-      </div>
-  );
+    return (
+        <>
+            <div className="main-logo">
+                <img src={logo} alt="cs-logo" />
+            </div>
+            {showRec && (
+                <div className="page-container-4">
+                    <div className="btn-back">
+                        <Link to="/what-is-ikigai">
+                            <Button variant="light">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-left" width="24" height="24" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#1A1A1A" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                    <line x1="5" y1="12" x2="11" y2="18" />
+                                    <line x1="5" y1="12" x2="11" y2="6" />
+                                </svg>
+                            </Button>
+                        </Link>
+                    </div>
+                    <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
+                        <div className="main-header-text">
+                            <p>
+                                Let’s find our ikigai! 
+                                <br /> <br /> 
+                                Start by adding activites or values you are currently doing into each of these four quadrants.
+                                <br /> 
+                                Feel free to add as many as you can think of!
+                            </p>
+                        </div>
+                        <div className='rectangle container'>
+                            {Object.entries(columns).map(([columnId, column], index) => {
+                                return (
+                                    <Rectangle
+                                        key={columnId}
+                                        id={columnId}
+                                        col = {column}
+                                        columns = {columns}
+                                        handleColumn={setColumn}>
+                                    </Rectangle>
+                                );
+                            })}
+                        </div>
+                        <div className="btn-container center">
+                            <button type="button" className="btn-default btn-2 btn-lg" onClick={handleShowNext}>
+                                Next
+                            </button>
+                        </div>
+                    </DragDropContext>
+                </div>
+            )}
+
+            {showVenn && (
+                <>
+                    <section className="page-container-5"> 
+                        <div className="btn-back">
+                            <Button variant="light" onClick={handleShowBack}>
+                                <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-left" width="24" height="24" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#1A1A1A" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                    <line x1="5" y1="12" x2="11" y2="18" />
+                                    <line x1="5" y1="12" x2="11" y2="6" />
+                                </svg>
+                            </Button>
+                        </div>
+                        <div className = "main-header-text">
+                            <p>Introducing your ikigai chart.</p> 
+                            <div className = "instructions">
+                                <p>For each of these activities or valeus, ask yourself the following questions again:</p>
+                                <p>Can I Be Paid? (If yes, move to yellow circle)</p>
+                                <p>Do I love this? (If yes, move to green circle)</p>
+                                <p>Am I good at this? (If yes, move to red circle)</p>
+                                <p>Is this what the world needs? (If yes, move to blue circle)</p>
+                            </div>
+                        </div>
+                        <div className="container circle">
+                            <Circle 
+                                data={dataColumns}
+                            />
+                        </div>
+                        <div className="btn-container center">
+                            <Link to="/export">
+                                <button type="button" className="btn-default btn-2 btn-lg">
+                                    Next
+                                </button>
+                            </Link>
+                        </div>
+                    </section>
+                </>
+            )}
+        </>
+    );
 };
 
 export default Far;
