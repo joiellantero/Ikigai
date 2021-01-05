@@ -110,7 +110,7 @@ const Far = () => {
         <div className="btn-back">
             <Link to="/what-is-ikigai">
                 <Button variant="light">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#1A1A1A" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-left" width="24" height="24" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#1A1A1A" fill="none" strokeLinecap="round" strokeLinejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                         <line x1="5" y1="12" x2="19" y2="12" />
                         <line x1="5" y1="12" x2="11" y2="18" />
@@ -135,10 +135,6 @@ const Far = () => {
           <div className='rectangle container'>
           {Object.entries(columns).map(([columnId, column], index) => {
             return (
-
-              <Droppable droppableId={columnId} key = {columnId} direction="horizontal">
-                {(provided, snapshot) => (
-                  <div ref={provided.innerRef} {...provided.droppableProps}>
                     <Rectangle
                       data={column.items}
                       key={columnId}
@@ -152,13 +148,8 @@ const Far = () => {
                       hover3={column.hover3}
                       col = {column}
                       columns = {columns}
-                      handleColumn={setColumn}
-                      isDraggingOver = {snapshot.isDraggingOver}>
+                      handleColumn={setColumn}>
                       </Rectangle>
-                    {provided.placeholder}
-                  </div>
-                )}
-              </Droppable>
             );
           })}
           </div>

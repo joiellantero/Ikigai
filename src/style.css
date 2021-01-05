@@ -23,7 +23,7 @@ body {
     text-align: center;
 }
 
-.steps-input:focus{
+.steps-input:focus {
     border-color: #283972 !important;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 4px #283972 !important;
     outline: 0 none !important;
@@ -56,7 +56,7 @@ body {
     transition-timing-function: ease-out;
 }
 
-.hvr-float{
+.hvr-float {
     display: inline-block;
     vertical-align: middle;
     -webkit-transform: perspective(1px) translateZ(0);
@@ -70,7 +70,8 @@ body {
     transition-timing-function: ease-out;
 }
 
-.btn-default:hover, .hvr-float:hover {
+.btn-default:hover,
+.hvr-float:hover {
     -webkit-transform: translateY(-2px);
     transform: translateY(-2px);
 }
@@ -80,7 +81,7 @@ body {
     outline: none;
 }
 
-.btn-back{
+.btn-back {
     position: absolute;
     top: 50px;
     left: 100px;
@@ -95,13 +96,15 @@ body {
     transition-property: transform;
 }
 
-.btn-back Button{
+.btn-back Button {
     border-radius: 50%;
     height: 50px;
     width: 50px;
 }
 
-.btn-back:hover, .btn-back:focus, .btn-back:active{
+.btn-back:hover,
+.btn-back:focus,
+.btn-back:active {
     -webkit-transform: translateX(-3px);
     transform: translateX(-3px);
 }
@@ -177,7 +180,6 @@ body {
     cursor: pointer;
     opacity: 1;
 }
-
 
 .text-center {
     overflow: scroll;
@@ -269,11 +271,11 @@ body {
 
 /* ----- PAGE 5 ----- */
 
-.page-container-5{
+.page-container-5 {
     height: 50vh;
 }
 
-.page-container-5 .instructions p{
+.page-container-5 .instructions p {
     margin: 0;
 }
 
@@ -379,7 +381,7 @@ body {
 }
 
 /* ---- Page 6 ---- */
-.page-container-6{
+.page-container-6 {
     height: 50vh;
 }
 
@@ -430,7 +432,7 @@ body {
     stroke: white;
 }
 
-.steps-container button.btn-delete{
+.steps-container button.btn-delete {
     border: none;
     background: none;
     -webkit-transition: transform 0.3s ease-in-out;
@@ -441,32 +443,36 @@ body {
     opacity: 0;
 }
 
-.steps-container li:hover button.btn-delete{
+.steps-container li:hover button.btn-delete {
     transform: scale(1);
     cursor: pointer;
     opacity: 1;
 }
 
-.steps-container button.btn-delete:hover, .steps-container button.btn-delete:active, .steps-container button.btn-delete:focus{
+.steps-container button.btn-delete:hover,
+.steps-container button.btn-delete:active,
+.steps-container button.btn-delete:focus {
     background: none;
     outline: none;
 }
 
-.steps-container button.btn-add{
+.steps-container button.btn-add {
     border: none;
     background-color: #283972;
 }
 
-.steps-container button.btn-add:hover, .steps-container button.btn-add:active, .steps-container button.btn-add:focus{
+.steps-container button.btn-add:hover,
+.steps-container button.btn-add:active,
+.steps-container button.btn-add:focus {
     background-color: #05164e;
     border: none;
     outline: none;
 }
 
 .steps-container button:disabled,
-.steps-container button[disabled]{
-  background-color: #c6d0f0;
-  color: #666666;
+.steps-container button[disabled] {
+    background-color: #c6d0f0;
+    color: #666666;
 }
 
 .steps-container button.btn-add:hover svg.icon-tabler-plus,
@@ -474,12 +480,12 @@ body {
     stroke: #ffffff;
 }
 
-.steps-container ul{
+.steps-container ul {
     list-style-type: none;
     margin-left: 0;
 }
 
-.steps-container ul li{
+.steps-container ul li {
     width: fit-content;
     margin: 0 auto;
 }

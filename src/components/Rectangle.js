@@ -4,7 +4,7 @@ import {EditText } from 'react-edit-text';
 import { v4 } from 'uuid';
 import Trash from '../components/trash.js';
 import Info from '../components/info.js';
-import { Draggable } from 'react-beautiful-dnd';
+import { Draggable, Droppable } from 'react-beautiful-dnd';
 
 
 const Rectangle = (props)=> {
@@ -125,8 +125,10 @@ const Rectangle = (props)=> {
     }
     
     return ( 
-        <>
-            <div className="rectangle-container text-center" style = {{background: props.isDraggingOver ? "skyblue" :props.color , border: props.isDraggingOver ? '2px solid green' : ''}}>
+        <Droppable droppableId={props.id} direction="horizontal">
+        {(provided, snapshot) => (
+          <div ref={provided.innerRef} {...provided.droppableProps}>
+            <div className="rectangle-container text-center" style = {{background: snapshot.isDraggingOver ? "skyblue" :props.color , border: snapshot.isDraggingOver ? '2px solid green' : ''}}>
                 <h3 className="dark-blue" style = {{color: props.headingColor}}>
                     {props.heading1}<br></br><strong>{props.heading2}</strong>
                     <OverlayTrigger
@@ -156,7 +158,11 @@ const Rectangle = (props)=> {
                     <Form.Control className='form rounded-pill' value={text} onChange={handleChange} onBlur={handleAdd} onKeyPress={handleKeyPress} placeholder="Type here..."/>
                 </Container>
             </div>
-        </>
+            {provided.placeholder}
+        </div>
+        )}
+        </Droppable>
+
     );
 }
  
