@@ -1,88 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Form, OverlayTrigger, Tooltip} from 'react-bootstrap';
-import {EditText } from 'react-edit-text';
 import * as d3 from "d3";
 import * as venn from "venn.js";
-import { v4 } from 'uuid';
-import Trash from '../components/trash.js';
-import Info from '../components/info.js';
-
-const initialNotes = []
 
 const Circle = (props) => {
-    const [notes, setNote] = React.useState(initialNotes);
-    const [text, setText] = React.useState('');
-
-    const [isShown, setIsShown] = useState(false);
-
-    function handleChange(event) {
-        setText(event.target.value);
-    }
-
-    function handleAdd(event) {
-        if (!text){
-            return;
-        }
-        const newList = notes.concat({ intext: text, id: v4()});
-        setNote(newList);
-     
-        setText('');
-    }
-
-    const handleEdit = ({name, value}) => {
-        for (let i = 0; i < notes.length; i++){
-            if (name === notes[i].id){
-                notes[i].intext = value;
-            }
-        }
-    }
-
-    function Note(props) {
-        return (
-        <div 
-            variant = 'light'
-            className='circle rounded-pill with-btn-delete' 
-            onMouseEnter={() => setIsShown(true)}
-            onMouseLeave={() => setIsShown(false)}
-        >
-            <span className="intext">
-                {props.intext}
-            </span>
-
-            <EditText
-                name={props.id}
-                className="edit-text"
-                value={props.intext}
-                onSave={handleEdit}
-            />
-
-            {isShown && (
-                <span className="btn-delete-container" onClick={() => props.deleteNote(props.id)}>
-                    <Trash />
-                </span>
-            )}
-        </div>
-        )
-    }
-
-
-    const deleteNote = (id) => {
-        setNote(notes.filter((note) => note.id !== id))
-    }
-
-    const handleKeyPress = (event) => {
-        if(event.key === 'Enter'){
-          if (!text){
-            return;
-        }
-
-        const newList = notes.concat({ intext: text, id: v4()});
-        setNote(newList);
-     
-        setText('');
-        }
-    }
-
     const [sets, setSets] = useState([
         { sets: ["L"], size: 100, label: "love"},
         { sets: ["G"], size: 100, label: "good" },
