@@ -9,16 +9,18 @@ function Page1() {
 
     return (
         <div className="page-container-1">
-            {/* <Link to="/intro">
-                <button type="button" class="btn-default btn-lg">Next</button>
-            </Link> */}
-
             <div className="corner-logo">
                 <img src={cornerLogo} alt="#CSJournaling" />
             </div>
 
             <div className="center-logo">
                 <img src={centerLogo} alt="finding-your-ikigai" />
+            </div>
+
+            <div className="button-container">
+                <Link to="/intro">
+                    <button type="button" class="btn-default btn-lg btn-1">Next</button>
+                </Link>
             </div>
 
             <footer></footer>
