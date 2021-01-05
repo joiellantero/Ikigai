@@ -84,8 +84,8 @@ const Rectangle = (props)=> {
                             col = {props.col} 
                             columns = {props.columns} 
                             items = {items} key={element.id} 
-                            id={element.id} intext={element.intext} 
-                            deleteNote={deleteNote} 
+                            id={element.id} 
+                            intext={element.intext} 
                             handleColumn = {props.handleColumn} 
                             index = {index}></Note>
                     )}
