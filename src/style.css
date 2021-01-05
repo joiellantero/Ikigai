@@ -225,6 +225,72 @@ body {
     margin-top: 130px;
 }
 
+
+/* ----- PAGE 1 ----- */
+
+.page-container-1{
+    position: relative;
+    min-height: 100%;
+    height: 100vh;
+}
+
+.page-container-1 .corner-logo{
+    position: absolute;
+    top: 20px; 
+    right: 20px;
+    height: auto;
+    width: 500px;
+    text-align: right;
+    z-index: 100;
+}
+
+.page-container-1 .center-logo{
+    height: 260px;
+    width: 50%; 
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.page-container-1 .center-logo img, .page-container-1 .corner-logo img{
+    width: 80%;
+    height: auto;
+}
+
+.page-container-1 footer{
+    background-image: url("./images/shapes.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 350px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+@media only screen and (max-width: 1240px){
+    .page-container-1 .center-logo, .page-container-1 .corner-logo img{
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 768px){
+    .page-container-1 .corner-logo{
+        top: 5%;
+        left: 50%;
+        right: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+}
+
+
 /* ----- PAGE 4 ----- */
 
 .page-container-4 {
