@@ -12,6 +12,7 @@ import Page6 from "./Page6";
 
 
 const rootElement = document.getElementById("root");
+
 ReactDOM.render(
     <BrowserRouter>
         <Switch>

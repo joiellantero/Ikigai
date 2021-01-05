@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Form, OverlayTrigger, Tooltip} from 'react-bootstrap';
-import {EditText } from 'react-edit-text';
+import { Container, Form, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { EditText } from 'react-edit-text';
 import * as d3 from "d3";
 import * as venn from "venn.js";
 import { v4 } from 'uuid';
@@ -10,6 +10,7 @@ import Info from '../components/info.js';
 const initialNotes = []
 
 const Circle = (props) => {
+    console.log(props.data);
     const [notes, setNote] = React.useState(initialNotes);
     const [text, setText] = React.useState('');
 
@@ -20,18 +21,18 @@ const Circle = (props) => {
     }
 
     function handleAdd(event) {
-        if (!text){
+        if (!text) {
             return;
         }
-        const newList = notes.concat({ intext: text, id: v4()});
+        const newList = notes.concat({ intext: text, id: v4() });
         setNote(newList);
-     
+
         setText('');
     }
 
-    const handleEdit = ({name, value}) => {
-        for (let i = 0; i < notes.length; i++){
-            if (name === notes[i].id){
+    const handleEdit = ({ name, value }) => {
+        for (let i = 0; i < notes.length; i++) {
+            if (name === notes[i].id) {
                 notes[i].intext = value;
             }
         }
@@ -39,29 +40,29 @@ const Circle = (props) => {
 
     function Note(props) {
         return (
-        <div 
-            variant = 'light'
-            className='circle rounded-pill with-btn-delete' 
-            onMouseEnter={() => setIsShown(true)}
-            onMouseLeave={() => setIsShown(false)}
-        >
-            <span className="intext">
-                {props.intext}
-            </span>
-
-            <EditText
-                name={props.id}
-                className="edit-text"
-                value={props.intext}
-                onSave={handleEdit}
-            />
-
-            {isShown && (
-                <span className="btn-delete-container" onClick={() => props.deleteNote(props.id)}>
-                    <Trash />
+            <div
+                variant='light'
+                className='circle rounded-pill with-btn-delete'
+                onMouseEnter={() => setIsShown(true)}
+                onMouseLeave={() => setIsShown(false)}
+            >
+                <span className="intext">
+                    {props.intext}
                 </span>
-            )}
-        </div>
+
+                <EditText
+                    name={props.id}
+                    className="edit-text"
+                    value={props.intext}
+                    onSave={handleEdit}
+                />
+
+                {isShown && (
+                    <span className="btn-delete-container" onClick={() => props.deleteNote(props.id)}>
+                        <Trash />
+                    </span>
+                )}
+            </div>
         )
     }
 
@@ -71,20 +72,20 @@ const Circle = (props) => {
     }
 
     const handleKeyPress = (event) => {
-        if(event.key === 'Enter'){
-          if (!text){
-            return;
-        }
+        if (event.key === 'Enter') {
+            if (!text) {
+                return;
+            }
 
-        const newList = notes.concat({ intext: text, id: v4()});
-        setNote(newList);
-     
-        setText('');
+            const newList = notes.concat({ intext: text, id: v4() });
+            setNote(newList);
+
+            setText('');
         }
     }
 
     const [sets, setSets] = useState([
-        { sets: ["L"], size: 100, label: "love"},
+        { sets: ["L"], size: 100, label: "love" },
         { sets: ["G"], size: 100, label: "good" },
         { sets: ["N"], size: 100, label: "needs" },
         { sets: ["P"], size: 100, label: "paid" },
@@ -98,7 +99,7 @@ const Circle = (props) => {
         // { sets: ["N", "G", "P"], size: 30, label: "ngp" },
         // { sets: ["N", "G", "P", "L"], size: 8, label: "Ikigai" }
     ]);
-    
+
 
     useEffect(() => {
         let colors = ['#009F6F', '#FF9A9A', '#293972', '#E5C907'];
@@ -110,16 +111,16 @@ const Circle = (props) => {
         d3.select("#venn").datum(sets).call(chart);
 
         d3.selectAll("#venn .venn-circle path")
-        .style("fill-opacity", 0)
-        .style("stroke-width", 5)
-        .style("stroke-opacity", .8)
-        .style("stroke", function(d,i) { return colors[i]; });
+            .style("fill-opacity", 0)
+            .style("stroke-width", 5)
+            .style("stroke-opacity", .8)
+            .style("stroke", function (d, i) { return colors[i]; });
 
         d3.selectAll("#venn .venn-circle text")
-        .style("fill", function(d,i) { return colors[i]})
-        .style("font-size", "24px")
-        .style("font-weight", "100")
-        .style("background-color", "grey");
+            .style("fill", function (d, i) { return colors[i] })
+            .style("font-size", "24px")
+            .style("font-weight", "100")
+            .style("background-color", "grey");
     }, [sets]);
 
     function handleAdd2() {
@@ -127,12 +128,12 @@ const Circle = (props) => {
         setSets(newList);
     }
 
-    function handleAdd3(){
+    function handleAdd3() {
         const newList2 = sets.concat({ sets: ["N", "G", "P", "L"], size: 8, label: ["ikigai"] });
         setSets(newList2);
     }
-    
-    return ( 
+
+    return (
         <>
             {/* <div className={props.id}>
                 <div className="circle-container" style={{border: props.border}}>
