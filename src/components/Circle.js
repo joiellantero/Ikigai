@@ -84,7 +84,7 @@ const Circle = (props) => {
     }
 
     const [sets, setSets] = useState([
-        { sets: ["L"], size: 100, label: "hey"},
+        { sets: ["L"], size: 100, label: "love"},
         { sets: ["G"], size: 100, label: "good" },
         { sets: ["N"], size: 100, label: "needs" },
         { sets: ["P"], size: 100, label: "paid" },
@@ -101,7 +101,7 @@ const Circle = (props) => {
     
 
     useEffect(() => {
-        var colors = ['#009F6F', '#FF9A9A', '#293972', '#E5C907'];
+        let colors = ['#009F6F', '#FF9A9A', '#293972', '#E5C907'];
 
         let chart = venn.VennDiagram()
             .width(800)
@@ -123,7 +123,7 @@ const Circle = (props) => {
     }, [sets]);
 
     function handleAdd2() {
-        const newList = sets.concat({ sets: ["N", "G", "P"], size: 30, label: ["ngp", "something"]  });
+        const newList = sets.concat({ sets: ["N", "G", "P"], size: 30, label: ["ngp", "something"] });
         setSets(newList);
     }
 

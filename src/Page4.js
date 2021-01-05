@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
+import { Button } from 'react-bootstrap';
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
@@ -59,9 +60,21 @@ const Far = () => {
   const [columns, setColumn] = useState(REC);
 
   return (
-    <div className="page-container-4">
-      <DragDropContext
-        onDragEnd={result => onDragEnd(result, columns, setColumn)}>
+      <div className="page-container-4">
+        <div className="btn-back">
+            <Link to="/what-is-ikigai">
+                <Button variant="light">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-left" width="24" height="24" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#1A1A1A" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <line x1="5" y1="12" x2="11" y2="18" />
+                        <line x1="5" y1="12" x2="11" y2="6" />
+                    </svg>
+                </Button>
+            </Link>
+        </div>
+      <DragDropContext 
+      onDragEnd={result => onDragEnd(result, columns, setColumn)}>
         <div className="main-header-text">
           <p>
             Let’s find our ikigai! <br /> <br /> Start by adding activites or
@@ -76,10 +89,6 @@ const Far = () => {
         <div className='rectangle container'>
           {Object.entries(columns).map(([columnId, column], index) => {
             return (
-
-              <Droppable droppableId={columnId} key={columnId} direction="horizontal">
-                {(provided, snapshot) => (
-                  <div ref={provided.innerRef} {...provided.droppableProps}>
                     <Rectangle
                       data={column.items}
                       key={columnId}
@@ -91,20 +100,15 @@ const Far = () => {
                       hover1={column.hover1}
                       hover2={column.hover2}
                       hover3={column.hover3}
-                      col={column}
-                      columns={columns}
-                      handleColumn={setColumn}
-                      isDraggingOver={snapshot.isDraggingOver}>
-                    </Rectangle>
-                    {provided.placeholder}
-                  </div>
-                )}
-              </Droppable>
+                      col = {column}
+                      columns = {columns}
+                      handleColumn={setColumn}>
+                      </Rectangle>
             );
           })}
         </div>
         <div className="btn-container center">
-          <Link to="/introducing-your-ikigai-chart">
+          <Link to="/your-ikigai-chart">
             <button type="button" className="btn-default btn-2 btn-lg">
               Next
             </button>
