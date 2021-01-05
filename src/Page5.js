@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 import { useReactToPrint } from 'react-to-print';
 import Export from "./Page6.jsx";
+import { REC } from './RectangleVar.js'
 import logo from './images/logo.png';
 import Circle from './components/Circle.js';
 

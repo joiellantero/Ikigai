@@ -6,63 +6,65 @@ import "./style.css";
 
 import logo from "./images/logo.png";
 import Rectangle from "./components/Rectangle.js";
-
+import { REC } from './RectangleVar.js'
+//import * as rectangleColumns from './RectangleVar.js'
 import { v4 } from "uuid";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 
-const rect1 = [];
-const rect2 = [];
-const rect3 = [];
-const rect4 = [];
+// const rect1 = [];
+// const rect2 = [];
+// const rect3 = [];
+// const rect4 = [];
 
-const rectangleColumns = {
-  [v4()]: {
-    heading1: "What the world",
-    heading2: "NEEDS",
-    color: "#E1E5FF",
-    headingColor: "#283972",
-    items: rect1,
-    hover1: "Stuck? Try these questions:",
-    hover2: "Are you helping to solve an actual problem?",
-    hover3: "Is what you’re doing bringing beauty or utility to others, helping out, and shaping the world around you?"
-  },
-  [v4()]: {
-    heading1: "What you",
-    heading2: "LOVE",
-    color: "#CCFFF0",
-    headingColor: "#009F6F",
-    items: rect2,
-    hover1: "Stuck? Try these questions:",
-    hover2: "What are some activities truly enjoy doing about? Is there an activity or cause you enthusiastically talk about for hours on end?",
-    hover3: "If you weren’t concerned about money, what would you be doing?"
-  },
-  [v4()]: {
-    heading1: "What you are",
-    heading2: "GOOD AT",
-    color: "#FFE4E4",
-    headingColor: "#FF5B5B",
-    items: rect3,
-    hover1: "Stuck? Try these questions:",
-    hover2: "Is there an activity that your friends/family/community have sought your advice/opinion on before?",
-    hover3: "Are you among the best in your workplace/community at this? With some more education and experience, could you master what you do?"
-  },
-  [v4()]: {
-    heading1: "What You Can Be",
-    heading2: "PAID FOR",
-    color: "#FFFCCC",
-    headingColor: "#E5C908",
-    items: rect4,
-    hover1: "Stuck? Try these questions:",
-    hover2: "Lately, have you been paid for what you do? Have you ever been paid for what you do? If not, are other people being paid for this work?",
-    hover3: "Are you already making a good living doing what it is that you’re doing? Can you eventually make a good living doing this work? Are there other people who can do what you do, but better?"
-  },
-};
+// const rectangleColumns = {
+//   [v4()]: {
+//     heading1: "What the world",
+//     heading2: "NEEDS",
+//     color: "#E1E5FF",
+//     headingColor: "#283972",
+//     items: rect1,
+//     hover1: "Stuck? Try these questions:",
+//     hover2: "Are you helping to solve an actual problem?",
+//     hover3: "Is what you’re doing bringing beauty or utility to others, helping out, and shaping the world around you?"
+//   },
+//   [v4()]: {
+//     heading1: "What you",
+//     heading2: "LOVE",
+//     color: "#CCFFF0",
+//     headingColor: "#009F6F",
+//     items: rect2,
+//     hover1: "Stuck? Try these questions:",
+//     hover2: "What are some activities truly enjoy doing about? Is there an activity or cause you enthusiastically talk about for hours on end?",
+//     hover3: "If you weren’t concerned about money, what would you be doing?"
+//   },
+//   [v4()]: {
+//     heading1: "What you are",
+//     heading2: "GOOD AT",
+//     color: "#FFE4E4",
+//     headingColor: "#FF5B5B",
+//     items: rect3,
+//     hover1: "Stuck? Try these questions:",
+//     hover2: "Is there an activity that your friends/family/community have sought your advice/opinion on before?",
+//     hover3: "Are you among the best in your workplace/community at this? With some more education and experience, could you master what you do?"
+//   },
+//   [v4()]: {
+//     heading1: "What You Can Be",
+//     heading2: "PAID FOR",
+//     color: "#FFFCCC",
+//     headingColor: "#E5C908",
+//     items: rect4,
+//     hover1: "Stuck? Try these questions:",
+//     hover2: "Lately, have you been paid for what you do? Have you ever been paid for what you do? If not, are other people being paid for this work?",
+//     hover3: "Are you already making a good living doing what it is that you’re doing? Can you eventually make a good living doing this work? Are there other people who can do what you do, but better?"
+//   },
+// };
 
 
 const onDragEnd = (result, columns, setColumn) => {
 
   if (!result.destination) {
-    return;}
+    return;
+  }
 
   const { source, destination } = result;
 
@@ -102,12 +104,12 @@ const onDragEnd = (result, columns, setColumn) => {
 
 
 const Far = () => {
-  const [columns, setColumn] = useState(rectangleColumns);
+  const [columns, setColumn] = useState(REC);
 
   return (
-      <div className="page-container-4">
-      <DragDropContext 
-      onDragEnd={result => onDragEnd(result, columns, setColumn)}>
+    <div className="page-container-4">
+      <DragDropContext
+        onDragEnd={result => onDragEnd(result, columns, setColumn)}>
         <div className="main-header-text">
           <p>
             Let’s find our ikigai! <br /> <br /> Start by adding activites or
@@ -119,11 +121,11 @@ const Far = () => {
           <img src={logo} alt="cs-logo" />
         </div>
 
-          <div className='rectangle container'>
+        <div className='rectangle container'>
           {Object.entries(columns).map(([columnId, column], index) => {
             return (
 
-              <Droppable droppableId={columnId} key = {columnId} direction="horizontal">
+              <Droppable droppableId={columnId} key={columnId} direction="horizontal">
                 {(provided, snapshot) => (
                   <div ref={provided.innerRef} {...provided.droppableProps}>
                     <Rectangle
@@ -137,18 +139,18 @@ const Far = () => {
                       hover1={column.hover1}
                       hover2={column.hover2}
                       hover3={column.hover3}
-                      col = {column}
-                      columns = {columns}
+                      col={column}
+                      columns={columns}
                       handleColumn={setColumn}
-                      isDraggingOver = {snapshot.isDraggingOver}>
-                      </Rectangle>
+                      isDraggingOver={snapshot.isDraggingOver}>
+                    </Rectangle>
                     {provided.placeholder}
                   </div>
                 )}
               </Droppable>
             );
           })}
-          </div>
+        </div>
         <div className="btn-container center">
           <Link to="/introducing-your-ikigai-chart">
             <button type="button" className="btn-default btn-2 btn-lg">
@@ -156,8 +158,8 @@ const Far = () => {
             </button>
           </Link>
         </div>
-        </DragDropContext>
-      </div>
+      </DragDropContext>
+    </div>
   );
 };
 
