@@ -60,7 +60,6 @@ const Rectangle = (props)=> {
         <Draggable draggableId = {props.id} key = {props.id} index ={props.index}>
         {(provided, snapshot)=>(
         <div 
-            variant = 'light' 
             className='rounded-pill with-btn-delete' 
             onMouseEnter={() => setIsShown(true)}
             {...provided.draggableProps}
