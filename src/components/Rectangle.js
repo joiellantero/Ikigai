@@ -12,6 +12,7 @@ const Rectangle = (props)=> {
     const [text, setText] = useState('');
 
     function handleChange(event) {
+        event.preventDefault()
         setText(event.target.value);
     }
 
@@ -79,15 +80,17 @@ const Rectangle = (props)=> {
 
                 <Container className="pill-container">
                     {items.map((element, index) => 
-                            <Note 
+                        <Note 
                             columnId = {props.id} 
                             col = {props.col} 
                             columns = {props.columns} 
-                            items = {items} key={element.id} 
+                            items = {items} 
+                            key={element.id} 
                             id={element.id} 
                             intext={element.intext} 
                             handleColumn = {props.handleColumn} 
-                            index = {index}></Note>
+                            index = {index}
+                        />
                     )}
                 </Container>
 

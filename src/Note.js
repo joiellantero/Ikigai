@@ -45,36 +45,35 @@ const Note = (props) => {
     }
 
     return (
-    <Draggable draggableId = {props.id} key = {props.id} index ={props.index}>
-    {(provided, snapshot)=>(
-    <div 
-        className='rounded-pill with-btn-delete' 
-        onMouseEnter={() => setIsShown(true)}
-        {...provided.draggableProps}
-        {...provided.dragHandleProps}
-        ref ={provided.innerRef} 
-    >
-        <span className="intext">
-            {props.intext}
-        </span>
-        
-        <EditText
-            name={props.id}
-            className="edit-text"
-            value={props.intext}
-            onSave={handleEdit}
-        />
+        <Draggable draggableId = {props.id} key = {props.id} index ={props.index}>
+            {(provided, snapshot)=>(
+                <div 
+                    className='rounded-pill with-btn-delete' 
+                    onMouseEnter={() => setIsShown(true)}
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
+                    ref ={provided.innerRef} 
+                >
+                    <span className="intext">
+                        {props.intext}
+                    </span>
+                    
+                    <EditText
+                        name={props.id}
+                        className="edit-text"
+                        value={props.intext}
+                        onSave={handleEdit}
+                    />
 
-        {isShown && (
-            <span className="btn-delete-container" onClick={() => deleteNote(props.id)}>
-                <Trash />
-            </span>
-        )}
-    </div>
-    )}
-    </Draggable>
+                    {isShown && (
+                        <span className="btn-delete-container" onClick={() => deleteNote(props.id)}>
+                            <Trash />
+                        </span>
+                    )}
+                </div>
+            )}
+        </Draggable>
     );
-
-
 }
+
 export default Note;

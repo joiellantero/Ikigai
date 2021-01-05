@@ -134,23 +134,6 @@ const Circle = (props) => {
     
     return ( 
         <>
-            {/* <div className={props.id}>
-                <div className="circle-container" style={{border: props.border}}>
-                    <span className="title-container" style={{color: props.headingColor}}>
-                        {props.heading1}<br></br><strong>{props.heading2}</strong>
-                    </span>
-                    
-                    <div className="pills-location">
-                        <Container className="pill-container">
-                            {notes.map((element) => <Note key={element.id.toString()} intext={element.intext} id={element.id} deleteNote={deleteNote}></Note>)}
-                        </Container>
-
-                        <Container>
-                            <Form.Control className='form rounded-pill' value={text} onChange={handleChange} onBlur={handleAdd} onKeyPress={handleKeyPress} placeholder="Type here..."/>
-                        </Container>
-                    </div>
-                </div>
-            </div> */}
             <button onClick={handleAdd2}>click me 1!</button>
             <button onClick={handleAdd3}>click me 2!</button>
             <div id="venn" style={{ textAlign: "center" }}></div>
