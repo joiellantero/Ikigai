@@ -8,8 +8,6 @@ import Linkedin from './components/Linkedin';
 import Whatsapp from './components/Whatsapp';
 import Trash from './components/trash';
 import Add from './components/Add';
-import Draggable from 'react-draggable';
-
 
 class Page6 extends Component{
     constructor(props){
@@ -76,12 +74,10 @@ class Page6 extends Component{
                                 <ul>
                                     {this.state.list.map(item => {
                                         return(
-                                            <Draggable>
                                             <li key={item.id}>
                                                 {item.value}
                                                 <button className="btn-delete" onClick={() => this.deleteItem(item.id)}><Trash /></button>
                                             </li>
-                                            </Draggable>
                                         )
                                     })}
                                 </ul>
