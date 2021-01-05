@@ -8,6 +8,8 @@ import { Draggable, Droppable } from 'react-beautiful-dnd';
 
 
 const Rectangle = (props)=> {
+    const {heading1, heading2, color, headingColor, hover1, hover2, hover3, items} = props.col;
+
     const [text, setText] = useState('');
     const [isShown, setIsShown] = useState(false);
 
@@ -19,7 +21,7 @@ const Rectangle = (props)=> {
         if (!text){
             return;
         }
-        const newList = props.col.items.concat({id: v4(), intext: text });
+        const newList = items.concat({id: v4(), intext: text });
 
         const newColumns = {
             ...props.columns,
@@ -35,7 +37,7 @@ const Rectangle = (props)=> {
     }
 
     const handleEdit = ({name, value}) => {
-        const newList = Array.from(props.data)
+        const newList = Array.from(items)
 
         for (let i = 0; i < newList.length; i++){
             if (name === newList[i].id){
@@ -89,7 +91,7 @@ const Rectangle = (props)=> {
     }
 
     const deleteNote = (id) => {
-        const deleted = (props.col.items.filter((note) => note.id !== id))
+        const deleted = (items.filter((note) => note.id !== id))
 
         const newColumns = {
             ...props.columns,
@@ -107,7 +109,7 @@ const Rectangle = (props)=> {
           if (!text){
             return;
         }
-            const newList = props.col.items.concat({id: v4(), intext: text });
+            const newList = items.concat({id: v4(), intext: text });
 
             const newColumns = {
                 ...props.columns,
@@ -127,28 +129,28 @@ const Rectangle = (props)=> {
         <Droppable droppableId={props.id} direction="horizontal">
         {(provided, snapshot) => (
           <div ref={provided.innerRef} {...provided.droppableProps}>
-            <div className="rectangle-container text-center" style = {{background: snapshot.isDraggingOver ? "skyblue" :props.color , border: snapshot.isDraggingOver ? '2px solid green' : ''}}>
-                <h3 className="dark-blue" style = {{color: props.headingColor}}>
-                    {props.heading1}<br></br><strong>{props.heading2}</strong>
+            <div className="rectangle-container text-center" style = {{background: snapshot.isDraggingOver ? "skyblue" :color , border: snapshot.isDraggingOver ? '2px solid green' : ''}}>
+                <h3 className="dark-blue" style = {{color: headingColor}}>
+                    {heading1}<br></br><strong>{heading2}</strong>
                     <OverlayTrigger
                         key="bottom"
                         placement="bottom"
                         overlay={
                             <Tooltip id={`tooltip-bottom`}>
-                                <strong> {props.hover1}</strong> <br /> {props.hover2} <br /> {props.hover3}
+                                <strong> {hover1}</strong> <br /> {hover2} <br /> {hover3}
                             </Tooltip>
                         }
                     >
                         <span>
-                            <Info color={props.headingColor} />
+                            <Info color={headingColor} />
                         </span>
                     </OverlayTrigger>
                 </h3>
 
                 <Container className="pill-container">
-                    {props.col.items.map((element, index) => 
+                    {items.map((element, index) => 
                         <>
-                            <Note key={element.id} intext={element.intext} id={element.id} deleteNote={deleteNote} index = {index}></Note>
+                            <Note {...props} key={element.id} intext={element.intext} id={element.id} deleteNote={deleteNote} index = {index}></Note>
                         </>
                     )}
                 </Container>
