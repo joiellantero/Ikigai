@@ -3,7 +3,7 @@
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 [![Dependencies](https://img.shields.io/david/joiellantero/Ikigai?color=green&style=flat-square)](https://img.shields.io/david/joiellantero/Ikigai?color=green&style=flat-square)
 
-> This project is being built for Code for Asia
+> This project is being built for Code for Asia in partnership with Career Socious
 
 Ikigai is a Japanese concept meaning "a reason for being". In this project, we are building a React webapp which aims to help you find your ikigai.
 
@@ -35,10 +35,18 @@ Ikigai is a Japanese concept meaning "a reason for being". In this project, we a
 
 5. Find your Ikigai
 
-### Web Technologies
+### Frameworks and Technologies
 
 - ReactJS
 - React Bootstrap
+- HTML5
+- CSS3
+
+### Libraries Used
+
+- d3.js
+- venn.js
+- react-beautiful-dnd
 
 ### Authors
 

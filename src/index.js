@@ -8,7 +8,6 @@ import Page2 from "./Page2";
 import Page3 from "./Page3";
 import Page4 from "./Page4";
 import Page5 from "./Page5";
-import Page6 from "./Page6";
 
 
 const rootElement = document.getElementById("root");
@@ -20,8 +19,7 @@ ReactDOM.render(
             <Route path="/intro" component={Page2} />
             <Route path="/what-is-ikigai" component={Page3} />
             <Route path="/lets-find-out-ikigai" component={Page4} />
-            <Route path="/your-ikigai-chart" component={Page5} />
-            <Route path="/export" component={Page6} />
+            <Route path="/export" component={Page5} />
         </Switch>
     </BrowserRouter>,
     rootElement
