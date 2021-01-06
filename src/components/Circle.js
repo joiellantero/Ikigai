@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { Button } from 'react-bootstrap';
 import * as d3 from "d3";
 import * as venn from "venn.js";
+import Modal from './Modal';
 
 const Circle = (props) => {
+    const [modalShow, setModalShow] = React.useState(false);
+
     const [sets, setSets] = useState([
-        { sets: ["L"], size: 100, label: "love"},
+        { sets: ["L"], size: 100, label: "love" },
         { sets: ["G"], size: 100, label: "good" },
         { sets: ["N"], size: 100, label: "needs" },
         { sets: ["P"], size: 100, label: "paid" },
@@ -18,7 +22,7 @@ const Circle = (props) => {
         // { sets: ["N", "G", "P"], size: 30, label: "ngp" },
         // { sets: ["N", "G", "P", "L"], size: 8, label: "Ikigai" }
     ]);
-    
+
 
     useEffect(() => {
         let colors = ['#009F6F', '#FF9A9A', '#293972', '#E5C907'];
@@ -30,16 +34,16 @@ const Circle = (props) => {
         d3.select("#venn").datum(sets).call(chart);
 
         d3.selectAll("#venn .venn-circle path")
-        .style("fill-opacity", 0)
-        .style("stroke-width", 5)
-        .style("stroke-opacity", .8)
-        .style("stroke", function(d,i) { return colors[i]; });
+            .style("fill-opacity", 0)
+            .style("stroke-width", 5)
+            .style("stroke-opacity", .8)
+            .style("stroke", function (d, i) { return colors[i]; });
 
         d3.selectAll("#venn .venn-circle text")
-        .style("fill", function(d,i) { return colors[i]})
-        .style("font-size", "24px")
-        .style("font-weight", "100")
-        .style("background-color", "grey");
+            .style("fill", function (d, i) { return colors[i] })
+            .style("font-size", "24px")
+            .style("font-weight", "100")
+            .style("background-color", "grey");
     }, [sets]);
 
     function handleAdd2() {
@@ -47,15 +51,27 @@ const Circle = (props) => {
         setSets(newList);
     }
 
-    function handleAdd3(){
-        const newList2 = sets.concat({ sets: ["N", "G", "P", "L"], size: 8, label: ["ikigai"] });
+    function handleAdd3() {
+        const newList2 = sets.concat(
+            { sets: ["N", "G", "P", "L"], size: 8, label: ["ikigai"] }
+        );
         setSets(newList2);
     }
-    
-    return ( 
+
+
+      
+    return (
         <>
+            {props.col.items.map(i => {
+                return(
+                    console.log(i.intext)
+                )
+            })}
+                  
             <button onClick={handleAdd2}>click me 1!</button>
             <button onClick={handleAdd3}>click me 2!</button>
+            <Button className="btn-default" onClick={() => setModalShow(true)}>Add steps</Button>
+            <Modal show={modalShow} onHide={() => setModalShow(false)}/>
             <div id="venn" style={{ textAlign: "center" }}></div>
         </>
     );

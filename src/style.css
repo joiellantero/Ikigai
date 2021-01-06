@@ -26,7 +26,6 @@ body {
     font-size: 13px !important;
     font-weight: 600;
     letter-spacing: 1px;
-
     display: inline-block;
     vertical-align: middle;
     -webkit-transform: perspective(1px) translateZ(0);
@@ -93,13 +92,13 @@ body {
     transform: translateX(-3px);
 }
 
-.page-container-1 .button-container{
+.page-container-1 .button-container {
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
     bottom: 100px;
-    left: 0; 
+    left: 0;
     right: 0;
 }
 
@@ -113,6 +112,8 @@ body {
 
 .container {
     justify-content: center;
+    width: fit-content;
+    max-width: none;
 }
 
 .rounded-pill.with-btn-delete {
@@ -224,15 +225,15 @@ body {
 
 /* ----- PAGE 1 ----- */
 
-.page-container-1{
+.page-container-1 {
     position: relative;
     min-height: 100%;
     height: 100vh;
 }
 
-.page-container-1 .corner-logo{
+.page-container-1 .corner-logo {
     position: absolute;
-    top: 20px; 
+    top: 20px;
     right: 20px;
     height: auto;
     width: 500px;
@@ -240,9 +241,9 @@ body {
     z-index: 100;
 }
 
-.page-container-1 .center-logo{
+.page-container-1 .center-logo {
     height: 260px;
-    width: 50%; 
+    width: 50%;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -254,12 +255,13 @@ body {
     z-index: 100;
 }
 
-.page-container-1 .center-logo img, .page-container-1 .corner-logo img{
+.page-container-1 .center-logo img,
+.page-container-1 .corner-logo img {
     width: 80%;
     height: auto;
 }
 
-.page-container-1 footer{
+.page-container-1 footer {
     background-image: url("./images/shapes.png");
     background-size: cover;
     background-position: center;
@@ -271,14 +273,15 @@ body {
     z-index: -1;
 }
 
-@media only screen and (max-width: 1240px){
-    .page-container-1 .center-logo, .page-container-1 .corner-logo img{
+@media only screen and (max-width: 1240px) {
+    .page-container-1 .center-logo,
+    .page-container-1 .corner-logo img {
         width: 80%;
     }
 }
 
-@media only screen and (max-width: 768px){
-    .page-container-1 .corner-logo{
+@media only screen and (max-width: 768px) {
+    .page-container-1 .corner-logo {
         top: 5%;
         left: 50%;
         right: 50%;
@@ -298,17 +301,23 @@ body {
     margin: 50px auto;
 }
 
-.rectangle {
+.rec-container {
     display: flex;
     flex-wrap: wrap;
-    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (max-width: 1220px) {
+    .rec-container {
+        display: inline-block;
+    }
 }
 
 .rectangle-container {
     background: #e1e5ff;
     width: 40vw;
     height: 40vh;
-    margin-top: 10px;
     overflow: scroll;
 }
 
@@ -329,6 +338,7 @@ body {
     outline: none;
     background: none;
 }
+
 
 /* ----- PAGE 5 ----- */
 
@@ -370,81 +380,13 @@ body {
     margin: 0 auto;
 }
 
-/* blue */
-.c1 {
-    position: absolute;
-    transform: translate(-400px, 250px);
-    z-index: 2;
-}
-
-.c1 .pills-location {
-    transform: translate(-150px, 50px);
-}
-
-.c1 .title-container {
-    position: absolute;
-    left: -40px;
-}
-
-/* green */
-.c2 {
-    text-align: center;
-    position: absolute;
-    transform: translate(-225px, 400px);
-    z-index: 4;
-}
-
-.c2 .pills-location {
-    transform: translate(0, 250px);
-}
-
-.c2 .title-container {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -70px;
-}
-
-/* red */
-.c3 {
-    text-align: right;
-    position: absolute;
-    transform: translate(-60px, 250px);
-    z-index: 3;
-}
-
-.c3 .pills-location {
-    transform: translate(150px, 50px);
-}
-
-.c3 .title-container {
-    position: absolute;
-    right: -20px;
-}
-
-/* yellow */
-.c4 {
-    text-align: center;
-    position: absolute;
-    transform: translate(-225px, 100px);
-    z-index: 1;
-}
-
-.c4 .pills-location {
-    transform: translate(0px, -10px);
-}
-
-.c4 .title-container {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: -65px;
-}
 
 /* ---- Page 6 ---- */
+
 .page-container-6 {
     height: 50vh;
 }
+
 
 /* ---- Page 6 ---- */
 
