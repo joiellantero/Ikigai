@@ -2,9 +2,22 @@ import React, { useState, useEffect } from 'react';
 import * as d3 from "d3";
 import * as venn from "venn.js";
 
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+const initialNotes = []
+=======
 const Circle = (props) => {
     const [sets, setSets] = useState([
         { sets: ["L"], size: 100, label: "love" },
+=======
+const Circle = (props) => {
+    const [sets, setSets] = useState([
+<<<<<<< HEAD
+        { sets: ["L"], size: 100, label: "love" },
+=======
+        { sets: ["L"], size: 100, label: "love"},
+>>>>>>> joie
+>>>>>>> bea
         { sets: ["G"], size: 100, label: "good" },
         { sets: ["N"], size: 100, label: "needs" },
         { sets: ["P"], size: 100, label: "paid" },
@@ -18,7 +31,16 @@ const Circle = (props) => {
         // { sets: ["N", "G", "P"], size: 30, label: "ngp" },
         // { sets: ["N", "G", "P", "L"], size: 8, label: "Ikigai" }
     ]);
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+
+>>>>>>> Stashed changes
+=======
+    
+>>>>>>> joie
+>>>>>>> bea
 
     useEffect(() => {
         let colors = ['#009F6F', '#FF9A9A', '#293972', '#E5C907'];
@@ -29,6 +51,33 @@ const Circle = (props) => {
 
         d3.select("#venn").datum(sets).call(chart);
 
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+    function handleAdd(event) {
+        if (!text){
+            return;
+        }
+        const newList = notes.concat({ intext: text, id: v4()});
+        setNote(newList);
+     
+        setText('');
+    }
+
+=======
+        d3.selectAll("#venn .venn-circle path")
+            .style("fill-opacity", 0)
+            .style("stroke-width", 5)
+            .style("stroke-opacity", .8)
+            .style("stroke", function(d, i) { return colors[i]; });
+
+        d3.selectAll("#venn .venn-circle text")
+            .style("fill", function(d, i) { return colors[i] })
+            .style("font-size", "24px")
+            .style("font-weight", "100")
+            .style("background-color", "grey");
+    }, [sets]);
+>>>>>>> Stashed changes
+=======
         d3.selectAll("#venn .venn-circle path")
             .style("fill-opacity", 0)
             .style("stroke-width", 5)
@@ -41,15 +90,40 @@ const Circle = (props) => {
             .style("font-weight", "100")
             .style("background-color", "grey");
     }, [sets]);
+>>>>>>> joie
 
     function handleAdd2() {
         const newList = sets.concat({ sets: ["N", "G", "P"], size: 30, label: ["ngp", "something"] });
         setSets(newList);
     }
 
+<<<<<<< HEAD
     function handleAdd3() {
+=======
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+
+    const deleteNote = (id) => {
+        setNote(notes.filter((note) => note.id !== id))
+    }
+
+    const handleKeyPress = (event) => {
+        if(event.key === 'Enter'){
+          if (!text){
+            return;
+        }
+
+        const newList = notes.concat({ intext: text, id: v4()});
+        setNote(newList);
+     
+        setText('');
+        }
+=======
+    function handleAdd3(){
+>>>>>>> bea
         const newList2 = sets.concat({ sets: ["N", "G", "P", "L"], size: 8, label: ["ikigai"] });
         setSets(newList2);
+>>>>>>> joie
     }
 
     return (
@@ -58,6 +132,22 @@ const Circle = (props) => {
             <button onClick={handleAdd3}>click me 2!</button>
             <div id="venn" style={{ textAlign: "center" }}></div>
         </>
+=======
+    function handleAdd3() {
+        const newList2 = sets.concat({ sets: ["N", "G", "P", "L"], size: 8, label: ["ikigai"] });
+        setSets(newList2);
+    }
+
+    return ( <
+        >
+        <
+        button onClick = { handleAdd2 } > click me 1! < /button> <
+        button onClick = { handleAdd3 } > click me 2! < /button> <
+        div id = "venn"
+        style = {
+            { textAlign: "center" } } > < /div> <
+        />
+>>>>>>> Stashed changes
     );
 }
 

@@ -12,6 +12,7 @@
     "bootstrap": "^4.5.3",
     "d3": "^6.3.1",
     "dragula": "^3.7.3",
+    "node-sass": "^4.14.1",
     "react": "^17.0.1",
     "react-beautiful-dnd": "^13.0.0",
     "react-bootstrap": "^1.4.0",
@@ -21,9 +22,21 @@
     "react-rectangle": "^1.3.3",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+=======
+    "react-to-print": "^2.12.2",
     "uuid": "^8.3.2",
     "venn.js": "^0.2.20",
+<<<<<<< HEAD
     "react-to-print": "^2.12.1",
+=======
+>>>>>>> Stashed changes
+=======
+    "uuid": "^8.3.2",
+    "venn.js": "^0.2.20",
+>>>>>>> joie
+>>>>>>> bea
     "web-vitals": "^0.2.4"
   },
   "scripts": {

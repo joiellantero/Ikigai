@@ -58,49 +58,47 @@ const Rectangle = (props)=> {
     
     return ( 
         <Droppable droppableId={props.id} direction="horizontal">
-        {(provided, snapshot) => (
-          <div ref={provided.innerRef} {...provided.droppableProps}>
-            <div className="rectangle-container text-center" style = {{background: snapshot.isDraggingOver ? "skyblue" :color , border: snapshot.isDraggingOver ? '2px solid green' : ''}}>
-                <h3 className="dark-blue" style = {{color: headingColor}}>
-                    {heading1}<br></br><strong>{heading2}</strong>
-                    <OverlayTrigger
-                        key="bottom"
-                        placement="bottom"
-                        overlay={
-                            <Tooltip id={`tooltip-bottom`}>
-                                <strong> {hover1}</strong> <br /> {hover2} <br /> {hover3}
-                            </Tooltip>
-                        }
-                    >
-                        <span>
-                            <Info color={headingColor} />
-                        </span>
-                    </OverlayTrigger>
-                </h3>
+            {(provided, snapshot) => (
+                <div className="rectangle-container text-center" ref={provided.innerRef} {...provided.droppableProps} style = {{background: snapshot.isDraggingOver ? "skyblue" :color , border: snapshot.isDraggingOver ? '2px solid green' : ''}}>
+                    <h3 className="dark-blue" style = {{color: headingColor}}>
+                        {heading1}<br></br><strong>{heading2}</strong>
+                        <OverlayTrigger
+                            key="bottom"
+                            placement="bottom"
+                            overlay={
+                                <Tooltip id={`tooltip-bottom`}>
+                                    <strong> {hover1}</strong> <br /> {hover2} <br /> {hover3}
+                                </Tooltip>
+                            }
+                        >
+                            <span>
+                                <Info color={headingColor} />
+                            </span>
+                        </OverlayTrigger>
+                    </h3>
 
-                <Container className="pill-container">
-                    {items.map((element, index) => 
-                        <Note 
-                            columnId = {props.id} 
-                            col = {props.col} 
-                            columns = {props.columns} 
-                            items = {items} 
-                            key={element.id} 
-                            id={element.id} 
-                            intext={element.intext} 
-                            handleColumn = {props.handleColumn} 
-                            index = {index}
-                        />
-                    )}
-                </Container>
+                    <Container className="pill-container">
+                        {items.map((element, index) => 
+                            <Note 
+                                columnId = {props.id} 
+                                col = {props.col} 
+                                columns = {props.columns} 
+                                items = {items} 
+                                key={element.id} 
+                                id={element.id} 
+                                intext={element.intext} 
+                                handleColumn = {props.handleColumn} 
+                                index = {index}
+                            />
+                        )}
+                    </Container>
 
-                <Container>
-                    <Form.Control className='form rounded-pill' value={text} onChange={handleChange} onBlur={handleAdd} onKeyPress={handleKeyPress} placeholder="Type here..."/>
-                </Container>
-            </div>
-            {provided.placeholder}
-        </div>
-        )}
+                    <Container>
+                        <Form.Control className='form rounded-pill' value={text} onChange={handleChange} onBlur={handleAdd} onKeyPress={handleKeyPress} placeholder="Type here..."/>
+                    </Container>
+                    {provided.placeholder}
+                </div>
+            )}
         </Droppable>
 
     );

@@ -48,7 +48,7 @@ const Note = (props) => {
         <Draggable draggableId = {props.id} key = {props.id} index ={props.index}>
             {(provided, snapshot)=>(
                 <div 
-                    className='rounded-pill with-btn-delete' 
+                    className='rounded-pill with-btn-delete draggable' 
                     onMouseEnter={() => setIsShown(true)}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
