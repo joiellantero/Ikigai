@@ -9,7 +9,7 @@ import logo from "./images/logo.png";
 import Rectangle from "./components/Rectangle.js";
 import Circle from './old_files/circle.js';
 
-import {EditText } from 'react-edit-text';
+import { EditText } from 'react-edit-text';
 import Draggable from 'react-draggable';
 import Trash from './components/trash';
 
@@ -70,46 +70,6 @@ const dataColumns = {
 
 const onDragEnd = (result, columns, setColumn) => {
 
-<<<<<<< HEAD
-  if (!result.destination) {
-    return;
-  }
-
-  const { source, destination } = result;
-
-  if (source.droppableId !== destination.droppableId) {
-    const sourceColumn = columns[source.droppableId];
-    const destColumn = columns[destination.droppableId];
-    const sourceItems = [...sourceColumn.items];
-    const destItems = [...destColumn.items];
-    const [removed] = sourceItems.splice(source.index, 1);
-    destItems.splice(destination.index, 0, removed);
-    setColumn({
-      ...columns,
-      [source.droppableId]: {
-        ...sourceColumn,
-        items: sourceItems
-      },
-      [destination.droppableId]: {
-        ...destColumn,
-        items: destItems
-      }
-    });
-
-  } else {
-    const column = columns[source.droppableId];
-    const copiedItems = [...column.items];
-    const [removed] = copiedItems.splice(source.index, 1);
-    copiedItems.splice(destination.index, 0, removed);
-    setColumn({
-      ...columns,
-      [source.droppableId]: {
-        ...column,
-        items: copiedItems
-      }
-    });
-  }
-=======
     if (!result.destination) {
         return;
     }
@@ -148,7 +108,6 @@ const onDragEnd = (result, columns, setColumn) => {
             }
         });
     }
->>>>>>> bea
 };
 
 
@@ -156,27 +115,27 @@ const Far = () => {
     function Note(props) {
         return (
             <Draggable>
-            <div
-                variant = 'light'
-                className='circle rounded-pill with-btn-delete'
-                onMouseEnter={() => setIsShown(true)}
-            >
-                <span className="intext">
-                    {props.intext}
-                </span>
-                
-                <EditText
-                    name={props.id}
-                    className="edit-text"
-                    value={props.intext}
-                />
-    
-                {isShown && (
-                    <span className="btn-delete-container">
-                        <Trash />
+                <div
+                    variant='light'
+                    className='circle rounded-pill with-btn-delete'
+                    onMouseEnter={() => setIsShown(true)}
+                >
+                    <span className="intext">
+                        {props.intext}
                     </span>
-                )}
-            </div>
+
+                    <EditText
+                        name={props.id}
+                        className="edit-text"
+                        value={props.intext}
+                    />
+
+                    {isShown && (
+                        <span className="btn-delete-container">
+                            <Trash />
+                        </span>
+                    )}
+                </div>
             </Draggable>
         );
     }
@@ -184,27 +143,27 @@ const Far = () => {
     function handleChange(event) {
         setText(event.target.value);
     }
-    
+
     function handleAdd() {
-        if (!text){
+        if (!text) {
             return;
         }
         const newList = notes.concat(text);
         setNote(newList);
-    
+
         setText('');
     }
-    
+
     const handleKeyPress = (event) => {
-        if(event.key === 'Enter'){
-          if (!text){
-            return;
-        }
-    
-        const newList = notes.concat(text);
-        setNote(newList);
-    
-        setText('');
+        if (event.key === 'Enter') {
+            if (!text) {
+                return;
+            }
+
+            const newList = notes.concat(text);
+            setNote(newList);
+
+            setText('');
         }
     }
 
@@ -318,18 +277,18 @@ const Far = () => {
                                                 heading1={column.heading1}
                                                 heading2={column.heading2}
                                             />
-                                        ); 
+                                        );
                                     })}
                                 </div>
                             </Col>
                             <Col xs={2} className="container circle-add">
                                 <Container>
                                     <div className="pills-location">
-                                    <Form.Control className='form rounded-pill' value={text} onChange={handleChange} onBlur={handleAdd} onKeyPress={handleKeyPress} placeholder="Add activity"/>
-                                    
-                                    <Container className="pill-container">
-                                        {notes.map((element, index) => <Note key={index} intext={element}></Note>)}
-                                    </Container>
+                                        <Form.Control className='form rounded-pill' value={text} onChange={handleChange} onBlur={handleAdd} onKeyPress={handleKeyPress} placeholder="Add activity" />
+
+                                        <Container className="pill-container">
+                                            {notes.map((element, index) => <Note key={index} intext={element}></Note>)}
+                                        </Container>
                                     </div>
                                 </Container>
                             </Col>

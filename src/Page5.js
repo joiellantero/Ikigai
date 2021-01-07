@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, useRef } from 'react';
 import { Link } from "react-router-dom";
-import { InputGroup, Button, FormControl} from 'react-bootstrap';
-
+import { InputGroup, Button, FormControl } from 'react-bootstrap';
+import { render } from "react-dom";
+import { useReactToPrint } from 'react-to-print';
 import Twitter from './components/Twitter';
 import Facebook from './components/Facebook';
 import Linkedin from './components/Linkedin';
@@ -9,8 +10,8 @@ import Whatsapp from './components/Whatsapp';
 import Trash from './components/trash';
 import Add from './components/Add';
 
-class Page6 extends Component{
-    constructor(props){
+class Page5 extends Component {
+    constructor(props) {
         super(props);
         this.state = {
             newItem: "",
@@ -31,14 +32,14 @@ class Page6 extends Component{
 
         this.setState({
             list,
-            newItem:""
+            newItem: ""
         })
     }
 
-    deleteItem(id){
+    deleteItem(id) {
         const list = [...this.state.list];
         const updatedList = list.filter(item => item.id !== id);
-        this.setState({list:updatedList});
+        this.setState({ list: updatedList });
     }
 
     handleInputChange = (key, value) => {
@@ -47,7 +48,7 @@ class Page6 extends Component{
         });
     }
 
-    render(){
+    render() {
         return (
             <>
                 <div className="page-container-6 container">
@@ -55,7 +56,7 @@ class Page6 extends Component{
                         <Link to="/lets-find-out-ikigai">
                             <Button variant="light">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#1A1A1A" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                     <line x1="5" y1="12" x2="19" y2="12" />
                                     <line x1="5" y1="12" x2="11" y2="18" />
                                     <line x1="5" y1="12" x2="11" y2="6" />
@@ -73,7 +74,7 @@ class Page6 extends Component{
                             <div className="steps-container container">
                                 <ul>
                                     {this.state.list.map(item => {
-                                        return(
+                                        return (
                                             <li key={item.id}>
                                                 {item.value}
                                                 <button className="btn-delete" onClick={() => this.deleteItem(item.id)}><Trash /></button>
@@ -132,4 +133,21 @@ class Page6 extends Component{
     }
 }
 
-export default Page6;
+const Export = () => {
+    const componentRef = useRef();
+    const handlePrint = useReactToPrint({
+        content: () => componentRef.current,
+    });
+
+    return (
+        < div >
+            <Page5 ref={componentRef} />
+            <button onClick={handlePrint}>Print this out!</button>
+        </div >
+    );
+};
+
+render(<Export />, document.querySelector("#root"));
+
+export default Export;
+//export default Page5;
