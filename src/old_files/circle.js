@@ -18,44 +18,33 @@ const Circle = (props)=> {
         setText(event.target.value);
     }
 
-    function handleAdd(event) {
-        if (!text){
-            return;
-        }
-        const newList = notes.concat({ intext: text, id: v4()});
-        setNote(newList);
-
-        setText('');
-    }
-
 
     function Note(props) {
         return (
-        <Draggable>
-        <div
-            variant = 'light'
-            className='circle rounded-pill with-btn-delete text-black'
-            onMouseEnter={() => setIsShown(true)}
-            onMouseLeave={() => setIsShown(false)}
-        >
-            <span className="intext">
-                {props.intext}
-            </span>
-
-            <EditText
-                name={props.id}
-                className="edit-text"
-                value={props.intext}
-            />
-
-            {isShown && (
-                <span className="btn-delete-container">
-                    <Trash />
+            <Draggable>
+            <div
+                variant = 'light'
+                className='circle rounded-pill with-btn-delete'
+                onMouseEnter={() => setIsShown(true)}
+            >
+                <span className="intext">
+                    {props.intext}
                 </span>
-            )}
-        </div>
-        </Draggable>
-        )
+                
+                <EditText
+                    name={props.id}
+                    className="edit-text"
+                    value={props.intext}
+                />
+    
+                {isShown && (
+                    <span className="btn-delete-container">
+                        <Trash />
+                    </span>
+                )}
+            </div>
+            </Draggable>
+        );
     }
 
     const handleKeyPress = (event) => {
@@ -65,7 +54,6 @@ const Circle = (props)=> {
         }
 
         const newList = notes.concat({ intext: text, id: v4()});
-        setNote(newList);
 
         setText('');
         }

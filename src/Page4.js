@@ -274,6 +274,8 @@ const Far = () => {
                                                 handleColumn={setColumn}
                                                 border={column.border}
                                                 headingColor={column.headingColor}
+                                                heading1={column.heading1}
+                                                heading2={column.heading2}
                                             />
                                         ); 
                                     })}
