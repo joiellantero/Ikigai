@@ -59,19 +59,19 @@ const Circle = (props) => {
     }
 
 
-      
+
     return (
         <>
             {props.col.items.map(i => {
-                return(
+                return (
                     console.log(i.intext)
                 )
             })}
-                  
+
             <button onClick={handleAdd2}>click me 1!</button>
             <button onClick={handleAdd3}>click me 2!</button>
             <Button className="btn-default" onClick={() => setModalShow(true)}>Add steps</Button>
-            <Modal show={modalShow} onHide={() => setModalShow(false)}/>
+            <Modal show={modalShow} onHide={() => setModalShow(false)} />
             <div id="venn" style={{ textAlign: "center" }}></div>
         </>
     );
