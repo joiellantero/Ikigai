@@ -35,11 +35,10 @@ function Page2() {
                         <Row md={2}> <img src={img2} alt="page-2" className="center" /> </Row>
                         <Row md={1}><p className="p-pg-2">Follow this digital interactive as we explain the concept of ikigai and
                         <br /> discover how you can use ikigai to help you find meaning in the work you do.
-                        </p></Row>
-                        <Row md={1}> <Link to="/what-is-ikigai">
+                        </p></Row>  
+                        <Link to="/what-is-ikigai">
                             <button type="button" className="btn-default btn-2 btn-lg">Next</button>
                         </Link>
-                        </Row>
                     </Col>
                 </Container>
             </div>
