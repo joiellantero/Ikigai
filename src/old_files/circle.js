@@ -6,10 +6,10 @@ import Info from '../components/info.js';
 import {EditText } from 'react-edit-text';
 import Draggable from 'react-draggable';
 
-const initialNotes = [{id: v4(), intext:'hello'}, {id: v4(), intext:'this'}, {id: v4(), intext:'is'}, {id: v4(), intext:'a'}, {id: v4(), intext:'note'}]
+//const initialNotes = [{id: v4(), intext:'hello'}, {id: v4(), intext:'this'}, {id: v4(), intext:'is'}, {id: v4(), intext:'a'}, {id: v4(), intext:'note'}]
 
 const Circle = (props)=> {
-    const [notes, setNote] = React.useState(initialNotes);
+    const [notes, setNote] = React.useState(props.col.items);
     const [text, setText] = React.useState('');
 
     const [isShown, setIsShown] = useState(false);
