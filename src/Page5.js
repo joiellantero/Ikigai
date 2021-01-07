@@ -1,30 +1,15 @@
-<<<<<<< HEAD
-//import React, {} from 'react';
-import React, { useRef } from 'react';
-import { Link } from "react-router-dom";
-import { render } from "react-dom";
-import { InputGroup, Button, FormControl} from 'react-bootstrap';
-import { useReactToPrint } from 'react-to-print';
-=======
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import { InputGroup, Button, FormControl} from 'react-bootstrap';
 
->>>>>>> joie
 import Twitter from './components/Twitter';
 import Facebook from './components/Facebook';
 import Linkedin from './components/Linkedin';
 import Whatsapp from './components/Whatsapp';
 import Trash from './components/trash';
 import Add from './components/Add';
-<<<<<<< HEAD
-import Far from "./Page4.js"
-
-class Page5 extends React.PureComponent{
-=======
 
 class Page6 extends Component{
->>>>>>> joie
     constructor(props){
         super(props);
         this.state = {
@@ -82,10 +67,6 @@ class Page6 extends Component{
                     <div className="row my-5">
                         <div className="col-lg">
                             <p>***Venn Diagram Here***</p>
-<<<<<<< HEAD
-                            
-=======
->>>>>>> joie
                         </div>
                         <div className="col-lg">
                             <p>Your steps to achieving ikigai</p>
@@ -151,25 +132,4 @@ class Page6 extends Component{
     }
 }
 
-<<<<<<< HEAD
-const Export = () => {
-    const componentRef = useRef();
-    const handlePrint = useReactToPrint({
-        content: () => componentRef.current,
-    });
-
-    return (
-        < div >
-            <Page5 ref={componentRef} />
-            <button onClick={handlePrint}>Print this out!</button>
-        </div >
-    );
-};
-
-render(<Export />, document.querySelector("#root"));
-
-export default Export;
-//export default Page5;
-=======
 export default Page6;
->>>>>>> joie
