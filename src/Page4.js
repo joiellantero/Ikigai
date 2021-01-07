@@ -1,11 +1,18 @@
+<<<<<<< HEAD
 import React, { useState, useRef } from 'react';
+=======
+import React, { useState } from 'react';
+>>>>>>> joie
 import { Link } from "react-router-dom";
 import { Button, Row, Col, Container, Form } from 'react-bootstrap';
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
+<<<<<<< HEAD
 import { render } from "react-dom";
 import { useReactToPrint } from 'react-to-print';
+=======
+>>>>>>> joie
 
 import logo from "./images/logo.png";
 import Rectangle from "./components/Rectangle.js";
@@ -161,6 +168,10 @@ const Far = () => {
           if (!text){
             return;
         }
+<<<<<<< HEAD
+=======
+    
+>>>>>>> joie
         const newList = notes.concat(text);
         setNote(newList);
     
@@ -309,6 +320,7 @@ const Far = () => {
 };
 
 export default Far;
+<<<<<<< HEAD
 
 // const Export = () => {
 //     const componentRef = useRef();
@@ -327,3 +339,5 @@ export default Far;
 // render(<Export />, document.querySelector("#root"));
 
 //export default Export;
+=======
+>>>>>>> joie

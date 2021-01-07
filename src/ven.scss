@@ -1,0 +1,108 @@
+$radius: 15rem;
+.circle25-container {
+    text-align: center;
+    width: $radius*2;
+    height: $radius*2;
+    border-radius: $radius;
+    border: 8px solid #f84342;
+    display: flex;
+    &>.shape-1 {
+        float: left;
+        background: lightblue;
+        width: 48%;
+        shape-outside: polygon( 100% 0%, 0% 0%, 0% 100%, 100% 100%, 75% 96%, 47% 90%, 25% 80%, 12% 70%, 5% 60%, 3% 50%, 5% 40%, 12% 30%, 25% 20%, 47% 10%, 75% 4%);
+    }
+    &>.shape-2 {
+        float: right;
+        width: 48%;
+        shape-outside: polygon(100% 0%, -1.34% 1.08%, 32.24% 7.22%, 47.34% 11.99%, 66.96% 19.39%, 88.4% 28.75%, 95.4% 40.26%, 100.22% 47.41%, 97.33% 54.56%, 93.58% 65.65%, 83.77% 75.43%, 60.91% 85.43%, 34.83% 92.78%, 1.9% 98.49%, 100% 100%);
+    }
+}
+
+.put-border {
+    border: 1px solid black;
+}
+
+.pills-container {
+    display: inline;
+}
+
+.pill-for-circle {
+    width: fit-content;
+    max-width: 200px;
+    height: fit-content;
+    background-color: rgb(241, 241, 241);
+    padding: 7px 15px 7px 15px;
+    border-radius: 20px;
+    &:hover {
+        cursor: grab;
+    }
+    &:active {
+        cursor: grabbing;
+    }
+    & span {
+        height: auto;
+    }
+}
+
+.circle25 {
+    background-color: grey;
+    height: auto;
+    width: fit-content;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.venn-container {
+    padding: 25px 25px 25px 800px;
+}
+
+.venncirctop {
+    padding: 18px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    margin-bottom: -130px;
+    margin-left: -70px;
+    background-color: #5c5b59;
+    background-color: rgba(92, 91, 89, 0.5);
+    position: relative;
+}
+
+.venncirclft {
+    padding: 18px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    position: absolute;
+    margin-left: -157px;
+    background-color: #093d5c;
+    background-color: rgba(9, 61, 92, 0.5);
+}
+
+.venncircrt {
+    padding: 18px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    position: absolute;
+    margin-left: 17px;
+    background-color: #5e577b;
+    background-color: rgba(94, 87, 123, 0.5);
+    text-align: right;
+}
+
+.venncircbtm {
+    padding: 18px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    position: absolute;
+    top: 90px;
+    margin-right: 100px;
+    margin-left: -70px;
+    text-align: center;
+    background-color: #627746;
+    background-color: rgba(98, 119, 70, 0.5);
+    position: relative;
+}
