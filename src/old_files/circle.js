@@ -18,10 +18,7 @@ const Circle = (props)=> {
         setText(event.target.value);
     }
 
-<<<<<<< HEAD
-=======
 
->>>>>>> joie
     function Note(props) {
         return (
             <Draggable>
