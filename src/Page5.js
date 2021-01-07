@@ -1,6 +1,7 @@
 import React, { Component, useRef } from 'react';
 import { Link } from "react-router-dom";
-import { InputGroup, Button, FormControl } from 'react-bootstrap';
+import "./style.css";
+import { InputGroup, Row, Button, FormControl } from 'react-bootstrap';
 import { render } from "react-dom";
 import { useReactToPrint } from 'react-to-print';
 import Twitter from './components/Twitter';
@@ -10,7 +11,7 @@ import Whatsapp from './components/Whatsapp';
 import Trash from './components/trash';
 import Add from './components/Add';
 
-class Page5 extends Component {
+class Page5 extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -53,7 +54,7 @@ class Page5 extends Component {
             <>
                 <div className="page-container-6 container">
                     <div className="btn-back">
-                        <Link to="/lets-find-out-ikigai">
+                        {/* <Link to="/lets-find-out-ikigai">
                             <Button variant="light">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#1A1A1A" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -62,7 +63,7 @@ class Page5 extends Component {
                                     <line x1="5" y1="12" x2="11" y2="6" />
                                 </svg>
                             </Button>
-                        </Link>
+                        </Link> */}
                     </div>
                     <h3>Your Ikigai, Visualised.</h3>
                     <div className="row my-5">
@@ -101,9 +102,9 @@ class Page5 extends Component {
                         </div>
                     </div>
 
-                    <button type="button" className="btn-default btn-2 btn-lg my-5">
+                    {/* <button type="button" className="btn-default btn-2 btn-lg my-5">
                         Export Report
-                    </button>
+                    </button> */}
 
                     <div class="card card-shadow mt-5">
                         <div class="card-body">
@@ -142,7 +143,10 @@ const Export = () => {
     return (
         < div >
             <Page5 ref={componentRef} />
-            <button onClick={handlePrint}>Print this out!</button>
+            <Row> <button onClick={handlePrint} type="button" className="btn-default btn-2 btn-lg my-5">
+                Export Report
+                    </button>
+            </Row>
         </div >
     );
 };
