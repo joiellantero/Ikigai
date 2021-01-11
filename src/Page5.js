@@ -8,6 +8,7 @@ import Linkedin from './components/Linkedin';
 import Whatsapp from './components/Whatsapp';
 import Trash from './components/trash';
 import Add from './components/Add';
+import BackButton from './components/BackButton';
 
 class Page6 extends Component{
     constructor(props){
@@ -53,14 +54,7 @@ class Page6 extends Component{
                 <div className="page-container-6 container">
                     <div className="btn-back">
                         <Link to="/lets-find-out-ikigai">
-                            <Button variant="light">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#1A1A1A" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                    <line x1="5" y1="12" x2="19" y2="12" />
-                                    <line x1="5" y1="12" x2="11" y2="18" />
-                                    <line x1="5" y1="12" x2="11" y2="6" />
-                                </svg>
-                            </Button>
+                            <BackButton />
                         </Link>
                     </div>
                     <h3>Your Ikigai, Visualised.</h3>

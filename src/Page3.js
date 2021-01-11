@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from './images/logo.png';
 import img3 from './images/image-pg-3.png';
 import { Container } from 'react-bootstrap';
+import BackButton from './components/BackButton';
 
 function Page3() {
 
@@ -15,14 +16,7 @@ function Page3() {
             <div className="background-2">
                 <div className="btn-back">
                     <Link to="/intro">
-                        <Button variant="light">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#1A1A1A" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <line x1="5" y1="12" x2="19" y2="12" />
-                                <line x1="5" y1="12" x2="11" y2="18" />
-                                <line x1="5" y1="12" x2="11" y2="6" />
-                            </svg>
-                        </Button>
+                        <BackButton />
                     </Link>
                 </div>
                 <div className="main-logo">

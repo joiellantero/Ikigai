@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import { Button, Row, Col, Container, Form } from 'react-bootstrap';
+import {EditText } from 'react-edit-text';
+import Draggable from 'react-draggable';
+import { v4 } from "uuid";
+import { DragDropContext } from "react-beautiful-dnd";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
@@ -8,13 +12,8 @@ import "./style.css";
 import logo from "./images/logo.png";
 import Rectangle from "./components/Rectangle.js";
 import Circle from './old_files/circle.js';
-
-import {EditText } from 'react-edit-text';
-import Draggable from 'react-draggable';
 import Trash from './components/trash';
-
-import { v4 } from "uuid";
-import { DragDropContext } from "react-beautiful-dnd";
+import BackButton from './components/BackButton';
 
 const dataColumns = {
     [v4()]: {
@@ -195,14 +194,7 @@ const Far = () => {
                 <div className="page-container-4">
                     <div className="btn-back">
                         <Link to="/what-is-ikigai">
-                            <Button variant="light">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-left" width="24" height="24" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#1A1A1A" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <line x1="5" y1="12" x2="19" y2="12" />
-                                    <line x1="5" y1="12" x2="11" y2="18" />
-                                    <line x1="5" y1="12" x2="11" y2="6" />
-                                </svg>
-                            </Button>
+                            <BackButton />
                         </Link>
                     </div>
                     <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
@@ -223,8 +215,8 @@ const Far = () => {
                                         id={columnId}
                                         col={column}
                                         columns={columns}
-                                        handleColumn={setColumn}>
-                                    </Rectangle>
+                                        handleColumn={setColumn}
+                                    />
                                 );
                             })}
                         </div>
@@ -241,14 +233,7 @@ const Far = () => {
                 <>
                     <section className="page-container-5">
                         <div className="btn-back">
-                            <Button variant="light" onClick={handleShowBack}>
-                                <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-left" width="24" height="24" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#1A1A1A" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <line x1="5" y1="12" x2="19" y2="12" />
-                                    <line x1="5" y1="12" x2="11" y2="18" />
-                                    <line x1="5" y1="12" x2="11" y2="6" />
-                                </svg>
-                            </Button>
+                            <BackButton onClick={handleShowBack}/>
                         </div>
                         <div className="main-header-text">
                             <p>Introducing your ikigai chart.</p>
