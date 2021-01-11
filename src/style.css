@@ -429,6 +429,7 @@ body {
     margin-top: 100px;
     position: absolute;
     right: -500px;
+    z-index: 1000;
 }
 
 
