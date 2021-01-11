@@ -1,7 +1,7 @@
 import React, { Component, useRef } from 'react';
-import { Link } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import "./style.css";
-import { InputGroup, Row, Button, FormControl } from 'react-bootstrap';
+import { InputGroup, Row, Col, Container, Button, FormControl } from 'react-bootstrap';
 import { render } from "react-dom";
 import { useReactToPrint } from 'react-to-print';
 import Twitter from './components/Twitter';
@@ -11,6 +11,8 @@ import Whatsapp from './components/Whatsapp';
 import Trash from './components/trash';
 import Add from './components/Add';
 import Far from './Page4'
+import Circle from './old_files/circle.js';
+
 
 class Page5 extends React.PureComponent {
     constructor(props) {
@@ -51,6 +53,9 @@ class Page5 extends React.PureComponent {
     }
 
     render() {
+        const [columns, setColumn] = useState(dataColumns);
+        const { state } = this.props.location
+        console.log({ state });
         return (
             <>
                 <div className="page-container-6 container">
@@ -70,6 +75,40 @@ class Page5 extends React.PureComponent {
                     <div className="row my-5">
                         <div className="col-lg">
                             <p>***Venn Diagram Here***</p>
+
+                            <Row>
+                                <Col xs={9}>
+                                    <div className="container circle">
+                                        {Object.entries(state).map(([columnId, column]) => {
+                                            return (
+                                                <Circle
+                                                    key={columnId}
+                                                    id={column.id}
+                                                    col={column}
+                                                    columns={columns}
+                                                    items={columns.items}
+                                                    handleColumn={setColumn}
+                                                    border={column.border}
+                                                    headingColor={column.headingColor}
+                                                    heading1={column.heading1}
+                                                    heading2={column.heading2}
+                                                />
+                                            );
+                                        })}
+                                    </div>
+                                </Col>
+                                <Col xs={2} className="container circle-add">
+                                    <Container>
+                                        <div className="pills-location">
+                                            <Form.Control className='form rounded-pill' value={text} onChange={handleChange} onBlur={handleAdd} onKeyPress={handleKeyPress} placeholder="Add activity" />
+
+                                            <Container className="pill-container">
+                                                {notes.map((element, index) => <Note key={index} intext={element}></Note>)}
+                                            </Container>
+                                        </div>
+                                    </Container>
+                                </Col>
+                            </Row>
 
                         </div>
                         <div className="col-lg">
@@ -104,9 +143,9 @@ class Page5 extends React.PureComponent {
                         </div>
                     </div>
 
-                    {/* <button type="button" className="btn-default btn-2 btn-lg my-5">
+                    <button type="button" className="btn-default btn-2 btn-lg my-5">
                         Export Report
-                    </button> */}
+                    </button>
 
                     <div class="card card-shadow mt-5">
                         <div class="card-body">
@@ -136,24 +175,24 @@ class Page5 extends React.PureComponent {
     }
 }
 
-const Export = () => {
-    const componentRef = useRef();
-    const handlePrint = useReactToPrint({
-        content: () => componentRef.current,
-    });
+// const Export = () => {
+//     const componentRef = useRef();
+//     const handlePrint = useReactToPrint({
+//         content: () => componentRef.current,
+//     });
 
-    return (
-        < div >
-            <Page5 ref={componentRef} />
-            <Row> <button onClick={handlePrint} type="button" className="btn-default btn-2 btn-lg my-5">
-                Export Report
-                    </button>
-            </Row>
-        </div >
-    );
-};
+//     return (
+//         < div >
+//             <Page5 ref={componentRef} />
+//             <Row> <button onClick={handlePrint} type="button" className="btn-default btn-2 btn-lg my-5">
+//                 Export Report
+//                     </button>
+//             </Row>
+//         </div >
+//     );
+// };
 
-render(<Export />, document.querySelector("#root"));
+// render(<Export />, document.querySelector("#root"));
 
-export default Export;
-//export default Page5;
+// export default Export;
+export default Page5;

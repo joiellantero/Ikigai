@@ -295,14 +295,22 @@ const Far = () => {
                         </Row>
                     </section>
                     <div className="btn-container center pull-to-buttom">
-                        <Link to="/export">
+
+                        <Link
+                            to={{
+                                pathname: "/export",
+                                state: columns
+                            }}
+                        >
+                            {console.log(columns)}
                             <button type="button" className="btn-default btn-2 btn-lg">
                                 Next
                             </button>
                         </Link>
                     </div>
                 </>
-            )}
+            )
+            }
         </>
     );
 };
