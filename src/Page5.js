@@ -19,7 +19,7 @@ class Page5 extends React.PureComponent {
         super(props);
         this.state = {
             newItem: "",
-            list: []
+            list: [],
         }
     }
 
@@ -53,7 +53,6 @@ class Page5 extends React.PureComponent {
     }
 
     render() {
-        const [columns, setColumn] = useState(dataColumns);
         const { state } = this.props.location
         console.log({ state });
         return (
@@ -75,7 +74,6 @@ class Page5 extends React.PureComponent {
                     <div className="row my-5">
                         <div className="col-lg">
                             <p>***Venn Diagram Here***</p>
-
                             <Row>
                                 <Col xs={9}>
                                     <div className="container circle">
@@ -85,9 +83,9 @@ class Page5 extends React.PureComponent {
                                                     key={columnId}
                                                     id={column.id}
                                                     col={column}
-                                                    columns={columns}
-                                                    items={columns.items}
-                                                    handleColumn={setColumn}
+                                                    columns={state}
+                                                    items={state.items}
+                                                    //handleColumn={setColumn}
                                                     border={column.border}
                                                     headingColor={column.headingColor}
                                                     heading1={column.heading1}
@@ -97,19 +95,7 @@ class Page5 extends React.PureComponent {
                                         })}
                                     </div>
                                 </Col>
-                                <Col xs={2} className="container circle-add">
-                                    <Container>
-                                        <div className="pills-location">
-                                            <Form.Control className='form rounded-pill' value={text} onChange={handleChange} onBlur={handleAdd} onKeyPress={handleKeyPress} placeholder="Add activity" />
-
-                                            <Container className="pill-container">
-                                                {notes.map((element, index) => <Note key={index} intext={element}></Note>)}
-                                            </Container>
-                                        </div>
-                                    </Container>
-                                </Col>
                             </Row>
-
                         </div>
                         <div className="col-lg">
                             <p>Your steps to achieving ikigai</p>
