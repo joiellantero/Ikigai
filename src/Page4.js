@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import { Button, Row, Col, Container, Form } from 'react-bootstrap';
-
+import ReactToPrint, { PrintContextConsumer } from 'react-to-print';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
 
@@ -308,3 +308,5 @@ const Far = () => {
 };
 
 export default Far;
+
+
