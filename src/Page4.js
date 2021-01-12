@@ -193,6 +193,7 @@ const Far = () => {
             {showRec && (
                 <div className="page-container-4">
                     <div className="btn-back">
+                        
                         <Link to="/what-is-ikigai">
                             <BackButton />
                         </Link>
@@ -221,9 +222,20 @@ const Far = () => {
                             })}
                         </div>
                         <div className="btn-container center">
-                            <button type="button" className="btn-default btn-2 btn-lg" onClick={handleShowNext}>
+                        <Link
+                            to={{
+                                pathname: "/u",
+                                state: {columns}
+                            }}
+                        >
+                            {console.log({columns})}
+                            <button type="button" className="btn-default btn-2 btn-lg">
                                 Next
                             </button>
+                        </Link>
+                            {/* <button type="button" className="btn-default btn-2 btn-lg" onClick={handleShowNext}>
+                                Next
+                            </button> */}
                         </div>
                     </DragDropContext>
                 </div>
@@ -280,7 +292,7 @@ const Far = () => {
                         </Row>
                     </section>
                     <div className="btn-container center pull-to-buttom">
-                    <Link
+                    {/* <Link
                             to={{
                                 pathname: "/u",
                                 state: {columns}
@@ -290,7 +302,7 @@ const Far = () => {
                             <button type="button" className="btn-default btn-2 btn-lg">
                                 Next
                             </button>
-                        </Link>
+                        </Link> */}
                     </div>
                 </>
             )}

@@ -3,7 +3,7 @@ import {Droppable} from "react-beautiful-dnd";
 import Note from './Note'
 
 const Hidden = (props)=>{
-    const {id, col, columns, top, left, width, height, intext, handleColumn} = props;
+    const {id, col, columns, top, left, width, maxWidth, height, intext, handleColumn} = props;
 
     return (
         <Droppable droppableId = {id} >
@@ -16,7 +16,8 @@ const Hidden = (props)=>{
                         border: snapshot.isDraggingOver ? '2px solid green' : '',
                         top: top,
                         left: left,
-                        width: width,
+                        minWidth: width,
+                        maxWidth: maxWidth,
                         height: height
                     }}
                 >

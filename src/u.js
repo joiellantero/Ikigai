@@ -17,102 +17,114 @@ import logo from './images/logo.png';
 
 //paid, vocation, needs, mission, love, passion, ikigai, profession, good
 
-const circleData = {
-    [v4()]: {
-        id: 'r1',
-        name: 'what you are PAID FOR',
-        items: [],
-        top: '118px',
-        left: '254px',
-        width: '283px',
-        height: '82px',
-        },
-    [v4()]: {
-        id: 'r2',
-        name: 'what the WORLD NEEDS',
-        items: [],
-        top: '292px',
-        left: '83px',
-        width: '90px' , 
-        height: '258px'
-        },
-    [v4()]: {
-        id: 'r3',
-        name: 'what you LOVE',
-        items: [],
-        top: '642px',
-        left: '259px',
-        width: '271px' , 
-        height: '89px'
-        },
-    [v4()]: {
-        id: 'r4',
-        name: 'what you are GOOD AT',
-        items: [],
-        top: '291px',
-        left: '616px',
-        width: '88px', 
-        height: '261px'
-        },
-    [v4()]: {
-        id: 'r5',
-        name: '', // blue yellow
-        items: [],
-        top: '223px',
-        left: '199px',
-        width: '128px' , 
-        height: '134px'
-        },
-    [v4()]: {
-        id: 'r6',
-        name: '', // green blue
-        items: [],
-        top: '490px',
-        left: '198px',
-        width: '129px' , 
-        height: '130px'
-        },
-    [v4()]: {
-        id: 'r7',
-        name: '', // green red
-        items: [],
-        top: '497px',
-        left: '461px',
-        width: '134px' , 
-        height: '128px'
-        },
-    [v4()]: {
-        id: 'r8',
-        name: '', // center
-        items: [],
-        top: '363px',
-        left: '335px',
-        width: '119px' , 
-        height: '125px'
-        },
-    [v4()]: {
-        id: 'r9',
-        name: '', // red yellow
-        items: [],
-        top: '230px',
-        left: '460px',
-        width: '132px', 
-        height: '127px'
-    },
-    ['add']: {
-        id: 'r10',
-        name: '', // add activity
-        items: [{id: v4(), intext: 'dshjfgdhsjgf'}],
-        top: '',
-        left: '',
-        width: '' , 
-        height: ''
-    },
-};
+
 
 const Circa = ()=>{
-    // const { state } = useLocation();
-    // console.log({state});
+    const { state } = useLocation();
+    console.log({state}.state);
+
+    const circleData = {
+        [v4()]: {
+            id: 'r1',
+            name: 'what you are PAID FOR',
+            items: [],
+            top: '118px',
+            left: '254px',
+            width: '283px',
+            maxWidth: '283px',
+            height: '82px',
+            },
+        [v4()]: {
+            id: 'r2',
+            name: 'what the WORLD NEEDS',
+            items: [],
+            top: '292px',
+            left: '83px',
+            width: '90px' , 
+            maxWidth: '283px',
+            height: '258px'
+            },
+        [v4()]: {
+            id: 'r3',
+            name: 'what you LOVE',
+            items: [],
+            top: '642px',
+            left: '259px',
+            width: '271px' , 
+            maxWidth: '283px',
+            height: '89px'
+            },
+        [v4()]: {
+            id: 'r4',
+            name: 'what you are GOOD AT',
+            items: [],
+            top: '291px',
+            left: '616px',
+            width: '88px', 
+            maxWidth: '283px',
+            height: '261px'
+            },
+        [v4()]: {
+            id: 'r5',
+            name: '', // blue yellow
+            items: [],
+            top: '223px',
+            left: '199px',
+            width: '128px' , 
+            maxWidth: '283px',
+            height: '134px'
+            },
+        [v4()]: {
+            id: 'r6',
+            name: '', // green blue
+            items: [],
+            top: '490px',
+            left: '198px',
+            width: '129px' , 
+            maxWidth: '283px',
+            height: '130px'
+            },
+        [v4()]: {
+            id: 'r7',
+            name: '', // green red
+            items: [],
+            top: '497px',
+            left: '461px',
+            width: '134px' , 
+            maxWidth: '200px',
+            height: '128px'
+            },
+        [v4()]: {
+            id: 'r8',
+            name: '', // center
+            items: [],
+            top: '363px',
+            left: '335px',
+            width: '119px' , 
+            maxWidth: '150px',
+            height: '125px'
+            },
+        [v4()]: {
+            id: 'r9',
+            name: '', // red yellow
+            items: [],
+            top: '230px',
+            left: '460px',
+            width: '132px', 
+            maxWidth: '2px',
+            height: '127px'
+        },
+        ['add']: {
+            id: 'r10',
+            name: '', // add activity
+            items: [{id: v4(), intext: 'dshjfgdhsjgf'}],
+            top: '',
+            left: '',
+            width: '' , 
+            height: ''
+        },
+    };
+
     const [columns, setColumn] = useState(circleData);
     const filtered = Object.fromEntries(Object.entries(columns).filter(([colId, col]) => colId !== 'add'))
     const [text, setText] = React.useState('');
@@ -239,6 +251,7 @@ const Circa = ()=>{
                                         top = {column.top}
                                         left = {column.left}
                                         width = {column.width}
+                                        maxWidth = {column.maxWidth}
                                         height = {column.height}>
                                     </Hidden>
                                 );

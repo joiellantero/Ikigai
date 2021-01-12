@@ -17,7 +17,7 @@
     overflow: hidden;
     padding: 5px 10px 5px 10px;
     min-width: 30px;
-    max-width: fit-content;
+    width: fit-content;
     height: fit-content;
     border-radius: 20px;
     background-color: #F5F5F5;
