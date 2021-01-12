@@ -8,10 +8,10 @@ import Page2 from "./Page2";
 import Page3 from "./Page3";
 import Page4 from "./Page4";
 import Page5 from "./Page5";
-import Page6 from "./V";
+import Page9 from "./page4_temp";
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(
+ReactDOM.render( 
     <BrowserRouter>
         <Switch>
             <Route exact path="/" component={Page1} />
@@ -19,7 +19,7 @@ ReactDOM.render(
             <Route path="/what-is-ikigai" component={Page3} />
             <Route path="/lets-find-out-ikigai" component={Page4} />
             <Route path="/export" component={Page5} />
-            <Route path="/ven" component={Page6} />
+            <Route path = "/new" component = {Page9} />
         </Switch>
     </BrowserRouter>,
     rootElement

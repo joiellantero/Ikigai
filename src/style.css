@@ -110,6 +110,11 @@ body {
     text-align: center;
 }
 
+.btn-container.pull-to-bottom {
+    position: relative;
+    bottom: 0px;
+}
+
 .container {
     justify-content: center;
     width: fit-content;
@@ -343,7 +348,8 @@ body {
 /* ----- PAGE 5 ----- */
 
 .page-container-5 {
-    height: 50vh;
+    height: 130vh;
+    position: relative;
 }
 
 .page-container-5 .instructions p {
@@ -359,6 +365,172 @@ body {
 
 .circle.rounded-pill {
     background: rgb(240, 240, 240);
+}
+
+.circle-container {
+    width: 450px;
+    height: 450px;
+    -moz-border-radius: 225px;
+    -webkit-border-radius: 225px;
+    border-radius: 225px;
+    position: relative;
+}
+
+.page-container-5 .pill-container {
+    max-height: 300px;
+    max-width: 200px;
+    z-index: 100;
+    margin: 0;
+}
+
+.page-container-5 .pills-location {
+    width: fit-content;
+    max-width: 20rem;
+    margin: 10px auto;
+    margin: 10px auto;
+}
+
+.page-container-5 .container.circle-add {
+    margin-top: 100px;
+}
+
+
+/* blue */
+
+.c1 {
+    position: absolute;
+    transform: translate(-400px, 250px);
+    z-index: 0;
+    border-radius: 50%;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.c1:hover {
+    z-index: 5;
+    background-color: #ffffff70;
+}
+
+.c1 .pills-location {
+    transform: translate(-150px, 50px);
+    margin-right: 85px;
+}
+
+.c1 .title-container {
+    position: absolute;
+    left: -40px;
+}
+
+
+/* green */
+
+.c2 {
+    text-align: center;
+    position: absolute;
+    transform: translate(-225px, 400px);
+    z-index: 0;
+    border-radius: 50%;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.c2:hover {
+    z-index: 5;
+    background-color: #ffffff70;
+}
+
+.c2 .pills-location {
+    transform: translate(0, 250px);
+    margin-top: 0;
+}
+
+.c2 .title-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -70px;
+}
+
+
+/* red */
+
+.c3 {
+    text-align: right;
+    position: absolute;
+    transform: translate(-60px, 250px);
+    z-index: 0;
+    border-radius: 50%;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.c3:hover {
+    z-index: 5;
+    background-color: #ffffff70;
+}
+
+.c3 .pills-location {
+    transform: translate(150px, 50px);
+}
+
+.c3 .title-container {
+    position: absolute;
+    right: -20px;
+}
+
+.c3 .pills-location {
+    margin-left: 85px;
+}
+
+
+/* yellow */
+
+.c4 {
+    text-align: center;
+    position: absolute;
+    transform: translate(-225px, 100px);
+    z-index: 0;
+    border-radius: 50%;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.c4:hover {
+    z-index: 5;
+    background-color: #ffffff70;
+}
+
+.c4 .pills-location {
+    transform: translate(0px, -10px);
+}
+
+.c4 .title-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -65px
+}
+
+.circle.rounded-pill {
+    background: rgb(240, 240, 240);
+}
+
+.circle.rounded-pill:hover,
+.rounded-pill.draggable:hover {
+    cursor: grab;
+}
+
+.circle.rounded-pill:active,
+.rounded-pill.draggable:active {
+    cursor: grabbing;
+}
+
+.circle-add .pills-location {
+    max-width: 300px;
 }
 
 .circle-container {
