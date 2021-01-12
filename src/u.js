@@ -211,7 +211,7 @@ const Circa = ()=>{
     ['190px', '463px', '89px', '256px']]; // red 
 
     return (
-        <body className="venn-diagram" style = {{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center'}}>
+        <div className="venn-diagram" style = {{ display: ' block', margin: '0 auto'}}>
             <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
                 <div className="btn-back">
                     <BackButton />
@@ -226,7 +226,7 @@ const Circa = ()=>{
                         <p>Is this what the world needs? (If yes, move to blue circle)</p>
                     </div>
                 </div>
-                <Row>
+                <Row >
                     <Col>
                         <div className="flex-container">
                             <div style={{textAlign:"center"}}>
@@ -249,17 +249,17 @@ const Circa = ()=>{
 
                                 <svg width="600" height="600" viewBox="0 0 150 150">
                                 <g>
-                                    <circle cx="48" cy="79" r="50" className="circle c1"></circle>
-                                    <circle cx="100" cy="79" r="50" className="circle c2"></circle>
-                                    <circle cx="74" cy="105" r="50" className="circle c3"></circle>
-                                    <circle cx="74" cy="54" r="50" className="circle c4"></circle>
+                                    <circle cx="48" cy="79" r="40" className="circle c1"></circle>
+                                    <circle cx="100" cy="79" r="40" className="circle c2"></circle>
+                                    <circle cx="74" cy="105" r="40" className="circle c3"></circle>
+                                    <circle cx="74" cy="54" r="40" className="circle c4"></circle>
                                 </g>
                                 </svg>
                             </div>
                         </div>
                     </Col>
 
-                    <Col>
+                    <Col xs={2}>
                         <Droppable droppableId = 'add'>
                             {(provided, snapshot)=> (
                                 <>
@@ -300,7 +300,7 @@ const Circa = ()=>{
                     </Col>
                 </Row>
             </DragDropContext>    
-        </body>
+        </div>
     );
 };
 
