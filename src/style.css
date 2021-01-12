@@ -455,8 +455,13 @@ body {
     left: -377px;
     width: 153px;
     height: 244px;
-    z-index: 100;
+    z-index: 1 !important;
 }
+
+.c1 .pill-container, .c1 .pills-location .rounded-pill{
+    z-index: 1;
+}
+
 
 .c1 .title-container {
     position: absolute;
@@ -489,7 +494,11 @@ body {
     left: -101px;
     width: 194px;
     height: 130px;
-    z-index: 100;
+    z-index: 1 !important;
+}
+
+.c2 .pill-container, .c2 .pills-location .rounded-pill{
+    z-index: 1;
 }
 
 .c2 .title-container {
@@ -523,6 +532,10 @@ body {
     top: 362px;
     left: 138px;
     height: 237px;
+    z-index: 1 !important;
+}
+
+.c3 .pill-container, .c3 .pills-location .rounded-pill{
     z-index: 1;
 }
 
@@ -554,13 +567,17 @@ body {
     border: 10px solid rgb(255, 223, 0, 0.5);
 }
 
-.c4 .pills-location {
+.c4 .pills-location{
     position: absolute;
     top: 119px;
     left: -91px;
     width: 176px;
     height: 124px;
-    z-index: 100;
+    z-index: 1 !important;
+}
+
+.c4 .pill-container, .c4 .pills-location .rounded-pill{
+    z-index: 1;
 }
 
 .c4 .title-container {
