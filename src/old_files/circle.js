@@ -18,6 +18,9 @@ const Circle = (props)=> {
         setText(event.target.value);
     }
 
+    const onStop = () => {
+        this.setState({activeDrags: --this.state.activeDrags});
+      };
 
     function Note(props) {
         return (
@@ -62,16 +65,16 @@ const Circle = (props)=> {
     return (
         <>
             <div className={props.id}>
-                <div className="circle-container" style={{border: props.border}}>
+                <div className="circle-container">
                     <span className="title-container" style={{color: props.headingColor}}>
                         {props.heading1}<br></br><strong>{props.heading2}</strong>
                     </span>
+                </div>
 
-                    <div className="pills-location">
-                        <Container className="pill-container">
-                            {notes.map((element) => <Note key={element.id.toString()} intext={element.intext} id={element.id}></Note>)}
-                        </Container>
-                    </div>
+                <div className="pills-location" style={{ zIndex: 100 }}>
+                    <Container className="pill-container">
+                        {notes.map((element) => <Note key={element.id} intext={element.intext} id={element.id}></Note>)}
+                    </Container>
                 </div>
             </div>
         </>

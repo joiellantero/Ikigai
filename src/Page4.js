@@ -24,7 +24,6 @@ const dataColumns = {
         color: "#E1E5FF",
         headingColor: "#283972",
         items: [],
-        border: '10px solid #293972',
         hover1: "Stuck? Try these questions:",
         hover2: "Are you helping to solve an actual problem?",
         hover3: "Is what you’re doing bringing beauty or utility to others, helping out, and shaping the world around you?"
@@ -36,7 +35,6 @@ const dataColumns = {
         color: "#CCFFF0",
         headingColor: "#009F6F",
         items: [],
-        border: '10px solid #009F6F',
         hover1: "Stuck? Try these questions:",
         hover2: "What are some activities truly enjoy doing about? Is there an activity or cause you enthusiastically talk about for hours on end?",
         hover3: "If you weren’t concerned about money, what would you be doing?"
@@ -48,7 +46,6 @@ const dataColumns = {
         color: "#FFE4E4",
         headingColor: "#FF5B5B",
         items: [],
-        border: '10px solid #FF5C5B',
         hover1: "Stuck? Try these questions:",
         hover2: "Is there an activity that your friends/family/community have sought your advice/opinion on before?",
         hover3: "Are you among the best in your workplace/community at this? With some more education and experience, could you master what you do?"
@@ -60,7 +57,6 @@ const dataColumns = {
         color: "#FFFCCC",
         headingColor: "#E5C908",
         items: [],
-        border: '10px solid #E5C907',
         hover1: "Stuck? Try these questions:",
         hover2: "Lately, have you been paid for what you do? Have you ever been paid for what you do? If not, are other people being paid for this work?",
         hover3: "Are you already making a good living doing what it is that you’re doing? Can you eventually make a good living doing this work? Are there other people who can do what you do, but better?"
@@ -115,27 +111,27 @@ const Far = () => {
     function Note(props) {
         return (
             <Draggable>
-            <div
-                variant = 'light'
-                className='circle rounded-pill with-btn-delete'
-                onMouseEnter={() => setIsShown(true)}
-            >
-                <span className="intext">
-                    {props.intext}
-                </span>
-                
-                <EditText
-                    name={props.id}
-                    className="edit-text"
-                    value={props.intext}
-                />
-    
-                {isShown && (
-                    <span className="btn-delete-container">
-                        <Trash />
+                <div
+                    variant = 'light'
+                    className='circle rounded-pill with-btn-delete'
+                    onMouseEnter={() => setIsShown(true)}
+                >
+                    <span className="intext">
+                        {props.intext}
                     </span>
-                )}
-            </div>
+                    
+                    <EditText
+                        name={props.id}
+                        className="edit-text"
+                        value={props.intext}
+                    />
+        
+                    {isShown && (
+                        <span className="btn-delete-container">
+                            <Trash />
+                        </span>
+                    )}
+                </div>
             </Draggable>
         );
     }
@@ -261,25 +257,22 @@ const Far = () => {
                             </div>
                         </div>
                         <Row>
-                            <Col xs={9}>
-                                <div className="container circle">
-                                    {Object.entries(columns).map(([columnId, column]) => {
-                                        return (
-                                            <Circle
-                                                key={columnId}
-                                                id={column.id}
-                                                col={column}
-                                                columns={columns}
-                                                items={columns.items}
-                                                handleColumn={setColumn}
-                                                border={column.border}
-                                                headingColor={column.headingColor}
-                                                heading1={column.heading1}
-                                                heading2={column.heading2}
-                                            />
-                                        ); 
-                                    })}
-                                </div>
+                            <Col xs={1} className="container circle"> 
+                                {Object.entries(columns).map(([columnId, column]) => {
+                                    return (
+                                        <Circle
+                                            key={columnId}
+                                            id={column.id}
+                                            col={column}
+                                            columns={columns}
+                                            items={columns.items}
+                                            handleColumn={setColumn}
+                                            headingColor={column.headingColor}
+                                            heading1={column.heading1}
+                                            heading2={column.heading2}
+                                        />
+                                    ); 
+                                })}
                             </Col>
                             <Col xs={2} className="container circle-add">
                                 <Container>
