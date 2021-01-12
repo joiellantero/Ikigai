@@ -95,37 +95,39 @@ class Page5 extends React.PureComponent {
                                         })}
                                     </div>
                                 </Col>
+                                <Col >
+                                    <div className="col-lg">
+                                        <p>Your steps to achieving ikigai</p>
+                                        <div className="steps-container container">
+                                            <ul>
+                                                {this.state.list.map(item => {
+                                                    return (
+                                                        <li key={item.id}>
+                                                            {item.value}
+                                                            <button className="btn-delete" onClick={() => this.deleteItem(item.id)}><Trash /></button>
+                                                        </li>
+                                                    )
+                                                })}
+                                            </ul>
+                                            <InputGroup>
+                                                <FormControl
+                                                    placeholder="Enter step..."
+                                                    aria-label="Enter step..."
+                                                    aria-describedby="basic-addon2"
+                                                    className="steps-input"
+                                                    name="step"
+                                                    value={this.state.newItem}
+                                                    onChange={e => this.handleInputChange("newItem", e.target.value)}
+                                                    onKeyPress={e => e.key === "Enter" && this.addItem()}
+                                                />
+                                                <InputGroup.Append>
+                                                    <Button className="btn-add" onClick={() => this.addItem()} disabled={!this.state.newItem}><Add /></Button>
+                                                </InputGroup.Append>
+                                            </InputGroup>
+                                        </div>
+                                    </div>
+                                </Col>
                             </Row>
-                        </div>
-                        <div className="col-lg">
-                            <p>Your steps to achieving ikigai</p>
-                            <div className="steps-container container">
-                                <ul>
-                                    {this.state.list.map(item => {
-                                        return (
-                                            <li key={item.id}>
-                                                {item.value}
-                                                <button className="btn-delete" onClick={() => this.deleteItem(item.id)}><Trash /></button>
-                                            </li>
-                                        )
-                                    })}
-                                </ul>
-                                <InputGroup>
-                                    <FormControl
-                                        placeholder="Enter step..."
-                                        aria-label="Enter step..."
-                                        aria-describedby="basic-addon2"
-                                        className="steps-input"
-                                        name="step"
-                                        value={this.state.newItem}
-                                        onChange={e => this.handleInputChange("newItem", e.target.value)}
-                                        onKeyPress={e => e.key === "Enter" && this.addItem()}
-                                    />
-                                    <InputGroup.Append>
-                                        <Button className="btn-add" onClick={() => this.addItem()} disabled={!this.state.newItem}><Add /></Button>
-                                    </InputGroup.Append>
-                                </InputGroup>
-                            </div>
                         </div>
                     </div>
 
