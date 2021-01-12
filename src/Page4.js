@@ -257,26 +257,24 @@ const Far = () => {
                             </div>
                         </div>
                         <Row>
-                            <Col xs={10}>
-                                <div className="container circle">      
-                                    {Object.entries(columns).map(([columnId, column]) => {
-                                        return (
-                                            <Circle
-                                                key={columnId}
-                                                id={column.id}
-                                                col={column}
-                                                columns={columns}
-                                                items={columns.items}
-                                                handleColumn={setColumn}
-                                                headingColor={column.headingColor}
-                                                heading1={column.heading1}
-                                                heading2={column.heading2}
-                                            />
-                                        ); 
-                                    })}
-                                </div>
+                            <Col xs={1} className="container circle"> 
+                                {Object.entries(columns).map(([columnId, column]) => {
+                                    return (
+                                        <Circle
+                                            key={columnId}
+                                            id={column.id}
+                                            col={column}
+                                            columns={columns}
+                                            items={columns.items}
+                                            handleColumn={setColumn}
+                                            headingColor={column.headingColor}
+                                            heading1={column.heading1}
+                                            heading2={column.heading2}
+                                        />
+                                    ); 
+                                })}
                             </Col>
-                            <Col className="container circle-add">
+                            <Col xs={2} className="container circle-add">
                                 <Container>
                                     <div className="pills-location">
                                     <Form.Control className='form rounded-pill' value={text} onChange={handleChange} onBlur={handleAdd} onKeyPress={handleKeyPress} placeholder="Add activity"/>

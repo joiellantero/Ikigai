@@ -426,10 +426,8 @@ body {
 }
 
 .page-container-5 .container.circle-add {
-    margin-top: 100px;
-    position: absolute;
-    right: -500px;
     z-index: 1000;
+    margin: 100px 100px 0 0;
 }
 
 
@@ -454,9 +452,10 @@ body {
     position: absolute;
     margin-right: 85px;
     top: 358px;
-    left: -387px;
+    left: -377px;
+    width: 153px;
     height: 244px;
-    z-index: 1;
+    z-index: 100;
 }
 
 .c1 .title-container {
@@ -486,10 +485,11 @@ body {
 .c2 .pills-location {
     position: absolute;
     margin-top: 0;
-    top: 699px;
-    left: -141px;
-    height: 113px;
-    z-index: 1;
+    top: 687px;
+    left: -101px;
+    width: 194px;
+    height: 130px;
+    z-index: 100;
 }
 
 .c2 .title-container {
@@ -556,10 +556,11 @@ body {
 
 .c4 .pills-location {
     position: absolute;
-    top: 118px;
-    left: -146px;
+    top: 119px;
+    left: -91px;
+    width: 176px;
     height: 124px;
-    z-index: 1;
+    z-index: 100;
 }
 
 .c4 .title-container {
