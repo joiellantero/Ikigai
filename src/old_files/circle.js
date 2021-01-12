@@ -70,8 +70,7 @@ const Circle = (props)=> {
                         {props.heading1}<br></br><strong>{props.heading2}</strong>
                     </span>
                 </div>
-
-                <div className="pills-location" style={{ zIndex: 100 }}>
+                <div className="pills-location">
                     <Container className="pill-container">
                         {notes.map((element) => <Note key={element.id} intext={element.intext} id={element.id}></Note>)}
                     </Container>

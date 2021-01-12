@@ -388,12 +388,6 @@ body {
     width: 15px;
 }
 
-.circle-position-boxes {
-    position: absolute;
-    z-index: 1;
-    overflow: scroll;
-}
-
 .circle-position-boxes-container {
     position: relative;
     flex-wrap: wrap;
@@ -414,7 +408,6 @@ body {
 }
 
 .page-container-5 .pill-container {
-    z-index: 1;
     margin: 0;
 }
 
@@ -426,16 +419,35 @@ body {
 }
 
 .page-container-5 .container.circle-add {
-    z-index: 1000;
+    z-index: 100;
     margin: 100px 100px 0 0;
 }
 
+.c1 .pills-location{
+    position: absolute;
+    z-index: 13;
+}
 
-/* blue */
+.c2 .pills-location{
+    position: absolute;
+    z-index: 12;
+}
 
-.c1 {
+.c3 .pills-location{
+    position: absolute;
+    z-index: 11;
+} 
+
+.c4 .pills-location{
+    position: absolute;
+    z-index: 10;
+}
+
+.c1, .c2, .c3, .c4 {
     position: relative;
 }
+
+/* blue */
 
 .c1 .circle-container {
     position: absolute;
@@ -449,19 +461,12 @@ body {
 }
 
 .c1 .pills-location {
-    position: absolute;
     margin-right: 85px;
     top: 358px;
     left: -377px;
     width: 153px;
     height: 244px;
-    z-index: 1 !important;
 }
-
-.c1 .pill-container, .c1 .pills-location .rounded-pill{
-    z-index: 1;
-}
-
 
 .c1 .title-container {
     position: absolute;
@@ -470,10 +475,6 @@ body {
 
 
 /* green */
-
-.c2 {
-    position: relative;
-}
 
 .c2 .circle-container {
     text-align: center;
@@ -488,17 +489,11 @@ body {
 }
 
 .c2 .pills-location {
-    position: absolute;
     margin-top: 0;
     top: 687px;
     left: -101px;
     width: 194px;
     height: 130px;
-    z-index: 1 !important;
-}
-
-.c2 .pill-container, .c2 .pills-location .rounded-pill{
-    z-index: 1;
 }
 
 .c2 .title-container {
@@ -510,10 +505,6 @@ body {
 
 
 /* red */
-
-.c3 {
-    position: relative;
-}
 
 .c3 .circle-container {
     text-align: right;
@@ -528,15 +519,10 @@ body {
 }
 
 .c3 .pills-location {
-    position: absolute;
-    top: 362px;
-    left: 138px;
+    top: 358px;
+    left: 225px;
+    width: 133px;
     height: 237px;
-    z-index: 1 !important;
-}
-
-.c3 .pill-container, .c3 .pills-location .rounded-pill{
-    z-index: 1;
 }
 
 .c3 .title-container {
@@ -544,16 +530,8 @@ body {
     right: -20px;
 }
 
-.c3 .pills-location {
-    margin-left: 85px;
-}
-
 
 /* yellow */
-
-.c4 {
-    position: relative;
-}
 
 .c4 .circle-container {
     text-align: center;
@@ -568,23 +546,17 @@ body {
 }
 
 .c4 .pills-location{
-    position: absolute;
     top: 119px;
     left: -91px;
     width: 176px;
     height: 124px;
-    z-index: 1 !important;
-}
-
-.c4 .pill-container, .c4 .pills-location .rounded-pill{
-    z-index: 1;
 }
 
 .c4 .title-container {
     position: absolute;
     left: 0;
     right: 0;
-    top: -65px
+    top: -65px;
 }
 
 .circle.rounded-pill {
