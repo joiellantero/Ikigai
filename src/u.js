@@ -21,13 +21,19 @@ import logo from './images/logo.png';
 
 const Circa = ()=>{
     const { state } = useLocation();
-    console.log({state}.state);
+    const rectangleData = [[],[],[],[]]
+    let i = 0
+    Object.entries({state}.state.columns).map(([columnId, column]) => {
+        rectangleData[i] = column.items;
+        i+=1;
+    });
+
 
     const circleData = {
         [v4()]: {
             id: 'r1',
             name: 'what you are PAID FOR',
-            items: [],
+            items: rectangleData[1],
             top: '118px',
             left: '254px',
             width: '283px',
@@ -37,17 +43,17 @@ const Circa = ()=>{
         [v4()]: {
             id: 'r2',
             name: 'what the WORLD NEEDS',
-            items: [],
+            items: rectangleData[0],
             top: '292px',
             left: '83px',
             width: '90px' , 
-            maxWidth: '283px',
+            maxWidth: '110px',
             height: '258px'
             },
         [v4()]: {
             id: 'r3',
             name: 'what you LOVE',
-            items: [],
+            items: rectangleData[2],
             top: '642px',
             left: '259px',
             width: '271px' , 
@@ -57,11 +63,11 @@ const Circa = ()=>{
         [v4()]: {
             id: 'r4',
             name: 'what you are GOOD AT',
-            items: [],
+            items: rectangleData[3],
             top: '291px',
             left: '616px',
             width: '88px', 
-            maxWidth: '283px',
+            maxWidth: '110px',
             height: '261px'
             },
         [v4()]: {
@@ -71,7 +77,7 @@ const Circa = ()=>{
             top: '223px',
             left: '199px',
             width: '128px' , 
-            maxWidth: '283px',
+            maxWidth: '200px',
             height: '134px'
             },
         [v4()]: {
@@ -81,7 +87,7 @@ const Circa = ()=>{
             top: '490px',
             left: '198px',
             width: '129px' , 
-            maxWidth: '283px',
+            maxWidth: '200px',
             height: '130px'
             },
         [v4()]: {
@@ -101,7 +107,7 @@ const Circa = ()=>{
             top: '363px',
             left: '335px',
             width: '119px' , 
-            maxWidth: '150px',
+            maxWidth: '130px',
             height: '125px'
             },
         [v4()]: {
@@ -238,7 +244,7 @@ const Circa = ()=>{
                                 <p>Is this what the world needs? (If yes, move to blue circle)</p>
                         </div>
                     </div>
-                    <Row >
+                    <Row className="row-container">
                         <Col xs={9} className="venn-container p-0">
                             {Object.entries(filtered).map(([columnId, column]) => {
                                 return (
@@ -295,8 +301,21 @@ const Circa = ()=>{
                             </Droppable>
                         </Col>
                     </Row>
-                </DragDropContext>    
+                </DragDropContext>   
+
+              
             </div>
+            <Link
+                            to={{
+                                pathname: "/export",
+                                state: {columns}
+                            }}
+                        >
+                            {console.log({columns})}
+                            <button type="button" className="btn-default btn-2 btn-lg">
+                                Next
+                            </button>
+                        </Link> 
         </>
     );
 };

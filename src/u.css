@@ -44,6 +44,10 @@
     display: block;
 }
 
+.row-container{
+    width: 70vw;
+}
+
 .answers {
     display: flex;
     font-family: Nunito;

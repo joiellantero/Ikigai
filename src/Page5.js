@@ -26,6 +26,10 @@ class Page5 extends React.PureComponent {
 
     addItem() {
         // create item with unique id
+        if (!this.state.newItem.slice()){
+            return;
+        }
+
         const newItem = {
             id: 1 + Math.random(),
             value: this.state.newItem.slice()
@@ -54,8 +58,8 @@ class Page5 extends React.PureComponent {
     }
 
     render() {
-        const { state } = this.props.location
-        console.log({ state });
+        // const { state } = this.props.location
+        // console.log({ state });
         return (
             <>
                 <div className="page-container-6 container">
@@ -74,8 +78,8 @@ class Page5 extends React.PureComponent {
                     <h3>Your Ikigai, Visualised.</h3>
                     <div className="row my-5">
                         <div className="col-lg">
-                            {/* <Row>
-                                <Col xs={9}>
+                            <Row>
+                                {/* <Col xs={9}>
                                     <div className="container circle">
                                         {Object.entries(state).map(([columnId, column]) => {
                                             return (
@@ -94,7 +98,7 @@ class Page5 extends React.PureComponent {
                                             );
                                         })}
                                     </div>
-                                </Col>
+                                </Col> */}
                                 <Col >
                                     <div className="col-lg">
                                         <p>Your steps to achieving ikigai</p>
@@ -127,7 +131,7 @@ class Page5 extends React.PureComponent {
                                         </div>
                                     </div>
                                 </Col>
-                            </Row> */}
+                            </Row>
 
                         </div>
                     </div>
@@ -164,27 +168,27 @@ class Page5 extends React.PureComponent {
     }
 }
 
-// const Export = () => {
-//     const componentRef = useRef();
-//     const handlePrint = useReactToPrint({
-//         content: () => componentRef.current,
-//     });
+const Export = () => {
+    const componentRef = useRef();
+    const handlePrint = useReactToPrint({
+        content: () => componentRef.current,
+    });
 
-//     return (
-//         < div >
-//             <Page5 ref={componentRef} />
-//             <Row> <button onClick={handlePrint} type="button" className="btn-default btn-2 btn-lg my-5">
-//                 Export Report
-//                     </button>
-//             </Row>
-//         </div >
-//     );
-// };
+    return (
+        < div >
+            <Page5 ref={componentRef} />
+            <Row> <button onClick={handlePrint} type="button" className="btn-default btn-2 btn-lg my-5">
+                Export Report
+                    </button>
+            </Row>
+        </div >
+    );
+};
 
-// render(<Export />, document.querySelector("#root"));
+render(<Export />, document.querySelector("#root"));
 
-// export default Export;
-export default Page5;
+export default Export;
+//export default Page5;
 
 // const Export = () => {
 //     const componentRef = useRef();
