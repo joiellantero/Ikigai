@@ -73,7 +73,6 @@ class Page5 extends React.PureComponent {
                     <h3>Your Ikigai, Visualised.</h3>
                     <div className="row my-5">
                         <div className="col-lg">
-                            <p>***Venn Diagram Here***</p>
                             <Row>
                                 <Col xs={9}>
                                     <div className="container circle">
@@ -128,6 +127,7 @@ class Page5 extends React.PureComponent {
                                     </div>
                                 </Col>
                             </Row>
+
                         </div>
                     </div>
 
