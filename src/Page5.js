@@ -13,7 +13,8 @@ import Trash from './components/trash';
 import Add from './components/Add';
 import Far from './Page4'
 import Circle from './old_files/circle.js';
-
+import CircleSVG from './components/CircleSVG';
+import Hidden from './Hidden';
 
 class Page5 extends React.PureComponent {
     constructor(props) {
@@ -58,13 +59,13 @@ class Page5 extends React.PureComponent {
     }
 
     render() {
-        // const { state } = this.props.location
-        // console.log({ state });
-        return (
+        //const { state } = this.props.location
+        //const filtered = Object.fromEntries(Object.entries({state}.state.columns).filter(([colId, col]) => colId !== 'add'))
+        return(
             <>
                 <div className="page-container-6 container">
                     <div className="btn-back">
-                        {/* <Link to="/lets-find-out-ikigai">
+                        <Link to="/lets-find-out-ikigai">
                             <Button variant="light">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#1A1A1A" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -73,35 +74,33 @@ class Page5 extends React.PureComponent {
                                     <line x1="5" y1="12" x2="11" y2="6" />
                                 </svg>
                             </Button>
-                        </Link> */}
+                        </Link>
                     </div>
                     <h3>Your Ikigai, Visualised.</h3>
                     <div className="row my-5">
                         <div className="col-lg">
                             <Row>
-                                {/* <Col xs={9}>
-                                    <div className="container circle">
-                                        {Object.entries(state).map(([columnId, column]) => {
-                                            return (
-                                                <Circle
-                                                    key={columnId}
-                                                    id={column.id}
-                                                    col={column}
-                                                    columns={state}
-                                                    items={state.items}
-                                                    //handleColumn={setColumn}
-                                                    border={column.border}
-                                                    headingColor={column.headingColor}
-                                                    heading1={column.heading1}
-                                                    heading2={column.heading2}
-                                                />
-                                            );
-                                        })}
-                                    </div>
+                                {/* <Col xs={9} className="venn-container p-0">
+                                    {Object.entries(filtered).map(([columnId, column]) => {
+                                        return (
+                                            <Hidden
+                                                key={columnId}
+                                                id={columnId}
+                                                col={column}
+                                                columns={state}
+                                                // handleColumn={setColumn}
+                                                top = {column.top}
+                                                left = {column.left}
+                                                width = {column.width}
+                                                maxWidth = {column.maxWidth}
+                                                height = {column.height}>
+                                            </Hidden>
+                                        );
+                                    })}
+                                    <CircleSVG/>
                                 </Col> */}
                                 <Col >
                                     <div className="col-lg">
-                                        <p>Your steps to achieving ikigai</p>
                                         <div className="steps-container container">
                                             <ul>
                                                 {this.state.list.map(item => {
@@ -132,7 +131,6 @@ class Page5 extends React.PureComponent {
                                     </div>
                                 </Col>
                             </Row>
-
                         </div>
                     </div>
 
@@ -164,43 +162,23 @@ class Page5 extends React.PureComponent {
                     </div>
                 </div>
             </>
-        )
+        );
     }
 }
 
-const Export = () => {
+const Export= () => {
     const componentRef = useRef();
     const handlePrint = useReactToPrint({
-        content: () => componentRef.current,
+      content: () => componentRef.current,
     });
-
+  
     return (
-        < div >
-            <Page5 ref={componentRef} />
-            <Row> <button onClick={handlePrint} type="button" className="btn-default btn-2 btn-lg my-5">
-                Export Report
-                    </button>
-            </Row>
-        </div >
+      <div>
+        <Circa ref={componentRef} />
+        <button onClick={handlePrint}>Print this out!</button>
+      </div>
     );
-};
-
-render(<Export />, document.querySelector("#root"));
+  };
 
 export default Export;
 //export default Page5;
-
-// const Export = () => {
-//     const componentRef = useRef();
-
-//     return (
-//         <div>
-//             <ReactToPrint
-//                 trigger={() => <button>Print this out!</button>}
-//                 content={() => componentRef.current}
-//             />
-//             <Page3 ref={componentRef} />
-//         </div>
-//     );
-// };
-// export default Export;
