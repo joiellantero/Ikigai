@@ -166,9 +166,6 @@ class Page5 extends React.PureComponent {
     }
 }
 
-<<<<<<< HEAD
-export default Page6;
-=======
 const Export= () => {
     const componentRef = useRef();
     const handlePrint = useReactToPrint({
@@ -185,4 +182,3 @@ const Export= () => {
 
 export default Export;
 //export default Page5;
->>>>>>> nasir

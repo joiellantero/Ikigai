@@ -313,12 +313,9 @@ const Circa = ()=>{
                     Next
                 </button>
             </Link> 
-<<<<<<< HEAD
-=======
         </>
     );
 };
->>>>>>> nasir
 
 
 // const Export = () => {
