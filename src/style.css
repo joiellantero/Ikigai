@@ -428,44 +428,26 @@ body {
     z-index: 13;
 }
 
-.c2 .pills-location{
-    position: absolute;
-    z-index: 12;
-}
-
-.c3 .pills-location{
-    position: absolute;
-    z-index: 11;
-} 
-
-.c4 .pills-location{
-    position: absolute;
-    z-index: 10;
-}
-
-.c1, .c2, .c3, .c4 {
-    position: relative;
-}
-
 /* blue */
 
-.c1 .circle-container {
+.c1 {
     position: absolute;
     transform: translate(-400px, 250px);
-    z-index: -99;
+    z-index: 0;
     border-radius: 50%;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-    border: 10px solid rgb(40, 57, 114, 0.5);
+}
+
+.c1:hover {
+    z-index: 5;
+    background-color: #ffffff70;
 }
 
 .c1 .pills-location {
+    transform: translate(-150px, 50px);
     margin-right: 85px;
-    top: 358px;
-    left: -377px;
-    width: 153px;
-    height: 244px;
 }
 
 .c1 .title-container {
@@ -476,24 +458,25 @@ body {
 
 /* green */
 
-.c2 .circle-container {
+.c2 {
     text-align: center;
     position: absolute;
     transform: translate(-225px, 400px);
-    z-index: -99;
+    z-index: 0;
     border-radius: 50%;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-    border: 10px solid rgba(14, 238, 171, 0.5);
+}
+
+.c2:hover {
+    z-index: 5;
+    background-color: #ffffff70;
 }
 
 .c2 .pills-location {
+    transform: translate(0, 250px);
     margin-top: 0;
-    top: 687px;
-    left: -101px;
-    width: 194px;
-    height: 130px;
 }
 
 .c2 .title-container {
@@ -506,23 +489,24 @@ body {
 
 /* red */
 
-.c3 .circle-container {
+.c3 {
     text-align: right;
     position: absolute;
     transform: translate(-60px, 250px);
-    z-index: -99;
+    z-index: 0;
     border-radius: 50%;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-    border: 10px solid rgb(255, 91, 91, 0.5);
+}
+
+.c3:hover {
+    z-index: 5;
+    background-color: #ffffff70;
 }
 
 .c3 .pills-location {
-    top: 358px;
-    left: 225px;
-    width: 133px;
-    height: 237px;
+    transform: translate(150px, 50px);
 }
 
 .c3 .title-container {
@@ -530,33 +514,38 @@ body {
     right: -20px;
 }
 
+.c3 .pills-location {
+    margin-left: 85px;
+}
+
 
 /* yellow */
 
-.c4 .circle-container {
+.c4 {
     text-align: center;
     position: absolute;
     transform: translate(-225px, 100px);
-    z-index: -99;
+    z-index: 0;
     border-radius: 50%;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-    border: 10px solid rgb(255, 223, 0, 0.5);
 }
 
-.c4 .pills-location{
-    top: 119px;
-    left: -91px;
-    width: 176px;
-    height: 124px;
+.c4:hover {
+    z-index: 5;
+    background-color: #ffffff70;
+}
+
+.c4 .pills-location {
+    transform: translate(0px, -10px);
 }
 
 .c4 .title-container {
     position: absolute;
     left: 0;
     right: 0;
-    top: -65px;
+    top: -65px
 }
 
 .circle.rounded-pill {

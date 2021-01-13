@@ -1,25 +1,35 @@
-import React, { Component } from 'react';
-import { Link } from "react-router-dom";
-import { InputGroup, Button, FormControl} from 'react-bootstrap';
-
+import React, { Component, useRef } from 'react';
+import { useLocation, Link } from "react-router-dom";
+import "./style.css";
+import { InputGroup, Row, Col, Container, Button, FormControl } from 'react-bootstrap';
+import { render } from "react-dom";
+import { useReactToPrint } from 'react-to-print';
+import ReactToPrint from 'react-to-print';
 import Twitter from './components/Twitter';
 import Facebook from './components/Facebook';
 import Linkedin from './components/Linkedin';
 import Whatsapp from './components/Whatsapp';
 import Trash from './components/trash';
 import Add from './components/Add';
+import Far from './Page4'
+import Circle from './old_files/circle.js';
 
-class Page6 extends Component{
-    constructor(props){
+
+class Page5 extends React.PureComponent {
+    constructor(props) {
         super(props);
         this.state = {
             newItem: "",
-            list: []
+            list: [],
         }
     }
 
     addItem() {
         // create item with unique id
+        if (!this.state.newItem.slice()){
+            return;
+        }
+
         const newItem = {
             id: 1 + Math.random(),
             value: this.state.newItem.slice()
@@ -31,14 +41,14 @@ class Page6 extends Component{
 
         this.setState({
             list,
-            newItem:""
+            newItem: ""
         })
     }
 
-    deleteItem(id){
+    deleteItem(id) {
         const list = [...this.state.list];
         const updatedList = list.filter(item => item.id !== id);
-        this.setState({list:updatedList});
+        this.setState({ list: updatedList });
     }
 
     handleInputChange = (key, value) => {
@@ -47,56 +57,82 @@ class Page6 extends Component{
         });
     }
 
-    render(){
+    render() {
+        // const { state } = this.props.location
+        // console.log({ state });
         return (
             <>
                 <div className="page-container-6 container">
                     <div className="btn-back">
-                        <Link to="/lets-find-out-ikigai">
+                        {/* <Link to="/lets-find-out-ikigai">
                             <Button variant="light">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#1A1A1A" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                     <line x1="5" y1="12" x2="19" y2="12" />
                                     <line x1="5" y1="12" x2="11" y2="18" />
                                     <line x1="5" y1="12" x2="11" y2="6" />
                                 </svg>
                             </Button>
-                        </Link>
+                        </Link> */}
                     </div>
                     <h3>Your Ikigai, Visualised.</h3>
                     <div className="row my-5">
                         <div className="col-lg">
-                            <p>***Venn Diagram Here***</p>
-                        </div>
-                        <div className="col-lg">
-                            <p>Your steps to achieving ikigai</p>
-                            <div className="steps-container container">
-                                <ul>
-                                    {this.state.list.map(item => {
-                                        return(
-                                            <li key={item.id}>
-                                                {item.value}
-                                                <button className="btn-delete" onClick={() => this.deleteItem(item.id)}><Trash /></button>
-                                            </li>
-                                        )
-                                    })}
-                                </ul>
-                                <InputGroup>
-                                    <FormControl
-                                        placeholder="Enter step..."
-                                        aria-label="Enter step..."
-                                        aria-describedby="basic-addon2"
-                                        className="steps-input"
-                                        name="step"
-                                        value={this.state.newItem}
-                                        onChange={e => this.handleInputChange("newItem", e.target.value)}
-                                        onKeyPress={e => e.key === "Enter" && this.addItem()}
-                                    />
-                                    <InputGroup.Append>
-                                        <Button className="btn-add" onClick={() => this.addItem()} disabled={!this.state.newItem}><Add /></Button>
-                                    </InputGroup.Append>
-                                </InputGroup>
-                            </div>
+                            <Row>
+                                {/* <Col xs={9}>
+                                    <div className="container circle">
+                                        {Object.entries(state).map(([columnId, column]) => {
+                                            return (
+                                                <Circle
+                                                    key={columnId}
+                                                    id={column.id}
+                                                    col={column}
+                                                    columns={state}
+                                                    items={state.items}
+                                                    //handleColumn={setColumn}
+                                                    border={column.border}
+                                                    headingColor={column.headingColor}
+                                                    heading1={column.heading1}
+                                                    heading2={column.heading2}
+                                                />
+                                            );
+                                        })}
+                                    </div>
+                                </Col> */}
+                                <Col >
+                                    <div className="col-lg">
+                                        <p>Your steps to achieving ikigai</p>
+                                        <div className="steps-container container">
+                                            <ul>
+                                                {this.state.list.map(item => {
+                                                    return (
+                                                        <li key={item.id}>
+                                                            {item.value}
+                                                            <button className="btn-delete" onClick={() => this.deleteItem(item.id)}><Trash /></button>
+                                                        </li>
+                                                    )
+                                                })}
+                                            </ul>
+                                            <InputGroup>
+                                                <FormControl
+                                                    placeholder="Enter step..."
+                                                    aria-label="Enter step..."
+                                                    aria-describedby="basic-addon2"
+                                                    className="steps-input"
+                                                    name="step"
+                                                    value={this.state.newItem}
+                                                    onChange={e => this.handleInputChange("newItem", e.target.value)}
+                                                    onKeyPress={e => e.key === "Enter" && this.addItem()}
+                                                />
+                                                <InputGroup.Append>
+                                                    <Button className="btn-add" onClick={() => this.addItem()} disabled={!this.state.newItem}><Add /></Button>
+                                                </InputGroup.Append>
+                                            </InputGroup>
+                                        </div>
+                                    </div>
+                                </Col>
+                            </Row>
+
                         </div>
                     </div>
 
@@ -132,4 +168,39 @@ class Page6 extends Component{
     }
 }
 
-export default Page6;
+const Export = () => {
+    const componentRef = useRef();
+    const handlePrint = useReactToPrint({
+        content: () => componentRef.current,
+    });
+
+    return (
+        < div >
+            <Page5 ref={componentRef} />
+            <Row> <button onClick={handlePrint} type="button" className="btn-default btn-2 btn-lg my-5">
+                Export Report
+                    </button>
+            </Row>
+        </div >
+    );
+};
+
+render(<Export />, document.querySelector("#root"));
+
+export default Export;
+//export default Page5;
+
+// const Export = () => {
+//     const componentRef = useRef();
+
+//     return (
+//         <div>
+//             <ReactToPrint
+//                 trigger={() => <button>Print this out!</button>}
+//                 content={() => componentRef.current}
+//             />
+//             <Page3 ref={componentRef} />
+//         </div>
+//     );
+// };
+// export default Export;
