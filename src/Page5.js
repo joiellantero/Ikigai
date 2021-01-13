@@ -8,6 +8,13 @@ import Linkedin from './components/Linkedin';
 import Whatsapp from './components/Whatsapp';
 import Trash from './components/trash';
 import Add from './components/Add';
+<<<<<<< Updated upstream
+=======
+import Far from './Page4'
+import Circle from './old_files/circle.js';
+import CircleSVG from './components/CircleSVG';
+import Hidden from './Hidden';
+>>>>>>> Stashed changes
 
 class Page6 extends Component{
     constructor(props){
@@ -47,8 +54,15 @@ class Page6 extends Component{
         });
     }
 
+<<<<<<< Updated upstream
     render(){
         return (
+=======
+    render() {
+        //const { state } = this.props.location
+        //const filtered = Object.fromEntries(Object.entries({state}.state.columns).filter(([colId, col]) => colId !== 'add'))
+        return(
+>>>>>>> Stashed changes
             <>
                 <div className="page-container-6 container">
                     <div className="btn-back">
@@ -66,6 +80,7 @@ class Page6 extends Component{
                     <h3>Your Ikigai, Visualised.</h3>
                     <div className="row my-5">
                         <div className="col-lg">
+<<<<<<< Updated upstream
                             <p>***Venn Diagram Here***</p>
                         </div>
                         <div className="col-lg">
@@ -97,6 +112,60 @@ class Page6 extends Component{
                                     </InputGroup.Append>
                                 </InputGroup>
                             </div>
+=======
+                            <Row>
+                                {/* <Col xs={9} className="venn-container p-0">
+                                    {Object.entries(filtered).map(([columnId, column]) => {
+                                        return (
+                                            <Hidden
+                                                key={columnId}
+                                                id={columnId}
+                                                col={column}
+                                                columns={state}
+                                                // handleColumn={setColumn}
+                                                top = {column.top}
+                                                left = {column.left}
+                                                width = {column.width}
+                                                maxWidth = {column.maxWidth}
+                                                height = {column.height}>
+                                            </Hidden>
+                                        );
+                                    })}
+                                    <CircleSVG/>
+                                </Col> */}
+                                <Col >
+                                    <div className="col-lg">
+                                        <div className="steps-container container">
+                                            <ul>
+                                                {this.state.list.map(item => {
+                                                    return (
+                                                        <li key={item.id}>
+                                                            {item.value}
+                                                            <button className="btn-delete" onClick={() => this.deleteItem(item.id)}><Trash /></button>
+                                                        </li>
+                                                    )
+                                                })}
+                                            </ul>
+                                            <InputGroup>
+                                                <FormControl
+                                                    placeholder="Enter step..."
+                                                    aria-label="Enter step..."
+                                                    aria-describedby="basic-addon2"
+                                                    className="steps-input"
+                                                    name="step"
+                                                    value={this.state.newItem}
+                                                    onChange={e => this.handleInputChange("newItem", e.target.value)}
+                                                    onKeyPress={e => e.key === "Enter" && this.addItem()}
+                                                />
+                                                <InputGroup.Append>
+                                                    <Button className="btn-add" onClick={() => this.addItem()} disabled={!this.state.newItem}><Add /></Button>
+                                                </InputGroup.Append>
+                                            </InputGroup>
+                                        </div>
+                                    </div>
+                                </Col>
+                            </Row>
+>>>>>>> Stashed changes
                         </div>
                     </div>
 
@@ -128,8 +197,27 @@ class Page6 extends Component{
                     </div>
                 </div>
             </>
-        )
+        );
     }
 }
 
+<<<<<<< Updated upstream
 export default Page6;
+=======
+const Export= () => {
+    const componentRef = useRef();
+    const handlePrint = useReactToPrint({
+      content: () => componentRef.current,
+    });
+  
+    return (
+      <div>
+        <Circa ref={componentRef} />
+        <button onClick={handlePrint}>Print this out!</button>
+      </div>
+    );
+  };
+
+export default Export;
+//export default Page5;
+>>>>>>> Stashed changes
