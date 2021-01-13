@@ -13,7 +13,7 @@ import Trash from './components/trash';
 import Note from './Note';
 import BackButton from './components/BackButton';
 import CircleSVG from './components/CircleSVG';
-import logo from './images/logo.png';
+import Logo from './images/logo';
 import ReactDOM from "react-dom";
 import Pdf from "react-to-pdf";
 //paid, vocation, needs, mission, love, passion, ikigai, profession, good
@@ -234,9 +234,8 @@ const Circa = () => {
     return (
 
         <>
-            {/* <div className="main-logo">
-                <img src={logo} alt="cs-logo" />
-            </div> */}
+            {/* <Logo/> */}
+
             <div className="venn-diagram" style={{ display: 'table', margin: '0 auto' }}>
                 <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
                     <div className="btn-back">
