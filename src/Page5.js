@@ -4,6 +4,7 @@ import "./style.css";
 import { InputGroup, Row, Col, Container, Button, FormControl } from 'react-bootstrap';
 import { render } from "react-dom";
 import { useReactToPrint } from 'react-to-print';
+import ReactToPrint from 'react-to-print';
 import Twitter from './components/Twitter';
 import Facebook from './components/Facebook';
 import Linkedin from './components/Linkedin';
@@ -184,3 +185,18 @@ class Page5 extends React.PureComponent {
 
 // export default Export;
 export default Page5;
+
+// const Export = () => {
+//     const componentRef = useRef();
+
+//     return (
+//         <div>
+//             <ReactToPrint
+//                 trigger={() => <button>Print this out!</button>}
+//                 content={() => componentRef.current}
+//             />
+//             <Page3 ref={componentRef} />
+//         </div>
+//     );
+// };
+// export default Export;
