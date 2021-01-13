@@ -1,0 +1,185 @@
+.question {
+    font-family: Nunito;
+    font-size: 1.3em;
+    font-weight: 600;
+    font-style: bold;
+    margin-bottom: .5em;
+    margin-top: 2em;
+}
+
+.venn-diagram .hid .rounded-pill .intext {
+    white-space: nowrap;
+}
+
+.venn-diagram .pill-container .rounded-pill,
+.venn-diagram .hid .rounded-pill {
+    font-size: 0.8em;
+    overflow: hidden;
+    padding: 5px 10px 5px 10px;
+    min-width: 30px;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 20px;
+    background-color: #F5F5F5;
+}
+
+.venn-diagram .pill-container .rounded-pill:hover .edit-text,
+.venn-diagram .hid .rounded-pill:hover .edit-text {
+    transform: translateX(-15px);
+}
+
+.venn-diagram .pill-container .rounded-pill:hover .btn-delete-container svg,
+.venn-diagram .hid .rounded-pill:hover .btn-delete-container svg {
+    height: 15px;
+    width: 15px;
+    margin-right: -5px;
+}
+
+.venn-container {
+    position: relative;
+    margin: 0 auto;
+}
+
+.venn-container .circle-add .pill-container {
+    display: block;
+}
+
+.row-container{
+    width: 70vw;
+}
+
+.answers {
+    display: flex;
+    font-family: Nunito;
+    font-size: 1.1em;
+    font-weight: 300;
+}
+
+.instructions p {
+    margin: 0;
+}
+
+.circle {
+    opacity: 0.6;
+    fill-opacity: .3;
+    stroke-width: 2;
+    stroke-opacity: 1;
+}
+
+.c1 {
+    fill: #283972;
+    fill-opacity: 0;
+    stroke: #283972;
+    z-index: -99;
+}
+
+.c2 {
+    fill: #FF5B5B;
+    fill-opacity: 0;
+    stroke: #FF5B5B;
+    z-index: -99;
+}
+
+.c3 {
+    fill: #0EEEAB;
+    fill-opacity: 0;
+    stroke: #0EEEAB;
+    z-index: -99;
+}
+
+.c4 {
+    fill: #FFDF00;
+    fill-opacity: 0;
+    stroke: #FFDF00;
+    z-index: -99;
+}
+
+.hid {
+    position: absolute;
+    z-index: 1;
+    overflow: visible;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-activity-col {
+    width: 100px;
+}
+
+.filled {
+    fill-opacity: .3;
+    animation-name: fadeInCircleOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    animation-duration: 1s;
+}
+
+@keyframes fadeInCircleOpacity {
+    0% {
+        fill-opacity: 0;
+    }
+    100% {
+        fill-opacity: .3;
+    }
+}
+
+.text {
+    font-family: Nunito;
+    stroke-width: 0.264;
+}
+
+.text-normal {
+    font-size: 5px;
+    font-weight: 300;
+}
+
+.text-small {
+    font-size: 2px;
+    font-weight: 300;
+    font-style: italic;
+    fill: #4d4d4d;
+    animation-name: fadeInTextOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 1.5s;
+}
+
+@keyframes fadeInTextOpacity {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.text-bold {
+    font-size: 7px;
+    font-weight: 500;
+}
+
+.text-title {
+    font-size: 4px;
+    font-style: italic;
+    font-weight: 500;
+    animation-name: fadeInTextOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    animation-duration: .5s;
+}
+
+.text-purpose {
+    fill: #e73309;
+}
+
+.hidden {
+    display: none;
+}
+
+header {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}

@@ -28,7 +28,7 @@ const Rectangle = (props)=> {
               ...props.col,
               items: newList
             }
-          };
+        };
 
         props.handleColumn(newColumns);
         
