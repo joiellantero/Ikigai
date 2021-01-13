@@ -221,10 +221,9 @@ const Far = () => {
                         <Link
                             to={{
                                 pathname: "/u",
-                                state: {columns}
+                                cols: columns
                             }}
                         >
-                            {console.log({columns})}
                             <button type="button" className="btn-default btn-2 btn-lg">
                                 Next
                             </button>

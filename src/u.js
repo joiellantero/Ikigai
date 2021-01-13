@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import React, { useRef, useState } from 'react';
+import React, {  useState } from 'react';
 import { useReactToPrint } from 'react-to-print';
 import ReactToPrint from 'react-to-print';
 import { Button } from 'react-bootstrap';
@@ -19,125 +19,129 @@ import Pdf from "react-to-pdf";
 //paid, vocation, needs, mission, love, passion, ikigai, profession, good
 
 
-const ref = React.createRef();
-
 const Circa = () => {
-    const { state } = useLocation();
+    const {cols, pathname}  = useLocation();
+    let circleData = null;
+    
+    if (pathname === '/u'){
+        const rectangleData = [[], [], [], []]
+        let i = 0
 
+        Object.entries(cols).map(([columnId, column]) => {
+            rectangleData[i] = column.items;
+            i += 1;
+        });
 
-    const rectangleData = [[], [], [], []]
-    let i = 0
-
-    Object.entries({ state }.state.columns).map(([columnId, column]) => {
-        rectangleData[i] = column.items;
-        i += 1;
-    });
-
-    const circleData = {
-        [v4()]: {
-            id: 'r1',
-            name: 'what you are PAID FOR',
-            items: rectangleData[1],
-            top: '118px',
-            left: '254px',
-            width: '283px',
-            maxWidth: '283px',
-            height: '82px',
-        },
-        [v4()]: {
-            id: 'r2',
-            name: 'what the WORLD NEEDS',
-            items: rectangleData[0],
-            top: '292px',
-            left: '83px',
-            width: '90px',
-            maxWidth: '110px',
-            height: '258px'
-        },
-        [v4()]: {
-            id: 'r3',
-            name: 'what you LOVE',
-            items: rectangleData[2],
-            top: '642px',
-            left: '259px',
-            width: '271px',
-            maxWidth: '283px',
-            height: '89px'
-        },
-        [v4()]: {
-            id: 'r4',
-            name: 'what you are GOOD AT',
-            items: rectangleData[3],
-            top: '291px',
-            left: '616px',
-            width: '88px',
-            maxWidth: '110px',
-            height: '261px'
-        },
-        [v4()]: {
-            id: 'r5',
-            name: '', // blue yellow
-            items: [],
-            top: '223px',
-            left: '199px',
-            width: '128px',
-            maxWidth: '200px',
-            height: '134px'
-        },
-        [v4()]: {
-            id: 'r6',
-            name: '', // green blue
-            items: [],
-            top: '490px',
-            left: '198px',
-            width: '129px',
-            maxWidth: '200px',
-            height: '130px'
-        },
-        [v4()]: {
-            id: 'r7',
-            name: '', // green red
-            items: [],
-            top: '497px',
-            left: '461px',
-            width: '134px',
-            maxWidth: '200px',
-            height: '128px'
-        },
-        [v4()]: {
-            id: 'r8',
-            name: '', // center
-            items: [],
-            top: '363px',
-            left: '335px',
-            width: '119px',
-            maxWidth: '130px',
-            height: '125px'
-        },
-        [v4()]: {
-            id: 'r9',
-            name: '', // red yellow
-            items: [],
-            top: '230px',
-            left: '460px',
-            width: '132px',
-            maxWidth: '2px',
-            height: '127px'
-        },
-        ['add']: {
-            id: 'r10',
-            name: '', // add activity
-            items: [{ id: v4(), intext: 'dshjfgdhsjgf' }],
-            top: '',
-            left: '',
-            width: '',
-            height: ''
-        },
-    };
+        circleData = {
+            [v4()]: {
+                id: 'r1',
+                name: 'what you can be PAID FOR',
+                items: rectangleData[3],
+                top: '118px',
+                left: '254px',
+                width: '283px',
+                maxWidth: '283px',
+                height: '82px',
+            },
+            [v4()]: {
+                id: 'r2',
+                name: 'what the WORLD NEEDS',
+                items: rectangleData[0],
+                top: '292px',
+                left: '83px',
+                width: '90px',
+                maxWidth: '110px',
+                height: '258px'
+            },
+            [v4()]: {
+                id: 'r3',
+                name: 'what you LOVE',
+                items: rectangleData[1],
+                top: '642px',
+                left: '259px',
+                width: '271px',
+                maxWidth: '283px',
+                height: '89px'
+            },
+            [v4()]: {
+                id: 'r4',
+                name: 'what you are GOOD AT',
+                items: rectangleData[2],
+                top: '291px',
+                left: '616px',
+                width: '88px',
+                maxWidth: '110px',
+                height: '261px'
+            },
+            [v4()]: {
+                id: 'r5',
+                name: '', // blue yellow
+                items: [],
+                top: '223px',
+                left: '199px',
+                width: '128px',
+                maxWidth: '200px',
+                height: '134px'
+            },
+            [v4()]: {
+                id: 'r6',
+                name: '', // green blue
+                items: [],
+                top: '490px',
+                left: '198px',
+                width: '129px',
+                maxWidth: '200px',
+                height: '130px'
+            },
+            [v4()]: {
+                id: 'r7',
+                name: '', // green red
+                items: [],
+                top: '497px',
+                left: '461px',
+                width: '134px',
+                maxWidth: '200px',
+                height: '128px'
+            },
+            [v4()]: {
+                id: 'r8',
+                name: '', // center
+                items: [],
+                top: '363px',
+                left: '335px',
+                width: '119px',
+                maxWidth: '130px',
+                height: '125px'
+            },
+            [v4()]: {
+                id: 'r9',
+                name: '', // red yellow
+                items: [],
+                top: '230px',
+                left: '460px',
+                width: '132px',
+                maxWidth: '2px',
+                height: '127px'
+            },
+            ['add']: {
+                id: 'r10',
+                name: '', // add activity
+                items: [],
+                top: '',
+                left: '',
+                width: '',
+                height: ''
+            },
+        };
+    }
+    else {
+        circleData = cols;
+    }
 
     const [columns, setColumn] = useState(circleData);
     const filtered = Object.fromEntries(Object.entries(columns).filter(([colId, col]) => colId !== 'add'))
     const [text, setText] = React.useState('');
+
 
     function handleChange(event) {
         event.preventDefault()
@@ -149,7 +153,6 @@ const Circa = () => {
             return;
         }
         const newList = columns['add'].items.concat({ id: v4(), intext: text });
-
         const newColumns = {
             ...columns,
             ['add']: {
@@ -229,14 +232,12 @@ const Circa = () => {
 
 
     return (
+
         <>
-            <Pdf targetRef={ref} filename="code-example.pdf">
-                {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
-            </Pdf>
-            <div className="main-logo">
+            {/* <div className="main-logo">
                 <img src={logo} alt="cs-logo" />
-            </div>
-            <div ref={ref} className="venn-diagram" style={{ display: 'table', margin: '0 auto' }}>
+            </div> */}
+            <div className="venn-diagram" style={{ display: 'table', margin: '0 auto' }}>
                 <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
                     <div className="btn-back">
                         {/* <BackButton /> */}
@@ -292,9 +293,9 @@ const Circa = () => {
                                             {columns['add'].items.map((element, index) =>
                                                 <Note
                                                     columnId='add'
-                                                    col={circleData['add']}
-                                                    columns={circleData}
-                                                    items={circleData['add'].items}
+                                                    col={columns['add']}
+                                                    columns={columns}
+                                                    items={columns['add'].items}
                                                     key={element.id}
                                                     id={element.id}
                                                     intext={element.intext}
@@ -312,11 +313,10 @@ const Circa = () => {
             </div>
             <Link
                 to={{
-                    pathname: "/export",
-                    state: { columns }
+                    pathname: "/print",
+                    cols: columns
                 }}
             >
-                {console.log({ columns })}
                 <button type="button" className="btn-default btn-2 btn-lg">
                     Next
                 </button>

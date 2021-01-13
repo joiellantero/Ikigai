@@ -10,7 +10,7 @@ import Page4 from "./Page4";
 import Page5 from "./Page5";
 import Page9 from "./page4_temp";
 import Circa from "./u";
-import App from "./print";
+import Example from "./print";
 
 
 const rootElement = document.getElementById("root");
@@ -25,7 +25,7 @@ ReactDOM.render(
             <Route path="/export" component={Page5} />
             <Route path="/new" component={Page9} />
             <Route path="/u" component={Circa} />
-            <Route path="/print" component={App} />
+            <Route path="/print" component={Example} />
         </Switch>
     </BrowserRouter>,
     rootElement
