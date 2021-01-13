@@ -59,7 +59,7 @@ const Rectangle = (props)=> {
     return ( 
         <Droppable droppableId={props.id} direction="horizontal">
             {(provided, snapshot) => (
-                <div className="rectangle-container text-center" ref={provided.innerRef} {...provided.droppableProps} style = {{background: snapshot.isDraggingOver ? "skyblue" :color , border: snapshot.isDraggingOver ? '2px solid green' : ''}}>
+                <div className="rectangle-container text-center" ref={provided.innerRef} {...provided.droppableProps} style = {{background: snapshot.isDraggingOver ? "rgba(223, 223, 223, 0.1)" :color , border: snapshot.isDraggingOver ? '0px solid #878FAE' : ''}}>
                     <h3 className="dark-blue" style = {{color: headingColor}}>
                         {heading1}<br></br><strong>{heading2}</strong>
                         <OverlayTrigger

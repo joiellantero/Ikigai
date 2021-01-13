@@ -15,6 +15,7 @@ import Far from './Page4'
 import Circle from './old_files/circle.js';
 import CircleSVG from './components/CircleSVG';
 import Hidden from './Hidden';
+import Circa from './u';
 
 class Page5 extends React.PureComponent {
     constructor(props) {

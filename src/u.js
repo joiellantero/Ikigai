@@ -15,12 +15,7 @@ import BackButton from './components/BackButton';
 import CircleSVG from './components/CircleSVG';
 import logo from './images/logo.png';
 
-<<<<<<< Updated upstream
-//paid, vocation, needs, mission, love, passion, ikigai, profession, good
 
-
-=======
->>>>>>> Stashed changes
 const Circa = ()=>{
     const { state } = useLocation();
     const rectangleData = [[],[],[],[]]
