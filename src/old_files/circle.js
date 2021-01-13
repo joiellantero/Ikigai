@@ -19,7 +19,7 @@ const Circle = (props)=> {
     }
 
     const onStop = () => {
-        this.setState({activeDrags: --this.state.activeDrags});
+        this.setState({activeDrags: this.state.activeDrags});
       };
 
     function Note(props) {

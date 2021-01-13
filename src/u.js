@@ -15,9 +15,12 @@ import BackButton from './components/BackButton';
 import CircleSVG from './components/CircleSVG';
 import logo from './images/logo.png';
 
+<<<<<<< Updated upstream
 //paid, vocation, needs, mission, love, passion, ikigai, profession, good
 
 
+=======
+>>>>>>> Stashed changes
 const Circa = ()=>{
     const { state } = useLocation();
     const rectangleData = [[],[],[],[]]
@@ -317,19 +320,4 @@ const Circa = ()=>{
     );
 };
 
-
-// const Export = () => {
-//     const componentRef = useRef();
-//     const handlePrint = useReactToPrint({
-//       content: () => componentRef.current,
-//     });
-  
-//     return (
-//       <div>
-//         <Circa ref={componentRef} />
-//         <button onClick={handlePrint}>Print this out!</button>
-//       </div>
-//     );
-//   };
-// export default Export;
 export default Circa;
