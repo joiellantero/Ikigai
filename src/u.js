@@ -18,16 +18,15 @@ import logo from './images/logo.png';
 //paid, vocation, needs, mission, love, passion, ikigai, profession, good
 
 
-
 const Circa = ()=>{
     const { state } = useLocation();
     const rectangleData = [[],[],[],[]]
     let i = 0
+    
     Object.entries({state}.state.columns).map(([columnId, column]) => {
         rectangleData[i] = column.items;
         i+=1;
     });
-
 
     const circleData = {
         [v4()]: {
@@ -302,20 +301,18 @@ const Circa = ()=>{
                         </Col>
                     </Row>
                 </DragDropContext>   
-
-              
             </div>
             <Link
-                            to={{
-                                pathname: "/export",
-                                state: {columns}
-                            }}
-                        >
-                            {console.log({columns})}
-                            <button type="button" className="btn-default btn-2 btn-lg">
-                                Next
-                            </button>
-                        </Link> 
+                to={{
+                    pathname: "/export",
+                    state: {columns}
+                }}
+            >
+                {console.log({columns})}
+                <button type="button" className="btn-default btn-2 btn-lg">
+                    Next
+                </button>
+            </Link> 
         </>
     );
 };
