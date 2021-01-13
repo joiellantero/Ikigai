@@ -313,9 +313,6 @@ const Circa = ()=>{
                     Next
                 </button>
             </Link> 
-        </>
-    );
-};
 
 
 // const Export = () => {
