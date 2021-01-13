@@ -27,7 +27,7 @@ class Page5 extends React.PureComponent {
 
     addItem() {
         // create item with unique id
-        if (!this.state.newItem.slice()){
+        if (!this.state.newItem.slice()) {
             return;
         }
 
@@ -61,7 +61,7 @@ class Page5 extends React.PureComponent {
     render() {
         //const { state } = this.props.location
         //const filtered = Object.fromEntries(Object.entries({state}.state.columns).filter(([colId, col]) => colId !== 'add'))
-        return(
+        return (
             <>
                 <div className="page-container-6 container">
                     <div className="btn-back">
@@ -166,19 +166,19 @@ class Page5 extends React.PureComponent {
     }
 }
 
-const Export= () => {
-    const componentRef = useRef();
-    const handlePrint = useReactToPrint({
-      content: () => componentRef.current,
-    });
-  
-    return (
-      <div>
-        <Circa ref={componentRef} />
-        <button onClick={handlePrint}>Print this out!</button>
-      </div>
-    );
-  };
+// const Export= () => {
+//     const componentRef = useRef();
+//     const handlePrint = useReactToPrint({
+//       content: () => componentRef.current,
+//     });
 
-export default Export;
-//export default Page5;
+//     return (
+//       <div>
+//         <Circa ref={componentRef} />
+//         <button onClick={handlePrint}>Print this out!</button>
+//       </div>
+//     );
+//   };
+
+// export default Export;
+export default Page5;
