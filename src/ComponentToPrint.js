@@ -10,6 +10,7 @@ import BackButton from './components/BackButton';
 const Intermediate  = () => {
   const { columns, filtered, setColumn, onDragEnd }  = useLocation();
 
+
   return (
      <div className="venn-diagram" style={{ display: 'table', margin: '0 auto' }}>
         <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
@@ -54,7 +55,7 @@ class Print extends Component {
     render() {
       return (
         <>
-          <Modal show={this.show} onHide={this.handleClose}>
+          <Modal show={this.props.show} onHide={this.handleClose}>
               <Modal.Header closeButton>
                   <Modal.Title>Are you sure?</Modal.Title>
               </Modal.Header>
