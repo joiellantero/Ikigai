@@ -24,6 +24,7 @@ ReactDOM.render(
             <Route path="/export" component={Page5} />
             <Route path="/u" component={Circa} />
             <Route path="/print" component={Example} />
+
         </Switch>
     </BrowserRouter>,
     rootElement
