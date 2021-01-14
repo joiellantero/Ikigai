@@ -43,7 +43,7 @@ body {
 }
 
 .btn-secondary {
-    background-color: grey !important;
+    background-color: #FF5B5B !important;
 }
 
 .hvr-float {
@@ -68,9 +68,12 @@ body {
 }
 
 .btn-default:focus,
-.btn-secondary:focus {
+.btn-default:active,
+.btn-secondary:focus,
+.btn-secondary:active {
     border: none;
     outline: none;
+    box-shadow: none;
 }
 
 .btn-back {

@@ -240,7 +240,7 @@ const Circa = () => {
                 </Modal.Header>
                 <Modal.Body>Going back to the previous page will erase your progress? Do you want to begin from scratch?</Modal.Body>
                 <Modal.Footer>
-                    <button className="btn-secondary btn-lg" onClick={handleClose}>
+                    <button className="btn-default btn-lg" onClick={handleClose}>
                         No
                     </button>
                     <Link
@@ -249,7 +249,7 @@ const Circa = () => {
                             cols: columns
                         }}
                     >
-                        <button className="btn-default btn-lg">
+                        <button className="btn-secondary btn-lg">
                             Yes
                         </button>
                     </Link>
