@@ -1,13 +1,13 @@
-import "bootstrap/dist/css/bootstrap.min.css";
 import React, {  useState } from 'react';
-import { useLocation, Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import "./u.css";
-import { DragDropContext, Droppable } from "react-beautiful-dnd";
-import Hidden from './Hidden';
+import { DragDropContext } from "react-beautiful-dnd";
 import { v4 } from 'uuid';
-import { Row, Col, Form } from 'react-bootstrap';
-import Note from './Note';
-import CircleSVG from './components/CircleSVG';
+import { Row, Col } from 'react-bootstrap';
+import Venn from './Venn';
+import { Link } from "react-router-dom";
+import Logo from './images/logo';
+import AddActivity from './AddActivity';
 //paid, vocation, needs, mission, love, passion, ikigai, profession, good
 
 const Circa = () => {
@@ -133,7 +133,6 @@ const Circa = () => {
     const filtered = Object.fromEntries(Object.entries(columns).filter(([colId]) => colId !== 'add'))
     const [text, setText] = React.useState('');
 
-
     function handleChange(event) {
         event.preventDefault()
         setText(event.target.value);
@@ -220,8 +219,7 @@ const Circa = () => {
 
     return (
         <>
-            {/* <Logo/> */}
-
+            <Logo/>
             <div className="venn-diagram" style={{ display: 'table', margin: '0 auto' }}>
                 <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
                     <div className="btn-back">
@@ -238,73 +236,26 @@ const Circa = () => {
                         </div>
                     </div>
                     <Row className="row-container">
-                        <Col xs={9} className="venn-container p-0">
-                            {Object.entries(filtered).map(([columnId, column]) => {
-                                return (
-                                    <Hidden
-                                        key={columnId}
-                                        id={columnId}
-                                        col={column}
-                                        columns={columns}
-                                        handleColumn={setColumn}
-                                        top={column.top}
-                                        left={column.left}
-                                        width={column.width}
-                                        maxWidth={column.maxWidth}
-                                        height={column.height}>
-                                    </Hidden>
-                                );
-                            })}
-                            <CircleSVG />
-                        </Col>
-
+                        <Venn filtered = {filtered} columns ={columns} setColumn = {setColumn}/>
                         <Col xs={3} className="circle-add mt-5">
-                            <Droppable droppableId='add'>
-                                {(provided) => (
-                                    <>
-                                        <div ref={provided.innerRef} {...provided.droppableProps}>
-                                            {provided.placeholder}
-                                        </div>
-
-                                        <div className="pills-location">
-                                            <Form.Control className='form rounded-pill' value={text}
-                                                onChange={handleChange}
-                                                onBlur={handleAdd}
-                                                onKeyPress={handleKeyPress}
-                                                placeholder="Add activity..."
-                                            />
-                                        </div>
-                                        <div className="pill-container">
-                                            {columns['add'].items.map((element, index) =>
-                                                <Note
-                                                    columnId='add'
-                                                    col={columns['add']}
-                                                    columns={columns}
-                                                    items={columns['add'].items}
-                                                    key={element.id}
-                                                    id={element.id}
-                                                    intext={element.intext}
-                                                    handleColumn={setColumn}
-                                                    index={index}
-                                                />
-                                            )}
-                                        </div>
-                                    </>
-                                )}
-                            </Droppable>
+                            <AddActivity handleAdd = {handleAdd} handleChange = {handleChange} handleKeyPress = {handleKeyPress} columns ={columns} setColumn = {setColumn}/>
                         </Col>
                     </Row>
                 </DragDropContext>
             </div>
+
             <Link
                 to={{
                     pathname: "/print",
-                    cols: columns
+                    columns: columns, 
+                    filtered: filtered, 
+                    setColumn: setColumn,
+                    onDragEnd: onDragEnd
                 }}
             >
-                <button type="button" className="btn-default btn-2 btn-lg">
-                    Next
-                </button>
+            <button type="button" className="btn-default btn-2 btn-lg">
+                Next
+            </button>
             </Link>
         </>
     );

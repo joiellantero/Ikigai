@@ -40,8 +40,6 @@ const Note = (props) => {
                 items: deleted
               }
           };
-          console.log("sdjhjsdg")
-          console.log(newColumns)
 
         props.handleColumn(newColumns);
     }
