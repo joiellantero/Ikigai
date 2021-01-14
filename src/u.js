@@ -1,20 +1,19 @@
 import React, {  useState } from 'react';
-import { Link } from "react-router-dom";
 import { useLocation, Link } from "react-router-dom";
-import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import { DragDropContext } from "react-beautiful-dnd";
 import { v4 } from 'uuid';
 import "./u.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Row, Col, Form } from 'react-bootstrap';
+import { Row, Col, Modal } from 'react-bootstrap';
 import BackButton from './components/BackButton';
 import Logo from './images/logo';
 import AddActivity from './AddActivity';
-import Note from './Note';
 import Venn from './Venn';
 
 const Circa = () => {
     const {cols, pathname}  = useLocation();
-    const [, setShow] = useState(false);
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     let circleData = null;
     
@@ -268,40 +267,6 @@ const Circa = () => {
                         <Venn filtered = {filtered} columns ={columns} setColumn = {setColumn}/>
                         <Col xs={3} className="circle-add mt-5">
                             <AddActivity handleAdd = {handleAdd} handleChange = {handleChange} handleKeyPress = {handleKeyPress} columns ={columns} setColumn = {setColumn}/>
-                            <Droppable droppableId='add'>
-                                {(provided) => (
-                                    <>
-                                        <div ref={provided.innerRef} {...provided.droppableProps}>
-                                            {provided.placeholder}
-                                        </div>
-
-                                        <div className="pills-location">
-                                            <Form.Control className='form rounded-pill' value={text}
-                                                onChange={handleChange}
-                                                onBlur={handleAdd}
-                                                onKeyPress={handleKeyPress}
-                                                placeholder="Add activity..."
-                                                maxLength='16'
-                                            />
-                                        </div>
-                                        <div className="pill-container">
-                                            {columns['add'].items.map((element, index) =>
-                                                <Note
-                                                    columnId='add'
-                                                    col={columns['add']}
-                                                    columns={columns}
-                                                    items={columns['add'].items}
-                                                    key={element.id}
-                                                    id={element.id}
-                                                    intext={element.intext}
-                                                    handleColumn={setColumn}
-                                                    index={index}
-                                                />
-                                            )}
-                                        </div>
-                                    </>
-                                )}
-                            </Droppable>
                         </Col>
                     </Row>
                 </DragDropContext>
