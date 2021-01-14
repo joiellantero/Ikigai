@@ -1,14 +1,18 @@
-import "bootstrap/dist/css/bootstrap.min.css";
 import React, {  useState } from 'react';
 import { useLocation, Link } from "react-router-dom";
-import "./u.css";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
-import Hidden from './Hidden';
 import { v4 } from 'uuid';
-import { Row, Col, Form, Modal, Button } from 'react-bootstrap';
+
+import Hidden from './Hidden';
 import Note from './Note';
-import CircleSVG from './components/CircleSVG';
+
+import "./u.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Row, Col, Form, Modal } from 'react-bootstrap';
+
 import logo from './images/logo.png';
+import CircleSVG from './components/CircleSVG';
+import BackButton from './components/BackButton';
 
 const Circa = () => {
     const {cols, pathname}  = useLocation();
@@ -219,6 +223,10 @@ const Circa = () => {
                 }
             });
         }
+    };
+
+    window.onbeforeunload = function() {
+        return "Data will be lost if you leave the page, are you sure?";
     };
 
     return (

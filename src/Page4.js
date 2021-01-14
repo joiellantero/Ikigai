@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { v4 } from "uuid";
 import { DragDropContext } from "react-beautiful-dnd";
 
+import { Modal } from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
 
@@ -98,59 +99,83 @@ const onDragEnd = (result, columns, setColumn) => {
     }
 };
 
-
 const Far = () => {
     const [columns, setColumn] = useState(dataColumns);
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    window.onbeforeunload = function() {
+        return "Data will be lost if you leave the page, are you sure?";
+    };
 
     return (
         <>
             <div className="main-logo">
                 <img src={logo} alt="cs-logo" />
             </div>
-                <div className="page-container-4">
-                    <div className="btn-back">
-                        
-                        <Link to="/what-is-ikigai">
-                            <BackButton />
-                        </Link>
-                    </div>
-                    <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
-                        <div className="main-header-text">
-                            <p>
-                                Let’s find our ikigai!
-                                <br /> <br />
-                                Start by adding activites or values you are currently doing into each of these four quadrants.
-                                <br />
-                                Feel free to add as many as you can think of!
-                            </p>
-                        </div>
-                        <div className='rec-container'>
-                            {Object.entries(columns).map(([columnId, column]) => {
-                                return (
-                                    <Rectangle
-                                        key={columnId}
-                                        id={columnId}
-                                        col={column}
-                                        columns={columns}
-                                        handleColumn={setColumn}
-                                    />
-                                );
-                            })}
-                        </div>
-                        <div className="btn-container center">
-                        <Link
-                            to={{
-                                pathname: "/u",
-                                cols: columns
-                            }}
-                        >
-                            <button type="button" className="btn-default btn-2 btn-lg">
-                                Next
-                            </button>
-                        </Link>
-                        </div>
-                    </DragDropContext>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Are you sure?</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Going back to the previous page will erase your progress? Do you want to begin from scratch?</Modal.Body>
+                <Modal.Footer>
+                    <button className="btn-secondary btn-lg" onClick={handleClose}>
+                        No
+                    </button>
+                    <Link
+                        to={{
+                            pathname: "/lets-find-out-ikigai",
+                            cols: columns
+                        }}
+                    >
+                        <button className="btn-default btn-lg">
+                            Yes
+                        </button>
+                    </Link>
+                </Modal.Footer>
+            </Modal>
+            <div className="page-container-4">
+                <div className="btn-back">
+                    <BackButton onClick={handleShow}/>
                 </div>
+                <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
+                    <div className="main-header-text">
+                        <p>
+                            Let’s find our ikigai!
+                            <br /> <br />
+                            Start by adding activites or values you are currently doing into each of these four quadrants.
+                            <br />
+                            Feel free to add as many as you can think of!
+                        </p>
+                    </div>
+                    <div className='rec-container'>
+                        {Object.entries(columns).map(([columnId, column]) => {
+                            return (
+                                <Rectangle
+                                    key={columnId}
+                                    id={columnId}
+                                    col={column}
+                                    columns={columns}
+                                    handleColumn={setColumn}
+                                />
+                            );
+                        })}
+                    </div>
+                    <div className="btn-container center">
+                    <Link
+                        to={{
+                            pathname: "/u",
+                            cols: columns
+                        }}
+                    >
+                        <button type="button" className="btn-default btn-2 btn-lg">
+                            Next
+                        </button>
+                    </Link>
+                    </div>
+                </DragDropContext>
+            </div>
         </>
     );
 };
