@@ -14,8 +14,7 @@ body {
     outline: 0 none !important;
 }
 
-.btn-default {
-    background-color: #283972 !important;
+.btn-default, .btn-secondary{
     border-radius: 0 0 0 0;
     color: white;
     width: 100px;
@@ -39,6 +38,14 @@ body {
     transition-timing-function: ease-out;
 }
 
+.btn-default{
+    background-color: #283972 !important;
+}
+
+.btn-secondary {
+    background-color: grey !important;
+}
+
 .hvr-float {
     display: inline-block;
     vertical-align: middle;
@@ -54,12 +61,14 @@ body {
 }
 
 .btn-default:hover,
-.hvr-float:hover {
+.hvr-float:hover,
+.btn-secondary:hover {
     -webkit-transform: translateY(-2px);
     transform: translateY(-2px);
 }
 
-.btn-default:focus {
+.btn-default:focus,
+.btn-secondary:focus {
     border: none;
     outline: none;
 }
@@ -92,6 +101,12 @@ body {
     transform: translateX(-3px);
 }
 
+.btn-container-center{
+    display: flex;
+    justify-content: center;
+    margin: 100px;
+}
+
 .page-container-1 .button-container {
     display: flex;
     align-items: center;
@@ -115,6 +130,11 @@ body {
     bottom: 0px;
 }
 
+.modal-content{
+    border: none !important;
+    outline: none !important;
+}
+
 .container {
     justify-content: center;
     width: fit-content;
@@ -130,6 +150,31 @@ body {
 .intext {
     opacity: 0;
 }
+
+.tooltip{  
+    border-radius: 8px;
+    padding: 10px 10px 0 10px !important;
+}
+
+.tooltip b{
+    text-align: center;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.tooltip p{
+    text-align: left;
+}
+
+.tooltip .tooltip-inner { 
+    background-color: rgba(0, 0, 0, 0); 
+}
+
+.tooltip .arrow{
+    visibility: hidden;
+}
+
 
 .pill-container:hover .intext {
     transform: translateX(-10px);
@@ -358,43 +403,7 @@ body {
 }
 
 .circle.rounded-pill {
-    height: fit-content;
-    width: fit-content;
-    padding: 5px 10px 5px 10px;
-    font-size: 0.8em;
     background: rgb(240, 240, 240);
-    overflow: hidden;
-}
-
-.circle.rounded-pill .intext {
-    padding: 0;
-    margin: 0;
-    white-space: nowrap;
-    font-size: 1em;
-}
-
-.btn-delete-container {
-    margin-right: 0px;
-}
-
-.btn-delete-container .icon-tabler {
-    height: 15px;
-    width: 15px;
-}
-
-.circle-position-boxes {
-    position: absolute;
-    z-index: 1;
-    overflow: scroll;
-}
-
-.circle-position-boxes-container {
-    position: relative;
-    flex-wrap: wrap;
-}
-
-.circle.rounded-pill:hover .edit-text {
-    transform: translateX(-20px);
 }
 
 .circle-container {
@@ -404,11 +413,12 @@ body {
     -webkit-border-radius: 225px;
     border-radius: 225px;
     position: relative;
-    z-index: -99;
 }
 
 .page-container-5 .pill-container {
-    z-index: 1;
+    max-height: 300px;
+    max-width: 200px;
+    z-index: 100;
     margin: 0;
 }
 
@@ -420,8 +430,7 @@ body {
 }
 
 .page-container-5 .container.circle-add {
-    z-index: 1000;
-    margin: 100px 100px 0 0;
+    margin-top: 100px;
 }
 
 

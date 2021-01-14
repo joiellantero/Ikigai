@@ -8,7 +8,6 @@ import Note from '../Note';
 
 const Rectangle = (props)=> {
     const {heading1, heading2, color, headingColor, hover1, hover2, hover3, items} = props.col;
-
     const [text, setText] = useState('');
 
     function handleChange(event) {
@@ -59,15 +58,25 @@ const Rectangle = (props)=> {
     return ( 
         <Droppable droppableId={props.id} direction="horizontal">
             {(provided, snapshot) => (
-                <div className="rectangle-container text-center" ref={provided.innerRef} {...provided.droppableProps} style = {{background: snapshot.isDraggingOver ? "skyblue" :color , border: snapshot.isDraggingOver ? '2px solid green' : ''}}>
+                <div className="rectangle-container text-center" ref={provided.innerRef} {...provided.droppableProps} style = {{background: snapshot.isDraggingOver ? "rgba(223, 223, 223, 0.1)" :color , border: snapshot.isDraggingOver ? '0px solid #878FAE' : ''}}>
                     <h3 className="dark-blue" style = {{color: headingColor}}>
                         {heading1}<br></br><strong>{heading2}</strong>
                         <OverlayTrigger
                             key="bottom"
                             placement="bottom"
                             overlay={
-                                <Tooltip id={`tooltip-bottom`}>
-                                    <strong> {hover1}</strong> <br /> {hover2} <br /> {hover3}
+                                <Tooltip 
+                                    variant="primary"
+                                    id={`tooltip-bottom`} 
+                                    style={{ 
+                                        background: headingColor,
+                                    }}
+                                >
+                                    <b>{hover1}</b>
+                                    <br></br>
+                                    <br></br>
+                                    <p>{hover2}</p>
+                                    <p>{hover3}</p> 
                                 </Tooltip>
                             }
                         >
@@ -94,7 +103,15 @@ const Rectangle = (props)=> {
                     </Container>
 
                     <Container>
-                        <Form.Control className='form rounded-pill' value={text} onChange={handleChange} onBlur={handleAdd} onKeyPress={handleKeyPress} placeholder="Type here..."/>
+                        <Form.Control 
+                            className='form rounded-pill' 
+                            value={text} 
+                            onChange={handleChange} 
+                            onBlur={handleAdd} 
+                            onKeyPress={handleKeyPress} 
+                            placeholder="Type here..." 
+                            maxLength='16'
+                        />
                     </Container>
                     {provided.placeholder}
                 </div>

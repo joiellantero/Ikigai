@@ -1,17 +1,24 @@
-import "bootstrap/dist/css/bootstrap.min.css";
 import React, {  useState } from 'react';
 import { useLocation, Link } from "react-router-dom";
-import "./u.css";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
-import Hidden from './Hidden';
 import { v4 } from 'uuid';
-import { Row, Col, Form } from 'react-bootstrap';
+
+import Hidden from './Hidden';
 import Note from './Note';
+
+import "./u.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Row, Col, Form, Modal } from 'react-bootstrap';
+
+import logo from './images/logo.png';
 import CircleSVG from './components/CircleSVG';
-//paid, vocation, needs, mission, love, passion, ikigai, profession, good
+import BackButton from './components/BackButton';
 
 const Circa = () => {
     const {cols, pathname}  = useLocation();
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
     let circleData = null;
     
     if (pathname === '/u'){
@@ -218,14 +225,40 @@ const Circa = () => {
         }
     };
 
+    window.onbeforeunload = function() {
+        return "Data will be lost if you leave the page, are you sure?";
+    };
+
     return (
         <>
-            {/* <Logo/> */}
-
+            <div className="main-logo">
+                <img src={logo} alt="cs-logo" />
+            </div>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Are you sure?</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Going back to the previous page will erase your progress? Do you want to begin from scratch?</Modal.Body>
+                <Modal.Footer>
+                    <button className="btn-secondary btn-lg" onClick={handleClose}>
+                        No
+                    </button>
+                    <Link
+                        to={{
+                            pathname: "/lets-find-out-ikigai",
+                            cols: columns
+                        }}
+                    >
+                        <button className="btn-default btn-lg">
+                            Yes
+                        </button>
+                    </Link>
+                </Modal.Footer>
+            </Modal>
             <div className="venn-diagram" style={{ display: 'table', margin: '0 auto' }}>
                 <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
                     <div className="btn-back">
-                        {/* <BackButton /> */}
+                        <BackButton onClick={handleShow}/>
                     </div>
                     <div className="main-header-text">
                         <p>Introducing your ikigai chart.</p>
@@ -272,6 +305,7 @@ const Circa = () => {
                                                 onBlur={handleAdd}
                                                 onKeyPress={handleKeyPress}
                                                 placeholder="Add activity..."
+                                                maxLength='16'
                                             />
                                         </div>
                                         <div className="pill-container">
@@ -296,16 +330,18 @@ const Circa = () => {
                     </Row>
                 </DragDropContext>
             </div>
-            <Link
-                to={{
-                    pathname: "/print",
-                    cols: columns
-                }}
-            >
-                <button type="button" className="btn-default btn-2 btn-lg">
-                    Next
-                </button>
-            </Link>
+            <div className="btn-container-center">
+                <Link
+                    to={{
+                        pathname: "/print",
+                        cols: columns
+                    }}
+                >
+                    <button type="button" className="btn-default btn-2 btn-lg">
+                        Next
+                    </button>
+                </Link>
+            </div>
         </>
     );
 };
