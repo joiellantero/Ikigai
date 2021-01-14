@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {Droppable} from "react-beautiful-dnd";
 import Note from './Note'
 
 const Hidden = (props)=>{
-    const {id, col, columns, top, left, width, maxWidth, height, intext, handleColumn} = props;
+    const {id, col, columns, top, left, width, maxWidth, height, handleColumn} = props;
 
     return (
         <Droppable droppableId = {id} >
@@ -12,7 +12,6 @@ const Hidden = (props)=>{
                     className="hid" 
                     ref = {provided.innerRef} {...provided.droppableProps} 
                     style = {{
-                        // background: snapshot.isDraggingOver ? "skyblue" : "" , 
                         border: snapshot.isDraggingOver ? '2px solid green' : '',
                         top: top,
                         left: left,

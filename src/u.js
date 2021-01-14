@@ -1,23 +1,14 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, {  useState } from 'react';
-import { useReactToPrint } from 'react-to-print';
-import ReactToPrint from 'react-to-print';
-import { Button } from 'react-bootstrap';
 import { useLocation, Link } from "react-router-dom";
 import "./u.css";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import Hidden from './Hidden';
 import { v4 } from 'uuid';
-import { Row, Col, Container, Form } from 'react-bootstrap';
-import Trash from './components/trash';
+import { Row, Col, Form } from 'react-bootstrap';
 import Note from './Note';
-import BackButton from './components/BackButton';
 import CircleSVG from './components/CircleSVG';
-import Logo from './images/logo';
-import ReactDOM from "react-dom";
-import Pdf from "react-to-pdf";
 //paid, vocation, needs, mission, love, passion, ikigai, profession, good
-
 
 const Circa = () => {
     const {cols, pathname}  = useLocation();
@@ -27,7 +18,7 @@ const Circa = () => {
         const rectangleData = [[], [], [], []]
         let i = 0
 
-        Object.entries(cols).map(([columnId, column]) => {
+        Object.entries(cols).map(([, column]) => {
             rectangleData[i] = column.items;
             i += 1;
         });
@@ -139,7 +130,7 @@ const Circa = () => {
     }
 
     const [columns, setColumn] = useState(circleData);
-    const filtered = Object.fromEntries(Object.entries(columns).filter(([colId, col]) => colId !== 'add'))
+    const filtered = Object.fromEntries(Object.entries(columns).filter(([colId]) => colId !== 'add'))
     const [text, setText] = React.useState('');
 
 
@@ -162,7 +153,6 @@ const Circa = () => {
         };
 
         setColumn(newColumns);
-
         setText('');
     }
 
@@ -173,7 +163,6 @@ const Circa = () => {
             }
 
             const newList = columns['add'].items.concat({ id: v4(), intext: text });
-
             const newColumns = {
                 ...columns,
                 ['add']: {
@@ -183,7 +172,6 @@ const Circa = () => {
             };
 
             setColumn(newColumns);
-
             setText('');
         }
     }
@@ -230,9 +218,7 @@ const Circa = () => {
         }
     };
 
-
     return (
-
         <>
             {/* <Logo/> */}
 
@@ -274,7 +260,7 @@ const Circa = () => {
 
                         <Col xs={3} className="circle-add mt-5">
                             <Droppable droppableId='add'>
-                                {(provided, snapshot) => (
+                                {(provided) => (
                                     <>
                                         <div ref={provided.innerRef} {...provided.droppableProps}>
                                             {provided.placeholder}
@@ -324,19 +310,4 @@ const Circa = () => {
     );
 };
 
-
-// const Export = () => {
-//     const componentRef = useRef();
-//     const handlePrint = useReactToPrint({
-//       content: () => componentRef.current,
-//     });
-
-//     return (
-//       <div>
-//         <Circa ref={componentRef} />
-//         <button onClick={handlePrint}>Print this out!</button>
-//       </div>
-//     );
-//   };
-// export default Export;
 export default Circa;
