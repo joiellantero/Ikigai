@@ -56,4 +56,4 @@ Ikigai is a Japanese concept meaning "a reason for being". In this project, we a
 
 ### License
 
-- This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+- This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/joiellantero/Ikigai/blob/master/LICENSE) file for details
