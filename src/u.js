@@ -5,7 +5,7 @@ import "./u.css";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import Hidden from './Hidden';
 import { v4 } from 'uuid';
-import { Row, Col, Form } from 'react-bootstrap';
+import { Row, Col, Form, Modal, Button } from 'react-bootstrap';
 import Note from './Note';
 import BackButton from './components/BackButton';
 import CircleSVG from './components/CircleSVG';
@@ -14,6 +14,9 @@ import logo from './images/logo.png';
 
 const Circa = () => {
     const {cols, pathname}  = useLocation();
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
     let circleData = null;
     
     if (pathname === '/u'){
@@ -228,17 +231,31 @@ const Circa = () => {
             <div className="main-logo">
                 <img src={logo} alt="cs-logo" />
             </div>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Are you sure?</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Going back to the previous page will erase your progress? Do you want to begin from scratch?</Modal.Body>
+                <Modal.Footer>
+                    <button className="btn-secondary btn-lg" onClick={handleClose}>
+                        No
+                    </button>
+                    <Link
+                        to={{
+                            pathname: "/lets-find-out-ikigai",
+                            cols: columns
+                        }}
+                    >
+                        <button className="btn-default btn-lg">
+                            Yes
+                        </button>
+                    </Link>
+                </Modal.Footer>
+            </Modal>
             <div className="venn-diagram" style={{ display: 'table', margin: '0 auto' }}>
                 <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
                     <div className="btn-back">
-                        <Link
-                            to={{
-                                pathname: "/lets-find-out-ikigai",
-                                cols: columns
-                            }}
-                        >
-                            <BackButton />
-                        </Link>
+                        <BackButton onClick={handleShow}/>
                     </div>
                     <div className="main-header-text">
                         <p>Introducing your ikigai chart.</p>
