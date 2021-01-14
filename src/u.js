@@ -271,19 +271,21 @@ const Circa = () => {
                     </Row>
                 </DragDropContext>
             </div>
-            <Link
-                to={{
-                    pathname: "/print",
-                    columns: columns, 
-                    filtered: filtered, 
-                    setColumn: setColumn,
-                    onDragEnd: onDragEnd
-                }}
-            >
-                <button type="button" className="btn-default btn-2 btn-lg">
-                    Next
-                </button>
-            </Link>
+            <div className="btn-container-center">
+                <Link
+                    to={{
+                        pathname: "/print",
+                        columns: columns, 
+                        filtered: filtered, 
+                        setColumn: setColumn,
+                        onDragEnd: onDragEnd
+                    }}
+                >
+                    <button type="button" className="btn-default btn-2 btn-lg">
+                        Next
+                    </button>
+                </Link>
+            </div>
         </>
     );
 };
