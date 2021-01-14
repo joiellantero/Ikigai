@@ -46,9 +46,9 @@ const Circa = () => {
                 name: 'what the WORLD NEEDS',
                 items: rectangleData[0],
                 top: '292px',
-                left: '83px',
+                left: '46px',
                 width: '90px',
-                maxWidth: '110px',
+                maxWidth: '150px',
                 height: '258px'
             },
             [v4()]: {
@@ -68,7 +68,7 @@ const Circa = () => {
                 top: '291px',
                 left: '616px',
                 width: '88px',
-                maxWidth: '110px',
+                maxWidth: '150px',
                 height: '261px'
             },
             [v4()]: {
@@ -78,7 +78,7 @@ const Circa = () => {
                 top: '223px',
                 left: '199px',
                 width: '128px',
-                maxWidth: '200px',
+                maxWidth: '150px',
                 height: '134px'
             },
             [v4()]: {
@@ -88,7 +88,7 @@ const Circa = () => {
                 top: '490px',
                 left: '198px',
                 width: '129px',
-                maxWidth: '200px',
+                maxWidth: '150px',
                 height: '130px'
             },
             [v4()]: {
@@ -98,17 +98,17 @@ const Circa = () => {
                 top: '497px',
                 left: '461px',
                 width: '134px',
-                maxWidth: '200px',
+                maxWidth: '150px',
                 height: '128px'
             },
             [v4()]: {
                 id: 'r8',
                 name: '', // center
                 items: [],
-                top: '363px',
-                left: '335px',
+                top: '362px',
+                left: '325px',
                 width: '119px',
-                maxWidth: '130px',
+                maxWidth: '150px',
                 height: '125px'
             },
             [v4()]: {
@@ -118,7 +118,7 @@ const Circa = () => {
                 top: '230px',
                 left: '460px',
                 width: '132px',
-                maxWidth: '2px',
+                maxWidth: '150px',
                 height: '127px'
             },
             ['add']: {
