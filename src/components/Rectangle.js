@@ -66,8 +66,18 @@ const Rectangle = (props)=> {
                             key="bottom"
                             placement="bottom"
                             overlay={
-                                <Tooltip id={`tooltip-bottom`}>
-                                    <strong> {hover1}</strong> <br /> {hover2} <br /> {hover3}
+                                <Tooltip 
+                                    variant="primary"
+                                    id={`tooltip-bottom`} 
+                                    style={{ 
+                                        background: headingColor,
+                                    }}
+                                >
+                                    <b>{hover1}</b>
+                                    <br></br>
+                                    <br></br>
+                                    <p>{hover2}</p>
+                                    <p>{hover3}</p> 
                                 </Tooltip>
                             }
                         >

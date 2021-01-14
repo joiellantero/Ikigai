@@ -151,6 +151,31 @@ body {
     opacity: 0;
 }
 
+.tooltip{  
+    border-radius: 8px;
+    padding: 10px 10px 0 10px !important;
+}
+
+.tooltip b{
+    text-align: center;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.tooltip p{
+    text-align: left;
+}
+
+.tooltip .tooltip-inner { 
+    background-color: rgba(0, 0, 0, 0); 
+}
+
+.tooltip .arrow{
+    visibility: hidden;
+}
+
+
 .pill-container:hover .intext {
     transform: translateX(-10px);
 }
