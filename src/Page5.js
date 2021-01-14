@@ -1,20 +1,12 @@
-import React, { Component, useRef } from 'react';
-import { useLocation, Link } from "react-router-dom";
+import React, {  } from 'react';
 import "./style.css";
-import { InputGroup, Row, Col, Container, Button, FormControl } from 'react-bootstrap';
-import { render } from "react-dom";
-import { useReactToPrint } from 'react-to-print';
-import ReactToPrint from 'react-to-print';
+import { InputGroup, Row, Col, Button, FormControl } from 'react-bootstrap';
 import Twitter from './components/Twitter';
 import Facebook from './components/Facebook';
 import Linkedin from './components/Linkedin';
 import Whatsapp from './components/Whatsapp';
 import Trash from './components/trash';
 import Add from './components/Add';
-import Far from './Page4'
-import Circle from './old_files/circle.js';
-import CircleSVG from './components/CircleSVG';
-import Hidden from './Hidden';
 
 class Page5 extends React.PureComponent {
     constructor(props) {
@@ -123,6 +115,7 @@ class Page5 extends React.PureComponent {
                                                     onChange={e => this.handleInputChange("newItem", e.target.value)}
                                                     onKeyPress={e => e.key === "Enter" && this.addItem()}
                                                 />
+
                                                 <InputGroup.Append>
                                                     <Button className="btn-add" onClick={() => this.addItem()} disabled={!this.state.newItem}><Add /></Button>
                                                 </InputGroup.Append>

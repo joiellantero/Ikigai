@@ -1,33 +1,33 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import React, { useState } from 'react';
-import { useReactToPrint } from 'react-to-print';
-import ReactToPrint from 'react-to-print';
-import { Button } from 'react-bootstrap';
+import React, {  useState } from 'react';
 import { useLocation, Link } from "react-router-dom";
-import "./u.css";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
-import Hidden from './Hidden';
 import { v4 } from 'uuid';
-import { Row, Col, Container, Form } from 'react-bootstrap';
-import Trash from './components/trash';
-import Note from './Note';
-import BackButton from './components/BackButton';
-import CircleSVG from './components/CircleSVG';
-import Logo from './images/logo';
-import ReactDOM from "react-dom";
-import Pdf from "react-to-pdf";
-//paid, vocation, needs, mission, love, passion, ikigai, profession, good
 
+import Hidden from './Hidden';
+import Note from './Note';
+
+import "./u.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Row, Col, Form, Modal } from 'react-bootstrap';
+
+import logo from './images/logo.png';
+import CircleSVG from './components/CircleSVG';
+import BackButton from './components/BackButton';
+
+import Modal from "./components/Modal1"
 
 const Circa = () => {
-    const { cols, pathname } = useLocation();
+    const {cols, pathname}  = useLocation();
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
     let circleData = null;
 
     if (pathname === '/u') {
         const rectangleData = [[], [], [], []]
         let i = 0
 
-        Object.entries(cols).map(([columnId, column]) => {
+        Object.entries(cols).map(([, column]) => {
             rectangleData[i] = column.items;
             i += 1;
         });
@@ -139,7 +139,7 @@ const Circa = () => {
     }
 
     const [columns, setColumn] = useState(circleData);
-    const filtered = Object.fromEntries(Object.entries(columns).filter(([colId, col]) => colId !== 'add'))
+    const filtered = Object.fromEntries(Object.entries(columns).filter(([colId]) => colId !== 'add'))
     const [text, setText] = React.useState('');
 
 
@@ -162,7 +162,6 @@ const Circa = () => {
         };
 
         setColumn(newColumns);
-
         setText('');
     }
 
@@ -173,7 +172,6 @@ const Circa = () => {
             }
 
             const newList = columns['add'].items.concat({ id: v4(), intext: text });
-
             const newColumns = {
                 ...columns,
                 ['add']: {
@@ -183,7 +181,6 @@ const Circa = () => {
             };
 
             setColumn(newColumns);
-
             setText('');
         }
     }
@@ -230,16 +227,40 @@ const Circa = () => {
         }
     };
 
+    window.onbeforeunload = function() {
+        return "Data will be lost if you leave the page, are you sure?";
+    };
 
     return (
-
         <>
-            {/* <Logo/> */}
-
+            <div className="main-logo">
+                <img src={logo} alt="cs-logo" />
+            </div>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Are you sure?</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Going back to the previous page will erase your progress? Do you want to begin from scratch?</Modal.Body>
+                <Modal.Footer>
+                    <button className="btn-default btn-lg" onClick={handleClose}>
+                        No
+                    </button>
+                    <Link
+                        to={{
+                            pathname: "/lets-find-out-ikigai",
+                            cols: columns
+                        }}
+                    >
+                        <button className="btn-secondary btn-lg">
+                            Yes
+                        </button>
+                    </Link>
+                </Modal.Footer>
+            </Modal>
             <div className="venn-diagram" style={{ display: 'table', margin: '0 auto' }}>
                 <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
                     <div className="btn-back">
-                        <BackButton />
+                        <BackButton onClick={handleShow}/>
                     </div>
                     <div className="main-header-text">
                         <p>Introducing your ikigai chart.</p>
@@ -270,11 +291,12 @@ const Circa = () => {
                                 );
                             })}
                             <CircleSVG />
+                            <Modal />
                         </Col>
 
                         <Col xs={3} className="circle-add mt-5">
                             <Droppable droppableId='add'>
-                                {(provided, snapshot) => (
+                                {(provided) => (
                                     <>
                                         <div ref={provided.innerRef} {...provided.droppableProps}>
                                             {provided.placeholder}
@@ -286,6 +308,7 @@ const Circa = () => {
                                                 onBlur={handleAdd}
                                                 onKeyPress={handleKeyPress}
                                                 placeholder="Add activity..."
+                                                maxLength='16'
                                             />
                                         </div>
                                         <div className="pill-container">
@@ -310,33 +333,20 @@ const Circa = () => {
                     </Row>
                 </DragDropContext>
             </div>
-            <Link
-                to={{
-                    pathname: "/export",
-                    cols: columns
-                }}
-            >
-                <button type="button" className="btn-default btn-2 btn-lg">
-                    Next
-                </button>
-            </Link>
+            <div className="btn-container-center">
+                <Link
+                    to={{
+                        pathname: "/print",
+                        cols: columns
+                    }}
+                >
+                    <button type="button" className="btn-default btn-2 btn-lg">
+                        Next
+                    </button>
+                </Link>
+            </div>
         </>
     );
 };
 
-
-// const Export = () => {
-//     const componentRef = useRef();
-//     const handlePrint = useReactToPrint({
-//       content: () => componentRef.current,
-//     });
-
-//     return (
-//       <div>
-//         <Circa ref={componentRef} />
-//         <button onClick={handlePrint}>Print this out!</button>
-//       </div>
-//     );
-//   };
-// export default Export;
 export default Circa;

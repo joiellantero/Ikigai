@@ -183,3 +183,12 @@ header {
     width: 100%;
     text-align: center;
 }
+
+.step-to-ikigai-btn{
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    position: absolute;
+    background: none;
+    z-index: inherit;
+}

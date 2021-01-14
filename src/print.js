@@ -1,9 +1,6 @@
 import React from "react";
 import Circa2 from './Page5new';
 import ReactToPrint from "react-to-print";
-import { useLocation, Link } from "react-router-dom";
-
-const ref = React.createRef();
 
 class Print extends React.Component {
   render() {

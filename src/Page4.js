@@ -1,18 +1,14 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
-import { Button, Row, Col, Container, Form } from 'react-bootstrap';
-import {EditText } from 'react-edit-text';
-import Draggable from 'react-draggable';
 import { v4 } from "uuid";
 import { DragDropContext } from "react-beautiful-dnd";
 
+import { Modal } from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
 
 import logo from "./images/logo.png";
 import Rectangle from "./components/Rectangle.js";
-import Circle from './old_files/circle.js';
-import Trash from './components/trash';
 import BackButton from './components/BackButton';
 
 const dataColumns = {
@@ -62,9 +58,7 @@ const dataColumns = {
     },
 };
 
-
 const onDragEnd = (result, columns, setColumn) => {
-
     if (!result.destination) {
         return;
     }
@@ -105,200 +99,83 @@ const onDragEnd = (result, columns, setColumn) => {
     }
 };
 
-
 const Far = () => {
-    function Note(props) {
-        return (
-            <Draggable>
-                <div
-                    variant='light'
-                    className='circle rounded-pill with-btn-delete'
-                    onMouseEnter={() => setIsShown(true)}
-                >
-                    <span className="intext">
-                        {props.intext}
-                    </span>
-
-                    <EditText
-                        name={props.id}
-                        className="edit-text"
-                        value={props.intext}
-                    />
-
-                    {isShown && (
-                        <span className="btn-delete-container">
-                            <Trash />
-                        </span>
-                    )}
-                </div>
-            </Draggable>
-        );
-    }
-
-    function handleChange(event) {
-        setText(event.target.value);
-    }
-
-    function handleAdd() {
-        if (!text) {
-            return;
-        }
-        const newList = notes.concat(text);
-        setNote(newList);
-
-        setText('');
-    }
-
-    const handleKeyPress = (event) => {
-        if (event.key === 'Enter') {
-            if (!text) {
-                return;
-            }
-
-            const newList = notes.concat(text);
-            setNote(newList);
-
-            setText('');
-        }
-    }
-
-    const [notes, setNote] = React.useState([]);
-    const [text, setText] = React.useState('');
-    const [isShown, setIsShown] = useState(false);
-
-
     const [columns, setColumn] = useState(dataColumns);
-    const [showRec, setShowRec] = useState(true);
-    const [showVenn, setShowVenn] = useState(false);
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
-    const handleShowNext = () => {
-        setShowRec(false);
-        setShowVenn(true);
-    }
-
-    const handleShowBack = () => {
-        setShowRec(true);
-        setShowVenn(false);
-    }
+    window.onbeforeunload = function() {
+        return "Data will be lost if you leave the page, are you sure?";
+    };
 
     return (
         <>
             <div className="main-logo">
                 <img src={logo} alt="cs-logo" />
             </div>
-            {showRec && (
-                <div className="page-container-4">
-                    <div className="btn-back">
-                        
-                        <Link to="/what-is-ikigai">
-                            <BackButton />
-                        </Link>
-                    </div>
-                    <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
-                        <div className="main-header-text">
-                            <p>
-                                Let’s find our ikigai!
-                                <br /> <br />
-                                Start by adding activites or values you are currently doing into each of these four quadrants.
-                                <br />
-                                Feel free to add as many as you can think of!
-                            </p>
-                        </div>
-                        <div className='rec-container'>
-                            {Object.entries(columns).map(([columnId, column]) => {
-                                return (
-                                    <Rectangle
-                                        key={columnId}
-                                        id={columnId}
-                                        col={column}
-                                        columns={columns}
-                                        handleColumn={setColumn}
-                                    />
-                                );
-                            })}
-                        </div>
-                        <div className="btn-container center">
-                        <Link
-                            to={{
-                                pathname: "/u",
-                                cols: columns
-                            }}
-                        >
-                            <button type="button" className="btn-default btn-2 btn-lg">
-                                Next
-                            </button>
-                        </Link>
-                            {/* <button type="button" className="btn-default btn-2 btn-lg" onClick={handleShowNext}>
-                                Next
-                            </button> */}
-                        </div>
-                    </DragDropContext>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Are you sure?</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Going back to the previous page will erase your progress? Do you want to begin from scratch?</Modal.Body>
+                <Modal.Footer>
+                    <button className="btn-default btn-lg" onClick={handleClose}>
+                        No
+                    </button>
+                    <Link
+                        to={{
+                            pathname: "/what-is-ikigai",
+                            cols: columns
+                        }}
+                    >
+                        <button className="btn-secondary btn-lg">
+                            Yes
+                        </button>
+                    </Link>
+                </Modal.Footer>
+            </Modal>
+            <div className="page-container-4">
+                <div className="btn-back">
+                    <BackButton onClick={handleShow}/>
                 </div>
-            )}
-
-            {showVenn && (
-                <>
-                    <section className="page-container-5">
-                        <div className="btn-back">
-                            <BackButton onClick={handleShowBack}/>
-                        </div>
-                        <div className="main-header-text">
-                            <p>Introducing your ikigai chart.</p>
-                            <div className="instructions">
-                                <p>For each of these activities or valeus, ask yourself the following questions again:</p>
-                                <p>Can I Be Paid? (If yes, move to yellow circle)</p>
-                                <p>Do I love this? (If yes, move to green circle)</p>
-                                <p>Am I good at this? (If yes, move to red circle)</p>
-                                <p>Is this what the world needs? (If yes, move to blue circle)</p>
-                            </div>
-                        </div>
-                        <Row>
-                            <Col xs={1} className="container circle">
-                                {Object.entries(columns).map(([columnId, column]) => {
-                                    return (
-                                        <Circle
-                                            key={columnId}
-                                            id={column.id}
-                                            col={column}
-                                            columns={columns}
-                                            items={columns.items}
-                                            handleColumn={setColumn}
-                                            headingColor={column.headingColor}
-                                            heading1={column.heading1}
-                                            heading2={column.heading2}
-                                        />
-                                    );
-                                })}
-                            </Col>
-                            <Col xs={2} className="container circle-add">
-                                <Container>
-                                    <div className="pills-location">
-                                        <Form.Control className='form rounded-pill' value={text} onChange={handleChange} onBlur={handleAdd} onKeyPress={handleKeyPress} placeholder="Add activity" />
-
-                                        <Container className="pill-container">
-                                            {notes.map((element, index) => <Note key={index} intext={element}></Note>)}
-                                        </Container>
-                                    </div>
-                                </Container>
-                            </Col>
-                        </Row>
-                    </section>
-                    <div className="btn-container center pull-to-buttom">
-                    {/* <Link
-                            to={{
-                                pathname: "/u",
-                                state: {columns}
-                            }}
-                        >
-                            {console.log({columns})}
-                            <button type="button" className="btn-default btn-2 btn-lg">
-                                Next
-                            </button>
-                        </Link> */}
+                <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
+                    <div className="main-header-text">
+                        <p>
+                            Let’s find our ikigai!
+                            <br /> <br />
+                            Start by adding activites or values you are currently doing into each of these four quadrants.
+                            <br />
+                            Feel free to add as many as you can think of!
+                        </p>
                     </div>
-                </>
-            )
-            }
+                    <div className='rec-container'>
+                        {Object.entries(columns).map(([columnId, column]) => {
+                            return (
+                                <Rectangle
+                                    key={columnId}
+                                    id={columnId}
+                                    col={column}
+                                    columns={columns}
+                                    handleColumn={setColumn}
+                                />
+                            );
+                        })}
+                    </div>
+                    <div className="btn-container center">
+                    <Link
+                        to={{
+                            pathname: "/u",
+                            cols: columns
+                        }}
+                    >
+                        <button type="button" className="btn-default btn-2 btn-lg">
+                            Next
+                        </button>
+                    </Link>
+                    </div>
+                </DragDropContext>
+            </div>
         </>
     );
 };

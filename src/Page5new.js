@@ -8,7 +8,7 @@ import "./u.css";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import Hidden from './Hidden';
 import { v4 } from 'uuid';
-import { Row, Col, Container, Form } from 'react-bootstrap';
+import { Row, Col, Container, Modal, Form } from 'react-bootstrap';
 import Trash from './components/trash';
 import Note from './Note';
 import BackButton from './components/BackButton';
@@ -146,6 +146,17 @@ const Circa2 = () => {
     const [text, setText] = React.useState('');
 
 
+    // MODAL
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+
+
+
+
+
     function handleChange(event) {
         event.preventDefault()
         setText(event.target.value);
@@ -269,6 +280,28 @@ const Circa2 = () => {
                                 })}
                                 <CircleSVG />
                             </Col>
+
+                            <>
+                                <Button variant="primary" onClick={handleShow}>
+                                    Launch demo modal
+            </Button>
+
+                                <Modal show={show} onHide={handleClose}>
+                                    <Modal.Header closeButton>
+                                        <Modal.Title>Modal heading</Modal.Title>
+                                    </Modal.Header>
+                                    <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+                                    <Modal.Footer>
+                                        <Button variant="secondary" onClick={handleClose}>
+                                            Close
+                </Button>
+                                        <Button variant="primary" onClick={handleClose}>
+                                            Save Changes
+                </Button>
+                                    </Modal.Footer>
+                                </Modal>
+                            </>
+
 
                             <Col xs={3} className="circle-add mt-5">
                                 <Droppable droppableId='add'>

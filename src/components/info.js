@@ -5,7 +5,6 @@ import '../style.css';
 const Info = (props) => {
     // get the props.color from rectangle and change the color of the info icon respectively
     let strokeColor = Object.values(props).toString();
-    // console.log(strokeColor)
 
     return (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" strokeWidth="1.5" stroke= {strokeColor} fill="none" strokeLinecap="round" strokeLinejoin="round">

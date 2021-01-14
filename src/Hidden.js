@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {Droppable} from "react-beautiful-dnd";
 import Note from './Note'
 
 const Hidden = (props)=>{
-    const {id, col, columns, top, left, width, maxWidth, height, intext, handleColumn} = props;
+    const {id, col, columns, top, left, width, maxWidth, height, handleColumn} = props;
 
     return (
         <Droppable droppableId = {id} >
@@ -40,6 +40,5 @@ const Hidden = (props)=>{
         </Droppable>
     );
 }
-
 
 export default Hidden;

@@ -30,9 +30,11 @@ function Page2() {
                         <Row md={1}><p className="p-pg-2">Follow this digital interactive as we explain the concept of ikigai and
                         <br /> discover how you can use ikigai to help you find meaning in the work you do.
                         </p></Row>  
-                        <Link to="/what-is-ikigai">
-                            <button type="button" className="btn-default btn-2 btn-lg">Next</button>
-                        </Link>
+                        <div className="btn-container-center">
+                            <Link to="/what-is-ikigai">
+                                <button type="button" className="btn-default btn-2 btn-lg">Next</button>
+                            </Link>
+                        </div>
                     </Col>
                 </Container>
             </div>
