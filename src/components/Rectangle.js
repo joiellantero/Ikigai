@@ -94,7 +94,7 @@ const Rectangle = (props)=> {
                     </Container>
 
                     <Container>
-                        <Form.Control className='form rounded-pill' value={text} onChange={handleChange} onBlur={handleAdd} onKeyPress={handleKeyPress} placeholder="Type here..."/>
+                        <Form.Control className='form rounded-pill' value={text} onChange={handleChange} onBlur={handleAdd} onKeyPress={handleKeyPress} placeholder="Type here..." maxLength='16'/>
                     </Container>
                     {provided.placeholder}
                 </div>

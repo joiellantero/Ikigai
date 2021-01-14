@@ -92,6 +92,12 @@ body {
     transform: translateX(-3px);
 }
 
+.btn-container-center{
+    display: flex;
+    justify-content: center;
+    margin: 100px;
+}
+
 .page-container-1 .button-container {
     display: flex;
     align-items: center;

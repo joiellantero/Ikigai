@@ -1,22 +1,15 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, {  useState } from 'react';
-import { useReactToPrint } from 'react-to-print';
-import ReactToPrint from 'react-to-print';
-import { Button } from 'react-bootstrap';
 import { useLocation, Link } from "react-router-dom";
 import "./u.css";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import Hidden from './Hidden';
 import { v4 } from 'uuid';
-import { Row, Col, Container, Form } from 'react-bootstrap';
-import Trash from './components/trash';
+import { Row, Col, Form } from 'react-bootstrap';
 import Note from './Note';
 import BackButton from './components/BackButton';
 import CircleSVG from './components/CircleSVG';
 import logo from './images/logo.png';
-import ReactDOM from "react-dom";
-import Pdf from "react-to-pdf";
-//paid, vocation, needs, mission, love, passion, ikigai, profession, good
 
 
 const Circa = () => {
@@ -230,17 +223,22 @@ const Circa = () => {
         }
     };
 
-
     return (
-
         <>
-            {/* <div className="main-logo">
+            <div className="main-logo">
                 <img src={logo} alt="cs-logo" />
-            </div> */}
+            </div>
             <div className="venn-diagram" style={{ display: 'table', margin: '0 auto' }}>
                 <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
                     <div className="btn-back">
-                        {/* <BackButton /> */}
+                        <Link
+                            to={{
+                                pathname: "/lets-find-out-ikigai",
+                                cols: columns
+                            }}
+                        >
+                            <BackButton />
+                        </Link>
                     </div>
                     <div className="main-header-text">
                         <p>Introducing your ikigai chart.</p>
@@ -287,6 +285,7 @@ const Circa = () => {
                                                 onBlur={handleAdd}
                                                 onKeyPress={handleKeyPress}
                                                 placeholder="Add activity..."
+                                                maxLength='16'
                                             />
                                         </div>
                                         <div className="pill-container">
@@ -311,33 +310,20 @@ const Circa = () => {
                     </Row>
                 </DragDropContext>
             </div>
-            <Link
-                to={{
-                    pathname: "/print",
-                    cols: columns
-                }}
-            >
-                <button type="button" className="btn-default btn-2 btn-lg">
-                    Next
-                </button>
-            </Link>
+            <div className="btn-container-center">
+                <Link
+                    to={{
+                        pathname: "/print",
+                        cols: columns
+                    }}
+                >
+                    <button type="button" className="btn-default btn-2 btn-lg">
+                        Next
+                    </button>
+                </Link>
+            </div>
         </>
     );
 };
 
-
-// const Export = () => {
-//     const componentRef = useRef();
-//     const handlePrint = useReactToPrint({
-//       content: () => componentRef.current,
-//     });
-
-//     return (
-//       <div>
-//         <Circa ref={componentRef} />
-//         <button onClick={handlePrint}>Print this out!</button>
-//       </div>
-//     );
-//   };
-// export default Export;
 export default Circa;
