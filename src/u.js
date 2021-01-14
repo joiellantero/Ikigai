@@ -1,15 +1,11 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import React, { useRef, useState } from 'react';
-import { useReactToPrint } from 'react-to-print';
-import ReactToPrint from 'react-to-print';
-import { Button } from 'react-bootstrap';
+import React, { useState } from 'react';
 import { useLocation, Link } from "react-router-dom";
 import "./u.css";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import Hidden from './Hidden';
 import { v4 } from 'uuid';
-import {Row, Col, Container, Form} from 'react-bootstrap';
-import Trash from './components/trash';
+import {Row, Col, Form} from 'react-bootstrap';
 import Note from './Note';
 import BackButton from './components/BackButton';
 import CircleSVG from './components/CircleSVG';
@@ -19,7 +15,7 @@ import logo from './images/logo.png';
 const Circa = ()=>{
     const { state } = useLocation();
     const rectangleData = [[],[],[],[]]
-    let i = 0
+    let i = 0;
     
     Object.entries({state}.state.columns).map(([columnId, column]) => {
         rectangleData[i] = column.items;
@@ -36,7 +32,8 @@ const Circa = ()=>{
             width: '283px',
             maxWidth: '283px',
             height: '82px',
-            },
+            clickable: 0
+        },
         [v4()]: {
             id: 'r2',
             name: 'what the WORLD NEEDS',
@@ -45,8 +42,9 @@ const Circa = ()=>{
             left: '83px',
             width: '90px' , 
             maxWidth: '110px',
-            height: '258px'
-            },
+            height: '258px',
+            clickable: 0
+        },
         [v4()]: {
             id: 'r3',
             name: 'what you LOVE',
@@ -55,8 +53,9 @@ const Circa = ()=>{
             left: '259px',
             width: '271px' , 
             maxWidth: '283px',
-            height: '89px'
-            },
+            height: '89px',
+            clickable: 0
+        },
         [v4()]: {
             id: 'r4',
             name: 'what you are GOOD AT',
@@ -65,8 +64,9 @@ const Circa = ()=>{
             left: '616px',
             width: '88px', 
             maxWidth: '110px',
-            height: '261px'
-            },
+            height: '261px',
+            clickable: 0
+        },
         [v4()]: {
             id: 'r5',
             name: '', // blue yellow
@@ -75,8 +75,11 @@ const Circa = ()=>{
             left: '199px',
             width: '128px' , 
             maxWidth: '200px',
-            height: '134px'
-            },
+            height: '134px',
+            clickable: 1,
+            iconTop: '223px',
+            iconLeft: '199px'
+        },
         [v4()]: {
             id: 'r6',
             name: '', // green blue
@@ -85,8 +88,11 @@ const Circa = ()=>{
             left: '198px',
             width: '129px' , 
             maxWidth: '200px',
-            height: '130px'
-            },
+            height: '130px',
+            clickable: 1,
+            iconTop: '490px',
+            iconLeft: '198px'
+        },
         [v4()]: {
             id: 'r7',
             name: '', // green red
@@ -95,8 +101,11 @@ const Circa = ()=>{
             left: '461px',
             width: '134px' , 
             maxWidth: '200px',
-            height: '128px'
-            },
+            height: '128px',
+            clickable: 1,
+            iconTop: '643px',
+            iconLeft: '733px'
+        },
         [v4()]: {
             id: 'r8',
             name: '', // center
@@ -105,8 +114,9 @@ const Circa = ()=>{
             left: '335px',
             width: '119px' , 
             maxWidth: '130px',
-            height: '125px'
-            },
+            height: '125px',
+            clickable: 0
+        },
         [v4()]: {
             id: 'r9',
             name: '', // red yellow
@@ -115,16 +125,22 @@ const Circa = ()=>{
             left: '460px',
             width: '132px', 
             maxWidth: '2px',
-            height: '127px'
+            height: '127px',
+            clickable: 1,
+            iconTop: '559px',
+            iconLeft: '733px'
         },
+
         ['add']: {
             id: 'r10',
             name: '', // add activity
-            items: [{id: v4(), intext: 'dshjfgdhsjgf'}],
+            items: [{id: v4(), intext: 'this is a new activity'}],
             top: '',
             left: '',
             width: '' , 
-            height: ''
+            maxWidth: '',
+            height: '',
+            clickable: ''
         },
     };
 
@@ -245,18 +261,23 @@ const Circa = ()=>{
                         <Col xs={9} className="venn-container p-0">
                             {Object.entries(filtered).map(([columnId, column]) => {
                                 return (
-                                    <Hidden
-                                        key={columnId}
-                                        id={columnId}
-                                        col={column}
-                                        columns={columns}
-                                        handleColumn={setColumn}
-                                        top = {column.top}
-                                        left = {column.left}
-                                        width = {column.width}
-                                        maxWidth = {column.maxWidth}
-                                        height = {column.height}>
-                                    </Hidden>
+                                    <>
+                                        <Hidden
+                                            key={columnId}
+                                            id={columnId}
+                                            col={column}
+                                            columns={columns}
+                                            handleColumn={setColumn}
+                                            top = {column.top}
+                                            left = {column.left}
+                                            width = {column.width}
+                                            maxWidth = {column.maxWidth}
+                                            height = {column.height}
+                                            clickable = {column.clickable}
+                                            iconTop = {column.iconTop}
+                                            iconLeft = {column.iconLeft}
+                                        />
+                                    </>
                                 );
                             })}
                             <CircleSVG/>
@@ -298,7 +319,30 @@ const Circa = ()=>{
                             </Droppable>
                         </Col>
                     </Row>
-                </DragDropContext>   
+                </DragDropContext>    
+                {/* {Object.entries(filtered).map(([columnId, column]) => {
+                    return (
+                        <>
+                            {column.clickable === 1 ? 
+                                <button 
+                                    className="step-btn"
+                                    style ={{
+                                        top: column.iconTop,
+                                        left: column.iconLeft,
+                                    }}
+                                    onClick={console.log("clicked")}
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#1A1A1A" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <circle cx="12" cy="12" r="9" />
+                                        <line x1="9" y1="12" x2="15" y2="12" />
+                                        <line x1="12" y1="9" x2="12" y2="15" />
+                                    </svg>
+                                </button> 
+                            : null}    
+                        </>
+                    );
+                })} */}
             </div>
             <Link
                 to={{
@@ -306,11 +350,21 @@ const Circa = ()=>{
                     state: {columns}
                 }}
             >
-                {console.log({columns})}
                 <button type="button" className="btn-default btn-2 btn-lg">
                     Next
                 </button>
             </Link> 
+            <button 
+                className="step-to-ikigai-btn"
+                onClick={console.log("btn was clicked")}
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#1A1A1A" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <circle cx="12" cy="12" r="9" />
+                    <line x1="9" y1="12" x2="15" y2="12" />
+                    <line x1="12" y1="9" x2="12" y2="15" />
+                </svg>
+            </button>   
         </>
     );
 };
