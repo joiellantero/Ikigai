@@ -55,7 +55,7 @@ class Print extends Component {
     render() {
       return (
         <>
-          <Modal show={this.props.show} onHide={this.handleClose}>
+          <Modal show={this.show} onHide={this.handleClose}>
               <Modal.Header closeButton>
                   <Modal.Title>Are you sure?</Modal.Title>
               </Modal.Header>
