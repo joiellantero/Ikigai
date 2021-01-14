@@ -8,7 +8,6 @@ import Note from '../Note';
 
 const Rectangle = (props)=> {
     const {heading1, heading2, color, headingColor, hover1, hover2, hover3, items} = props.col;
-
     const [text, setText] = useState('');
 
     function handleChange(event) {
@@ -104,7 +103,15 @@ const Rectangle = (props)=> {
                     </Container>
 
                     <Container>
-                        <Form.Control className='form rounded-pill' value={text} onChange={handleChange} onBlur={handleAdd} onKeyPress={handleKeyPress} placeholder="Type here..." maxLength='16'/>
+                        <Form.Control 
+                            className='form rounded-pill' 
+                            value={text} 
+                            onChange={handleChange} 
+                            onBlur={handleAdd} 
+                            onKeyPress={handleKeyPress} 
+                            placeholder="Type here..." 
+                            maxLength='16'
+                        />
                     </Container>
                     {provided.placeholder}
                 </div>
