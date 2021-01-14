@@ -145,18 +145,6 @@ const Circa2 = () => {
     const filtered = Object.fromEntries(Object.entries(columns).filter(([colId, col]) => colId !== 'add'))
     const [text, setText] = React.useState('');
 
-
-    // MODAL
-    const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
-
-
-
-
-
     function handleChange(event) {
         event.preventDefault()
         setText(event.target.value);
@@ -280,28 +268,6 @@ const Circa2 = () => {
                                 })}
                                 <CircleSVG />
                             </Col>
-
-                            <>
-                                <Button variant="primary" onClick={handleShow}>
-                                    Launch demo modal
-            </Button>
-
-                                <Modal show={show} onHide={handleClose}>
-                                    <Modal.Header closeButton>
-                                        <Modal.Title>Modal heading</Modal.Title>
-                                    </Modal.Header>
-                                    <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-                                    <Modal.Footer>
-                                        <Button variant="secondary" onClick={handleClose}>
-                                            Close
-                </Button>
-                                        <Button variant="primary" onClick={handleClose}>
-                                            Save Changes
-                </Button>
-                                    </Modal.Footer>
-                                </Modal>
-                            </>
-
 
                             <Col xs={3} className="circle-add mt-5">
                                 <Droppable droppableId='add'>

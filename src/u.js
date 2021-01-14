@@ -1,4 +1,4 @@
-import React, {  useState } from 'react';
+import React, { useState } from 'react';
 import { useLocation, Link } from "react-router-dom";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import { v4 } from 'uuid';
@@ -14,10 +14,10 @@ import logo from './images/logo.png';
 import CircleSVG from './components/CircleSVG';
 import BackButton from './components/BackButton';
 
-import Modal from "./components/Modal1"
+import Modal1 from "./components/Modal1";
 
 const Circa = () => {
-    const {cols, pathname}  = useLocation();
+    const { cols, pathname } = useLocation();
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -227,7 +227,7 @@ const Circa = () => {
         }
     };
 
-    window.onbeforeunload = function() {
+    window.onbeforeunload = function () {
         return "Data will be lost if you leave the page, are you sure?";
     };
 
@@ -260,7 +260,7 @@ const Circa = () => {
             <div className="venn-diagram" style={{ display: 'table', margin: '0 auto' }}>
                 <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
                     <div className="btn-back">
-                        <BackButton onClick={handleShow}/>
+                        <BackButton onClick={handleShow} />
                     </div>
                     <div className="main-header-text">
                         <p>Introducing your ikigai chart.</p>
@@ -291,7 +291,7 @@ const Circa = () => {
                                 );
                             })}
                             <CircleSVG />
-                            <Modal />
+                            <Modal1 />
                         </Col>
 
                         <Col xs={3} className="circle-add mt-5">
