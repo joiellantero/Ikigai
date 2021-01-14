@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link } from "react-router-dom";
 import { Button, Row, Col, Container, Form } from 'react-bootstrap';
 import {EditText } from 'react-edit-text';
@@ -111,20 +111,20 @@ const Far = () => {
         return (
             <Draggable>
                 <div
-                    variant = 'light'
+                    variant='light'
                     className='circle rounded-pill with-btn-delete'
                     onMouseEnter={() => setIsShown(true)}
                 >
                     <span className="intext">
                         {props.intext}
                     </span>
-                    
+
                     <EditText
                         name={props.id}
                         className="edit-text"
                         value={props.intext}
                     />
-        
+
                     {isShown && (
                         <span className="btn-delete-container">
                             <Trash />
@@ -138,27 +138,27 @@ const Far = () => {
     function handleChange(event) {
         setText(event.target.value);
     }
-    
+
     function handleAdd() {
-        if (!text){
+        if (!text) {
             return;
         }
         const newList = notes.concat(text);
         setNote(newList);
-    
+
         setText('');
     }
-    
+
     const handleKeyPress = (event) => {
-        if(event.key === 'Enter'){
-          if (!text){
-            return;
-        }
-    
-        const newList = notes.concat(text);
-        setNote(newList);
-    
-        setText('');
+        if (event.key === 'Enter') {
+            if (!text) {
+                return;
+            }
+
+            const newList = notes.concat(text);
+            setNote(newList);
+
+            setText('');
         }
     }
 
@@ -221,10 +221,9 @@ const Far = () => {
                         <Link
                             to={{
                                 pathname: "/u",
-                                state: {columns}
+                                cols: columns
                             }}
                         >
-                            {console.log({columns})}
                             <button type="button" className="btn-default btn-2 btn-lg">
                                 Next
                             </button>
@@ -254,7 +253,7 @@ const Far = () => {
                             </div>
                         </div>
                         <Row>
-                            <Col xs={1} className="container circle"> 
+                            <Col xs={1} className="container circle">
                                 {Object.entries(columns).map(([columnId, column]) => {
                                     return (
                                         <Circle
@@ -268,17 +267,17 @@ const Far = () => {
                                             heading1={column.heading1}
                                             heading2={column.heading2}
                                         />
-                                    ); 
+                                    );
                                 })}
                             </Col>
                             <Col xs={2} className="container circle-add">
                                 <Container>
                                     <div className="pills-location">
-                                    <Form.Control className='form rounded-pill' value={text} onChange={handleChange} onBlur={handleAdd} onKeyPress={handleKeyPress} placeholder="Add activity"/>
-                                    
-                                    <Container className="pill-container">
-                                        {notes.map((element, index) => <Note key={index} intext={element}></Note>)}
-                                    </Container>
+                                        <Form.Control className='form rounded-pill' value={text} onChange={handleChange} onBlur={handleAdd} onKeyPress={handleKeyPress} placeholder="Add activity" />
+
+                                        <Container className="pill-container">
+                                            {notes.map((element, index) => <Note key={index} intext={element}></Note>)}
+                                        </Container>
                                     </div>
                                 </Container>
                             </Col>
@@ -298,9 +297,12 @@ const Far = () => {
                         </Link> */}
                     </div>
                 </>
-            )}
+            )
+            }
         </>
     );
 };
 
 export default Far;
+
+
