@@ -1,17 +1,21 @@
 import React, {  useState } from 'react';
-import { useLocation } from "react-router-dom";
-import "./u.css";
-import { DragDropContext } from "react-beautiful-dnd";
-import { v4 } from 'uuid';
-import { Row, Col } from 'react-bootstrap';
-import Venn from './Venn';
 import { Link } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import { v4 } from 'uuid';
+import "./u.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Row, Col, Form } from 'react-bootstrap';
+import BackButton from './components/BackButton';
 import Logo from './images/logo';
 import AddActivity from './AddActivity';
-//paid, vocation, needs, mission, love, passion, ikigai, profession, good
+import Note from './Note';
+import Venn from './Venn';
 
 const Circa = () => {
     const {cols, pathname}  = useLocation();
+    const [, setShow] = useState(false);
+    const handleShow = () => setShow(true);
     let circleData = null;
     
     if (pathname === '/u'){
@@ -39,9 +43,9 @@ const Circa = () => {
                 name: 'what the WORLD NEEDS',
                 items: rectangleData[0],
                 top: '292px',
-                left: '83px',
+                left: '46px',
                 width: '90px',
-                maxWidth: '110px',
+                maxWidth: '150px',
                 height: '258px'
             },
             [v4()]: {
@@ -61,7 +65,7 @@ const Circa = () => {
                 top: '291px',
                 left: '616px',
                 width: '88px',
-                maxWidth: '110px',
+                maxWidth: '150px',
                 height: '261px'
             },
             [v4()]: {
@@ -71,7 +75,7 @@ const Circa = () => {
                 top: '223px',
                 left: '199px',
                 width: '128px',
-                maxWidth: '200px',
+                maxWidth: '150px',
                 height: '134px'
             },
             [v4()]: {
@@ -81,7 +85,7 @@ const Circa = () => {
                 top: '490px',
                 left: '198px',
                 width: '129px',
-                maxWidth: '200px',
+                maxWidth: '150px',
                 height: '130px'
             },
             [v4()]: {
@@ -91,17 +95,17 @@ const Circa = () => {
                 top: '497px',
                 left: '461px',
                 width: '134px',
-                maxWidth: '200px',
+                maxWidth: '150px',
                 height: '128px'
             },
             [v4()]: {
                 id: 'r8',
                 name: '', // center
                 items: [],
-                top: '363px',
-                left: '335px',
+                top: '362px',
+                left: '325px',
                 width: '119px',
-                maxWidth: '130px',
+                maxWidth: '150px',
                 height: '125px'
             },
             [v4()]: {
@@ -111,7 +115,7 @@ const Circa = () => {
                 top: '230px',
                 left: '460px',
                 width: '132px',
-                maxWidth: '2px',
+                maxWidth: '150px',
                 height: '127px'
             },
             ['add']: {
@@ -217,13 +221,38 @@ const Circa = () => {
         }
     };
 
+    window.onbeforeunload = function() {
+        return "Data will be lost if you leave the page, are you sure?";
+    };
+
     return (
         <>
             <Logo/>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Are you sure?</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Going back to the previous page will erase your progress? Do you want to begin from scratch?</Modal.Body>
+                <Modal.Footer>
+                    <button className="btn-default btn-lg" onClick={handleClose}>
+                        No
+                    </button>
+                    <Link
+                        to={{
+                            pathname: "/lets-find-out-ikigai",
+                            cols: columns
+                        }}
+                    >
+                        <button className="btn-secondary btn-lg">
+                            Yes
+                        </button>
+                    </Link>
+                </Modal.Footer>
+            </Modal>
             <div className="venn-diagram" style={{ display: 'table', margin: '0 auto' }}>
                 <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
                     <div className="btn-back">
-                        {/* <BackButton /> */}
+                        <BackButton onClick={handleShow}/>
                     </div>
                     <div className="main-header-text">
                         <p>Introducing your ikigai chart.</p>
@@ -239,11 +268,44 @@ const Circa = () => {
                         <Venn filtered = {filtered} columns ={columns} setColumn = {setColumn}/>
                         <Col xs={3} className="circle-add mt-5">
                             <AddActivity handleAdd = {handleAdd} handleChange = {handleChange} handleKeyPress = {handleKeyPress} columns ={columns} setColumn = {setColumn}/>
+                            <Droppable droppableId='add'>
+                                {(provided) => (
+                                    <>
+                                        <div ref={provided.innerRef} {...provided.droppableProps}>
+                                            {provided.placeholder}
+                                        </div>
+
+                                        <div className="pills-location">
+                                            <Form.Control className='form rounded-pill' value={text}
+                                                onChange={handleChange}
+                                                onBlur={handleAdd}
+                                                onKeyPress={handleKeyPress}
+                                                placeholder="Add activity..."
+                                                maxLength='16'
+                                            />
+                                        </div>
+                                        <div className="pill-container">
+                                            {columns['add'].items.map((element, index) =>
+                                                <Note
+                                                    columnId='add'
+                                                    col={columns['add']}
+                                                    columns={columns}
+                                                    items={columns['add'].items}
+                                                    key={element.id}
+                                                    id={element.id}
+                                                    intext={element.intext}
+                                                    handleColumn={setColumn}
+                                                    index={index}
+                                                />
+                                            )}
+                                        </div>
+                                    </>
+                                )}
+                            </Droppable>
                         </Col>
                     </Row>
                 </DragDropContext>
             </div>
-
             <Link
                 to={{
                     pathname: "/print",
@@ -253,9 +315,9 @@ const Circa = () => {
                     onDragEnd: onDragEnd
                 }}
             >
-            <button type="button" className="btn-default btn-2 btn-lg">
-                Next
-            </button>
+                <button type="button" className="btn-default btn-2 btn-lg">
+                    Next
+                </button>
             </Link>
         </>
     );
