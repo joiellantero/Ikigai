@@ -32,9 +32,11 @@ function Page3() {
                         <span style={{ color: '#283972' }}> bringing beauty or utility to others, <br /> helping out, and shaping the world around you</span>,
                         <span style={{ color: '#0EEEAB' }}> even after your ‘official’ professional activity has <br /> ended.</span></strong>
                     </p>
-                    <Link to="/lets-find-out-ikigai">
-                        <button type="button" class="btn-default btn-2 btn-lg">Next</button>
-                    </Link>
+                    <div className="btn-container-center">
+                        <Link to="/lets-find-out-ikigai">
+                            <button type="button" class="btn-default btn-2 btn-lg">Next</button>
+                        </Link>
+                    </div>
                 </Container>
             </div>
         </>

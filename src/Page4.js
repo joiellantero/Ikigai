@@ -125,7 +125,7 @@ const Far = () => {
                     </button>
                     <Link
                         to={{
-                            pathname: "/lets-find-out-ikigai",
+                            pathname: "/what-is-ikigai",
                             cols: columns
                         }}
                     >
