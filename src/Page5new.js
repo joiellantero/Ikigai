@@ -13,13 +13,16 @@ import Trash from './components/trash';
 import Note from './Note';
 import BackButton from './components/BackButton';
 import CircleSVG from './components/CircleSVG';
-import Logo from './images/logo';
-import ReactDOM from "react-dom";
-import Pdf from "react-to-pdf";
+import Twitter from './components/Twitter';
+import Facebook from './components/Facebook';
+import Linkedin from './components/Linkedin';
+import Whatsapp from './components/Whatsapp';
+import Add from './components/Add';
+
 //paid, vocation, needs, mission, love, passion, ikigai, profession, good
 
 
-const Circa = () => {
+const Circa2 = () => {
     const { cols, pathname } = useLocation();
     let circleData = null;
 
@@ -236,107 +239,122 @@ const Circa = () => {
         <>
             {/* <Logo/> */}
 
-            <div className="venn-diagram" style={{ display: 'table', margin: '0 auto' }}>
-                <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
-                    <div className="btn-back">
-                        <BackButton />
-                    </div>
-                    <div className="main-header-text">
-                        <p>Introducing your ikigai chart.</p>
-                        <div className="instructions">
-                            <p>For each of these activities or values, ask yourself the following questions again:</p>
-                            <p>Can I Be Paid? (If yes, move to yellow circle)</p>
-                            <p>Do I love this? (If yes, move to green circle)</p>
-                            <p>Am I good at this? (If yes, move to red circle)</p>
-                            <p>Is this what the world needs? (If yes, move to blue circle)</p>
+            <div className="page-container-6 container">
+
+                <div className="venn-diagram" style={{ display: 'table', margin: '0 auto' }}>
+                    <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
+                        <div className="btn-back">
+                            {/* <BackButton /> */}
+                        </div>
+                        <div className="main-header-text">
+                            <h3>Your Ikigai, Visualised.</h3>
+                        </div>
+                        <Row className="row-container">
+                            <Col xs={9} className="venn-container p-0">
+                                {Object.entries(filtered).map(([columnId, column]) => {
+                                    return (
+                                        <Hidden
+                                            key={columnId}
+                                            id={columnId}
+                                            col={column}
+                                            columns={columns}
+                                            handleColumn={setColumn}
+                                            top={column.top}
+                                            left={column.left}
+                                            width={column.width}
+                                            maxWidth={column.maxWidth}
+                                            height={column.height}>
+                                        </Hidden>
+                                    );
+                                })}
+                                <CircleSVG />
+                            </Col>
+
+                            <Col xs={3} className="circle-add mt-5">
+                                <Droppable droppableId='add'>
+                                    {(provided, snapshot) => (
+                                        <>
+                                            <div ref={provided.innerRef} {...provided.droppableProps}>
+                                                {provided.placeholder}
+                                            </div>
+
+                                            <div className="pills-location">
+                                                <Form.Control className='form rounded-pill' value={text}
+                                                    onChange={handleChange}
+                                                    onBlur={handleAdd}
+                                                    onKeyPress={handleKeyPress}
+                                                    placeholder="Add activity..."
+                                                />
+                                            </div>
+                                            <div className="pill-container">
+                                                {columns['add'].items.map((element, index) =>
+                                                    <Note
+                                                        columnId='add'
+                                                        col={columns['add']}
+                                                        columns={columns}
+                                                        items={columns['add'].items}
+                                                        key={element.id}
+                                                        id={element.id}
+                                                        intext={element.intext}
+                                                        handleColumn={setColumn}
+                                                        index={index}
+                                                    />
+                                                )}
+                                            </div>
+                                        </>
+                                    )}
+                                </Droppable>
+                            </Col>
+                        </Row>
+                    </DragDropContext>
+
+
+                    <Link
+                        to={{
+                            pathname: "/print",
+                            cols: columns
+                        }}
+                    >
+                        <button type="button" className="btn-default btn-2 btn-lg my-5">
+                            Export Report
+                </button>
+                    </Link>
+
+
+                    {/* <button type="button" className="btn-default btn-2 btn-lg my-5">
+                    Export Report
+                    </button> */}
+
+                    <div class="card card-shadow mt-5">
+                        <div class="card-body">
+                            <div className="share-container container">
+                                <p>Share:</p>
+                                <ul>
+                                    <li className="hvr-float"><a href="https://twitter.com/" target="__blank"><Twitter /></a></li>
+                                    <li className="hvr-float"><a href="https://facebook.com/" target="__blank"><Facebook /></a></li>
+                                    <li className="hvr-float"><a href="https://linkedin.com/" target="__blank"><Linkedin /></a></li>
+                                    <li className="hvr-float"><a href="https://whatsapp.com/" target="__blank"><Whatsapp /></a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                    <Row className="row-container">
-                        <Col xs={9} className="venn-container p-0">
-                            {Object.entries(filtered).map(([columnId, column]) => {
-                                return (
-                                    <Hidden
-                                        key={columnId}
-                                        id={columnId}
-                                        col={column}
-                                        columns={columns}
-                                        handleColumn={setColumn}
-                                        top={column.top}
-                                        left={column.left}
-                                        width={column.width}
-                                        maxWidth={column.maxWidth}
-                                        height={column.height}>
-                                    </Hidden>
-                                );
-                            })}
-                            <CircleSVG />
-                        </Col>
 
-                        <Col xs={3} className="circle-add mt-5">
-                            <Droppable droppableId='add'>
-                                {(provided, snapshot) => (
-                                    <>
-                                        <div ref={provided.innerRef} {...provided.droppableProps}>
-                                            {provided.placeholder}
-                                        </div>
+                    <div className="container mt-5">
+                        <p>
+                            Achieving Ikigai is a challenging process.<br />
+                            Your pursuit of Ikigai should draw you closer to a particular cause, skill, or people networks.<br /><br />
 
-                                        <div className="pills-location">
-                                            <Form.Control className='form rounded-pill' value={text}
-                                                onChange={handleChange}
-                                                onBlur={handleAdd}
-                                                onKeyPress={handleKeyPress}
-                                                placeholder="Add activity..."
-                                            />
-                                        </div>
-                                        <div className="pill-container">
-                                            {columns['add'].items.map((element, index) =>
-                                                <Note
-                                                    columnId='add'
-                                                    col={columns['add']}
-                                                    columns={columns}
-                                                    items={columns['add'].items}
-                                                    key={element.id}
-                                                    id={element.id}
-                                                    intext={element.intext}
-                                                    handleColumn={setColumn}
-                                                    index={index}
-                                                />
-                                            )}
-                                        </div>
-                                    </>
-                                )}
-                            </Droppable>
-                        </Col>
-                    </Row>
-                </DragDropContext>
+                            All the best in your pursuit of ikigai!
+                        </p>
+                    </div>
+
+
+                </div>
+
+
             </div>
-            <Link
-                to={{
-                    pathname: "/export",
-                    cols: columns
-                }}
-            >
-                <button type="button" className="btn-default btn-2 btn-lg">
-                    Next
-                </button>
-            </Link>
         </>
     );
 };
 
-
-// const Export = () => {
-//     const componentRef = useRef();
-//     const handlePrint = useReactToPrint({
-//       content: () => componentRef.current,
-//     });
-
-//     return (
-//       <div>
-//         <Circa ref={componentRef} />
-//         <button onClick={handlePrint}>Print this out!</button>
-//       </div>
-//     );
-//   };
-// export default Export;
-export default Circa;
+export default Circa2;

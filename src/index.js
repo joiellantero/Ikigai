@@ -7,7 +7,7 @@ import Page1 from "./Page1";
 import Page2 from "./Page2";
 import Page3 from "./Page3";
 import Page4 from "./Page4";
-import Page5 from "./Page5";
+import Page5 from "./Page5new";
 import Page9 from "./page4_temp";
 import Circa from "./u";
 import Example from "./print";

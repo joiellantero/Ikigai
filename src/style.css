@@ -227,6 +227,7 @@ body {
     margin-top: 130px;
 }
 
+
 /* ----- PAGE 1 ----- */
 
 .page-container-1 {
@@ -293,6 +294,7 @@ body {
         text-align: center;
     }
 }
+
 
 /* ----- PAGE 4 ----- */
 
@@ -457,7 +459,7 @@ body {
 .page-container-6 .card {
     width: fit-content;
     margin: 0 auto;
-    margin-bottom: 500px !important;
+    /* margin-bottom: 500px !important; */
     outline: none;
     border: none;
 }
