@@ -15,7 +15,7 @@ body {
 }
 
 .btn-default, .btn-secondary{
-    border-radius: 0 0 0 0;
+    border-radius: 50px !important;
     color: white;
     width: 100px;
     border: none;
@@ -43,7 +43,7 @@ body {
 }
 
 .btn-secondary {
-    background-color: grey !important;
+    background-color: #FF5B5B !important;
 }
 
 .hvr-float {
@@ -68,9 +68,12 @@ body {
 }
 
 .btn-default:focus,
-.btn-secondary:focus {
-    border: none;
-    outline: none;
+.btn-default:active,
+.btn-secondary:focus,
+.btn-secondary:active {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 .btn-back {
@@ -149,6 +152,12 @@ body {
 
 .intext {
     opacity: 0;
+}
+
+input.form-control:focus{
+    border-color: rgba(0, 0, 0, 0);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(0, 0, 0, 0.2);
+    outline: 0 none;
 }
 
 .tooltip{  
@@ -343,6 +352,10 @@ body {
 
 .page-container-4 .btn-container {
     margin: 50px auto;
+}
+
+.page-container-4 .rounded-pill.with-btn-delete{
+    overflow: hidden;
 }
 
 .rec-container {

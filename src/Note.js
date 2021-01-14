@@ -1,33 +1,37 @@
 import React, { useState } from 'react';
-import {EditText } from 'react-edit-text';
+import { EditText } from 'react-edit-text';
 import Trash from './components/trash';
 import { Draggable } from 'react-beautiful-dnd';
 
 
 const Note = (props) => {
     const items = props.items;
-
     const [isShown, setIsShown] = useState(false);
 
     const handleEdit = ({name, value}) => {
-        const newList = Array.from(items)
-
-        for (let i = 0; i < newList.length; i++){
-            if (name === newList[i].id){
-                newList[i].intext = value;
-            }
+        if (!value){
+            deleteNote(name);
         }
+        
+        else{
+            const newList = Array.from(items)
 
-        const newColumns = {
-            ...props.columns,
-            [props.columnId]: {
-              ...props.col,
-              items: newList
+            for (let i = 0; i < newList.length; i++){
+                if (name === newList[i].id){
+                    newList[i].intext = value;
+                }
             }
-          };
-
-        props.handleColumn(newColumns);
-
+    
+            const newColumns = {
+                ...props.columns,
+                [props.columnId]: {
+                  ...props.col,
+                  items: newList
+                }
+              };
+    
+            props.handleColumn(newColumns);
+        }
     }
 
     const deleteNote = (id) => {
@@ -38,43 +42,43 @@ const Note = (props) => {
             [props.columnId]: {
                 ...props.col,
                 items: deleted
-              }
-          };
-          console.log("sdjhjsdg")
-          console.log(newColumns)
+            }
+        };
 
         props.handleColumn(newColumns);
     }
 
     return (
-        <Draggable draggableId = {props.id} key = {props.id} index ={props.index}>
-            {(provided, snapshot)=>(
-                <div 
-                    className='rounded-pill with-btn-delete draggable' 
-                    onMouseEnter={() => setIsShown(true)}
-                    {...provided.draggableProps}
-                    {...provided.dragHandleProps}
-                    ref ={provided.innerRef} 
-                >
-                    <span className="intext">
-                        {props.intext}
-                    </span>
-                    
-                    <EditText
-                        name={props.id}
-                        className="edit-text"
-                        value={props.intext}
-                        onSave={handleEdit}
-                    />
-
-                    {isShown && (
-                        <span className="btn-delete-container" onClick={() => deleteNote(props.id)}>
-                            <Trash />
+        <>
+            <Draggable draggableId = {props.id} key = {props.id} index ={props.index}>
+                {(provided, snapshot)=>(
+                    <div 
+                        className='rounded-pill with-btn-delete draggable' 
+                        onMouseEnter={() => setIsShown(true)}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        ref ={provided.innerRef} 
+                    >
+                        <span className="intext">
+                            {props.intext}
                         </span>
-                    )}
-                </div>
-            )}
-        </Draggable>
+                        
+                        <EditText
+                            name={props.id}
+                            className="edit-text"
+                            value={props.intext}
+                            onSave={handleEdit}
+                        />
+
+                        {isShown && (
+                            <span className="btn-delete-container" onClick={() => deleteNote(props.id)}>
+                                <Trash />
+                            </span>
+                        )}
+                    </div>
+                )}
+            </Draggable>
+        </>
     );
 }
 

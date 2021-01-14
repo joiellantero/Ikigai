@@ -111,6 +111,9 @@ const Rectangle = (props)=> {
                             onKeyPress={handleKeyPress} 
                             placeholder="Type here..." 
                             maxLength='16'
+                            style={{
+                                borderColor: headingColor
+                            }}
                         />
                     </Container>
                     {provided.placeholder}
