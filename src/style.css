@@ -384,7 +384,7 @@ input.form-control:focus{
 }
 
 .edit-text:focus {
-    border: none;
+    /* border: none; */
     outline: none;
     background: none;
 }
