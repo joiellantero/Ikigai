@@ -9,8 +9,7 @@ import Page3 from "./Page3";
 import Page4 from "./Page4";
 import Page5 from "./Page5";
 import Circa from "./u";
-import Example from "./print";
-
+import Print from "./ComponentToPrint";
 
 const rootElement = document.getElementById("root");
 
@@ -23,7 +22,7 @@ ReactDOM.render(
             <Route path="/lets-find-out-ikigai" component={Page4} />
             <Route path="/export" component={Page5} />
             <Route path="/u" component={Circa} />
-            <Route path="/print" component={Example} />
+            <Route path="/print" component={Print} />
         </Switch>
     </BrowserRouter>,
     rootElement

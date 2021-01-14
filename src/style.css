@@ -46,6 +46,10 @@ body {
     background-color: #FF5B5B !important;
 }
 
+.btn-width-fit{
+    width: fit-content !important;
+}
+
 .hvr-float {
     display: inline-block;
     vertical-align: middle;
