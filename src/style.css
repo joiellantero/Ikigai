@@ -354,6 +354,10 @@ input.form-control:focus{
     margin: 50px auto;
 }
 
+.page-container-4 .rounded-pill.with-btn-delete{
+    overflow: hidden;
+}
+
 .rec-container {
     display: flex;
     flex-wrap: wrap;
@@ -387,7 +391,7 @@ input.form-control:focus{
 }
 
 .edit-text:focus {
-    /* border: none; */
+    border: none;
     outline: none;
     background: none;
 }
