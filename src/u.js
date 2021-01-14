@@ -291,10 +291,14 @@ const Circa = () => {
                                 );
                             })}
                             <CircleSVG />
-                            <Modal1 />
                         </Col>
 
+
                         <Col xs={3} className="circle-add mt-5">
+                            <div className="btn-add">
+                                <Modal1 />
+                            </div>
+
                             <Droppable droppableId='add'>
                                 {(provided) => (
                                     <>

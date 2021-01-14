@@ -14,7 +14,8 @@ body {
     outline: 0 none !important;
 }
 
-.btn-default, .btn-secondary{
+.btn-default,
+.btn-secondary {
     border-radius: 50px !important;
     color: white;
     width: 100px;
@@ -38,7 +39,7 @@ body {
     transition-timing-function: ease-out;
 }
 
-.btn-default{
+.btn-default {
     background-color: #283972 !important;
 }
 
@@ -104,7 +105,7 @@ body {
     transform: translateX(-3px);
 }
 
-.btn-container-center{
+.btn-container-center {
     display: flex;
     justify-content: center;
     margin: 100px;
@@ -124,6 +125,12 @@ body {
     margin-top: 10px;
 }
 
+.btn-add {
+    top: 522px !important;
+    left: 724px !important;
+    transform: perspective(1px) translateZ(0px);
+}
+
 .btn-container.center {
     text-align: center;
 }
@@ -133,7 +140,7 @@ body {
     bottom: 0px;
 }
 
-.modal-content{
+.modal-content {
     border: none !important;
     outline: none !important;
 }
@@ -154,36 +161,35 @@ body {
     opacity: 0;
 }
 
-input.form-control:focus{
+input.form-control:focus {
     border-color: rgba(0, 0, 0, 0);
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(0, 0, 0, 0.2);
     outline: 0 none;
 }
 
-.tooltip{  
+.tooltip {
     border-radius: 8px;
     padding: 10px 10px 0 10px !important;
 }
 
-.tooltip b{
+.tooltip b {
     text-align: center;
     font-size: 12px;
     font-weight: 800;
     text-transform: uppercase;
 }
 
-.tooltip p{
+.tooltip p {
     text-align: left;
 }
 
-.tooltip .tooltip-inner { 
-    background-color: rgba(0, 0, 0, 0); 
+.tooltip .tooltip-inner {
+    background-color: rgba(0, 0, 0, 0);
 }
 
-.tooltip .arrow{
+.tooltip .arrow {
     visibility: hidden;
 }
-
 
 .pill-container:hover .intext {
     transform: translateX(-10px);
@@ -356,7 +362,7 @@ input.form-control:focus{
     margin: 50px auto;
 }
 
-.page-container-4 .rounded-pill.with-btn-delete{
+.page-container-4 .rounded-pill.with-btn-delete {
     overflow: hidden;
 }
 

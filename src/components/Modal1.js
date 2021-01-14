@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../../src/style.css';
 import { render } from "react-dom";
 import { Modal, Button } from 'react-bootstrap';
-
+import Add from './Add';
 
 // const ModalContent = (props) => {
 //     return (
@@ -42,9 +42,11 @@ function ModalContent() {
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
-                i
-        </Button>
+
+            <Button variant="btn-default btn-lg" onClick={handleShow}>
+                +
+            </Button>
+
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
@@ -52,14 +54,19 @@ function ModalContent() {
                 </Modal.Header>
                 <Modal.Body>This intersection represents your vocation. <br />What are some steps can you take to enjoy your vocation more?</Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+
+                    <button type="button" className="btn-secondary btn-lg" onClick={handleClose}>
                         Close
-            </Button>
-                    <Button variant="primary" onClick={handleClose}>
-                        Save Changes
-            </Button>
+                </button>
+
+                    <button type="button" className="btn-default btn-lg" onClick={handleClose}>
+                        Save
+                </button>
+
+
                 </Modal.Footer>
             </Modal>
+
         </>
     );
 }

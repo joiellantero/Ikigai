@@ -105,7 +105,7 @@ const Far = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    window.onbeforeunload = function() {
+    window.onbeforeunload = function () {
         return "Data will be lost if you leave the page, are you sure?";
     };
 
@@ -137,7 +137,7 @@ const Far = () => {
             </Modal>
             <div className="page-container-4">
                 <div className="btn-back">
-                    <BackButton onClick={handleShow}/>
+                    <BackButton onClick={handleShow} />
                 </div>
                 <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
                     <div className="main-header-text">
@@ -163,16 +163,16 @@ const Far = () => {
                         })}
                     </div>
                     <div className="btn-container center">
-                    <Link
-                        to={{
-                            pathname: "/u",
-                            cols: columns
-                        }}
-                    >
-                        <button type="button" className="btn-default btn-2 btn-lg">
-                            Next
+                        <Link
+                            to={{
+                                pathname: "/u",
+                                cols: columns
+                            }}
+                        >
+                            <button type="button" className="btn-default btn-2 btn-lg">
+                                Next
                         </button>
-                    </Link>
+                        </Link>
                     </div>
                 </DragDropContext>
             </div>
