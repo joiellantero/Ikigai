@@ -4,6 +4,11 @@ body {
     font-family: "Nunito", sans-serif;
 }
 
+.subtitle{
+    font-weight: 700;
+    font-size: larger;
+}
+
 .background-2 {
     text-align: center;
 }
@@ -45,6 +50,10 @@ body {
 
 .btn-secondary {
     background-color: #FF5B5B !important;
+}
+
+.btn-width-fit{
+    width: fit-content !important;
 }
 
 .hvr-float {
@@ -140,7 +149,11 @@ body {
     bottom: 0px;
 }
 
-.modal-content {
+.info-btn:hover{
+    cursor: help;
+}
+
+.modal-content{
     border: none !important;
     outline: none !important;
 }
@@ -215,6 +228,7 @@ input.form-control:focus {
 
 .pill-container {
     display: flex;
+    justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
     margin-bottom: 20px;
@@ -248,7 +262,11 @@ input.form-control:focus {
 
 .main-header-text {
     text-align: center;
-    margin-top: 30px;
+    margin: 30px;
+}
+
+.main-header-text p{
+    margin: 0;
 }
 
 .main-logo {
@@ -281,6 +299,52 @@ input.form-control:focus {
 
 .mt-20 {
     margin-top: 130px;
+}
+
+/* ----- Venn Diagram Labels ----- */
+
+.venn-labels p{
+    position: absolute;
+}
+
+.venn-labels p.c1{
+    text-align: right;
+    font-weight: 700;
+    color: #7E88AA;
+    top: 408px;
+    left: -87px;
+    width: 104px;
+    z-index: -99;
+}
+
+.venn-labels p.c2{
+    text-align: left;
+    font-weight: 700;
+    color: #FF9D9D;
+    top: 403px;
+    left: 770px;
+    width: 104px;
+    z-index: -99;
+}
+
+.venn-labels p.c3{
+    text-align: center;
+    font-weight: 700;
+    color: #5fd6b3;
+    top: 788px;
+    left: 326px;
+    width: 135px;
+    z-index: -99;
+}
+
+.venn-labels p.c4{
+    text-align: center;
+    font-weight: 700;
+    color: #f1e161;
+    top: 36px;
+    left: 290px;
+    width: 203px;
+    z-index: -99;
 }
 
 
@@ -349,6 +413,13 @@ input.form-control:focus {
         transform: translate(-50%, -50%);
         text-align: center;
     }
+}
+
+
+/* ----- PAGE 2 ----- */
+
+.page-container-2{
+    height: 100vh;
 }
 
 
@@ -457,13 +528,6 @@ input.form-control:focus {
 
 /* ---- Page 6 ---- */
 
-.page-container-6 {
-    height: 50vh;
-}
-
-
-/* ---- Page 6 ---- */
-
 .card-shadow {
     -webkit-box-shadow: 0 5px 10px -3px rgb(0, 0, 0, 0.1);
     -moz-box-shadow: 0 5px 10px -3px rgb(0, 0, 0, 0.1);
@@ -473,7 +537,7 @@ input.form-control:focus {
 .page-container-6 {
     margin-top: 10vh;
     text-align: center;
-    height: 110vh;
+    height: 100vh;
 }
 
 .page-container-6 .btn-default {

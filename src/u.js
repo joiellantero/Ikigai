@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
 import { useLocation, Link } from "react-router-dom";
-import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import { DragDropContext } from "react-beautiful-dnd";
 import { v4 } from 'uuid';
-
-import Hidden from './Hidden';
-import Note from './Note';
 
 import "./u.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Row, Col, Form, Modal } from 'react-bootstrap';
+import { Row, Col, Modal } from 'react-bootstrap';
 
-import logo from './images/logo.png';
-import CircleSVG from './components/CircleSVG';
 import BackButton from './components/BackButton';
+import Logo from './images/logo';
+import AddActivity from './AddActivity';
+import Venn from './Venn';
 
 import Modal1 from "./components/Modal1";
 
@@ -48,9 +46,9 @@ const Circa = () => {
                 name: 'what the WORLD NEEDS',
                 items: rectangleData[0],
                 top: '292px',
-                left: '83px',
+                left: '46px',
                 width: '90px',
-                maxWidth: '110px',
+                maxWidth: '150px',
                 height: '258px'
             },
             [v4()]: {
@@ -70,7 +68,7 @@ const Circa = () => {
                 top: '291px',
                 left: '616px',
                 width: '88px',
-                maxWidth: '110px',
+                maxWidth: '150px',
                 height: '261px'
             },
             [v4()]: {
@@ -80,7 +78,7 @@ const Circa = () => {
                 top: '223px',
                 left: '199px',
                 width: '128px',
-                maxWidth: '200px',
+                maxWidth: '150px',
                 height: '134px'
             },
             [v4()]: {
@@ -90,7 +88,7 @@ const Circa = () => {
                 top: '490px',
                 left: '198px',
                 width: '129px',
-                maxWidth: '200px',
+                maxWidth: '150px',
                 height: '130px'
             },
             [v4()]: {
@@ -100,17 +98,17 @@ const Circa = () => {
                 top: '497px',
                 left: '461px',
                 width: '134px',
-                maxWidth: '200px',
+                maxWidth: '150px',
                 height: '128px'
             },
             [v4()]: {
                 id: 'r8',
                 name: '', // center
                 items: [],
-                top: '363px',
-                left: '335px',
+                top: '362px',
+                left: '325px',
                 width: '119px',
-                maxWidth: '130px',
+                maxWidth: '150px',
                 height: '125px'
             },
             [v4()]: {
@@ -120,7 +118,7 @@ const Circa = () => {
                 top: '230px',
                 left: '460px',
                 width: '132px',
-                maxWidth: '2px',
+                maxWidth: '150px',
                 height: '127px'
             },
             ['add']: {
@@ -141,7 +139,6 @@ const Circa = () => {
     const [columns, setColumn] = useState(circleData);
     const filtered = Object.fromEntries(Object.entries(columns).filter(([colId]) => colId !== 'add'))
     const [text, setText] = React.useState('');
-
 
     function handleChange(event) {
         event.preventDefault()
@@ -233,9 +230,7 @@ const Circa = () => {
 
     return (
         <>
-            <div className="main-logo">
-                <img src={logo} alt="cs-logo" />
-            </div>
+            <Logo/>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Are you sure?</Modal.Title>
@@ -263,7 +258,7 @@ const Circa = () => {
                         <BackButton onClick={handleShow} />
                     </div>
                     <div className="main-header-text">
-                        <p>Introducing your ikigai chart.</p>
+                        <p className="subtitle my-5">Introducing your ikigai chart.</p>
                         <div className="instructions">
                             <p>For each of these activities or values, ask yourself the following questions again:</p>
                             <p>Can I Be Paid? (If yes, move to yellow circle)</p>
@@ -272,67 +267,10 @@ const Circa = () => {
                             <p>Is this what the world needs? (If yes, move to blue circle)</p>
                         </div>
                     </div>
-                    <Row className="row-container">
-                        <Col xs={9} className="venn-container p-0">
-                            {Object.entries(filtered).map(([columnId, column]) => {
-                                return (
-                                    <Hidden
-                                        key={columnId}
-                                        id={columnId}
-                                        col={column}
-                                        columns={columns}
-                                        handleColumn={setColumn}
-                                        top={column.top}
-                                        left={column.left}
-                                        width={column.width}
-                                        maxWidth={column.maxWidth}
-                                        height={column.height}>
-                                    </Hidden>
-                                );
-                            })}
-                            <CircleSVG />
-                        </Col>
-
-
+                    <Row className="row-container mt-5">
+                        <Venn filtered = {filtered} columns ={columns} setColumn = {setColumn}/>
                         <Col xs={3} className="circle-add mt-5">
-                            <div className="btn-add">
-                                <Modal1 />
-                            </div>
-
-                            <Droppable droppableId='add'>
-                                {(provided) => (
-                                    <>
-                                        <div ref={provided.innerRef} {...provided.droppableProps}>
-                                            {provided.placeholder}
-                                        </div>
-
-                                        <div className="pills-location">
-                                            <Form.Control className='form rounded-pill' value={text}
-                                                onChange={handleChange}
-                                                onBlur={handleAdd}
-                                                onKeyPress={handleKeyPress}
-                                                placeholder="Add activity..."
-                                                maxLength='16'
-                                            />
-                                        </div>
-                                        <div className="pill-container">
-                                            {columns['add'].items.map((element, index) =>
-                                                <Note
-                                                    columnId='add'
-                                                    col={columns['add']}
-                                                    columns={columns}
-                                                    items={columns['add'].items}
-                                                    key={element.id}
-                                                    id={element.id}
-                                                    intext={element.intext}
-                                                    handleColumn={setColumn}
-                                                    index={index}
-                                                />
-                                            )}
-                                        </div>
-                                    </>
-                                )}
-                            </Droppable>
+                            <AddActivity handleAdd = {handleAdd} handleChange = {handleChange} handleKeyPress = {handleKeyPress} columns ={columns} setColumn = {setColumn}/>
                         </Col>
                     </Row>
                 </DragDropContext>
@@ -340,8 +278,11 @@ const Circa = () => {
             <div className="btn-container-center">
                 <Link
                     to={{
-                        pathname: "/print",
-                        cols: columns
+                        pathname: "/export",
+                        columns: columns, 
+                        filtered: filtered, 
+                        setColumn: setColumn,
+                        onDragEnd: onDragEnd
                     }}
                 >
                     <button type="button" className="btn-default btn-2 btn-lg">
