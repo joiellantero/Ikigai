@@ -230,7 +230,7 @@ const Circa = () => {
 
     return (
         <>
-            <Logo/>
+            <Logo />
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Are you sure?</Modal.Title>
@@ -268,19 +268,23 @@ const Circa = () => {
                         </div>
                     </div>
                     <Row className="row-container mt-5">
-                        <Venn filtered = {filtered} columns ={columns} setColumn = {setColumn}/>
+                        <Venn filtered={filtered} columns={columns} setColumn={setColumn} />
                         <Col xs={3} className="circle-add mt-5">
-                            <AddActivity handleAdd = {handleAdd} handleChange = {handleChange} handleKeyPress = {handleKeyPress} columns ={columns} setColumn = {setColumn}/>
+                            <AddActivity handleAdd={handleAdd} handleChange={handleChange} handleKeyPress={handleKeyPress} columns={columns} setColumn={setColumn} />
                         </Col>
+                        <div className="btn-add">
+                            <Modal1 />
+                        </div>
                     </Row>
                 </DragDropContext>
             </div>
+
             <div className="btn-container-center">
                 <Link
                     to={{
                         pathname: "/export",
-                        columns: columns, 
-                        filtered: filtered, 
+                        columns: columns,
+                        filtered: filtered,
                         setColumn: setColumn,
                         onDragEnd: onDragEnd
                     }}
