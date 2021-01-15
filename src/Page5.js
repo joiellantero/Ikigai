@@ -15,7 +15,6 @@ import Whatsapp from './components/Whatsapp';
 import Trash from './components/trash';
 import Add from './components/Add';
 import { v4 } from 'uuid';
-import Logo from './images/logo';
 
 
 const Intermediate  = () => {
