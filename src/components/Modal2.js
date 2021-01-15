@@ -21,10 +21,10 @@ function ModalContent() {
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Vocation</Modal.Title>
+                    <Modal.Title>Profession</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>This intersection represents your vocation. <br />
-                What are some steps can you take to enjoy your vocation more?
+                <Modal.Body>This intersection represents your profession. <br />
+                In your profession, how can you help the people and <br /> community around you?
 
                 <InputGroup size="sm" className="mb-3">
                         <InputGroup.Prepend>

@@ -13,6 +13,9 @@ import AddActivity from './AddActivity';
 import Venn from './Venn';
 
 import Modal1 from "./components/Modal1";
+import Modal2 from "./components/Modal2";
+import Modal3 from "./components/Modal3";
+import Modal4 from "./components/Modal4";
 
 const Circa = () => {
     const { cols, pathname } = useLocation();
@@ -268,13 +271,23 @@ const Circa = () => {
                         </div>
                     </div>
                     <Row className="row-container mt-5">
+                        <div className="btn-modal-1">
+                            <Modal1 />
+                        </div>
+                        <div className="btn-modal-2">
+                            <Modal2 />
+                        </div>
+                        <div className="btn-modal-3">
+                            <Modal3 />
+                        </div>
+                        <div className="btn-modal-4">
+                            <Modal4 />
+                        </div>
                         <Venn filtered={filtered} columns={columns} setColumn={setColumn} />
                         <Col xs={3} className="circle-add mt-5">
                             <AddActivity handleAdd={handleAdd} handleChange={handleChange} handleKeyPress={handleKeyPress} columns={columns} setColumn={setColumn} />
                         </Col>
-                        <div className="btn-add">
-                            <Modal1 />
-                        </div>
+
                     </Row>
                 </DragDropContext>
             </div>

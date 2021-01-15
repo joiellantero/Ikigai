@@ -4,7 +4,7 @@ body {
     font-family: "Nunito", sans-serif;
 }
 
-.subtitle{
+.subtitle {
     font-weight: 700;
     font-size: larger;
 }
@@ -52,7 +52,7 @@ body {
     background-color: #FF5B5B !important;
 }
 
-.btn-width-fit{
+.btn-width-fit {
     width: fit-content !important;
 }
 
@@ -134,9 +134,35 @@ body {
     margin-top: 10px;
 }
 
-.btn-add {
-    top: 522px !important;
-    left: 724px !important;
+.btn-modal-1 {
+    top: 665px;
+    left: 392px;
+    position: absolute;
+    z-index: 200;
+    transform: perspective(1px) translateZ(0px);
+}
+
+.btn-modal-2 {
+    top: 669px;
+    left: 721px;
+    position: absolute;
+    z-index: 200;
+    transform: perspective(1px) translateZ(0px);
+}
+
+.btn-modal-3 {
+    top: 715px;
+    left: 393px;
+    position: absolute;
+    z-index: 200;
+    transform: perspective(1px) translateZ(0px);
+}
+
+.btn-modal-4 {
+    top: 715px;
+    left: 722px;
+    position: absolute;
+    z-index: 200;
     transform: perspective(1px) translateZ(0px);
 }
 
@@ -149,11 +175,11 @@ body {
     bottom: 0px;
 }
 
-.info-btn:hover{
+.info-btn:hover {
     cursor: help;
 }
 
-.modal-content{
+.modal-content {
     border: none !important;
     outline: none !important;
 }
@@ -265,7 +291,7 @@ input.form-control:focus {
     margin: 30px;
 }
 
-.main-header-text p{
+.main-header-text p {
     margin: 0;
 }
 
@@ -301,13 +327,14 @@ input.form-control:focus {
     margin-top: 130px;
 }
 
+
 /* ----- Venn Diagram Labels ----- */
 
-.venn-labels p{
+.venn-labels p {
     position: absolute;
 }
 
-.venn-labels p.c1{
+.venn-labels p.c1 {
     text-align: right;
     font-weight: 700;
     color: #7E88AA;
@@ -317,7 +344,7 @@ input.form-control:focus {
     z-index: -99;
 }
 
-.venn-labels p.c2{
+.venn-labels p.c2 {
     text-align: left;
     font-weight: 700;
     color: #FF9D9D;
@@ -327,7 +354,7 @@ input.form-control:focus {
     z-index: -99;
 }
 
-.venn-labels p.c3{
+.venn-labels p.c3 {
     text-align: center;
     font-weight: 700;
     color: #5fd6b3;
@@ -337,7 +364,7 @@ input.form-control:focus {
     z-index: -99;
 }
 
-.venn-labels p.c4{
+.venn-labels p.c4 {
     text-align: center;
     font-weight: 700;
     color: #f1e161;
@@ -418,7 +445,7 @@ input.form-control:focus {
 
 /* ----- PAGE 2 ----- */
 
-.page-container-2{
+.page-container-2 {
     height: 100vh;
 }
 
