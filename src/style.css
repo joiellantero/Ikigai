@@ -4,6 +4,11 @@ body {
     font-family: "Nunito", sans-serif;
 }
 
+.subtitle{
+    font-weight: 700;
+    font-size: larger;
+}
+
 .background-2 {
     text-align: center;
 }
@@ -217,6 +222,7 @@ input.form-control:focus{
 
 .pill-container {
     display: flex;
+    justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
     margin-bottom: 20px;
@@ -250,7 +256,11 @@ input.form-control:focus{
 
 .main-header-text {
     text-align: center;
-    margin-top: 30px;
+    margin: 30px;
+}
+
+.main-header-text p{
+    margin: 0;
 }
 
 .main-logo {
@@ -397,6 +407,13 @@ input.form-control:focus{
         transform: translate(-50%, -50%);
         text-align: center;
     }
+}
+
+
+/* ----- PAGE 2 ----- */
+
+.page-container-2{
+    height: 100vh;
 }
 
 

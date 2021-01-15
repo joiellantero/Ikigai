@@ -254,7 +254,7 @@ const Circa = () => {
                         <BackButton onClick={handleShow}/>
                     </div>
                     <div className="main-header-text">
-                        <p>Introducing your ikigai chart.</p>
+                        <p className="subtitle my-5">Introducing your ikigai chart.</p>
                         <div className="instructions">
                             <p>For each of these activities or values, ask yourself the following questions again:</p>
                             <p>Can I Be Paid? (If yes, move to yellow circle)</p>
