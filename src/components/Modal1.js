@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../../src/style.css';
 import { render } from "react-dom";
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, Button, InputGroup, FormControl } from 'react-bootstrap';
 import Add from './Add';
 
 // const ModalContent = (props) => {
@@ -52,7 +52,17 @@ function ModalContent() {
                 <Modal.Header closeButton>
                     <Modal.Title>Vocation</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>This intersection represents your vocation. <br />What are some steps can you take to enjoy your vocation more?</Modal.Body>
+                <Modal.Body>This intersection represents your vocation. <br />
+                What are some steps can you take to enjoy your vocation more?
+
+                <InputGroup size="sm" className="mb-3">
+                        <InputGroup.Prepend>
+                            <InputGroup.Text id="inputGroup-sizing-sm"></InputGroup.Text>
+                        </InputGroup.Prepend>
+                        <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
+                    </InputGroup>
+
+                </Modal.Body>
                 <Modal.Footer>
 
                     <button type="button" className="btn-secondary btn-lg" onClick={handleClose}>
