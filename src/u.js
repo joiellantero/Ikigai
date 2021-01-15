@@ -254,7 +254,7 @@ const Circa = () => {
                         <BackButton onClick={handleShow}/>
                     </div>
                     <div className="main-header-text">
-                        <p>Introducing your ikigai chart.</p>
+                        <p className="subtitle my-5">Introducing your ikigai chart.</p>
                         <div className="instructions">
                             <p>For each of these activities or values, ask yourself the following questions again:</p>
                             <p>Can I Be Paid? (If yes, move to yellow circle)</p>
@@ -263,7 +263,7 @@ const Circa = () => {
                             <p>Is this what the world needs? (If yes, move to blue circle)</p>
                         </div>
                     </div>
-                    <Row className="row-container">
+                    <Row className="row-container mt-5">
                         <Venn filtered = {filtered} columns ={columns} setColumn = {setColumn}/>
                         <Col xs={3} className="circle-add mt-5">
                             <AddActivity handleAdd = {handleAdd} handleChange = {handleChange} handleKeyPress = {handleKeyPress} columns ={columns} setColumn = {setColumn}/>
