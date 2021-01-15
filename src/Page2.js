@@ -1,46 +1,42 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button } from 'react-bootstrap';
 
 import './style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 import logo from './images/logo.png';
 import img2 from './images/image-pg-2.png';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import BackButton from './components/BackButton';
 
 function Page2() {
-
     return (
-        <>
-            <div className="background-2">
-                <div className="btn-back">
-                    <Link to="/">
-                        <BackButton />
+        <div className="page-container-2">
+            <div className="btn-back">
+                <Link to="/">
+                    <BackButton />
+                </Link>
+            </div>
+
+            <div className="main-logo">
+                <img src={logo} alt="cs-logo" />
+            </div>
+
+            <Container className="mt-20 text-center" fluid="md">
+                <img src={img2} alt="page-2" className="center" /> 
+                <p className="p-pg-2">
+                    Follow this digital interactive as we explain the concept of ikigai and
+                    <br /> 
+                    discover how you can use ikigai to help you find meaning in the work you do.
+                </p>
+                <div className="btn-container-center">
+                    <Link to="/what-is-ikigai">
+                        <button type="button" className="btn-default btn-2 btn-lg">Next</button>
                     </Link>
                 </div>
-
-                <div className="main-logo">
-                    <img src={logo} alt="cs-logo" />
-                </div>
-
-                <Container className="mt-20" fluid="md">
-                    <Col className="justify-content-center">
-                        <Row md={2}> <img src={img2} alt="page-2" className="center" /> </Row>
-                        <Row md={1}><p className="p-pg-2">Follow this digital interactive as we explain the concept of ikigai and
-                        <br /> discover how you can use ikigai to help you find meaning in the work you do.
-                        </p></Row>  
-                        <div className="btn-container-center">
-                            <Link to="/what-is-ikigai">
-                                <button type="button" className="btn-default btn-2 btn-lg">Next</button>
-                            </Link>
-                        </div>
-                    </Col>
-                </Container>
-            </div>
-        </>
+            </Container>
+        </div>
     );
-
 }
 
 export default Page2;

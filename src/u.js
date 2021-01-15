@@ -2,9 +2,11 @@ import React, {  useState } from 'react';
 import { useLocation, Link } from "react-router-dom";
 import { DragDropContext } from "react-beautiful-dnd";
 import { v4 } from 'uuid';
+
 import "./u.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Row, Col, Modal } from 'react-bootstrap';
+
 import BackButton from './components/BackButton';
 import Logo from './images/logo';
 import AddActivity from './AddActivity';
@@ -43,7 +45,7 @@ const Circa = () => {
                 items: rectangleData[0],
                 top: '292px',
                 left: '46px',
-                width: '90px',
+                width: '128px',
                 maxWidth: '150px',
                 height: '258px'
             },
@@ -63,7 +65,7 @@ const Circa = () => {
                 items: rectangleData[2],
                 top: '291px',
                 left: '616px',
-                width: '88px',
+                width: '120px',
                 maxWidth: '150px',
                 height: '261px'
             },
@@ -354,7 +356,7 @@ const Circa = () => {
                         <BackButton onClick={handleShow}/>
                     </div>
                     <div className="main-header-text">
-                        <p>Introducing your ikigai chart.</p>
+                        <p className="subtitle my-5">Introducing your ikigai chart.</p>
                         <div className="instructions">
                             <p>For each of these activities or values, ask yourself the following questions again:</p>
                             <p>Can I Be Paid? (If yes, move to yellow circle)</p>
@@ -363,7 +365,7 @@ const Circa = () => {
                             <p>Is this what the world needs? (If yes, move to blue circle)</p>
                         </div>
                     </div>
-                    <Row className="row-container">
+                    <Row className="row-container mt-5">
                         <Venn filtered = {filtered} columns ={columns} setColumn = {setColumn}/>
                         <Col xs={3} className="circle-add mt-5">
                             <AddActivity handleAdd = {handleAdd} handleChange = {handleChange} handleKeyPress = {handleKeyPress} columns ={columns} setColumn = {setColumn}/>
@@ -374,7 +376,7 @@ const Circa = () => {
             <div className="btn-container-center">
                 <Link
                     to={{
-                        pathname: "/print",
+                        pathname: "/export",
                         columns: columns, 
                         filtered: filtered, 
                         setColumn: setColumn,

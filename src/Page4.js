@@ -141,13 +141,10 @@ const Far = () => {
                 </div>
                 <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
                     <div className="main-header-text">
-                        <p>
-                            Let’s find our ikigai!
-                            <br /> <br />
-                            Start by adding activites or values you are currently doing into each of these four quadrants.
-                            <br />
-                            Feel free to add as many as you can think of!
-                        </p>
+                        <p className="subtitle my-5">Let’s find our ikigai!</p>
+                        <br />
+                        <p>Start by adding activites or values you are currently doing into each of these four quadrants.</p>
+                        <p>Feel free to add as many as you can think of!</p>
                     </div>
                     <div className='rec-container'>
                         {Object.entries(columns).map(([columnId, column]) => {
