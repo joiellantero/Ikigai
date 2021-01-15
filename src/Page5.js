@@ -43,7 +43,6 @@ class Print extends Component {
         this.state = {
             newItem: "",
             list: [],
-            showModal: false
         }
     }
 
@@ -82,19 +81,19 @@ class Print extends Component {
 
     render() {
       return (
-        <>  
-            <Modal show={this.showModal} onHide={this.setState({showModal: false})}>
+        <>
+            <Modal show={this.show} onHide={this.handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Are you sure?</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>Going back to the previous page will erase your progress? Do you want to begin from scratch?</Modal.Body>
                 <Modal.Footer>
-                    <button className="btn-default btn-lg" onClick={this.setState({showModal: false})}>
+                    <button className="btn-default btn-lg" onClick={this.handleClose}>
                         No
                     </button>
                     <Link
                         to={{
-                            pathname: "/u",
+                            pathname: "/lets-find-out-ikigai",
                             // cols: columns
                         }}
                     >
@@ -106,7 +105,13 @@ class Print extends Component {
             </Modal>
             <div className="page-container-6 container">
                 <div className="btn-back">
-                    <BackButton onClick={this.setState({showModal: true})}/>
+                    <Link
+                        to={{
+                            pathname: "/u",
+                        }}
+                    >
+                    <BackButton onClick={this.handleShow}/>
+                    </Link>
                 </div>
                 <p className="subtitle">Your Ikigai, Visualised</p>
                 <div className="page-print">

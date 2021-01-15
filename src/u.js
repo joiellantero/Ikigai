@@ -24,8 +24,8 @@ const Circa = () => {
         let i = 0
 
         Object.entries(cols).map(([, column]) => {
-            rectangleData[i] = column.items;
-            i += 1;
+            rectangleData[i] = column.items
+            i += 1
         });
 
         circleData = {
