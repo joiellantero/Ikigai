@@ -2,8 +2,11 @@ import React, { Component } from "react";
 import ReactToPrint from "react-to-print";
 import { useLocation, Link } from "react-router-dom";
 import {DragDropContext} from 'react-beautiful-dnd';
+
 import { Modal, InputGroup, FormControl, Button } from 'react-bootstrap';
+
 import Venn from './Venn';
+import Logo from './components/CS_Logo';
 import BackButton from './components/BackButton';
 import Twitter from './components/Twitter';
 import Facebook from './components/Facebook';
@@ -218,6 +221,7 @@ class Print extends Component {
                     </Link>
                 </Modal.Footer>
             </Modal>
+            <Logo />
             <div className="page-container-6 container">
                 <div className="btn-back">
                     <Link

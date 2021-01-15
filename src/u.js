@@ -8,7 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Row, Col, Modal } from 'react-bootstrap';
 
 import BackButton from './components/BackButton';
-import Logo from './images/logo';
+import Logo from './components/CS_Logo';
 import AddActivity from './AddActivity';
 import Venn from './Venn';
 

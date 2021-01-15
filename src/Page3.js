@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 
 import './style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import logo from './images/logo.png';
+
+import Logo from './components/CS_Logo';
 import img3 from './images/image-pg-3.png';
 import { Container } from 'react-bootstrap';
 import BackButton from './components/BackButton';
@@ -18,9 +19,9 @@ function Page3() {
                         <BackButton />
                     </Link>
                 </div>
-                <div className="main-logo">
-                    <img src={logo} alt="cs-logo" />
-                </div>
+                
+                <Logo />
+                
                 <Container className="mt-20 text-center" fluid="md">
                     <h4 className="title-4"><strong>What is ikigai?</strong> </h4>
                     <img src={img3} alt="page-3" className="center my-5" />
