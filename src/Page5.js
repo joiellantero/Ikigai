@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import ReactToPrint from "react-to-print";
 import { useLocation, Link } from "react-router-dom";
 import {DragDropContext} from 'react-beautiful-dnd';
-
-import { Col, Row, Modal, InputGroup, FormControl, Button } from 'react-bootstrap';
-
+import { Modal, InputGroup, FormControl, Button } from 'react-bootstrap';
 import Venn from './Venn';
 import BackButton from './components/BackButton';
 import Twitter from './components/Twitter';
@@ -13,10 +11,117 @@ import Linkedin from './components/Linkedin';
 import Whatsapp from './components/Whatsapp';
 import Trash from './components/trash';
 import Add from './components/Add';
+import { v4 } from 'uuid';
 
 
 const Intermediate  = () => {
-  const { columns, filtered, setColumn, onDragEnd }  = useLocation();
+  let {columns, filtered} = useLocation();
+  const { setColumn, onDragEnd }  = useLocation();
+  
+  if (!columns){
+      columns = {
+        [v4()]: {
+            id: 'r1',
+            name: 'what you can be PAID FOR',
+            items: [],
+            top: '118px',
+            left: '254px',
+            width: '283px',
+            maxWidth: '283px',
+            height: '82px',
+        },
+        [v4()]: {
+            id: 'r2',
+            name: 'what the WORLD NEEDS',
+            items: [],
+            top: '292px',
+            left: '46px',
+            width: '130px',
+            maxWidth: '150px',
+            height: '258px'
+        },
+        [v4()]: {
+            id: 'r3',
+            name: 'what you LOVE',
+            items: [],
+            top: '642px',
+            left: '259px',
+            width: '271px',
+            maxWidth: '283px',
+            height: '89px'
+        },
+        [v4()]: {
+            id: 'r4',
+            name: 'what you are GOOD AT',
+            items: [],
+            top: '291px',
+            left: '614px',
+            width: '125px',
+            maxWidth: '150px',
+            height: '261px'
+        },
+        [v4()]: {
+            id: 'r5',
+            name: '', // blue yellow
+            items: [],
+            top: '223px',
+            left: '199px',
+            width: '128px',
+            maxWidth: '150px',
+            height: '134px'
+        },
+        [v4()]: {
+            id: 'r6',
+            name: '', // green blue
+            items: [],
+            top: '490px',
+            left: '198px',
+            width: '129px',
+            maxWidth: '150px',
+            height: '130px'
+        },
+        [v4()]: {
+            id: 'r7',
+            name: '', // green red
+            items: [],
+            top: '497px',
+            left: '461px',
+            width: '134px',
+            maxWidth: '150px',
+            height: '128px'
+        },
+        [v4()]: {
+            id: 'r8',
+            name: '', // center
+            items: [],
+            top: '362px',
+            left: '325px',
+            width: '132px',
+            maxWidth: '150px',
+            height: '125px'
+        },
+        [v4()]: {
+            id: 'r9',
+            name: '', // red yellow
+            items: [],
+            top: '223px',
+            left: '458px',
+            width: '144px',
+            maxWidth: '150px',
+            height: '134px',
+        },
+        ['add']: {
+            id: 'r10',
+            name: '', // add activity
+            items: [],
+            top: '',
+            left: '',
+            width: '',
+            height: ''
+        },
+    };
+      filtered = Object.fromEntries(Object.entries(columns).filter(([colId]) => colId !== 'add'))
+  }
 
   return (
      <div className="venn-diagram">
