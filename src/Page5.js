@@ -20,11 +20,9 @@ const Intermediate  = () => {
 
 
   return (
-     <div className="venn-diagram" style={{ display: 'table', margin: '0 auto' }}>
+     <div className="venn-diagram" style={{ display: 'block', margin: '0 auto' }}>
         <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
-            <Row className="row-container">
-                <Venn filtered = {filtered} columns ={columns} setColumn = {setColumn}/>
-            </Row>
+            <Venn filtered = {filtered} columns ={columns} setColumn = {setColumn}/>
         </DragDropContext>
      </div>
     );
@@ -115,39 +113,35 @@ class Print extends Component {
                     </Link>
                 </div>
                 <p className="subtitle">Your Ikigai, Visualised</p>
-                <div className="row my-5">
-                    <div className="col-lg">
-                        <ComponentToPrint ref={(el) => (this.componentRef = el)} />
-                        <div className="col-lg">
-                            <div className="steps-container container">
-                                <ul>
-                                    {this.state.list.map(item => {
-                                        return (
-                                            <li key={item.id}>
-                                                {item.value}
-                                                <button className="btn-delete" onClick={() => this.deleteItem(item.id)}><Trash /></button>
-                                            </li>
-                                        )
-                                    })}
-                                </ul>
-                                <InputGroup>
-                                    <FormControl
-                                        placeholder="Enter step..."
-                                        aria-label="Enter step..."
-                                        aria-describedby="basic-addon2"
-                                        className="steps-input"
-                                        name="step"
-                                        value={this.state.newItem}
-                                        onChange={e => this.handleInputChange("newItem", e.target.value)}
-                                        onKeyPress={e => e.key === "Enter" && this.addItem()}
-                                    />
-                                    <InputGroup.Append>
-                                        <Button className="btn-add" onClick={() => this.addItem()} disabled={!this.state.newItem}><Add /></Button>
-                                    </InputGroup.Append>
-                                </InputGroup>
-                            </div>
-                        </div>
-                    </div>
+                <div>
+                    <ComponentToPrint ref={(el) => (this.componentRef = el)} />
+                </div>
+                <div className="steps-container container my-5">
+                    <ul>
+                        {this.state.list.map(item => {
+                            return (
+                                <li key={item.id}>
+                                    {item.value}
+                                    <button className="btn-delete" onClick={() => this.deleteItem(item.id)}><Trash /></button>
+                                </li>
+                            )
+                        })}
+                    </ul>
+                    <InputGroup>
+                        <FormControl
+                            placeholder="Enter step..."
+                            aria-label="Enter step..."
+                            aria-describedby="basic-addon2"
+                            className="steps-input"
+                            name="step"
+                            value={this.state.newItem}
+                            onChange={e => this.handleInputChange("newItem", e.target.value)}
+                            onKeyPress={e => e.key === "Enter" && this.addItem()}
+                        />
+                        <InputGroup.Append>
+                            <Button className="btn-add" onClick={() => this.addItem()} disabled={!this.state.newItem}><Add /></Button>
+                        </InputGroup.Append>
+                    </InputGroup>
                 </div>
 
                 <ReactToPrint
