@@ -19,7 +19,7 @@ function Page1() {
 
             <div className="button-container">
                 <Link to="/intro">
-                    <button type="button" class="btn-default btn-lg btn-1">Next</button>
+                    <button type="button" className="btn-default btn-lg btn-1">Next</button>
                 </Link>
             </div>
 
