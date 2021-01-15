@@ -137,6 +137,10 @@ body {
     bottom: 0px;
 }
 
+.info-btn:hover{
+    cursor: help;
+}
+
 .modal-content{
     border: none !important;
     outline: none !important;
@@ -281,6 +285,53 @@ input.form-control:focus{
     margin-top: 130px;
 }
 
+/* ----- Venn Diagram Labels ----- */
+
+.venn-labels p{
+    position: absolute;
+}
+
+.venn-labels p.c1{
+    text-align: right;
+    font-weight: 700;
+    color: #7E88AA;
+    top: 408px;
+    left: -87px;
+    width: 104px;
+    z-index: -99;
+}
+
+.venn-labels p.c2{
+    text-align: left;
+    font-weight: 700;
+    color: #FF9D9D;
+    top: 403px;
+    left: 770px;
+    width: 104px;
+    z-index: -99;
+}
+
+.venn-labels p.c3{
+    text-align: center;
+    font-weight: 700;
+    color: #5fd6b3;
+    top: 788px;
+    left: 326px;
+    width: 135px;
+    z-index: -99;
+}
+
+.venn-labels p.c4{
+    text-align: center;
+    font-weight: 700;
+    color: #f1e161;
+    top: 36px;
+    left: 290px;
+    width: 203px;
+    z-index: -99;
+}
+
+
 /* ----- PAGE 1 ----- */
 
 .page-container-1 {
@@ -347,6 +398,7 @@ input.form-control:focus{
         text-align: center;
     }
 }
+
 
 /* ----- PAGE 4 ----- */
 

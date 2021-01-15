@@ -10,6 +10,7 @@ const Venn = (props) => {
     const { filtered, columns, setColumn } = props;
 
     return (
+        <>
             <Col xs={9} className="venn-container p-0">
                 {Object.entries(filtered).map(([columnId, column]) => {
                     return (
@@ -28,7 +29,8 @@ const Venn = (props) => {
                     );
                 })}
                 <CircleSVG />
-                </Col>
+            </Col>
+        </>
     );
 };
 

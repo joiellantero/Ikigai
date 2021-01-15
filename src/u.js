@@ -263,7 +263,7 @@ const Circa = () => {
                             <p>Is this what the world needs? (If yes, move to blue circle)</p>
                         </div>
                     </div>
-                    <Row className="row-container">
+                    <Row className="row-container mt-5">
                         <Venn filtered = {filtered} columns ={columns} setColumn = {setColumn}/>
                         <Col xs={3} className="circle-add mt-5">
                             <AddActivity handleAdd = {handleAdd} handleChange = {handleChange} handleKeyPress = {handleKeyPress} columns ={columns} setColumn = {setColumn}/>
