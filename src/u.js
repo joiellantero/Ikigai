@@ -45,7 +45,7 @@ const Circa = () => {
                 items: rectangleData[0],
                 top: '292px',
                 left: '46px',
-                width: '90px',
+                width: '128px',
                 maxWidth: '150px',
                 height: '258px'
             },
@@ -65,7 +65,7 @@ const Circa = () => {
                 items: rectangleData[2],
                 top: '291px',
                 left: '616px',
-                width: '88px',
+                width: '120px',
                 maxWidth: '150px',
                 height: '261px'
             },
