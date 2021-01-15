@@ -3,7 +3,7 @@ import ReactToPrint from "react-to-print";
 import { useLocation, Link } from "react-router-dom";
 import {DragDropContext} from 'react-beautiful-dnd';
 
-import { Col, Row, Modal, InputGroup, FormControl, Button } from 'react-bootstrap';
+import { Modal, InputGroup, FormControl, Button } from 'react-bootstrap';
 
 import Venn from './Venn';
 import BackButton from './components/BackButton';
@@ -43,6 +43,7 @@ class Print extends Component {
         this.state = {
             newItem: "",
             list: [],
+            showModal: false
         }
     }
 
@@ -81,19 +82,19 @@ class Print extends Component {
 
     render() {
       return (
-        <>
-            <Modal show={this.show} onHide={this.handleClose}>
+        <>  
+            <Modal show={this.showModal} onHide={this.setState({showModal: false})}>
                 <Modal.Header closeButton>
                     <Modal.Title>Are you sure?</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>Going back to the previous page will erase your progress? Do you want to begin from scratch?</Modal.Body>
                 <Modal.Footer>
-                    <button className="btn-default btn-lg" onClick={this.handleClose}>
+                    <button className="btn-default btn-lg" onClick={this.setState({showModal: false})}>
                         No
                     </button>
                     <Link
                         to={{
-                            pathname: "/lets-find-out-ikigai",
+                            pathname: "/u",
                             // cols: columns
                         }}
                     >
@@ -105,13 +106,7 @@ class Print extends Component {
             </Modal>
             <div className="page-container-6 container">
                 <div className="btn-back">
-                    <Link
-                        to={{
-                            pathname: "/u",
-                        }}
-                    >
-                    <BackButton onClick={this.handleShow}/>
-                    </Link>
+                    <BackButton onClick={this.setState({showModal: true})}/>
                 </div>
                 <p className="subtitle">Your Ikigai, Visualised</p>
                 <div className="page-print">
