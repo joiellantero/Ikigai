@@ -10,7 +10,6 @@ import { Container } from 'react-bootstrap';
 import BackButton from './components/BackButton';
 
 function Page2() {
-
     return (
         <div className="page-container-2">
             <div className="btn-back">
@@ -38,7 +37,6 @@ function Page2() {
             </Container>
         </div>
     );
-
 }
 
 export default Page2;

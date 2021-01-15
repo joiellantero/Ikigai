@@ -522,13 +522,6 @@ input.form-control:focus{
 
 /* ---- Page 6 ---- */
 
-.page-container-6 {
-    height: 50vh;
-}
-
-
-/* ---- Page 6 ---- */
-
 .card-shadow {
     -webkit-box-shadow: 0 5px 10px -3px rgb(0, 0, 0, 0.1);
     -moz-box-shadow: 0 5px 10px -3px rgb(0, 0, 0, 0.1);
@@ -538,7 +531,7 @@ input.form-control:focus{
 .page-container-6 {
     margin-top: 10vh;
     text-align: center;
-    height: 110vh;
+    height: 100vh;
 }
 
 .page-container-6 .btn-default {
