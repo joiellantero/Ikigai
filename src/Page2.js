@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import './style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import logo from './images/logo.png';
+import Logo from './components/CS_Logo';
 import img2 from './images/image-pg-2.png';
 import { Container } from 'react-bootstrap';
 import BackButton from './components/BackButton';
@@ -18,9 +18,7 @@ function Page2() {
                 </Link>
             </div>
 
-            <div className="main-logo">
-                <img src={logo} alt="cs-logo" />
-            </div>
+            <Logo/>
 
             <Container className="mt-20 text-center" fluid="md">
                 <img src={img2} alt="page-2" className="center" /> 

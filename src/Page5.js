@@ -3,9 +3,10 @@ import ReactToPrint from "react-to-print";
 import { useLocation, Link } from "react-router-dom";
 import {DragDropContext} from 'react-beautiful-dnd';
 
-import { Col, Row, Modal, InputGroup, FormControl, Button } from 'react-bootstrap';
+import { Modal, InputGroup, FormControl, Button } from 'react-bootstrap';
 
 import Venn from './Venn';
+import Logo from './components/CS_Logo';
 import BackButton from './components/BackButton';
 import Twitter from './components/Twitter';
 import Facebook from './components/Facebook';
@@ -13,10 +14,117 @@ import Linkedin from './components/Linkedin';
 import Whatsapp from './components/Whatsapp';
 import Trash from './components/trash';
 import Add from './components/Add';
+import { v4 } from 'uuid';
 
 
 const Intermediate  = () => {
-  const { columns, filtered, setColumn, onDragEnd }  = useLocation();
+  let {columns, filtered} = useLocation();
+  const { setColumn, onDragEnd }  = useLocation();
+  
+  if (!columns){
+      columns = {
+        [v4()]: {
+            id: 'r1',
+            name: 'what you can be PAID FOR',
+            items: [],
+            top: '118px',
+            left: '254px',
+            width: '283px',
+            maxWidth: '283px',
+            height: '82px',
+        },
+        [v4()]: {
+            id: 'r2',
+            name: 'what the WORLD NEEDS',
+            items: [],
+            top: '292px',
+            left: '46px',
+            width: '130px',
+            maxWidth: '150px',
+            height: '258px'
+        },
+        [v4()]: {
+            id: 'r3',
+            name: 'what you LOVE',
+            items: [],
+            top: '642px',
+            left: '259px',
+            width: '271px',
+            maxWidth: '283px',
+            height: '89px'
+        },
+        [v4()]: {
+            id: 'r4',
+            name: 'what you are GOOD AT',
+            items: [],
+            top: '291px',
+            left: '614px',
+            width: '125px',
+            maxWidth: '150px',
+            height: '261px'
+        },
+        [v4()]: {
+            id: 'r5',
+            name: '', // blue yellow
+            items: [],
+            top: '223px',
+            left: '199px',
+            width: '128px',
+            maxWidth: '150px',
+            height: '134px'
+        },
+        [v4()]: {
+            id: 'r6',
+            name: '', // green blue
+            items: [],
+            top: '490px',
+            left: '198px',
+            width: '129px',
+            maxWidth: '150px',
+            height: '130px'
+        },
+        [v4()]: {
+            id: 'r7',
+            name: '', // green red
+            items: [],
+            top: '497px',
+            left: '461px',
+            width: '134px',
+            maxWidth: '150px',
+            height: '128px'
+        },
+        [v4()]: {
+            id: 'r8',
+            name: '', // center
+            items: [],
+            top: '362px',
+            left: '325px',
+            width: '132px',
+            maxWidth: '150px',
+            height: '125px'
+        },
+        [v4()]: {
+            id: 'r9',
+            name: '', // red yellow
+            items: [],
+            top: '223px',
+            left: '458px',
+            width: '144px',
+            maxWidth: '150px',
+            height: '134px',
+        },
+        ['add']: {
+            id: 'r10',
+            name: '', // add activity
+            items: [],
+            top: '',
+            left: '',
+            width: '',
+            height: ''
+        },
+    };
+      filtered = Object.fromEntries(Object.entries(columns).filter(([colId]) => colId !== 'add'))
+  }
 
   return (
      <div className="venn-diagram">
@@ -37,7 +145,7 @@ class ComponentToPrint extends Component {
     }
 }
 
-class Print extends Component {
+class Export extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -79,110 +187,122 @@ class Print extends Component {
         });
     }
 
+    state={
+        showModal: false
+    }
+
+    toggleModal = () => {
+        console.log('clicked', this.state.showModal)
+        this.setState({
+            showModal: !this.state.showModal
+        })
+    }
+
     render() {
-      return (
-        <>
-            <Modal show={this.show} onHide={this.handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Are you sure?</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>Going back to the previous page will erase your progress? Do you want to begin from scratch?</Modal.Body>
-                <Modal.Footer>
-                    <button className="btn-default btn-lg" onClick={this.handleClose}>
-                        No
-                    </button>
-                    <Link
-                        to={{
-                            pathname: "/lets-find-out-ikigai",
-                            // cols: columns
-                        }}
-                    >
-                        <button className="btn-secondary btn-lg">
-                            Yes
+        return (
+            <>
+                <Logo/>
+                <Modal show={this.show} onHide={this.handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Are you sure?</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>Going back to the previous page will erase your progress? Do you want to begin from scratch?</Modal.Body>
+                    <Modal.Footer>
+                        <button className="btn-default btn-lg" onClick={this.toggleModal}>
+                            No
                         </button>
-                    </Link>
-                </Modal.Footer>
-            </Modal>
-            <div className="page-container-6 container">
-                <div className="btn-back">
-                    <Link
-                        to={{
-                            pathname: "/u",
-                        }}
-                    >
-                    <BackButton onClick={this.handleShow}/>
-                    </Link>
-                </div>
-                <p className="subtitle">Your Ikigai, Visualised</p>
-                <div className="page-print">
-                    <ComponentToPrint ref={(el) => (this.componentRef = el)} />
-                </div>
-                <div className="steps-container container my-5">
-                    <ul>
-                        {this.state.list.map(item => {
-                            return (
-                                <li key={item.id}>
-                                    {item.value}
-                                    <button className="btn-delete" onClick={() => this.deleteItem(item.id)}><Trash /></button>
-                                </li>
-                            )
-                        })}
-                    </ul>
-                    <InputGroup>
-                        <FormControl
-                            placeholder="Enter step..."
-                            aria-label="Enter step..."
-                            aria-describedby="basic-addon2"
-                            className="steps-input"
-                            name="step"
-                            value={this.state.newItem}
-                            onChange={e => this.handleInputChange("newItem", e.target.value)}
-                            onKeyPress={e => e.key === "Enter" && this.addItem()}
-                        />
-                        <InputGroup.Append>
-                            <Button className="btn-add" onClick={() => this.addItem()} disabled={!this.state.newItem}><Add /></Button>
-                        </InputGroup.Append>
-                    </InputGroup>
-                </div>
-
-                <ReactToPrint
-                    trigger={() => (
-                    <div className="btn-container-center">
-                        <button type="button" className="btn-default btn-2 btn-lg btn-width-fit">
-                            Export Report
-                        </button>
+                        <Link
+                            to={{
+                                pathname: "/u",
+                            }}
+                        >
+                            <button className="btn-secondary btn-lg">
+                                Yes
+                            </button>
+                        </Link>
+                    </Modal.Footer>
+                </Modal>
+                <Logo />
+                <div className="page-container-6 container">
+                    <div className="btn-back">
+                        <Link
+                            to={{
+                                pathname: "/u",
+                            }}
+                        >
+                            <BackButton onClick={this.toggleModal}/>
+                        </Link>
                     </div>
-                    )}
-                    content={() => this.componentRef}
-                    documentTitle="Venn_PDF"
-                />
+                    <p className="subtitle">Your Ikigai, Visualised</p>
+                    <div className="page-print">
+                        <ComponentToPrint ref={(el) => (this.componentRef = el)} />
+                    </div>
+                    <div className="steps-container container my-5">
+                        <ul>
+                            {this.state.list.map(item => {
+                                return (
+                                    <li key={item.id}>
+                                        {item.value}
+                                        <button className="btn-delete" onClick={() => this.deleteItem(item.id)}><Trash /></button>
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                        <InputGroup>
+                            <FormControl
+                                placeholder="Enter step..."
+                                aria-label="Enter step..."
+                                aria-describedby="basic-addon2"
+                                className="steps-input"
+                                name="step"
+                                value={this.state.newItem}
+                                onChange={e => this.handleInputChange("newItem", e.target.value)}
+                                onKeyPress={e => e.key === "Enter" && this.addItem()}
+                            />
+                            <InputGroup.Append>
+                                <Button className="btn-add" onClick={() => this.addItem()} disabled={!this.state.newItem}><Add /></Button>
+                            </InputGroup.Append>
+                        </InputGroup>
+                    </div>
 
-                <div class="card card-shadow mt-5">
-                    <div class="card-body">
-                        <div className="share-container container">
-                            <p>Share:</p>
-                            <ul>
-                                <li className="hvr-float"><a href="https://twitter.com/" target="__blank"><Twitter /></a></li>
-                                <li className="hvr-float"><a href="https://facebook.com/" target="__blank"><Facebook /></a></li>
-                                <li className="hvr-float"><a href="https://linkedin.com/" target="__blank"><Linkedin /></a></li>
-                                <li className="hvr-float"><a href="https://whatsapp.com/" target="__blank"><Whatsapp /></a></li>
-                            </ul>
+                    <ReactToPrint
+                        trigger={() => (
+                        <div className="btn-container-center">
+                            <button type="button" className="btn-default btn-2 btn-lg btn-width-fit">
+                                Export Report
+                            </button>
+                        </div>
+                        )}
+                        content={() => this.componentRef}
+                        documentTitle="Venn_PDF"
+                    />
+
+                    <div class="card card-shadow mt-5">
+                        <div class="card-body">
+                            <div className="share-container container">
+                                <p>Share:</p>
+                                <ul>
+                                    <li className="hvr-float"><a href="https://twitter.com/" target="__blank"><Twitter /></a></li>
+                                    <li className="hvr-float"><a href="https://facebook.com/" target="__blank"><Facebook /></a></li>
+                                    <li className="hvr-float"><a href="https://linkedin.com/" target="__blank"><Linkedin /></a></li>
+                                    <li className="hvr-float"><a href="https://whatsapp.com/" target="__blank"><Whatsapp /></a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div className="container mt-5">
-                    <p>
-                        Achieving Ikigai is a challenging process.<br />
-                        Your pursuit of Ikigai should draw you closer to a particular cause, skill, or people networks.<br /><br />
+                    <div className="container mt-5">
+                        <p>
+                            Achieving Ikigai is a challenging process.<br />
+                            Your pursuit of Ikigai should draw you closer to a particular cause, skill, or people networks.<br /><br />
 
-                        All the best in your pursuit of ikigai!
-                    </p>
+                            All the best in your pursuit of ikigai!
+                        </p>
+                    </div>
                 </div>
-            </div>
-        </>
-      );
+            </>
+        );
     }
-  }
+}
 
-export default Print;
+export default Export;

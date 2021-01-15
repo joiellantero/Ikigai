@@ -7,7 +7,7 @@ import { Modal } from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
 
-import logo from "./images/logo.png";
+import Logo from './components/CS_Logo';
 import Rectangle from "./components/Rectangle.js";
 import BackButton from './components/BackButton';
 
@@ -111,9 +111,7 @@ const Far = () => {
 
     return (
         <>
-            <div className="main-logo">
-                <img src={logo} alt="cs-logo" />
-            </div>
+            <Logo />
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Are you sure?</Modal.Title>

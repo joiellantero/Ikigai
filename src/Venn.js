@@ -2,7 +2,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React from 'react';
 import "./u.css";
 import Hidden from './Hidden';
-import { Col } from 'react-bootstrap';
 import CircleSVG from './components/CircleSVG';
 
 const Venn = (props) => {
