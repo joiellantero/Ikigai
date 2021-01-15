@@ -160,7 +160,7 @@ const Far = () => {
                     <div className="btn-container center">
                     <Link
                         to={{
-                            pathname: "/u",
+                            pathname: "/your-ikigai-chart",
                             cols: columns
                         }}
                     >

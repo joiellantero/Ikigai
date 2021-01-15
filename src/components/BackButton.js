@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
-import '../../src/style.css';
+import '../style.css';
 
 
 const BackButton = (props) => {

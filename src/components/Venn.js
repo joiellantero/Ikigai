@@ -1,8 +1,8 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React from 'react';
-import "./u.css";
+import "../style.css";
 import Hidden from './Hidden';
-import CircleSVG from './components/CircleSVG';
+import CircleSVG from './CircleSVG';
 
 const Venn = (props) => {
     const { filtered, columns, setColumn } = props;

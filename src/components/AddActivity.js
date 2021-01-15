@@ -1,7 +1,9 @@
 import React from 'react';
 import { Droppable } from "react-beautiful-dnd";
 import { v4 } from 'uuid';
+
 import { Form } from 'react-bootstrap';
+
 import Note from './Note';
 
 const AddActivity = (props) => {
