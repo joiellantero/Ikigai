@@ -10,7 +10,7 @@ const Venn = (props) => {
 
     return (
         <>
-            <Col xs={9} className="venn-container p-0">
+            <div className="venn-container p-0">
                 {Object.entries(filtered).map(([columnId, column]) => {
                     return (
                         <Hidden
@@ -28,7 +28,7 @@ const Venn = (props) => {
                     );
                 })}
                 <CircleSVG />
-            </Col>
+            </div>
         </>
     );
 };

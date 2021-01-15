@@ -529,7 +529,7 @@ input.form-control:focus{
 }
 
 .page-container-6 {
-    margin-top: 10vh;
+    margin-top: 8vh;
     text-align: center;
     height: 100vh;
 }
@@ -659,4 +659,15 @@ input.form-control:focus{
 
 .whatsapp-container {
     background: #00e676;
+}
+
+.page-print{
+    display: table;
+    margin: 0 auto;
+}
+
+@media print {
+    .page-print{
+        @page { size: landscape; }
+    }
 }
