@@ -18,11 +18,12 @@ import Add from './components/Add';
 const Intermediate  = () => {
   const { columns, filtered, setColumn, onDragEnd }  = useLocation();
 
-
   return (
-     <div className="venn-diagram" style={{ display: 'block', margin: '0 auto' }}>
+     <div className="venn-diagram">
         <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
-            <Venn filtered = {filtered} columns ={columns} setColumn = {setColumn}/>
+            <div className="page-break">
+                <Venn filtered = {filtered} columns ={columns} setColumn = {setColumn}/>
+            </div>
         </DragDropContext>
      </div>
     );
@@ -30,9 +31,9 @@ const Intermediate  = () => {
 
 class ComponentToPrint extends Component {
     render() {
-      return (
-        <Intermediate />
-        );
+        return (
+            <Intermediate/>
+        ); 
     }
 }
 
@@ -105,15 +106,15 @@ class Print extends Component {
             <div className="page-container-6 container">
                 <div className="btn-back">
                     <Link
-                    to={{
-                        pathname: "/u",
-                    }}
+                        to={{
+                            pathname: "/u",
+                        }}
                     >
                     <BackButton onClick={this.handleShow}/>
                     </Link>
                 </div>
                 <p className="subtitle">Your Ikigai, Visualised</p>
-                <div>
+                <div className="page-print">
                     <ComponentToPrint ref={(el) => (this.componentRef = el)} />
                 </div>
                 <div className="steps-container container my-5">
