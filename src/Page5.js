@@ -185,6 +185,17 @@ class Print extends Component {
         });
     }
 
+    state={
+        showModal: false
+    }
+
+    toggleModal = () => {
+        console.log('clicked', this.state.showModal)
+        this.setState({
+            showModal: !this.state.showModal
+        })
+    }
+
     render() {
       return (
         <>
@@ -195,13 +206,12 @@ class Print extends Component {
                 </Modal.Header>
                 <Modal.Body>Going back to the previous page will erase your progress? Do you want to begin from scratch?</Modal.Body>
                 <Modal.Footer>
-                    <button className="btn-default btn-lg" onClick={this.handleClose}>
+                    <button className="btn-default btn-lg" onClick={this.toggleModal}>
                         No
                     </button>
                     <Link
                         to={{
-                            pathname: "/lets-find-out-ikigai",
-                            // cols: columns
+                            pathname: "/u",
                         }}
                     >
                         <button className="btn-secondary btn-lg">
@@ -217,7 +227,7 @@ class Print extends Component {
                             pathname: "/u",
                         }}
                     >
-                    <BackButton onClick={this.handleShow}/>
+                        <BackButton onClick={this.toggleModal}/>
                     </Link>
                 </div>
                 <p className="subtitle">Your Ikigai, Visualised</p>
