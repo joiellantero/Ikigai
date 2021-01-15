@@ -529,7 +529,7 @@ input.form-control:focus{
 }
 
 .page-container-6 {
-    margin-top: 10vh;
+    margin-top: 8vh;
     text-align: center;
     height: 100vh;
 }
@@ -659,4 +659,36 @@ input.form-control:focus{
 
 .whatsapp-container {
     background: #00e676;
+}
+
+.page-print{
+    display: table;
+    margin: 0 auto;
+}
+
+.print-component{
+    display: blcok;
+    margin: 0 auto;
+}
+  
+@media print {
+    html, body {
+        height: initial !important;
+        overflow: initial !important;
+        -webkit-print-color-adjust: exact;
+    }
+}
+
+@media print {
+    .page-break {
+        margin-top: 1rem;
+        margin-left: 6rem;
+        display: block;
+        page-break-before: auto;
+    }
+}
+  
+@page {
+    size: auto;
+    margin: 20mm;
 }
