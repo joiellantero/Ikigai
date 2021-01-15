@@ -1,6 +1,6 @@
-# Ikigai Project
-
 <img src="ikigai-tool.png" alt="ikigai-tool">
+
+# Ikigai Project
 
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 [![Dependencies](https://img.shields.io/david/joiellantero/Ikigai?color=green&style=flat-square)](https://img.shields.io/david/joiellantero/Ikigai?color=green&style=flat-square)
