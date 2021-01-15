@@ -44,8 +44,8 @@ const Circa = () => {
                 name: 'what the WORLD NEEDS',
                 items: rectangleData[0],
                 top: '292px',
-                left: '46px',
-                width: '128px',
+                left: '48px',
+                width: '130px',
                 maxWidth: '150px',
                 height: '258px'
             },
@@ -148,7 +148,7 @@ const Circa = () => {
                 items: [],
                 top: '292px',
                 left: '46px',
-                width: '90px',
+                width: '130px',
                 maxWidth: '150px',
                 height: '258px'
             },
@@ -167,8 +167,8 @@ const Circa = () => {
                 name: 'what you are GOOD AT',
                 items: [],
                 top: '291px',
-                left: '616px',
-                width: '88px',
+                left: '614px',
+                width: '125px',
                 maxWidth: '150px',
                 height: '261px'
             },
@@ -208,7 +208,7 @@ const Circa = () => {
                 items: [],
                 top: '362px',
                 left: '325px',
-                width: '119px',
+                width: '132px',
                 maxWidth: '150px',
                 height: '125px'
             },
@@ -216,11 +216,11 @@ const Circa = () => {
                 id: 'r9',
                 name: '', // red yellow
                 items: [],
-                top: '230px',
-                left: '460px',
-                width: '132px',
+                top: '223px',
+                left: '458px',
+                width: '144px',
                 maxWidth: '150px',
-                height: '127px'
+                height: '134px',
             },
             ['add']: {
                 id: 'r10',
