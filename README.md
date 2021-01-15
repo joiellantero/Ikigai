@@ -7,7 +7,7 @@
 [![Website](https://img.shields.io/website?style=flat-square&url=https%3A%2F%2Fcfa-cs-ikigai.netlify.app%2F)](https://img.shields.io/website?style=flat-square&url=https%3A%2F%2Fcfa-cs-ikigai.netlify.app%2F)
 
 
-> This project is being built for Code for Asia in partnership with Career Socious
+> This project is being built for Code for Asia in partnership with Career Socius
 
 Ikigai is a Japanese concept meaning "a reason for being". In this project, we are building a React webapp which aims to help you find your ikigai.
 
