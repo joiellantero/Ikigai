@@ -666,8 +666,29 @@ input.form-control:focus{
     margin: 0 auto;
 }
 
+.print-component{
+    display: blcok;
+    margin: 0 auto;
+}
+  
 @media print {
-    .page-print{
-        @page { size: landscape; }
+    html, body {
+        height: initial !important;
+        overflow: initial !important;
+        -webkit-print-color-adjust: exact;
     }
+}
+
+@media print {
+    .page-break {
+        margin-top: 1rem;
+        margin-left: 6rem;
+        display: block;
+        page-break-before: auto;
+    }
+}
+  
+@page {
+    size: auto;
+    margin: 20mm;
 }

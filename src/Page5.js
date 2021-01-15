@@ -21,7 +21,9 @@ const Intermediate  = () => {
   return (
      <div className="venn-diagram">
         <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
-            <Venn filtered = {filtered} columns ={columns} setColumn = {setColumn}/>
+            <div className="page-break">
+                <Venn filtered = {filtered} columns ={columns} setColumn = {setColumn}/>
+            </div>
         </DragDropContext>
      </div>
     );
