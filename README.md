@@ -2,6 +2,7 @@
 
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 [![Dependencies](https://img.shields.io/david/joiellantero/Ikigai?color=green&style=flat-square)](https://img.shields.io/david/joiellantero/Ikigai?color=green&style=flat-square)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/04e6e583-423c-4aad-8614-aa71d0cd9e59/deploy-status)](https://app.netlify.com/sites/cfa-cs-ikigai/deploys)
 
 > This project is being built for Code for Asia in partnership with Career Socious
 
