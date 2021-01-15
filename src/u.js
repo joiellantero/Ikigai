@@ -2,9 +2,11 @@ import React, {  useState } from 'react';
 import { useLocation, Link } from "react-router-dom";
 import { DragDropContext } from "react-beautiful-dnd";
 import { v4 } from 'uuid';
+
 import "./u.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Row, Col, Modal } from 'react-bootstrap';
+
 import BackButton from './components/BackButton';
 import Logo from './images/logo';
 import AddActivity from './AddActivity';
@@ -274,7 +276,7 @@ const Circa = () => {
             <div className="btn-container-center">
                 <Link
                     to={{
-                        pathname: "/print",
+                        pathname: "/export",
                         columns: columns, 
                         filtered: filtered, 
                         setColumn: setColumn,

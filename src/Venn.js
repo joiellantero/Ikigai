@@ -6,7 +6,6 @@ import { Col } from 'react-bootstrap';
 import CircleSVG from './components/CircleSVG';
 
 const Venn = (props) => {
-    console.log(props);
     const { filtered, columns, setColumn } = props;
 
     return (
