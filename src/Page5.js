@@ -24,8 +24,10 @@ const Circa = () => {
         let i = 0
 
         Object.entries(cols).map(([, column]) => {
-            rectangleData[i] = column.items
-            i += 1
+            return (
+                rectangleData[i] = column.items,
+                i += 1
+            );
         });
 
         circleData = {
@@ -119,7 +121,7 @@ const Circa = () => {
                 maxWidth: '150px',
                 height: '127px'
             },
-            ['add']: {
+            'add': {
                 id: 'r10',
                 name: '', // add activity
                 items: [],
@@ -222,7 +224,7 @@ const Circa = () => {
                 maxWidth: '150px',
                 height: '134px',
             },
-            ['add']: {
+            'add': {
                 id: 'r10',
                 name: '', // add activity
                 items: [],
@@ -250,7 +252,7 @@ const Circa = () => {
         const newList = columns['add'].items.concat({ id: v4(), intext: text });
         const newColumns = {
             ...columns,
-            ['add']: {
+            'add': {
                 ...columns['add'],
                 items: newList
             }
@@ -269,7 +271,7 @@ const Circa = () => {
             const newList = columns['add'].items.concat({ id: v4(), intext: text });
             const newColumns = {
                 ...columns,
-                ['add']: {
+                'add': {
                     ...columns['add'],
                     items: newList
                 }

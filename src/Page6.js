@@ -113,7 +113,7 @@ const Intermediate  = () => {
             maxWidth: '150px',
             height: '134px',
         },
-        ['add']: {
+        'add': {
             id: 'r10',
             name: '', // add activity
             items: [],

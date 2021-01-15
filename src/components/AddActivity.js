@@ -22,7 +22,7 @@ const AddActivity = (props) => {
         const newList = columns['add'].items.concat({ id: v4(), intext: text });
         const newColumns = {
             ...columns,
-            ['add']: {
+            'add': {
                 ...columns['add'],
                 items: newList
             }
@@ -41,7 +41,7 @@ const AddActivity = (props) => {
             const newList = columns['add'].items.concat({ id: v4(), intext: text });
             const newColumns = {
                 ...columns,
-                ['add']: {
+                'add': {
                     ...columns['add'],
                     items: newList
                 }
