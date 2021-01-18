@@ -9,10 +9,6 @@ body {
     font-size: larger;
 }
 
-.background-2 {
-    text-align: center;
-}
-
 .steps-input:focus {
     border-color: #283972 !important;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 4px #283972 !important;
@@ -467,6 +463,17 @@ input.form-control:focus{
     .page-container-2 .p-pg-2,
     .page-container-3 .p-pg-2{
         width: 80%;
+    }
+}
+
+/* ----- PAGE 3 ----- */
+.page-container-3 .container{
+    display: block;
+}
+
+@media only screen and (max-width: 768px){
+    .page-container-3 .container{
+        margin-top: 250px;
     }
 }
 
