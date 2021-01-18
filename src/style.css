@@ -752,6 +752,10 @@ header {
     height: 100vh;
 }
 
+.page-container-6 .btn-container-center{
+    margin: 50px;
+}
+
 .page-container-6 .btn-default {
     width: fit-content;
 }
@@ -759,7 +763,6 @@ header {
 .page-container-6 .card {
     width: fit-content;
     margin: 0 auto;
-    margin-bottom: 500px !important;
     outline: none;
     border: none;
 }
@@ -768,6 +771,14 @@ header {
     text-transform: uppercase;
     font-size: 13px;
     font-weight: 600;
+}
+
+.page-container-6 .container.end{
+    margin: 50px 0 100px 0;
+}
+
+.page-container-6 .end p{
+    margin: 0;
 }
 
 .page-container-6 .share-container {

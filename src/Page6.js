@@ -236,7 +236,7 @@ class Export extends Component {
                     <div className="page-print">
                         <ComponentToPrint ref={(el) => (this.componentRef = el)} />
                     </div>
-                    <div className="steps-container container my-5">
+                    {/* <div className="steps-container container my-5">
                         <ul>
                             {this.state.list.map(item => {
                                 return (
@@ -262,7 +262,7 @@ class Export extends Component {
                                 <Button className="btn-add" onClick={() => this.addItem()} disabled={!this.state.newItem}><Add /></Button>
                             </InputGroup.Append>
                         </InputGroup>
-                    </div>
+                    </div> */}
 
                     <ReactToPrint
                         trigger={() => (
@@ -290,13 +290,11 @@ class Export extends Component {
                         </div>
                     </div>
 
-                    <div className="container mt-5">
-                        <p>
-                            Achieving Ikigai is a challenging process.<br />
-                            Your pursuit of Ikigai should draw you closer to a particular cause, skill, or people networks.<br /><br />
-
-                            All the best in your pursuit of ikigai!
-                        </p>
+                    <div className="container end">
+                        <p>Achieving Ikigai is a challenging process.</p>
+                        <p>Your pursuit of Ikigai should draw you closer to a particular cause, skill, or people networks.</p>
+                        <br />
+                        <p> All the best in your pursuit of ikigai!</p>
                     </div>
                 </div>
             </>
