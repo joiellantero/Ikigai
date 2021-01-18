@@ -75,7 +75,7 @@ const Rectangle = (props)=> {
                             key="bottom"
                             placement="bottom"
                             overlay={
-                                <Tooltip 
+                                 <Tooltip 
                                     variant="primary"
                                     id={`tooltip-bottom`} 
                                     style={{ 
