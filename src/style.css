@@ -270,6 +270,7 @@ input.form-control:focus{
 }
 
 .main-logo img {
+    min-width: 150px;
     width: 14vw;
     margin: 20px;
 }
@@ -452,21 +453,19 @@ input.form-control:focus{
     overflow: visible;
 }
 
-.page-container-2 img{
-    min-width: 150px;
-}
-
 .page-container-2 img.center{
     width: 450px;
 }
 
-.page-container-2 .p-pg-2{
+.page-container-2 .p-pg-2,
+.page-container-3 .p-pg-2{
     margin: 20px auto;
     width: 50%;
 }
 
 @media only screen and (max-width: 768px){
-    .page-container-2 .p-pg-2{
+    .page-container-2 .p-pg-2,
+    .page-container-3 .p-pg-2{
         width: 80%;
     }
 }
