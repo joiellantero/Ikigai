@@ -4,7 +4,8 @@ import { useLocation, Link } from "react-router-dom";
 import {DragDropContext} from 'react-beautiful-dnd';
 import { v4 } from 'uuid';
 
-import { Modal, InputGroup, FormControl, Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
+// import { Modal, InputGroup, FormControl, Button } from 'react-bootstrap';
 
 import Venn from './components/Venn';
 import Logo from './components/CS_Logo';
@@ -13,8 +14,8 @@ import Twitter from './components/Twitter';
 import Facebook from './components/Facebook';
 import Linkedin from './components/Linkedin';
 import Whatsapp from './components/Whatsapp';
-import Trash from './components/trash';
-import Add from './components/Add';
+// import Trash from './components/trash';
+// import Add from './components/Add';
 
 
 const Intermediate  = () => {
