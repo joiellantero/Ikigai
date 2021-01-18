@@ -192,7 +192,6 @@ class Export extends Component {
     }
 
     toggleModal = () => {
-        console.log('clicked', this.state.showModal)
         this.setState({
             showModal: !this.state.showModal
         })
