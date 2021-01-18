@@ -224,8 +224,53 @@ const Circa = () => {
                 maxWidth: '150px',
                 height: '134px',
             },
-            'add': {
+            
+            [v4()]: {
                 id: 'r10',
+                name: '', // red yellow blue
+                items: [],
+                top: '257px',
+                left: '336px',
+                width: '115px',
+                height: '89px',
+                maxWidth: '125px',
+            },
+
+            [v4()]: {
+                id: 'r11',
+                name: '', // red blue green
+                items: [],
+                top: '503px',
+                left: '339px',
+                width: '109px',
+                maxWidth: '115px',
+                height: '84px',
+            },
+
+            [v4()]: {
+                id: 'r12',
+                name: '', // yellow blue green
+                items: [],
+                top: '368px',
+                left: '227px',
+                width: '85px',
+                maxWidth: '100px',
+                height: '112px',
+            },
+
+            [v4()]: {
+                id: 'r13',
+                name: '', // yellow green red
+                items: [],
+                top: '370px',
+                left: '470px',
+                width: '78px',
+                maxWidth: '150px',
+                height: '111px',
+            },
+
+            'add': {
+                id: 'r14',
                 name: '', // add activity
                 items: [],
                 top: '',
