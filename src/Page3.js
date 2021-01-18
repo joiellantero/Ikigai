@@ -12,7 +12,8 @@ import BackButton from './components/BackButton';
 function Page3() {
 
     return (
-        <>
+        <>  
+        <div className="page-container-3">
             <div className="background-2">
                 <div className="btn-back">
                     <Link to="/intro">
@@ -39,6 +40,7 @@ function Page3() {
                     </div>
                 </Container>
             </div>
+        </div>
         </>
     );
 
