@@ -18,6 +18,7 @@ const CircleSVG = () => {
                 <p className="c3">What you LOVE</p>
                 <p className="c4">What you are PAID FOR</p>
                 <div class="behind">
+                    <p className="ikigai">Ikigai</p>
                     <p className="vocation">Vocation</p>
                     <p className="profession">Profession</p>
                     <p className="mission">Mission</p>

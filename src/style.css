@@ -339,9 +339,17 @@ input.form-control:focus{
 .venn-labels .behind p{
     position: absolute;
     z-index: -100;
-    font-weight: 700;
+    font-weight: 300;
+    font-style: italic;
     color: grey;
     font-size: 1.3em;
+}
+
+.venn-labels .behind p.ikigai{
+    text-transform: uppercase;
+    color: red;
+    top: 407px;
+    left: 365px;
 }
 
 .venn-labels .behind p.vocation{
