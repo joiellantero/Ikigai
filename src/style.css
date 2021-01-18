@@ -474,7 +474,10 @@ input.form-control:focus{
 /* ----- PAGE 4 ----- */
 
 .page-container-4 {
-    height: 60vh;
+    height: 110%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .page-container-4 .btn-container {
@@ -486,23 +489,26 @@ input.form-control:focus{
 }
 
 .rec-container {
+    margin: 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 }
 
-@media only screen and (max-width: 1220px) {
-    .rec-container {
-        display: inline-block;
+@media only screen and (max-width: 768px) {
+    .page-container-4 .page-content {
+        margin-top: 120px;
     }
 }
 
 .rectangle-container {
     background: #e1e5ff;
+    min-width: 350px;
     width: 40vw;
     height: 40vh;
     overflow: scroll;
+    margin: 0;
 }
 
 .edit-text {

@@ -137,39 +137,41 @@ const Far = () => {
                 <div className="btn-back">
                     <BackButton onClick={handleShow}/>
                 </div>
-                <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
-                    <div className="main-header-text">
-                        <p className="subtitle my-5">Let’s find our ikigai!</p>
-                        <br />
-                        <p>Start by adding activites or values you are currently doing into each of these four quadrants.</p>
-                        <p>Feel free to add as many as you can think of!</p>
-                    </div>
-                    <div className='rec-container'>
-                        {Object.entries(columns).map(([columnId, column]) => {
-                            return (
-                                <Rectangle
-                                    key={columnId}
-                                    id={columnId}
-                                    col={column}
-                                    columns={columns}
-                                    handleColumn={setColumn}
-                                />
-                            );
-                        })}
-                    </div>
-                    <div className="btn-container center">
-                    <Link
-                        to={{
-                            pathname: "/your-ikigai-chart",
-                            cols: columns
-                        }}
-                    >
-                        <button type="button" className="btn-default btn-2 btn-lg">
-                            Next
-                        </button>
-                    </Link>
-                    </div>
-                </DragDropContext>
+                <div className="page-content">
+                    <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
+                        <div className="main-header-text">
+                            <p className="subtitle my-5">Let’s find our ikigai!</p>
+                            <br />
+                            <p>Start by adding activites or values you are currently doing into each of these four quadrants.</p>
+                            <p>Feel free to add as many as you can think of!</p>
+                        </div>
+                        <div className='rec-container'>
+                            {Object.entries(columns).map(([columnId, column]) => {
+                                return (
+                                    <Rectangle
+                                        key={columnId}
+                                        id={columnId}
+                                        col={column}
+                                        columns={columns}
+                                        handleColumn={setColumn}
+                                    />
+                                );
+                            })}
+                        </div>
+                        <div className="btn-container center">
+                            <Link
+                                to={{
+                                    pathname: "/your-ikigai-chart",
+                                    cols: columns
+                                }}
+                            >
+                                <button type="button" className="btn-default btn-2 btn-lg">
+                                    Next
+                                </button>
+                            </Link>
+                        </div>
+                    </DragDropContext>
+                </div>
             </div>
         </>
     );
