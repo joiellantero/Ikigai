@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
 import '../../src/style.css';
 import { render } from "react-dom";
-import { Link } from "react-router-dom";
 import { Modal, Button, InputGroup, FormControl } from 'react-bootstrap';
 import Add from './Add';
 
 
-function ModalContent() {
+const ModalContent = (props) => {
+    const { name, body1, body2, items } = props.mod;
 
-    const [data1, setData] = useState(null)
+    const [data, setData] = useState(null)
 
     function getData(val) {
         setData(val.target.value)
         // console.warn(val.target.value)
     }
-
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -30,14 +29,12 @@ function ModalContent() {
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Vocation</Modal.Title>
+                    <Modal.Title>{name}</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>This intersection represents your vocation. <br />
-                What are some steps can you take to enjoy your vocation more?
-                <p> {data1} </p>
+                <Modal.Body>{body1} <br />
+                    {body2}
+                    <p> {data} </p>
 
-
-                    {/* <input type="text" onChange={getData} /> */}
                     <InputGroup size="sm" className="mb-3" onChange={getData}>
                         <InputGroup.Prepend>
                             <InputGroup.Text id="inputGroup-sizing-sm"></InputGroup.Text>
@@ -50,20 +47,12 @@ function ModalContent() {
 
                     <button type="button" className="btn-secondary btn-lg" onClick={handleClose}>
                         Close
-                    </button>
+                </button>
+
                     <button type="button" className="btn-default btn-lg" onClick={handleClose}>
                         Save
-                    </button>
+                </button>
 
-
-                    <Link
-                        to={{
-                            pathname: "/export",
-                            data1: data1
-                        }}
-                    >
-                        {console.log(data1)}
-                    </Link>
 
                 </Modal.Footer>
             </Modal>

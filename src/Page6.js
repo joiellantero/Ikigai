@@ -147,7 +147,9 @@ const Intermediate = () => {
                     <Venn filtered={filtered} columns={columns} setColumn={setColumn} />
                 </div>
             </DragDropContext>
+            <p> {data1} </p>
         </div>
+
     );
 }
 
@@ -213,7 +215,6 @@ class Export extends Component {
 
 
     render() {
-
 
         return (
 
