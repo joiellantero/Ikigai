@@ -452,7 +452,6 @@ input.form-control:focus{
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: visible;
 }
 
 .page-container-2 img.center{
