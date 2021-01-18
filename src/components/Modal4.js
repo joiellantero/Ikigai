@@ -6,6 +6,14 @@ import Add from './Add';
 
 
 function ModalContent() {
+
+    const [data4, setData] = useState(null)
+
+    function getData(val) {
+        setData(val.target.value)
+        // console.warn(val.target.value)
+    }
+
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -25,8 +33,9 @@ function ModalContent() {
                 </Modal.Header>
                 <Modal.Body>This intersection represents your passion. <br />
                 Are you able to turn your passion into something you can be paid for?
+                <p> {data4} </p>
 
-                <InputGroup size="sm" className="mb-3">
+                    <InputGroup size="sm" className="mb-3" onChange={getData}>
                         <InputGroup.Prepend>
                             <InputGroup.Text id="inputGroup-sizing-sm"></InputGroup.Text>
                         </InputGroup.Prepend>

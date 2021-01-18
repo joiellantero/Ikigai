@@ -6,6 +6,13 @@ import Add from './Add';
 
 
 function ModalContent() {
+
+    const [data3, setData] = useState(null)
+
+    function getData(val) {
+        setData(val.target.value)
+        // console.warn(val.target.value)
+    }
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -25,8 +32,9 @@ function ModalContent() {
                 </Modal.Header>
                 <Modal.Body>This intersection represents your mission. <br />
                 What are some steps you can take to hone your craft?
+                <p> {data3} </p>
 
-                <InputGroup size="sm" className="mb-3">
+                    <InputGroup size="sm" className="mb-3" onChange={getData}>
                         <InputGroup.Prepend>
                             <InputGroup.Text id="inputGroup-sizing-sm"></InputGroup.Text>
                         </InputGroup.Prepend>

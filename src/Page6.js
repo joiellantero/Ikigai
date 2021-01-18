@@ -9,12 +9,14 @@ import { Modal, InputGroup, FormControl, Button } from 'react-bootstrap';
 import Venn from './components/Venn';
 import Logo from './components/CS_Logo';
 import BackButton from './components/BackButton';
+import Modal1 from "./components/Modal1";
 import Twitter from './components/Twitter';
 import Facebook from './components/Facebook';
 import Linkedin from './components/Linkedin';
 import Whatsapp from './components/Whatsapp';
 import Trash from './components/trash';
 import Add from './components/Add';
+
 import {
     FacebookShareButton,
     FacebookIcon,
@@ -27,10 +29,11 @@ import {
 } from "react-share";
 
 
-
 const Intermediate = () => {
     let { columns, filtered } = useLocation();
     const { setColumn, onDragEnd } = useLocation();
+    const { data1 } = useLocation();
+    { console.log(data1) }
 
     if (!columns) {
         columns = {
@@ -208,8 +211,12 @@ class Export extends Component {
         })
     }
 
+
     render() {
+
+
         return (
+
             <>
                 <Logo />
                 <Modal show={this.show} onHide={this.handleClose}>
@@ -274,6 +281,9 @@ class Export extends Component {
                             </InputGroup.Append>
                         </InputGroup>
                     </div> */}
+                    <h3> Steps to Ikigai</h3>
+                    {/* {console.log(data1)}
+                    <p> {data1} </p> */}
 
                     <ReactToPrint
                         trigger={() => (
