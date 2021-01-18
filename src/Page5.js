@@ -1,4 +1,4 @@
-import React, {  useState } from 'react';
+import React, { useState } from 'react';
 import { useLocation, Link } from "react-router-dom";
 import { DragDropContext } from "react-beautiful-dnd";
 import { v4 } from 'uuid';
@@ -12,14 +12,19 @@ import Logo from './components/CS_Logo';
 import AddActivity from './components/AddActivity';
 import Venn from './components/Venn';
 
+import Modal1 from "./components/Modal1";
+import Modal2 from "./components/Modal2";
+import Modal3 from "./components/Modal3";
+import Modal4 from "./components/Modal4";
+
 const Circa = () => {
-    const { cols }  = useLocation();
+    const { cols } = useLocation();
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     let circleData = null;
-    
-    if (cols){
+
+    if (cols) {
         const rectangleData = [[], [], [], []]
         let i = 0
 
@@ -324,13 +329,13 @@ const Circa = () => {
         }
     };
 
-    window.onbeforeunload = function() {
+    window.onbeforeunload = function () {
         return "Data will be lost if you leave the page, are you sure?";
     };
 
     return (
         <>
-            <Logo/>
+            <Logo />
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Are you sure?</Modal.Title>
@@ -355,7 +360,7 @@ const Circa = () => {
             <div className="venn-diagram" style={{ display: 'table', margin: '0 auto' }}>
                 <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
                     <div className="btn-back">
-                        <BackButton onClick={handleShow}/>
+                        <BackButton onClick={handleShow} />
                     </div>
                     <div className="main-header-text">
                         <p className="subtitle my-5">Introducing your ikigai chart.</p>
@@ -368,11 +373,23 @@ const Circa = () => {
                         </div>
                     </div>
                     <Row className="row-container mt-5">
+                        <div className="btn-modal-1">
+                            <Modal1 />
+                        </div>
+                        <div className="btn-modal-2">
+                            <Modal2 />
+                        </div>
+                        <div className="btn-modal-3">
+                            <Modal3 />
+                        </div>
+                        <div className="btn-modal-4">
+                            <Modal4 />
+                        </div>
                         <Col xs={9}>
-                            <Venn filtered = {filtered} columns ={columns} setColumn = {setColumn}/>
+                            <Venn filtered={filtered} columns={columns} setColumn={setColumn} />
                         </Col>
                         <Col xs={3} className="circle-add mt-5">
-                            <AddActivity handleAdd = {handleAdd} handleChange = {handleChange} handleKeyPress = {handleKeyPress} columns ={columns} setColumn = {setColumn}/>
+                            <AddActivity handleAdd={handleAdd} handleChange={handleChange} handleKeyPress={handleKeyPress} columns={columns} setColumn={setColumn} />
                         </Col>
                     </Row>
                 </DragDropContext>
@@ -381,8 +398,8 @@ const Circa = () => {
                 <Link
                     to={{
                         pathname: "/export",
-                        columns: columns, 
-                        filtered: filtered, 
+                        columns: columns,
+                        filtered: filtered,
                         setColumn: setColumn,
                         onDragEnd: onDragEnd
                     }}

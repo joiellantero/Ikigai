@@ -134,38 +134,6 @@ body {
     margin-top: 10px;
 }
 
-.btn-modal-1 {
-    top: 665px;
-    left: 392px;
-    position: absolute;
-    z-index: 200;
-    transform: perspective(1px) translateZ(0px);
-}
-
-.btn-modal-2 {
-    top: 669px;
-    left: 721px;
-    position: absolute;
-    z-index: 200;
-    transform: perspective(1px) translateZ(0px);
-}
-
-.btn-modal-3 {
-    top: 715px;
-    left: 393px;
-    position: absolute;
-    z-index: 200;
-    transform: perspective(1px) translateZ(0px);
-}
-
-.btn-modal-4 {
-    top: 715px;
-    left: 722px;
-    position: absolute;
-    z-index: 200;
-    transform: perspective(1px) translateZ(0px);
-}
-
 .btn-container.center {
     text-align: center;
 }
@@ -369,7 +337,7 @@ input.form-control:focus {
     z-index: -99;
 }
 
-.venn-labels .behind p{
+.venn-labels .behind p {
     position: absolute;
     z-index: -100;
     font-weight: 300;
@@ -378,29 +346,29 @@ input.form-control:focus {
     font-size: 1.3em;
 }
 
-.venn-labels .behind p.ikigai{
+.venn-labels .behind p.ikigai {
     text-transform: uppercase;
     color: red;
     top: 407px;
     left: 365px;
 }
 
-.venn-labels .behind p.vocation{
+.venn-labels .behind p.vocation {
     top: 285px;
     left: 220px;
 }
 
-.venn-labels .behind p.profession{
+.venn-labels .behind p.profession {
     top: 285px;
     left: 470px;
 }
 
-.venn-labels .behind p.mission{
+.venn-labels .behind p.mission {
     top: 541px;
     left: 230px;
 }
 
-.venn-labels .behind p.passion{
+.venn-labels .behind p.passion {
     top: 541px;
     left: 480px;
 }
@@ -629,7 +597,7 @@ input.form-control:focus {
     display: block;
 }
 
-.row-container{
+.row-container {
     width: 70vw;
 }
 
@@ -769,13 +737,48 @@ header {
     text-align: center;
 }
 
-.step-to-ikigai-btn{
+.step-to-ikigai-btn {
     border: none;
     outline: none;
     border-radius: 50%;
     position: absolute;
     background: none;
     z-index: inherit;
+}
+
+
+/* modals */
+
+.btn-modal-1 {
+    top: 663px;
+    left: 435px;
+    position: absolute;
+    z-index: 200;
+    transform: perspective(1px) translateZ(0px);
+}
+
+.btn-modal-2 {
+    top: 663px;
+    left: 759px;
+    position: absolute;
+    z-index: 200;
+    transform: perspective(1px) translateZ(0px);
+}
+
+.btn-modal-3 {
+    top: 720px;
+    left: 433px;
+    position: absolute;
+    z-index: 200;
+    transform: perspective(1px) translateZ(0px);
+}
+
+.btn-modal-4 {
+    top: 723px;
+    left: 760px;
+    position: absolute;
+    z-index: 200;
+    transform: perspective(1px) translateZ(0px);
 }
 
 
@@ -793,7 +796,7 @@ header {
     height: 100vh;
 }
 
-.page-container-6 .btn-container-center{
+.page-container-6 .btn-container-center {
     margin: 50px;
 }
 
@@ -814,11 +817,11 @@ header {
     font-weight: 600;
 }
 
-.page-container-6 .container.end{
+.page-container-6 .container.end {
     margin: 50px 0 100px 0;
 }
 
-.page-container-6 .end p{
+.page-container-6 .end p {
     margin: 0;
 }
 
@@ -931,18 +934,19 @@ header {
     background: #00e676;
 }
 
-.page-print{
+.page-print {
     display: table;
     margin: 0 auto;
 }
 
-.print-component{
+.print-component {
     display: blcok;
     margin: 0 auto;
 }
-  
+
 @media print {
-    html, body {
+    html,
+    body {
         height: initial !important;
         overflow: initial !important;
         -webkit-print-color-adjust: exact;
@@ -957,7 +961,7 @@ header {
         page-break-before: auto;
     }
 }
-  
+
 @page {
     size: auto;
     margin: 20mm;
