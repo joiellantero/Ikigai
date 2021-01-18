@@ -3,6 +3,10 @@ import React from 'react';
 import "../style.css";
 import Hidden from './Hidden';
 import CircleSVG from './CircleSVG';
+import Modal1 from "./Modal1";
+import Modal2 from "./Modal2";
+import Modal3 from "./Modal3";
+import Modal4 from "./Modal4";
 
 const Venn = (props) => {
     const { filtered, columns, setColumn } = props;

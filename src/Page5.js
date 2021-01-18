@@ -373,20 +373,20 @@ const Circa = () => {
                         </div>
                     </div>
                     <Row className="row-container mt-5">
-                        <div className="btn-modal-1">
-                            <Modal1 />
-                        </div>
-                        <div className="btn-modal-2">
-                            <Modal2 />
-                        </div>
-                        <div className="btn-modal-3">
-                            <Modal3 />
-                        </div>
-                        <div className="btn-modal-4">
-                            <Modal4 />
-                        </div>
-                        <Col xs={9}>
+                        <Col xs={9} className="page5-left-column">
                             <Venn filtered={filtered} columns={columns} setColumn={setColumn} />
+                            <div className="btn-modal-1">
+                                <Modal1 />
+                            </div>
+                            <div className="btn-modal-2">
+                                <Modal2 />
+                            </div>
+                            <div className="btn-modal-3">
+                                <Modal3 />
+                            </div>
+                            <div className="btn-modal-4">
+                                <Modal4 />
+                            </div>
                         </Col>
                         <Col xs={3} className="circle-add mt-5">
                             <AddActivity handleAdd={handleAdd} handleChange={handleChange} handleKeyPress={handleKeyPress} columns={columns} setColumn={setColumn} />

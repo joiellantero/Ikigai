@@ -750,35 +750,40 @@ header {
 /* modals */
 
 .btn-modal-1 {
-    top: 663px;
-    left: 435px;
+    top: 365px;
+    left: 216px;
     position: absolute;
     z-index: 200;
     transform: perspective(1px) translateZ(0px);
 }
 
 .btn-modal-2 {
-    top: 663px;
-    left: 759px;
+    top: 360px;
+    left: 541px;
     position: absolute;
     z-index: 200;
     transform: perspective(1px) translateZ(0px);
 }
 
 .btn-modal-3 {
-    top: 720px;
-    left: 433px;
+    top: 435px;
+    left: 217px;
     position: absolute;
     z-index: 200;
     transform: perspective(1px) translateZ(0px);
 }
 
 .btn-modal-4 {
-    top: 723px;
-    left: 760px;
+    top: 434px;
+    left: 541px;
     position: absolute;
+    height: 47px;
     z-index: 200;
     transform: perspective(1px) translateZ(0px);
+}
+
+.page5-left-column {
+    position: relative;
 }
 
 
