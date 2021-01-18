@@ -12,7 +12,7 @@ const Hidden = (props)=>{
                     className="hid" 
                     ref = {provided.innerRef} {...provided.droppableProps} 
                     style = {{
-                        border: snapshot.isDraggingOver ? null : null,
+                        borderStyle: snapshot.isDraggingOver ? '' : '',
                         top: top,
                         left: left,
                         minWidth: width,

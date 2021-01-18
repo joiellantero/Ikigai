@@ -1,16 +1,15 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React from 'react';
-import "./u.css";
+import "../style.css";
 import Hidden from './Hidden';
-import { Col } from 'react-bootstrap';
-import CircleSVG from './components/CircleSVG';
+import CircleSVG from './CircleSVG';
 
 const Venn = (props) => {
     const { filtered, columns, setColumn } = props;
 
     return (
         <>
-            <Col xs={9} className="venn-container p-0">
+            <div className="venn-container p-0">
                 {Object.entries(filtered).map(([columnId, column]) => {
                     return (
                         <Hidden
@@ -28,7 +27,7 @@ const Venn = (props) => {
                     );
                 })}
                 <CircleSVG />
-            </Col>
+            </div>
         </>
     );
 };

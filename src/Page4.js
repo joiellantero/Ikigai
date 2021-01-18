@@ -7,7 +7,7 @@ import { Modal } from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
 
-import logo from "./images/logo.png";
+import Logo from './components/CS_Logo';
 import Rectangle from "./components/Rectangle.js";
 import BackButton from './components/BackButton';
 
@@ -111,9 +111,7 @@ const Far = () => {
 
     return (
         <>
-            <div className="main-logo">
-                <img src={logo} alt="cs-logo" />
-            </div>
+            <Logo />
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Are you sure?</Modal.Title>
@@ -160,14 +158,14 @@ const Far = () => {
                         })}
                     </div>
                     <div className="btn-container center">
-                        <Link
-                            to={{
-                                pathname: "/u",
-                                cols: columns
-                            }}
-                        >
-                            <button type="button" className="btn-default btn-2 btn-lg">
-                                Next
+                    <Link
+                        to={{
+                            pathname: "/your-ikigai-chart",
+                            cols: columns
+                        }}
+                    >
+                        <button type="button" className="btn-default btn-2 btn-lg">
+                            Next
                         </button>
                         </Link>
                     </div>

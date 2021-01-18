@@ -1,227 +1,399 @@
-import React, { Component } from "react";
-import ReactToPrint from "react-to-print";
+import React, {  useState } from 'react';
 import { useLocation, Link } from "react-router-dom";
-import { DragDropContext } from 'react-beautiful-dnd';
+import { DragDropContext } from "react-beautiful-dnd";
+import { v4 } from 'uuid';
 
-import { Col, Row, Modal, InputGroup, FormControl, Button } from 'react-bootstrap';
+import "./style.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Row, Col, Modal } from 'react-bootstrap';
 
-import Venn from './Venn';
 import BackButton from './components/BackButton';
-import Trash from './components/trash';
-import Add from './components/Add';
-import {
-    FacebookShareButton,
-    FacebookIcon,
-    LinkedinShareButton,
-    LinkedinIcon,
-    TwitterShareButton,
-    TwitterIcon,
-    WhatsappShareButton,
-    WhatsappIcon,
-} from "react-share";
+import Logo from './components/CS_Logo';
+import AddActivity from './components/AddActivity';
+import Venn from './components/Venn';
 
+const Circa = () => {
+    const { cols }  = useLocation();
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    let circleData = null;
+    
+    if (cols){
+        const rectangleData = [[], [], [], []]
+        let i = 0
 
-const Intermediate = () => {
-    const { columns, filtered, setColumn, onDragEnd } = useLocation();
+        Object.entries(cols).map(([, column]) => {
+            return (
+                rectangleData[i] = column.items,
+                i += 1
+            );
+        });
 
-
-    return (
-        <div className="venn-diagram" style={{ display: 'table', margin: '0 auto' }}>
-            <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
-                <Row className="row-container">
-                    <Venn filtered={filtered} columns={columns} setColumn={setColumn} />
-                </Row>
-            </DragDropContext>
-        </div>
-    );
-}
-
-class ComponentToPrint extends Component {
-    render() {
-        return (
-            <Intermediate />
-        );
+        circleData = {
+            [v4()]: {
+                id: 'r1',
+                name: 'what you can be PAID FOR',
+                items: rectangleData[3],
+                top: '118px',
+                left: '254px',
+                width: '283px',
+                maxWidth: '283px',
+                height: '82px',
+            },
+            [v4()]: {
+                id: 'r2',
+                name: 'what the WORLD NEEDS',
+                items: rectangleData[0],
+                top: '292px',
+                left: '48px',
+                width: '130px',
+                maxWidth: '150px',
+                height: '258px'
+            },
+            [v4()]: {
+                id: 'r3',
+                name: 'what you LOVE',
+                items: rectangleData[1],
+                top: '642px',
+                left: '259px',
+                width: '271px',
+                maxWidth: '283px',
+                height: '89px'
+            },
+            [v4()]: {
+                id: 'r4',
+                name: 'what you are GOOD AT',
+                items: rectangleData[2],
+                top: '291px',
+                left: '616px',
+                width: '120px',
+                maxWidth: '150px',
+                height: '261px'
+            },
+            [v4()]: {
+                id: 'r5',
+                name: '', // blue yellow
+                items: [],
+                top: '223px',
+                left: '199px',
+                width: '128px',
+                maxWidth: '150px',
+                height: '134px'
+            },
+            [v4()]: {
+                id: 'r6',
+                name: '', // green blue
+                items: [],
+                top: '490px',
+                left: '198px',
+                width: '129px',
+                maxWidth: '150px',
+                height: '130px'
+            },
+            [v4()]: {
+                id: 'r7',
+                name: '', // green red
+                items: [],
+                top: '497px',
+                left: '461px',
+                width: '134px',
+                maxWidth: '150px',
+                height: '128px'
+            },
+            [v4()]: {
+                id: 'r8',
+                name: '', // center
+                items: [],
+                top: '362px',
+                left: '325px',
+                width: '119px',
+                maxWidth: '150px',
+                height: '125px'
+            },
+            [v4()]: {
+                id: 'r9',
+                name: '', // red yellow
+                items: [],
+                top: '230px',
+                left: '460px',
+                width: '132px',
+                maxWidth: '150px',
+                height: '127px'
+            },
+            'add': {
+                id: 'r10',
+                name: '', // add activity
+                items: [],
+                top: '',
+                left: '',
+                width: '',
+                height: ''
+            },
+        };
     }
-}
+    else {
+        circleData = {
+            [v4()]: {
+                id: 'r1',
+                name: 'what you can be PAID FOR',
+                items: [],
+                top: '118px',
+                left: '254px',
+                width: '283px',
+                maxWidth: '283px',
+                height: '82px',
+            },
+            [v4()]: {
+                id: 'r2',
+                name: 'what the WORLD NEEDS',
+                items: [],
+                top: '292px',
+                left: '46px',
+                width: '130px',
+                maxWidth: '150px',
+                height: '258px'
+            },
+            [v4()]: {
+                id: 'r3',
+                name: 'what you LOVE',
+                items: [],
+                top: '642px',
+                left: '259px',
+                width: '271px',
+                maxWidth: '283px',
+                height: '89px'
+            },
+            [v4()]: {
+                id: 'r4',
+                name: 'what you are GOOD AT',
+                items: [],
+                top: '291px',
+                left: '614px',
+                width: '125px',
+                maxWidth: '150px',
+                height: '261px'
+            },
+            [v4()]: {
+                id: 'r5',
+                name: '', // blue yellow
+                items: [],
+                top: '223px',
+                left: '199px',
+                width: '128px',
+                maxWidth: '150px',
+                height: '134px'
+            },
+            [v4()]: {
+                id: 'r6',
+                name: '', // green blue
+                items: [],
+                top: '490px',
+                left: '198px',
+                width: '129px',
+                maxWidth: '150px',
+                height: '130px'
+            },
+            [v4()]: {
+                id: 'r7',
+                name: '', // green red
+                items: [],
+                top: '497px',
+                left: '461px',
+                width: '134px',
+                maxWidth: '150px',
+                height: '128px'
+            },
+            [v4()]: {
+                id: 'r8',
+                name: '', // center
+                items: [],
+                top: '362px',
+                left: '325px',
+                width: '132px',
+                maxWidth: '150px',
+                height: '125px'
+            },
+            [v4()]: {
+                id: 'r9',
+                name: '', // red yellow
+                items: [],
+                top: '223px',
+                left: '458px',
+                width: '144px',
+                maxWidth: '150px',
+                height: '134px',
+            },
+            'add': {
+                id: 'r10',
+                name: '', // add activity
+                items: [],
+                top: '',
+                left: '',
+                width: '',
+                height: ''
+            },
+        };
+    }
 
-class Print extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            newItem: "",
-            list: [],
+    const [columns, setColumn] = useState(circleData);
+    const filtered = Object.fromEntries(Object.entries(columns).filter(([colId]) => colId !== 'add'))
+    const [text, setText] = React.useState('');
+
+    function handleChange(event) {
+        event.preventDefault()
+        setText(event.target.value);
+    }
+
+    function handleAdd() {
+        if (!text) {
+            return;
+        }
+        const newList = columns['add'].items.concat({ id: v4(), intext: text });
+        const newColumns = {
+            ...columns,
+            'add': {
+                ...columns['add'],
+                items: newList
+            }
+        };
+
+        setColumn(newColumns);
+        setText('');
+    }
+
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            if (!text) {
+                return;
+            }
+
+            const newList = columns['add'].items.concat({ id: v4(), intext: text });
+            const newColumns = {
+                ...columns,
+                'add': {
+                    ...columns['add'],
+                    items: newList
+                }
+            };
+
+            setColumn(newColumns);
+            setText('');
         }
     }
 
-    addItem() {
-        // create item with unique id
-        if (!this.state.newItem.slice()) {
+    const onDragEnd = (result, columns, setColumn) => {
+
+        if (!result.destination) {
             return;
         }
 
-        const newItem = {
-            id: 1 + Math.random(),
-            value: this.state.newItem.slice()
-        };
+        const { source, destination } = result;
 
-        const list = [...this.state.list];
+        if (source.droppableId !== destination.droppableId) {
+            const sourceColumn = columns[source.droppableId];
+            const destColumn = columns[destination.droppableId];
+            const sourceItems = [...sourceColumn.items];
+            const destItems = [...destColumn.items];
+            const [removed] = sourceItems.splice(source.index, 1);
+            destItems.splice(destination.index, 0, removed);
+            setColumn({
+                ...columns,
+                [source.droppableId]: {
+                    ...sourceColumn,
+                    items: sourceItems
+                },
+                [destination.droppableId]: {
+                    ...destColumn,
+                    items: destItems
+                }
+            });
 
-        list.push(newItem);
+        } else {
+            const column = columns[source.droppableId];
+            const copiedItems = [...column.items];
+            const [removed] = copiedItems.splice(source.index, 1);
+            copiedItems.splice(destination.index, 0, removed);
+            setColumn({
+                ...columns,
+                [source.droppableId]: {
+                    ...column,
+                    items: copiedItems
+                }
+            });
+        }
+    };
 
-        this.setState({
-            list,
-            newItem: ""
-        })
-    }
+    window.onbeforeunload = function() {
+        return "Data will be lost if you leave the page, are you sure?";
+    };
 
-    deleteItem(id) {
-        const list = [...this.state.list];
-        const updatedList = list.filter(item => item.id !== id);
-        this.setState({ list: updatedList });
-    }
-
-    handleInputChange = (key, value) => {
-        this.setState({
-            [key]: value
-        });
-    }
-
-    render() {
-        return (
-            <>
-                <Modal show={this.show} onHide={this.handleClose}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Are you sure?</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>Going back to the previous page will erase your progress? Do you want to begin from scratch?</Modal.Body>
-                    <Modal.Footer>
-                        <button className="btn-default btn-lg" onClick={this.handleClose}>
-                            No
+    return (
+        <>
+            <Logo/>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Are you sure?</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Going back to the previous page will erase your progress? Do you want to begin from scratch?</Modal.Body>
+                <Modal.Footer>
+                    <button className="btn-default btn-lg" onClick={handleClose}>
+                        No
                     </button>
-                        <Link
-                            to={{
-                                pathname: "/lets-find-out-ikigai",
-                                // cols: columns
-                            }}
-                        >
-                            <button className="btn-secondary btn-lg">
-                                Yes
+                    <Link
+                        to={{
+                            pathname: "/lets-find-out-ikigai",
+                            cols: columns
+                        }}
+                    >
+                        <button className="btn-secondary btn-lg">
+                            Yes
                         </button>
-                        </Link>
-                    </Modal.Footer>
-                </Modal>
-                <div className="page-container-6 container">
+                    </Link>
+                </Modal.Footer>
+            </Modal>
+            <div className="venn-diagram" style={{ display: 'table', margin: '0 auto' }}>
+                <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
                     <div className="btn-back">
-                        <Link
-                            to={{
-                                pathname: "/u",
-                            }}
-                        >
-                            <BackButton onClick={this.handleShow} />
-                        </Link>
+                        <BackButton onClick={handleShow}/>
                     </div>
-                    <p className="subtitle">Your Ikigai, Visualised</p>
-                    <div className="row my-5">
-                        <div className="col-lg">
-                            <ComponentToPrint ref={(el) => (this.componentRef = el)} />
-                            <div className="col-lg">
-                                <div className="steps-container container">
-                                    <ul>
-                                        {this.state.list.map(item => {
-                                            return (
-                                                <li key={item.id}>
-                                                    {item.value}
-                                                    <button className="btn-delete" onClick={() => this.deleteItem(item.id)}><Trash /></button>
-                                                </li>
-                                            )
-                                        })}
-                                    </ul>
-                                    <InputGroup>
-                                        <FormControl
-                                            placeholder="Enter step..."
-                                            aria-label="Enter step..."
-                                            aria-describedby="basic-addon2"
-                                            className="steps-input"
-                                            name="step"
-                                            value={this.state.newItem}
-                                            onChange={e => this.handleInputChange("newItem", e.target.value)}
-                                            onKeyPress={e => e.key === "Enter" && this.addItem()}
-                                        />
-                                        <InputGroup.Append>
-                                            <Button className="btn-add" onClick={() => this.addItem()} disabled={!this.state.newItem}><Add /></Button>
-                                        </InputGroup.Append>
-                                    </InputGroup>
-                                </div>
-                            </div>
+                    <div className="main-header-text">
+                        <p className="subtitle my-5">Introducing your ikigai chart.</p>
+                        <div className="instructions">
+                            <p>For each of these activities or values, ask yourself the following questions again:</p>
+                            <p>Can I Be Paid? (If yes, move to yellow circle)</p>
+                            <p>Do I love this? (If yes, move to green circle)</p>
+                            <p>Am I good at this? (If yes, move to red circle)</p>
+                            <p>Is this what the world needs? (If yes, move to blue circle)</p>
                         </div>
                     </div>
+                    <Row className="row-container mt-5">
+                        <Col xs={9}>
+                            <Venn filtered = {filtered} columns ={columns} setColumn = {setColumn}/>
+                        </Col>
+                        <Col xs={3} className="circle-add mt-5">
+                            <AddActivity handleAdd = {handleAdd} handleChange = {handleChange} handleKeyPress = {handleKeyPress} columns ={columns} setColumn = {setColumn}/>
+                        </Col>
+                    </Row>
+                </DragDropContext>
+            </div>
+            <div className="btn-container-center">
+                <Link
+                    to={{
+                        pathname: "/export",
+                        columns: columns, 
+                        filtered: filtered, 
+                        setColumn: setColumn,
+                        onDragEnd: onDragEnd
+                    }}
+                >
+                    <button type="button" className="btn-default btn-2 btn-lg">
+                        Next
+                    </button>
+                </Link>
+            </div>
+        </>
+    );
+};
 
-                    <ReactToPrint
-                        trigger={() => (
-                            <div className="btn-container-center">
-                                <button type="button" className="btn-default btn-2 btn-lg btn-width-fit">
-                                    Export Report
-                        </button>
-                            </div>
-                        )}
-                        content={() => this.componentRef}
-                        documentTitle="Venn_PDF"
-                    />
-
-                    <div class="card card-shadow mt-5">
-                        <div class="card-body">
-                            <div className="share-container container">
-                                <p>Share:</p>
-                                <ul>
-                                    <li className="hvr-float">
-                                        <FacebookShareButton
-                                            url={"https://u.careersocius.com/ikigai"}
-                                            quote={"Find out your ikigai here"}
-                                        >
-                                            <FacebookIcon size={32} round />
-                                        </FacebookShareButton>
-                                    </li>
-                                    <li className="hvr-float">
-                                        <TwitterShareButton
-                                            url={"https://u.careersocius.com/ikigai"}
-                                            quote={"Find out your ikigai here"}
-                                        >
-                                            <TwitterIcon size={32} round />
-                                        </TwitterShareButton>
-                                    </li>
-                                    <li className="hvr-float">
-                                        <LinkedinShareButton
-                                            url={"https://u.careersocius.com/ikigai"}
-                                            quote={"Find out your ikigai here"}
-                                        >
-                                            <LinkedinIcon size={32} round />
-                                        </LinkedinShareButton>
-                                    </li>
-                                    <li className="hvr-float">
-                                        <WhatsappShareButton
-                                            url={"https://u.careersocius.com/ikigai"}
-                                            quote={"Find out your ikigai here"}
-                                        >
-                                            <WhatsappIcon size={32} round />
-                                        </WhatsappShareButton>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="container mt-5">
-                        <p>
-                            Achieving Ikigai is a challenging process.<br />
-                        Your pursuit of Ikigai should draw you closer to a particular cause, skill, or people networks.<br /><br />
-
-                        All the best in your pursuit of ikigai!
-                    </p>
-                    </div>
-                </div>
-            </>
-        );
-    }
-}
-
-export default Print;
+export default Circa;

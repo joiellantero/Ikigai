@@ -1,7 +1,9 @@
 import React from 'react';
 import { Droppable } from "react-beautiful-dnd";
 import { v4 } from 'uuid';
+
 import { Form } from 'react-bootstrap';
+
 import Note from './Note';
 
 const AddActivity = (props) => {
@@ -20,7 +22,7 @@ const AddActivity = (props) => {
         const newList = columns['add'].items.concat({ id: v4(), intext: text });
         const newColumns = {
             ...columns,
-            ['add']: {
+            'add': {
                 ...columns['add'],
                 items: newList
             }
@@ -39,7 +41,7 @@ const AddActivity = (props) => {
             const newList = columns['add'].items.concat({ id: v4(), intext: text });
             const newColumns = {
                 ...columns,
-                ['add']: {
+                'add': {
                     ...columns['add'],
                     items: newList
                 }

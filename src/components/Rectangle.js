@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Container, Form, OverlayTrigger, Tooltip} from 'react-bootstrap';
-import { v4 } from 'uuid';
-import Info from '../components/info.js';
 import { Droppable } from 'react-beautiful-dnd';
-import Note from '../Note';
+import { v4 } from 'uuid';
+
+import Info from '../components/info.js';
+import Note from './Note';
 
 
 const Rectangle = (props)=> {
