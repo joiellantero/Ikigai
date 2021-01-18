@@ -336,6 +336,42 @@ input.form-control:focus{
     z-index: -99;
 }
 
+.venn-labels .behind p{
+    position: absolute;
+    z-index: -100;
+    font-weight: 300;
+    font-style: italic;
+    color: grey;
+    font-size: 1.3em;
+}
+
+.venn-labels .behind p.ikigai{
+    text-transform: uppercase;
+    color: red;
+    top: 407px;
+    left: 365px;
+}
+
+.venn-labels .behind p.vocation{
+    top: 285px;
+    left: 220px;
+}
+
+.venn-labels .behind p.profession{
+    top: 285px;
+    left: 470px;
+}
+
+.venn-labels .behind p.mission{
+    top: 541px;
+    left: 230px;
+}
+
+.venn-labels .behind p.passion{
+    top: 541px;
+    left: 480px;
+}
+
 
 /* ----- PAGE 1 ----- */
 
@@ -407,8 +443,32 @@ input.form-control:focus{
 
 /* ----- PAGE 2 ----- */
 
-.page-container-2{
+.page-container-2, 
+.page-container-3{
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+}
+
+.page-container-2 img{
+    min-width: 150px;
+}
+
+.page-container-2 img.center{
+    width: 450px;
+}
+
+.page-container-2 .p-pg-2{
+    margin: 20px auto;
+    width: 50%;
+}
+
+@media only screen and (max-width: 768px){
+    .page-container-2 .p-pg-2{
+        width: 80%;
+    }
 }
 
 
@@ -724,6 +784,10 @@ header {
     height: 100vh;
 }
 
+.page-container-6 .btn-container-center{
+    margin: 50px;
+}
+
 .page-container-6 .btn-default {
     width: fit-content;
 }
@@ -731,7 +795,6 @@ header {
 .page-container-6 .card {
     width: fit-content;
     margin: 0 auto;
-    margin-bottom: 500px !important;
     outline: none;
     border: none;
 }
@@ -740,6 +803,14 @@ header {
     text-transform: uppercase;
     font-size: 13px;
     font-weight: 600;
+}
+
+.page-container-6 .container.end{
+    margin: 50px 0 100px 0;
+}
+
+.page-container-6 .end p{
+    margin: 0;
 }
 
 .page-container-6 .share-container {
