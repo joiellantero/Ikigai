@@ -17,6 +17,12 @@ const CircleSVG = () => {
                 <p className="c2">What you are GOOD AT</p>
                 <p className="c3">What you LOVE</p>
                 <p className="c4">What you are PAID FOR</p>
+                <div class="behind">
+                    <p className="vocation">Vocation</p>
+                    <p className="profession">Profession</p>
+                    <p className="mission">Mission</p>
+                    <p className="passion">Passion</p>
+                </div>
             </div>
         </>
     )

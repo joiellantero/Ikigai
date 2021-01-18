@@ -336,6 +336,34 @@ input.form-control:focus{
     z-index: -99;
 }
 
+.venn-labels .behind p{
+    position: absolute;
+    z-index: -100;
+    font-weight: 700;
+    color: grey;
+    font-size: 1.3em;
+}
+
+.venn-labels .behind p.vocation{
+    top: 285px;
+    left: 220px;
+}
+
+.venn-labels .behind p.profession{
+    top: 285px;
+    left: 470px;
+}
+
+.venn-labels .behind p.mission{
+    top: 541px;
+    left: 230px;
+}
+
+.venn-labels .behind p.passion{
+    top: 541px;
+    left: 480px;
+}
+
 
 /* ----- PAGE 1 ----- */
 
