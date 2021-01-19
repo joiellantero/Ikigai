@@ -3,19 +3,11 @@ import ReactToPrint from "react-to-print";
 import { useLocation, Link } from "react-router-dom";
 import { DragDropContext } from 'react-beautiful-dnd';
 import { v4 } from 'uuid';
-
-import { Modal, InputGroup, FormControl, Button } from 'react-bootstrap';
+import { Row, Modal, Col } from 'react-bootstrap';
 
 import Venn from './components/Venn';
 import Logo from './components/CS_Logo';
 import BackButton from './components/BackButton';
-import Modal1 from "./components/Modal1";
-import Twitter from './components/Twitter';
-import Facebook from './components/Facebook';
-import Linkedin from './components/Linkedin';
-import Whatsapp from './components/Whatsapp';
-import Trash from './components/trash';
-import Add from './components/Add';
 
 import {
     FacebookShareButton,
@@ -30,12 +22,45 @@ import {
 
 
 const Intermediate = () => {
-    let { columns, filtered } = useLocation();
+    let { columns, filtered, modals } = useLocation();
     const { setColumn, onDragEnd } = useLocation();
-    const { data1 } = useLocation();
-    { console.log(data1) }
 
     if (!columns) {
+        modals = {
+            ['vocation']: {
+                name: 'Vocation',
+                body1: 'This intersection represents your vocation.',
+                body2: 'What are some steps can you take to enjoy your vocation more?',
+                top: '378px',
+                left: '227px',
+                items: []
+            },
+            ['profession']: {
+                name: 'Profession',
+                body1: 'This intersection represents your profession.',
+                body2: 'In your profession, how can you help the people and community around you?',
+                top: '378px',
+                left: '554px',
+                items: []
+            },
+            ['mission']: {
+                name: 'Mission',
+                body1: 'This intersection represents your mission.',
+                body2: 'What are some steps you can take to hone your craft?',
+                top: '441px',
+                left: '225px',
+                items: []
+            },
+            ['passion']: {
+                name: 'Passion',
+                body1: 'This intersection represents your passion.',
+                body2: 'Are you able to turn your passion into something you can be paid for?',
+                top: '443px',
+                left: '554px',
+                items: []
+            }
+        }
+
         columns = {
             [v4()]: {
                 id: 'r1',
@@ -137,7 +162,8 @@ const Intermediate = () => {
                 height: ''
             },
         };
-        filtered = Object.fromEntries(Object.entries(columns).filter(([colId]) => colId !== 'add'))
+
+    filtered = Object.fromEntries(Object.entries(columns).filter(([colId]) => colId !== 'add'))
     }
 
     return (
@@ -145,11 +171,29 @@ const Intermediate = () => {
             <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
                 <div className="page-break">
                     <Venn filtered={filtered} columns={columns} setColumn={setColumn} />
+                    <br/>
+                    <h3> Steps to Ikigai</h3>
+                    {Object.entries(modals).map(([id, modal]) => {
+                        return (
+                            <>
+                            <Col> 
+                            <h5>{id}</h5>
+                        
+                            <p>
+                                {modal.items.map((item)=>{
+                                    return (
+                                        <p>{item.intext}</p>
+                                    )}    
+                                )}
+                            </p>
+                            </Col>
+                            </>
+                        )}
+                    )}
+
                 </div>
             </DragDropContext>
-            <p> {data1} </p>
         </div>
-
     );
 }
 
@@ -168,39 +212,6 @@ class Export extends Component {
             newItem: "",
             list: [],
         }
-    }
-
-    addItem() {
-        // create item with unique id
-        if (!this.state.newItem.slice()) {
-            return;
-        }
-
-        const newItem = {
-            id: 1 + Math.random(),
-            value: this.state.newItem.slice()
-        };
-
-        const list = [...this.state.list];
-
-        list.push(newItem);
-
-        this.setState({
-            list,
-            newItem: ""
-        })
-    }
-
-    deleteItem(id) {
-        const list = [...this.state.list];
-        const updatedList = list.filter(item => item.id !== id);
-        this.setState({ list: updatedList });
-    }
-
-    handleInputChange = (key, value) => {
-        this.setState({
-            [key]: value
-        });
     }
 
     state = {
@@ -255,36 +266,6 @@ class Export extends Component {
                     <div className="page-print">
                         <ComponentToPrint ref={(el) => (this.componentRef = el)} />
                     </div>
-                    {/* <div className="steps-container container my-5">
-                        <ul>
-                            {this.state.list.map(item => {
-                                return (
-                                    <li key={item.id}>
-                                        {item.value}
-                                        <button className="btn-delete" onClick={() => this.deleteItem(item.id)}><Trash /></button>
-                                    </li>
-                                )
-                            })}
-                        </ul>
-                        <InputGroup>
-                            <FormControl
-                                placeholder="Enter step..."
-                                aria-label="Enter step..."
-                                aria-describedby="basic-addon2"
-                                className="steps-input"
-                                name="step"
-                                value={this.state.newItem}
-                                onChange={e => this.handleInputChange("newItem", e.target.value)}
-                                onKeyPress={e => e.key === "Enter" && this.addItem()}
-                            />
-                            <InputGroup.Append>
-                                <Button className="btn-add" onClick={() => this.addItem()} disabled={!this.state.newItem}><Add /></Button>
-                            </InputGroup.Append>
-                        </InputGroup>
-                    </div> */}
-                    <h3> Steps to Ikigai</h3>
-                    {/* {console.log(data1)}
-                    <p> {data1} </p> */}
 
                     <ReactToPrint
                         trigger={() => (

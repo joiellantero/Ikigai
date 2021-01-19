@@ -12,10 +12,8 @@ import Logo from './components/CS_Logo';
 import AddActivity from './components/AddActivity';
 import Venn from './components/Venn';
 
-import Modal1 from "./components/Modal1";
-import Modal2 from "./components/Modal2";
-import Modal3 from "./components/Modal3";
-import Modal4 from "./components/Modal4";
+import ModalSteps from "./components/ModalSteps";
+
 
 const Circa = () => {
     const { cols } = useLocation();
@@ -23,8 +21,6 @@ const Circa = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     let circleData = null;
-
-
 
     if (cols) {
         const rectangleData = [[], [], [], []]
@@ -336,24 +332,32 @@ const Circa = () => {
             name: 'Vocation',
             body1: 'This intersection represents your vocation.',
             body2: 'What are some steps can you take to enjoy your vocation more?',
-            items: ['hello', 'how', 'are', 'you']
+            top: '378px',
+            left: '227px',
+            items: []
         },
         ['profession']: {
             name: 'Profession',
             body1: 'This intersection represents your profession.',
             body2: 'In your profession, how can you help the people and community around you?',
+            top: '378px',
+            left: '554px',
             items: []
         },
         ['mission']: {
             name: 'Mission',
             body1: 'This intersection represents your mission.',
             body2: 'What are some steps you can take to hone your craft?',
+            top: '441px',
+            left: '225px',
             items: []
         },
         ['passion']: {
             name: 'Passion',
             body1: 'This intersection represents your passion.',
             body2: 'Are you able to turn your passion into something you can be paid for?',
+            top: '443px',
+            left: '554px',
             items: []
         }
     }
@@ -406,18 +410,12 @@ const Circa = () => {
                     <Row className="row-container mt-5">
                         <Col xs={9} className="page5-left-column">
                             <Venn filtered={filtered} columns={columns} setColumn={setColumn} />
-                            <div className="btn-modal-1">
-                                <Modal1 id = 'vocation' modals = {modals} setModals = {setModals}/>
-                            </div>
-                            <div className="btn-modal-2">
-                                <Modal2 />
-                            </div>
-                            <div className="btn-modal-3">
-                                <Modal3 />
-                            </div>
-                            <div className="btn-modal-4">
-                                <Modal4 />
-                            </div>
+                            
+                            {Object.entries(modals).map(([id, modal]) => {
+                                return (
+                                    <ModalSteps id = {id} modals = {modals} modal = {modal} setModals = {setModals}></ModalSteps>
+                                )}
+                            )}
                         </Col>
                         <Col xs={3} className="circle-add mt-5">
                             <AddActivity handleAdd={handleAdd} handleChange={handleChange} handleKeyPress={handleKeyPress} columns={columns} setColumn={setColumn} />
@@ -432,7 +430,8 @@ const Circa = () => {
                         columns: columns,
                         filtered: filtered,
                         setColumn: setColumn,
-                        onDragEnd: onDragEnd
+                        onDragEnd: onDragEnd,
+                        modals: modals
                     }}
                 >
                     <button type="button" className="btn-default btn-2 btn-lg">
