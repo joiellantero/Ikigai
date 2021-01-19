@@ -598,8 +598,11 @@ input.form-control:focus {
     margin: 10px auto;
 }
 
-.page-container-5 .container.circle-add {
+.page-container-5 .circle-add {
     margin-top: 100px;
+    position: absolute;
+    top: 265px;
+    left: 830px;
 }
 
 .question {
@@ -646,10 +649,6 @@ input.form-control:focus {
 
 .venn-container .circle-add .pill-container {
     display: block;
-}
-
-.row-container {
-    width: 70vw;
 }
 
 .answers {
