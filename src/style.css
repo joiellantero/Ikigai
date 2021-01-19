@@ -834,6 +834,25 @@ header {
     width: 70%;
 }
 
+.export-steps-container h5 {
+    text-transform: capitalize;
+    text-align: center;
+}
+
+.export-steps-container p.modal-item {
+    background-color: #F5F5F5;
+    margin: 10px;
+    padding: 2px 8px 2px 8px !important;
+    border-radius: 50px;
+    width: fit-content;
+    text-align: center;
+}
+
+.export-steps-container .col .modal-items-container {
+    display: block; 
+    margin: 0 auto;
+}
+
 .steps-container svg.icon-tabler-trash {
     stroke: #dc3545;
 }
@@ -965,9 +984,14 @@ header {
 @media print {
     .page-break {
         margin-top: 1rem;
-        margin-left: 6rem;
+        margin-left: 7rem;
         display: block;
         page-break-before: auto;
+    }
+
+    .page-break h5.subtitle, 
+    .export-steps-container{
+        margin-left: -7rem;
     }
 }
 

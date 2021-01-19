@@ -4,7 +4,7 @@ import { useLocation, Link } from "react-router-dom";
 import { DragDropContext } from 'react-beautiful-dnd';
 import { v4 } from 'uuid';
 import { Row, Modal, Col } from 'react-bootstrap';
-
+import {MODALS, CIRCLEDATA2} from './components/GlobalVar';
 import Venn from './components/Venn';
 import Logo from './components/CS_Logo';
 import BackButton from './components/BackButton';
@@ -26,142 +26,8 @@ const Intermediate = () => {
     const { setColumn, onDragEnd } = useLocation();
 
     if (!columns) {
-        modals = {
-            ['vocation']: {
-                name: 'Vocation',
-                body1: 'This intersection represents your vocation.',
-                body2: 'What are some steps can you take to enjoy your vocation more?',
-                top: '378px',
-                left: '227px',
-                items: []
-            },
-            ['profession']: {
-                name: 'Profession',
-                body1: 'This intersection represents your profession.',
-                body2: 'In your profession, how can you help the people and community around you?',
-                top: '378px',
-                left: '554px',
-                items: []
-            },
-            ['mission']: {
-                name: 'Mission',
-                body1: 'This intersection represents your mission.',
-                body2: 'What are some steps you can take to hone your craft?',
-                top: '441px',
-                left: '225px',
-                items: []
-            },
-            ['passion']: {
-                name: 'Passion',
-                body1: 'This intersection represents your passion.',
-                body2: 'Are you able to turn your passion into something you can be paid for?',
-                top: '443px',
-                left: '554px',
-                items: []
-            }
-        }
-
-        columns = {
-            [v4()]: {
-                id: 'r1',
-                name: 'what you can be PAID FOR',
-                items: [],
-                top: '118px',
-                left: '254px',
-                width: '283px',
-                maxWidth: '283px',
-                height: '82px',
-            },
-            [v4()]: {
-                id: 'r2',
-                name: 'what the WORLD NEEDS',
-                items: [],
-                top: '292px',
-                left: '46px',
-                width: '130px',
-                maxWidth: '150px',
-                height: '258px'
-            },
-            [v4()]: {
-                id: 'r3',
-                name: 'what you LOVE',
-                items: [],
-                top: '642px',
-                left: '259px',
-                width: '271px',
-                maxWidth: '283px',
-                height: '89px'
-            },
-            [v4()]: {
-                id: 'r4',
-                name: 'what you are GOOD AT',
-                items: [],
-                top: '291px',
-                left: '614px',
-                width: '125px',
-                maxWidth: '150px',
-                height: '261px'
-            },
-            [v4()]: {
-                id: 'r5',
-                name: '', // blue yellow
-                items: [],
-                top: '223px',
-                left: '199px',
-                width: '128px',
-                maxWidth: '150px',
-                height: '134px'
-            },
-            [v4()]: {
-                id: 'r6',
-                name: '', // green blue
-                items: [],
-                top: '490px',
-                left: '198px',
-                width: '129px',
-                maxWidth: '150px',
-                height: '130px'
-            },
-            [v4()]: {
-                id: 'r7',
-                name: '', // green red
-                items: [],
-                top: '497px',
-                left: '461px',
-                width: '134px',
-                maxWidth: '150px',
-                height: '128px'
-            },
-            [v4()]: {
-                id: 'r8',
-                name: '', // center
-                items: [],
-                top: '362px',
-                left: '325px',
-                width: '132px',
-                maxWidth: '150px',
-                height: '125px'
-            },
-            [v4()]: {
-                id: 'r9',
-                name: '', // red yellow
-                items: [],
-                top: '223px',
-                left: '458px',
-                width: '144px',
-                maxWidth: '150px',
-                height: '134px',
-            },
-            'add': {
-                id: 'r10',
-                name: '', // add activity
-                items: [],
-                top: '',
-                left: '',
-                width: '',
-                height: ''
-            },
-        };
+        modals =  MODALS;
+        columns =  CIRCLEDATA2;
 
     filtered = Object.fromEntries(Object.entries(columns).filter(([colId]) => colId !== 'add'))
     }
@@ -172,25 +38,27 @@ const Intermediate = () => {
                 <div className="page-break">
                     <Venn filtered={filtered} columns={columns} setColumn={setColumn} />
                     <br/>
-                    <h3> Steps to Ikigai</h3>
-                    {Object.entries(modals).map(([id, modal]) => {
-                        return (
-                            <>
-                            <Col> 
-                            <h5>{id}</h5>
-                        
-                            <p>
-                                {modal.items.map((item)=>{
-                                    return (
-                                        <p>{item.intext}</p>
-                                    )}    
+                    <h5 className="subtitle my-5 text-center"> Steps to Ikigai</h5>
+                    <div className="export-steps-container">
+                        <Row>
+                            {Object.entries(modals).map(([id, modal]) => {
+                                return (
+                                    <>  
+                                        <Col> 
+                                            <h5>{id}</h5>
+                                            <p className="modal-items-container">
+                                                {modal.items.map((item)=>{
+                                                    return (
+                                                        <p className="modal-item">{item.intext}</p>
+                                                    )}    
+                                                )}
+                                            </p>
+                                        </Col>
+                                    </>
                                 )}
-                            </p>
-                            </Col>
-                            </>
-                        )}
-                    )}
-
+                            )}
+                        </Row>
+                    </div>
                 </div>
             </DragDropContext>
         </div>
