@@ -9,10 +9,6 @@ body {
     font-size: larger;
 }
 
-.background-2 {
-    text-align: center;
-}
-
 .steps-input:focus {
     border-color: #283972 !important;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 4px #283972 !important;
@@ -99,6 +95,12 @@ body {
     transition-duration: 0.3s;
     -webkit-transition-property: transform;
     transition-property: transform;
+}
+
+@media only screen and (max-width: 768px) {
+    .btn-back{
+        left: 50px;
+    }
 }
 
 .btn-back Button {
@@ -285,6 +287,7 @@ input.form-control:focus {
 }
 
 .main-logo img {
+    min-width: 150px;
     width: 14vw;
     margin: 20px;
 }
@@ -459,15 +462,50 @@ input.form-control:focus {
 
 /* ----- PAGE 2 ----- */
 
-.page-container-2 {
+.page-container-2, 
+.page-container-3{
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-container-2 img.center{
+    width: 450px;
+}
+
+.page-container-2 .p-pg-2,
+.page-container-3 .p-pg-2{
+    margin: 20px auto;
+    width: 50%;
+}
+
+@media only screen and (max-width: 768px){
+    .page-container-2 .p-pg-2,
+    .page-container-3 .p-pg-2{
+        width: 80%;
+    }
+}
+
+/* ----- PAGE 3 ----- */
+.page-container-3 .container{
+    display: block;
+}
+
+@media only screen and (max-width: 768px){
+    .page-container-3 .container{
+        margin-top: 250px;
+    }
 }
 
 
 /* ----- PAGE 4 ----- */
 
 .page-container-4 {
-    height: 60vh;
+    height: 110%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .page-container-4 .btn-container {
@@ -479,23 +517,26 @@ input.form-control:focus {
 }
 
 .rec-container {
+    margin: 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 }
 
-@media only screen and (max-width: 1220px) {
-    .rec-container {
-        display: inline-block;
+@media only screen and (max-width: 768px) {
+    .page-container-4 .page-content {
+        margin-top: 120px;
     }
 }
 
 .rectangle-container {
     background: #e1e5ff;
+    min-width: 350px;
     width: 40vw;
     height: 40vh;
     overflow: scroll;
+    margin: 0;
 }
 
 .edit-text {

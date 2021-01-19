@@ -1,7 +1,7 @@
 import { v4 } from 'uuid';
 
 export const MODALS = {
-    ['vocation']: {
+    'vocation': {
         name: 'Vocation',
         body1: 'This intersection represents your vocation.',
         body2: 'What are some steps can you take to enjoy your vocation more?',
@@ -9,7 +9,7 @@ export const MODALS = {
         left: '227px',
         items: []
     },
-    ['profession']: {
+    'profession': {
         name: 'Profession',
         body1: 'This intersection represents your profession.',
         body2: 'In your profession, how can you help the people and community around you?',
@@ -17,7 +17,7 @@ export const MODALS = {
         left: '554px',
         items: []
     },
-    ['mission']: {
+    'mission': {
         name: 'Mission',
         body1: 'This intersection represents your mission.',
         body2: 'What are some steps you can take to hone your craft?',
@@ -25,7 +25,7 @@ export const MODALS = {
         left: '225px',
         items: []
     },
-    ['passion']: {
+    'passion': {
         name: 'Passion',
         body1: 'This intersection represents your passion.',
         body2: 'Are you able to turn your passion into something you can be paid for?',

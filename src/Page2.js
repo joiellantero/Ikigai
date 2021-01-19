@@ -20,11 +20,10 @@ function Page2() {
 
             <Logo/>
 
-            <Container className="mt-20 text-center" fluid="md">
+            <Container className="mt-20 text-center">
                 <img src={img2} alt="page-2" className="center" /> 
                 <p className="p-pg-2">
                     Follow this digital interactive as we explain the concept of ikigai and
-                    <br /> 
                     discover how you can use ikigai to help you find meaning in the work you do.
                 </p>
                 <div className="btn-container-center">
