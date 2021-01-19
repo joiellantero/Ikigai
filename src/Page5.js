@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, Link } from "react-router-dom";
 import { DragDropContext } from "react-beautiful-dnd";
 import { v4 } from 'uuid';
@@ -20,10 +20,13 @@ const Circa = () => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const [nextBtn, setNextBtn] = useState(0);
-    let circleData = null;
-    let counter = 0;
 
+    const [vocation, setVocation] = useState(false);
+    const [profession, setProfession] = useState(false);
+    const [mission, setMission] = useState(false);
+    const [passion, setPassion] = useState(false);
+
+    let circleData = null;
     if (cols) {
         const rectangleData = [[], [], [], []]
         let i = 0
@@ -276,18 +279,6 @@ const Circa = () => {
 
     const [modals, setModals] = useState(MODALS);
 
-    const handleNext = () => {
-        counter = 0;
-
-        Object.entries(modals).map(([columnId, modal]) => {
-            if (modal.items.length>0){
-                counter += 1;
-            }
-        })
-
-        console.log(counter);
-    }
-
     window.onbeforeunload = function () {
         return "Data will be lost if you leave the page, are you sure?";
     };
@@ -342,8 +333,10 @@ const Circa = () => {
                                         modals = {modals} 
                                         modal = {modal} 
                                         setModals = {setModals} 
-                                        nextBtn={nextBtn}
-                                        setNextBtn={setNextBtn}
+                                        setVocation={setVocation}
+                                        setProfession={setProfession}
+                                        setMission={setMission}
+                                        setPassion={setPassion}
                                     />
                                 )}
                             )}
@@ -368,8 +361,7 @@ const Circa = () => {
                     <button 
                         type="button" 
                         className="btn-default btn-2 btn-lg"
-                        onClick={handleNext}
-                        // disabled={counter !== 4}
+                        disabled={!(vocation && profession && mission && passion)}
                     >
                         Next
                     </button>

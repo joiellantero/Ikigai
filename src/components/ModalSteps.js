@@ -6,14 +6,47 @@ import { v4 } from 'uuid';
 import Trash from './trash';
 
 function ModalSteps(props) {
-    const { modal, modals, setModals, id} = props;
+    const { modal, modals, setModals, id, setVocation, setProfession, setMission, setPassion} = props;
 
     const [text, setText] = useState('')
     const [show, setShow] = useState(false);
-    const handleClose = () => {
-        setShow(false)
-    };
 
+    const handleClose = () => {
+        if (modal.items.length > 0){
+            switch (id) {
+                case 'vocation':
+                    setVocation(true);
+                    break;
+                case 'profession':
+                    setProfession(true);
+                    break;
+                case 'mission':
+                    setMission(true);
+                    break;
+                case 'passion':
+                    setPassion(true);
+                    break;
+            }
+        }
+        else {
+            switch (id) {
+                case 'vocation':
+                    setVocation(false);
+                    break;
+                case 'profession':
+                    setProfession(false);
+                    break;
+                case 'mission':
+                    setMission(false);
+                    break;
+                case 'passion':
+                    setPassion(false);
+                    break;
+            }
+        }
+        setShow(false)
+    }
+    
     const handleShow = () => setShow(true);
 
     const [isShown, setIsShown] = useState(false);
