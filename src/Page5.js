@@ -20,6 +20,7 @@ const Circa = () => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const [nextBtn, setNextBtn] = useState(0);
     let circleData = null;
 
     if (cols) {
@@ -274,6 +275,14 @@ const Circa = () => {
 
     const [modals, setModals] = useState(MODALS);
 
+    const handleNext = () => {
+        Object.keys(modals).reduce(
+            function (id, modal) {
+                const current = 1 ? modal[id].items : 0;
+                return 
+        }, 0);
+    }
+
     window.onbeforeunload = function () {
         return "Data will be lost if you leave the page, are you sure?";
     };
@@ -323,7 +332,14 @@ const Circa = () => {
                             
                             {Object.entries(modals).map(([id, modal]) => {
                                 return (
-                                    <ModalSteps id = {id} modals = {modals} modal = {modal} setModals = {setModals}></ModalSteps>
+                                    <ModalSteps 
+                                        id = {id} 
+                                        modals = {modals} 
+                                        modal = {modal} 
+                                        setModals = {setModals} 
+                                        nextBtn={nextBtn}
+                                        setNextBtn={setNextBtn}
+                                    />
                                 )}
                             )}
                         </Col>
@@ -344,7 +360,11 @@ const Circa = () => {
                         modals: modals
                     }}
                 >
-                    <button type="button" className="btn-default btn-2 btn-lg">
+                    <button 
+                        type="button" 
+                        className="btn-default btn-2 btn-lg"
+                        onClick={handleNext}
+                    >
                         Next
                     </button>
                 </Link>

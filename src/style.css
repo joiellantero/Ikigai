@@ -262,10 +262,6 @@ input.form-control:focus {
     opacity: 1;
 }
 
-.text-center {
-    overflow: scroll;
-}
-
 .dark-blue {
     color: #283972;
     margin-top: 10px;
@@ -535,7 +531,6 @@ input.form-control:focus {
     min-width: 350px;
     width: 40vw;
     height: 40vh;
-    overflow: scroll;
     margin: 0;
 }
 

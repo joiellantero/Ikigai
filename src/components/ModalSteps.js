@@ -6,15 +6,28 @@ import { v4 } from 'uuid';
 import Trash from './trash';
 
 function ModalSteps(props) {
-    const { modal, modals, setModals, id } = props;
+    const { modal, modals, setModals, id, nextBtn, setNextBtn } = props;
 
     const [text, setText] = useState('')
     const [show, setShow] = useState(false);
 
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+        if (!modal.items){
+            setNextBtn(nextBtn += 1)
+        }
+        setShow(false)
+    };
+
     const handleShow = () => setShow(true);
 
     const [isShown, setIsShown] = useState(false);
+
+    function handleCount(){
+        if (props.id === 'vocation'){
+            setVocationCount(true);
+        }
+        
+    }
 
     function handleChange(event) {
         event.preventDefault()
@@ -25,6 +38,9 @@ function ModalSteps(props) {
         if (!text) {
             return;
         }
+
+        handleCount();
+
         const newList = modal.items.concat({ id: v4(), intext: text });
         const newModals = {
             ...modals,
@@ -44,20 +60,7 @@ function ModalSteps(props) {
                 return;
             }
         
-        if (!text) {
-            return;
-        }
-        const newList = modal.items.concat({ id: v4(), intext: text });
-        const newModals = {
-            ...modals,
-            [id]: {
-                ...modal,
-                items: newList
-            }
-        };
-
-        setModals(newModals);
-        setText('');
+            handleAdd();
         }
     }
 
