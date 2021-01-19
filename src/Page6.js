@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import ReactToPrint from "react-to-print";
 import { useLocation, Link } from "react-router-dom";
 import { DragDropContext } from 'react-beautiful-dnd';
-import { v4 } from 'uuid';
 import { Row, Modal, Col } from 'react-bootstrap';
 import {MODALS, CIRCLEDATA2} from './components/GlobalVar';
 import Venn from './components/Venn';
