@@ -1,176 +1,356 @@
-import React, {  } from 'react';
-import "./style.css";
-import { InputGroup, Row, Col, Button, FormControl } from 'react-bootstrap';
-import Twitter from './components/Twitter';
-import Facebook from './components/Facebook';
-import Linkedin from './components/Linkedin';
-import Whatsapp from './components/Whatsapp';
-import Trash from './components/trash';
-import Add from './components/Add';
+import React, { useState } from 'react';
+import { useLocation, Link } from "react-router-dom";
+import { DragDropContext } from "react-beautiful-dnd";
+import { v4 } from 'uuid';
 
-class Page5 extends React.PureComponent {
-    constructor(props) {
-        super(props);
-        this.state = {
-            newItem: "",
-            list: [],
+import "./style.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Row, Col, Modal } from 'react-bootstrap';
+import {MODALS, CIRCLEDATA2} from './components/GlobalVar';
+import BackButton from './components/BackButton';
+import Logo from './components/CS_Logo';
+import AddActivity from './components/AddActivity';
+import Venn from './components/Venn';
+
+import ModalSteps from "./components/ModalSteps";
+
+
+const Circa = () => {
+    const { cols } = useLocation();
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    let circleData = null;
+
+    if (cols) {
+        const rectangleData = [[], [], [], []]
+        let i = 0
+
+        Object.entries(cols).map(([, column]) => {
+            return (
+                rectangleData[i] = column.items,
+                i += 1
+            );
+        });
+
+        circleData = {
+            [v4()]: {
+                id: 'r1',
+                name: 'what you can be PAID FOR',
+                items: rectangleData[3],
+                top: '118px',
+                left: '254px',
+                width: '283px',
+                maxWidth: '283px',
+                height: '82px',
+            },
+            [v4()]: {
+                id: 'r2',
+                name: 'what the WORLD NEEDS',
+                items: rectangleData[0],
+                top: '292px',
+                left: '48px',
+                width: '130px',
+                maxWidth: '150px',
+                height: '258px'
+            },
+            [v4()]: {
+                id: 'r3',
+                name: 'what you LOVE',
+                items: rectangleData[1],
+                top: '642px',
+                left: '259px',
+                width: '271px',
+                maxWidth: '283px',
+                height: '89px'
+            },
+            [v4()]: {
+                id: 'r4',
+                name: 'what you are GOOD AT',
+                items: rectangleData[2],
+                top: '291px',
+                left: '616px',
+                width: '120px',
+                maxWidth: '150px',
+                height: '261px'
+            },
+            [v4()]: {
+                id: 'r5',
+                name: '', // blue yellow
+                items: [],
+                top: '223px',
+                left: '199px',
+                width: '128px',
+                maxWidth: '150px',
+                height: '134px'
+            },
+            [v4()]: {
+                id: 'r6',
+                name: '', // green blue
+                items: [],
+                top: '490px',
+                left: '198px',
+                width: '129px',
+                maxWidth: '150px',
+                height: '130px'
+            },
+            [v4()]: {
+                id: 'r7',
+                name: '', // green red
+                items: [],
+                top: '497px',
+                left: '461px',
+                width: '134px',
+                maxWidth: '150px',
+                height: '128px'
+            },
+            [v4()]: {
+                id: 'r8',
+                name: '', // center
+                items: [],
+                top: '362px',
+                left: '325px',
+                width: '119px',
+                maxWidth: '150px',
+                height: '125px'
+            },
+            [v4()]: {
+                id: 'r9',
+                name: '', // red yellow
+                items: [],
+                top: '230px',
+                left: '460px',
+                width: '132px',
+                maxWidth: '150px',
+                height: '127px'
+            },
+            [v4()]: {
+                id: 'r10',
+                name: '', // red yellow blue
+                items: [],
+                top: '257px',
+                left: '336px',
+                width: '115px',
+                height: '89px',
+                maxWidth: '125px',
+            },
+
+            [v4()]: {
+                id: 'r11',
+                name: '', // red blue green
+                items: [],
+                top: '503px',
+                left: '339px',
+                width: '109px',
+                maxWidth: '115px',
+                height: '84px',
+            },
+
+            [v4()]: {
+                id: 'r12',
+                name: '', // yellow blue green
+                items: [],
+                top: '368px',
+                left: '227px',
+                width: '85px',
+                maxWidth: '100px',
+                height: '112px',
+            },
+
+            [v4()]: {
+                id: 'r13',
+                name: '', // yellow green red
+                items: [],
+                top: '370px',
+                left: '470px',
+                width: '78px',
+                maxWidth: '150px',
+                height: '111px',
+            },
+
+            'add': {
+                id: 'r14',
+                name: '', // add activity
+                items: [],
+                top: '',
+                left: '',
+                width: '',
+                height: ''
+            },
+        };
+    }
+    else {
+        circleData = CIRCLEDATA2;
+    }
+
+    const [columns, setColumn] = useState(circleData);
+    const filtered = Object.fromEntries(Object.entries(columns).filter(([colId]) => colId !== 'add'))
+    const [text, setText] = useState('');
+
+    function handleChange(event) {
+        event.preventDefault()
+        setText(event.target.value);
+    }
+
+    function handleAdd() {
+        if (!text) {
+            return;
+        }
+        const newList = columns['add'].items.concat({ id: v4(), intext: text });
+        const newColumns = {
+            ...columns,
+            'add': {
+                ...columns['add'],
+                items: newList
+            }
+        };
+
+        setColumn(newColumns);
+        setText('');
+    }
+
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            if (!text) {
+                return;
+            }
+
+            const newList = columns['add'].items.concat({ id: v4(), intext: text });
+            const newColumns = {
+                ...columns,
+                'add': {
+                    ...columns['add'],
+                    items: newList
+                }
+            };
+
+            setColumn(newColumns);
+            setText('');
         }
     }
 
-    addItem() {
-        // create item with unique id
-        if (!this.state.newItem.slice()) {
+    const onDragEnd = (result, columns, setColumn) => {
+
+        if (!result.destination) {
             return;
         }
 
-        const newItem = {
-            id: 1 + Math.random(),
-            value: this.state.newItem.slice()
-        };
+        const { source, destination } = result;
 
-        const list = [...this.state.list];
+        if (source.droppableId !== destination.droppableId) {
+            const sourceColumn = columns[source.droppableId];
+            const destColumn = columns[destination.droppableId];
+            const sourceItems = [...sourceColumn.items];
+            const destItems = [...destColumn.items];
+            const [removed] = sourceItems.splice(source.index, 1);
+            destItems.splice(destination.index, 0, removed);
+            setColumn({
+                ...columns,
+                [source.droppableId]: {
+                    ...sourceColumn,
+                    items: sourceItems
+                },
+                [destination.droppableId]: {
+                    ...destColumn,
+                    items: destItems
+                }
+            });
 
-        list.push(newItem);
+        } else {
+            const column = columns[source.droppableId];
+            const copiedItems = [...column.items];
+            const [removed] = copiedItems.splice(source.index, 1);
+            copiedItems.splice(destination.index, 0, removed);
+            setColumn({
+                ...columns,
+                [source.droppableId]: {
+                    ...column,
+                    items: copiedItems
+                }
+            });
+        }
+    };
 
-        this.setState({
-            list,
-            newItem: ""
-        })
-    }
 
-    deleteItem(id) {
-        const list = [...this.state.list];
-        const updatedList = list.filter(item => item.id !== id);
-        this.setState({ list: updatedList });
-    }
+    const [modals, setModals] = useState(MODALS);
 
-    handleInputChange = (key, value) => {
-        this.setState({
-            [key]: value
-        });
-    }
+    window.onbeforeunload = function () {
+        return "Data will be lost if you leave the page, are you sure?";
+    };
 
-    render() {
-        //const { state } = this.props.location
-        //const filtered = Object.fromEntries(Object.entries({state}.state.columns).filter(([colId, col]) => colId !== 'add'))
-        return (
-            <>
-                <div className="page-container-6 container">
-                    <div className="btn-back">
-                        {/* <Link to="/lets-find-out-ikigai">
-                            <Button variant="light">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#1A1A1A" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <line x1="5" y1="12" x2="19" y2="12" />
-                                    <line x1="5" y1="12" x2="11" y2="18" />
-                                    <line x1="5" y1="12" x2="11" y2="6" />
-                                </svg>
-                            </Button>
-                        </Link> */}
-                    </div>
-                    <h3>Your Ikigai, Visualised.</h3>
-                    <div className="row my-5">
-                        <div className="col-lg">
-                            <Row>
-                                {/* <Col xs={9} className="venn-container p-0">
-                                    {Object.entries(filtered).map(([columnId, column]) => {
-                                        return (
-                                            <Hidden
-                                                key={columnId}
-                                                id={columnId}
-                                                col={column}
-                                                columns={state}
-                                                // handleColumn={setColumn}
-                                                top = {column.top}
-                                                left = {column.left}
-                                                width = {column.width}
-                                                maxWidth = {column.maxWidth}
-                                                height = {column.height}>
-                                            </Hidden>
-                                        );
-                                    })}
-                                    <CircleSVG/>
-                                </Col> */}
-                                <Col >
-                                    <div className="col-lg">
-                                        <div className="steps-container container">
-                                            <ul>
-                                                {this.state.list.map(item => {
-                                                    return (
-                                                        <li key={item.id}>
-                                                            {item.value}
-                                                            <button className="btn-delete" onClick={() => this.deleteItem(item.id)}><Trash /></button>
-                                                        </li>
-                                                    )
-                                                })}
-                                            </ul>
-                                            <InputGroup>
-                                                <FormControl
-                                                    placeholder="Enter step..."
-                                                    aria-label="Enter step..."
-                                                    aria-describedby="basic-addon2"
-                                                    className="steps-input"
-                                                    name="step"
-                                                    value={this.state.newItem}
-                                                    onChange={e => this.handleInputChange("newItem", e.target.value)}
-                                                    onKeyPress={e => e.key === "Enter" && this.addItem()}
-                                                />
-                                                <InputGroup.Append>
-                                                    <Button className="btn-add" onClick={() => this.addItem()} disabled={!this.state.newItem}><Add /></Button>
-                                                </InputGroup.Append>
-                                            </InputGroup>
-                                        </div>
-                                    </div>
-                                </Col>
-                            </Row>
-                        </div>
-                    </div>
-
-                    <button type="button" className="btn-default btn-2 btn-lg my-5">
-                        Export Report
+    return (
+        <>
+            <Logo />
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Are you sure?</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Going back to the previous page will erase your progress? Do you want to begin from scratch?</Modal.Body>
+                <Modal.Footer>
+                    <button className="btn-default btn-lg" onClick={handleClose}>
+                        No
                     </button>
-
-                    <div class="card card-shadow mt-5">
-                        <div class="card-body">
-                            <div className="share-container container">
-                                <p>Share:</p>
-                                <ul>
-                                    <li className="hvr-float"><a href="https://twitter.com/" target="__blank"><Twitter /></a></li>
-                                    <li className="hvr-float"><a href="https://facebook.com/" target="__blank"><Facebook /></a></li>
-                                    <li className="hvr-float"><a href="https://linkedin.com/" target="__blank"><Linkedin /></a></li>
-                                    <li className="hvr-float"><a href="https://whatsapp.com/" target="__blank"><Whatsapp /></a></li>
-                                </ul>
-                            </div>
+                    <Link
+                        to={{
+                            pathname: "/lets-find-out-ikigai",
+                            cols: columns
+                        }}
+                    >
+                        <button className="btn-secondary btn-lg">
+                            Yes
+                        </button>
+                    </Link>
+                </Modal.Footer>
+            </Modal>
+            <div className="venn-diagram" style={{ display: 'table', margin: '0 auto' }}>
+                <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
+                    <div className="btn-back">
+                        <BackButton onClick={handleShow} />
+                    </div>
+                    <div className="main-header-text">
+                        <p className="subtitle my-5">Introducing your ikigai chart.</p>
+                        <div className="instructions">
+                            <p>For each of these activities or values, ask yourself the following questions again:</p>
+                            <p>Can I Be Paid? (If yes, move to yellow circle)</p>
+                            <p>Do I love this? (If yes, move to green circle)</p>
+                            <p>Am I good at this? (If yes, move to red circle)</p>
+                            <p>Is this what the world needs? (If yes, move to blue circle)</p>
                         </div>
                     </div>
+                    <Row className="row-container mt-5">
+                        <Col xs={9} className="page5-left-column">
+                            <Venn filtered={filtered} columns={columns} setColumn={setColumn} />
+                            
+                            {Object.entries(modals).map(([id, modal]) => {
+                                return (
+                                    <ModalSteps id = {id} modals = {modals} modal = {modal} setModals = {setModals}></ModalSteps>
+                                )}
+                            )}
+                        </Col>
+                        <Col xs={3} className="circle-add mt-5">
+                            <AddActivity handleAdd={handleAdd} handleChange={handleChange} handleKeyPress={handleKeyPress} columns={columns} setColumn={setColumn} />
+                        </Col>
+                    </Row>
+                </DragDropContext>
+            </div>
+            <div className="btn-container-center">
+                <Link
+                    to={{
+                        pathname: "/export",
+                        columns: columns,
+                        filtered: filtered,
+                        setColumn: setColumn,
+                        onDragEnd: onDragEnd,
+                        modals: modals
+                    }}
+                >
+                    <button type="button" className="btn-default btn-2 btn-lg">
+                        Next
+                    </button>
+                </Link>
+            </div>
+        </>
+    );
+};
 
-                    <div className="container mt-5">
-                        <p>
-                            Achieving Ikigai is a challenging process.<br />
-                            Your pursuit of Ikigai should draw you closer to a particular cause, skill, or people networks.<br /><br />
-
-                            All the best in your pursuit of ikigai!
-                        </p>
-                    </div>
-                </div>
-            </>
-        );
-    }
-}
-
-// const Export= () => {
-//     const componentRef = useRef();
-//     const handlePrint = useReactToPrint({
-//       content: () => componentRef.current,
-//     });
-
-//     return (
-//       <div>
-//         <Circa ref={componentRef} />
-//         <button onClick={handlePrint}>Print this out!</button>
-//       </div>
-//     );
-//   };
-
-// export default Export;
-export default Page5;
+export default Circa;

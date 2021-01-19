@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Container, Form, OverlayTrigger, Tooltip} from 'react-bootstrap';
-import { v4 } from 'uuid';
-import Info from '../components/info.js';
 import { Droppable } from 'react-beautiful-dnd';
-import Note from '../Note';
+import { v4 } from 'uuid';
+
+import Info from '../components/info.js';
+import Note from './Note';
 
 
 const Rectangle = (props)=> {
@@ -58,14 +59,23 @@ const Rectangle = (props)=> {
     return ( 
         <Droppable droppableId={props.id} direction="horizontal">
             {(provided, snapshot) => (
-                <div className="rectangle-container text-center" ref={provided.innerRef} {...provided.droppableProps} style = {{background: snapshot.isDraggingOver ? "rgba(223, 223, 223, 0.1)" :color , border: snapshot.isDraggingOver ? '0px solid #878FAE' : ''}}>
+                <div 
+                    className="rectangle-container text-center" 
+                    ref={provided.innerRef} {...provided.droppableProps} 
+                    style = {{
+                        background: snapshot.isDraggingOver ? color : color , 
+                        borderColor: snapshot.isDraggingOver ? headingColor : '',
+                        borderWidth: snapshot.isDraggingOver ? '2px' : '',
+                        borderStyle: snapshot.isDraggingOver ? 'solid' : '',
+                    }}
+                >
                     <h3 className="dark-blue" style = {{color: headingColor}}>
                         {heading1}<br></br><strong>{heading2}</strong>
                         <OverlayTrigger
                             key="bottom"
                             placement="bottom"
                             overlay={
-                                <Tooltip 
+                                 <Tooltip 
                                     variant="primary"
                                     id={`tooltip-bottom`} 
                                     style={{ 
@@ -111,6 +121,9 @@ const Rectangle = (props)=> {
                             onKeyPress={handleKeyPress} 
                             placeholder="Type here..." 
                             maxLength='16'
+                            style={{
+                                borderColor: headingColor
+                            }}
                         />
                     </Container>
                     {provided.placeholder}
