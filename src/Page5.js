@@ -6,16 +6,14 @@ import { v4 } from 'uuid';
 import "./style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Row, Col, Modal } from 'react-bootstrap';
-
+import {MODALS, CIRCLEDATA2} from './components/GlobalVar';
 import BackButton from './components/BackButton';
 import Logo from './components/CS_Logo';
 import AddActivity from './components/AddActivity';
 import Venn from './components/Venn';
 
-import Modal1 from "./components/Modal1";
-import Modal2 from "./components/Modal2";
-import Modal3 from "./components/Modal3";
-import Modal4 from "./components/Modal4";
+import ModalSteps from "./components/ModalSteps";
+
 
 const Circa = () => {
     const { cols } = useLocation();
@@ -23,34 +21,6 @@ const Circa = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     let circleData = null;
-
-    const modalItems = {
-        [v4()]: {
-            name: 'Vocation',
-            body1: 'This intersection represents your vocation.',
-            body2: 'What are some steps can you take to enjoy your vocation more?',
-            items: []
-        },
-        [v4()]: {
-            name: 'Profession',
-            body1: 'This intersection represents your profession.',
-            body2: 'In your profession, how can you help the people and community around you?',
-            items: []
-        },
-        [v4()]: {
-            name: 'Mission',
-            body1: 'This intersection represents your mission.',
-            body2: 'What are some steps you can take to hone your craft?',
-            items: []
-        },
-        [v4()]: {
-            name: 'Passion',
-            body1: 'This intersection represents your passion.',
-            body2: 'Are you able to turn your passion into something you can be paid for?',
-            items: []
-        }
-    }
-
 
     if (cols) {
         const rectangleData = [[], [], [], []]
@@ -166,112 +136,12 @@ const Circa = () => {
         };
     }
     else {
-        circleData = {
-            [v4()]: {
-                id: 'r1',
-                name: 'what you can be PAID FOR',
-                items: [],
-                top: '118px',
-                left: '254px',
-                width: '283px',
-                maxWidth: '283px',
-                height: '82px',
-            },
-            [v4()]: {
-                id: 'r2',
-                name: 'what the WORLD NEEDS',
-                items: [],
-                top: '292px',
-                left: '46px',
-                width: '130px',
-                maxWidth: '150px',
-                height: '258px'
-            },
-            [v4()]: {
-                id: 'r3',
-                name: 'what you LOVE',
-                items: [],
-                top: '642px',
-                left: '259px',
-                width: '271px',
-                maxWidth: '283px',
-                height: '89px'
-            },
-            [v4()]: {
-                id: 'r4',
-                name: 'what you are GOOD AT',
-                items: [],
-                top: '291px',
-                left: '614px',
-                width: '125px',
-                maxWidth: '150px',
-                height: '261px'
-            },
-            [v4()]: {
-                id: 'r5',
-                name: '', // blue yellow
-                items: [],
-                top: '223px',
-                left: '199px',
-                width: '128px',
-                maxWidth: '150px',
-                height: '134px'
-            },
-            [v4()]: {
-                id: 'r6',
-                name: '', // green blue
-                items: [],
-                top: '490px',
-                left: '198px',
-                width: '129px',
-                maxWidth: '150px',
-                height: '130px'
-            },
-            [v4()]: {
-                id: 'r7',
-                name: '', // green red
-                items: [],
-                top: '497px',
-                left: '461px',
-                width: '134px',
-                maxWidth: '150px',
-                height: '128px'
-            },
-            [v4()]: {
-                id: 'r8',
-                name: '', // center
-                items: [],
-                top: '362px',
-                left: '325px',
-                width: '132px',
-                maxWidth: '150px',
-                height: '125px'
-            },
-            [v4()]: {
-                id: 'r9',
-                name: '', // red yellow
-                items: [],
-                top: '223px',
-                left: '458px',
-                width: '144px',
-                maxWidth: '150px',
-                height: '134px',
-            },
-            'add': {
-                id: 'r10',
-                name: '', // add activity
-                items: [],
-                top: '',
-                left: '',
-                width: '',
-                height: ''
-            },
-        };
+        circleData = CIRCLEDATA2;
     }
 
     const [columns, setColumn] = useState(circleData);
     const filtered = Object.fromEntries(Object.entries(columns).filter(([colId]) => colId !== 'add'))
-    const [text, setText] = React.useState('');
+    const [text, setText] = useState('');
 
     function handleChange(event) {
         event.preventDefault()
@@ -357,6 +227,9 @@ const Circa = () => {
         }
     };
 
+
+    const [modals, setModals] = useState(MODALS);
+
     window.onbeforeunload = function () {
         return "Data will be lost if you leave the page, are you sure?";
     };
@@ -403,18 +276,12 @@ const Circa = () => {
                     <Row className="row-container mt-5">
                         <Col xs={9} className="page5-left-column">
                             <Venn filtered={filtered} columns={columns} setColumn={setColumn} />
-                            <div className="btn-modal-1">
-                                <Modal1 />
-                            </div>
-                            <div className="btn-modal-2">
-                                <Modal2 />
-                            </div>
-                            <div className="btn-modal-3">
-                                <Modal3 />
-                            </div>
-                            <div className="btn-modal-4">
-                                <Modal4 />
-                            </div>
+                            
+                            {Object.entries(modals).map(([id, modal]) => {
+                                return (
+                                    <ModalSteps id = {id} modals = {modals} modal = {modal} setModals = {setModals}></ModalSteps>
+                                )}
+                            )}
                         </Col>
                         <Col xs={3} className="circle-add mt-5">
                             <AddActivity handleAdd={handleAdd} handleChange={handleChange} handleKeyPress={handleKeyPress} columns={columns} setColumn={setColumn} />
@@ -429,7 +296,8 @@ const Circa = () => {
                         columns: columns,
                         filtered: filtered,
                         setColumn: setColumn,
-                        onDragEnd: onDragEnd
+                        onDragEnd: onDragEnd,
+                        modals: modals
                     }}
                 >
                     <button type="button" className="btn-default btn-2 btn-lg">

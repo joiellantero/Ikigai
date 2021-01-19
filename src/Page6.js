@@ -3,19 +3,11 @@ import ReactToPrint from "react-to-print";
 import { useLocation, Link } from "react-router-dom";
 import { DragDropContext } from 'react-beautiful-dnd';
 import { v4 } from 'uuid';
-
-import { Modal, InputGroup, FormControl, Button } from 'react-bootstrap';
-
+import { Row, Modal, Col } from 'react-bootstrap';
+import {MODALS, CIRCLEDATA2} from './components/GlobalVar';
 import Venn from './components/Venn';
 import Logo from './components/CS_Logo';
 import BackButton from './components/BackButton';
-import Modal1 from "./components/Modal1";
-import Twitter from './components/Twitter';
-import Facebook from './components/Facebook';
-import Linkedin from './components/Linkedin';
-import Whatsapp from './components/Whatsapp';
-import Trash from './components/trash';
-import Add from './components/Add';
 
 import {
     FacebookShareButton,
@@ -30,114 +22,14 @@ import {
 
 
 const Intermediate = () => {
-    let { columns, filtered } = useLocation();
+    let { columns, filtered, modals } = useLocation();
     const { setColumn, onDragEnd } = useLocation();
-    const { data1 } = useLocation();
-    { console.log(data1) }
 
     if (!columns) {
-        columns = {
-            [v4()]: {
-                id: 'r1',
-                name: 'what you can be PAID FOR',
-                items: [],
-                top: '118px',
-                left: '254px',
-                width: '283px',
-                maxWidth: '283px',
-                height: '82px',
-            },
-            [v4()]: {
-                id: 'r2',
-                name: 'what the WORLD NEEDS',
-                items: [],
-                top: '292px',
-                left: '46px',
-                width: '130px',
-                maxWidth: '150px',
-                height: '258px'
-            },
-            [v4()]: {
-                id: 'r3',
-                name: 'what you LOVE',
-                items: [],
-                top: '642px',
-                left: '259px',
-                width: '271px',
-                maxWidth: '283px',
-                height: '89px'
-            },
-            [v4()]: {
-                id: 'r4',
-                name: 'what you are GOOD AT',
-                items: [],
-                top: '291px',
-                left: '614px',
-                width: '125px',
-                maxWidth: '150px',
-                height: '261px'
-            },
-            [v4()]: {
-                id: 'r5',
-                name: '', // blue yellow
-                items: [],
-                top: '223px',
-                left: '199px',
-                width: '128px',
-                maxWidth: '150px',
-                height: '134px'
-            },
-            [v4()]: {
-                id: 'r6',
-                name: '', // green blue
-                items: [],
-                top: '490px',
-                left: '198px',
-                width: '129px',
-                maxWidth: '150px',
-                height: '130px'
-            },
-            [v4()]: {
-                id: 'r7',
-                name: '', // green red
-                items: [],
-                top: '497px',
-                left: '461px',
-                width: '134px',
-                maxWidth: '150px',
-                height: '128px'
-            },
-            [v4()]: {
-                id: 'r8',
-                name: '', // center
-                items: [],
-                top: '362px',
-                left: '325px',
-                width: '132px',
-                maxWidth: '150px',
-                height: '125px'
-            },
-            [v4()]: {
-                id: 'r9',
-                name: '', // red yellow
-                items: [],
-                top: '223px',
-                left: '458px',
-                width: '144px',
-                maxWidth: '150px',
-                height: '134px',
-            },
-            'add': {
-                id: 'r10',
-                name: '', // add activity
-                items: [],
-                top: '',
-                left: '',
-                width: '',
-                height: ''
-            },
-        };
-        filtered = Object.fromEntries(Object.entries(columns).filter(([colId]) => colId !== 'add'))
+        modals =  MODALS;
+        columns =  CIRCLEDATA2;
+
+    filtered = Object.fromEntries(Object.entries(columns).filter(([colId]) => colId !== 'add'))
     }
 
     return (
@@ -145,11 +37,31 @@ const Intermediate = () => {
             <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
                 <div className="page-break">
                     <Venn filtered={filtered} columns={columns} setColumn={setColumn} />
+                    <br/>
+                    <h5 className="subtitle my-5 text-center"> Steps to Ikigai</h5>
+                    <div className="export-steps-container">
+                        <Row>
+                            {Object.entries(modals).map(([id, modal]) => {
+                                return (
+                                    <>  
+                                        <Col> 
+                                            <h5>{id}</h5>
+                                            <p className="modal-items-container">
+                                                {modal.items.map((item)=>{
+                                                    return (
+                                                        <p className="modal-item">{item.intext}</p>
+                                                    )}    
+                                                )}
+                                            </p>
+                                        </Col>
+                                    </>
+                                )}
+                            )}
+                        </Row>
+                    </div>
                 </div>
             </DragDropContext>
-            <p> {data1} </p>
         </div>
-
     );
 }
 
@@ -168,39 +80,6 @@ class Export extends Component {
             newItem: "",
             list: [],
         }
-    }
-
-    addItem() {
-        // create item with unique id
-        if (!this.state.newItem.slice()) {
-            return;
-        }
-
-        const newItem = {
-            id: 1 + Math.random(),
-            value: this.state.newItem.slice()
-        };
-
-        const list = [...this.state.list];
-
-        list.push(newItem);
-
-        this.setState({
-            list,
-            newItem: ""
-        })
-    }
-
-    deleteItem(id) {
-        const list = [...this.state.list];
-        const updatedList = list.filter(item => item.id !== id);
-        this.setState({ list: updatedList });
-    }
-
-    handleInputChange = (key, value) => {
-        this.setState({
-            [key]: value
-        });
     }
 
     state = {
@@ -255,36 +134,6 @@ class Export extends Component {
                     <div className="page-print">
                         <ComponentToPrint ref={(el) => (this.componentRef = el)} />
                     </div>
-                    {/* <div className="steps-container container my-5">
-                        <ul>
-                            {this.state.list.map(item => {
-                                return (
-                                    <li key={item.id}>
-                                        {item.value}
-                                        <button className="btn-delete" onClick={() => this.deleteItem(item.id)}><Trash /></button>
-                                    </li>
-                                )
-                            })}
-                        </ul>
-                        <InputGroup>
-                            <FormControl
-                                placeholder="Enter step..."
-                                aria-label="Enter step..."
-                                aria-describedby="basic-addon2"
-                                className="steps-input"
-                                name="step"
-                                value={this.state.newItem}
-                                onChange={e => this.handleInputChange("newItem", e.target.value)}
-                                onKeyPress={e => e.key === "Enter" && this.addItem()}
-                            />
-                            <InputGroup.Append>
-                                <Button className="btn-add" onClick={() => this.addItem()} disabled={!this.state.newItem}><Add /></Button>
-                            </InputGroup.Append>
-                        </InputGroup>
-                    </div> */}
-                    <h3> Steps to Ikigai</h3>
-                    {/* {console.log(data1)}
-                    <p> {data1} </p> */}
 
                     <ReactToPrint
                         trigger={() => (
