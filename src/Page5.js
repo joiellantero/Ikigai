@@ -1,4 +1,4 @@
-import React, {  useState } from 'react';
+import React, { useState } from 'react';
 import { useLocation, Link } from "react-router-dom";
 import { DragDropContext } from "react-beautiful-dnd";
 import { v4 } from 'uuid';
@@ -6,20 +6,23 @@ import { v4 } from 'uuid';
 import "./style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Row, Col, Modal } from 'react-bootstrap';
-
+import {MODALS, CIRCLEDATA2} from './components/GlobalVar';
 import BackButton from './components/BackButton';
 import Logo from './components/CS_Logo';
 import AddActivity from './components/AddActivity';
 import Venn from './components/Venn';
 
+import ModalSteps from "./components/ModalSteps";
+
+
 const Circa = () => {
-    const { cols }  = useLocation();
+    const { cols } = useLocation();
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     let circleData = null;
-    
-    if (cols){
+
+    if (cols) {
         const rectangleData = [[], [], [], []]
         let i = 0
 
@@ -121,110 +124,6 @@ const Circa = () => {
                 maxWidth: '150px',
                 height: '127px'
             },
-            'add': {
-                id: 'r10',
-                name: '', // add activity
-                items: [],
-                top: '',
-                left: '',
-                width: '',
-                height: ''
-            },
-        };
-    }
-    else {
-        circleData = {
-            [v4()]: {
-                id: 'r1',
-                name: 'what you can be PAID FOR',
-                items: [],
-                top: '118px',
-                left: '254px',
-                width: '283px',
-                maxWidth: '283px',
-                height: '82px',
-            },
-            [v4()]: {
-                id: 'r2',
-                name: 'what the WORLD NEEDS',
-                items: [],
-                top: '292px',
-                left: '46px',
-                width: '130px',
-                maxWidth: '150px',
-                height: '258px'
-            },
-            [v4()]: {
-                id: 'r3',
-                name: 'what you LOVE',
-                items: [],
-                top: '642px',
-                left: '259px',
-                width: '271px',
-                maxWidth: '283px',
-                height: '89px'
-            },
-            [v4()]: {
-                id: 'r4',
-                name: 'what you are GOOD AT',
-                items: [],
-                top: '291px',
-                left: '614px',
-                width: '125px',
-                maxWidth: '150px',
-                height: '261px'
-            },
-            [v4()]: {
-                id: 'r5',
-                name: '', // blue yellow
-                items: [],
-                top: '223px',
-                left: '199px',
-                width: '128px',
-                maxWidth: '150px',
-                height: '134px'
-            },
-            [v4()]: {
-                id: 'r6',
-                name: '', // green blue
-                items: [],
-                top: '490px',
-                left: '198px',
-                width: '129px',
-                maxWidth: '150px',
-                height: '130px'
-            },
-            [v4()]: {
-                id: 'r7',
-                name: '', // green red
-                items: [],
-                top: '497px',
-                left: '461px',
-                width: '134px',
-                maxWidth: '150px',
-                height: '128px'
-            },
-            [v4()]: {
-                id: 'r8',
-                name: '', // center
-                items: [],
-                top: '362px',
-                left: '325px',
-                width: '132px',
-                maxWidth: '150px',
-                height: '125px'
-            },
-            [v4()]: {
-                id: 'r9',
-                name: '', // red yellow
-                items: [],
-                top: '223px',
-                left: '458px',
-                width: '144px',
-                maxWidth: '150px',
-                height: '134px',
-            },
-            
             [v4()]: {
                 id: 'r10',
                 name: '', // red yellow blue
@@ -280,10 +179,13 @@ const Circa = () => {
             },
         };
     }
+    else {
+        circleData = CIRCLEDATA2;
+    }
 
     const [columns, setColumn] = useState(circleData);
     const filtered = Object.fromEntries(Object.entries(columns).filter(([colId]) => colId !== 'add'))
-    const [text, setText] = React.useState('');
+    const [text, setText] = useState('');
 
     function handleChange(event) {
         event.preventDefault()
@@ -369,13 +271,16 @@ const Circa = () => {
         }
     };
 
-    window.onbeforeunload = function() {
+
+    const [modals, setModals] = useState(MODALS);
+
+    window.onbeforeunload = function () {
         return "Data will be lost if you leave the page, are you sure?";
     };
 
     return (
         <>
-            <Logo/>
+            <Logo />
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Are you sure?</Modal.Title>
@@ -400,7 +305,7 @@ const Circa = () => {
             <div className="venn-diagram" style={{ display: 'table', margin: '0 auto' }}>
                 <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
                     <div className="btn-back">
-                        <BackButton onClick={handleShow}/>
+                        <BackButton onClick={handleShow} />
                     </div>
                     <div className="main-header-text">
                         <p className="subtitle my-5">Introducing your ikigai chart.</p>
@@ -413,11 +318,17 @@ const Circa = () => {
                         </div>
                     </div>
                     <Row className="row-container mt-5">
-                        <Col xs={9}>
-                            <Venn filtered = {filtered} columns ={columns} setColumn = {setColumn}/>
+                        <Col xs={9} className="page5-left-column">
+                            <Venn filtered={filtered} columns={columns} setColumn={setColumn} />
+                            
+                            {Object.entries(modals).map(([id, modal]) => {
+                                return (
+                                    <ModalSteps id = {id} modals = {modals} modal = {modal} setModals = {setModals}></ModalSteps>
+                                )}
+                            )}
                         </Col>
                         <Col xs={3} className="circle-add mt-5">
-                            <AddActivity handleAdd = {handleAdd} handleChange = {handleChange} handleKeyPress = {handleKeyPress} columns ={columns} setColumn = {setColumn}/>
+                            <AddActivity handleAdd={handleAdd} handleChange={handleChange} handleKeyPress={handleKeyPress} columns={columns} setColumn={setColumn} />
                         </Col>
                     </Row>
                 </DragDropContext>
@@ -426,10 +337,11 @@ const Circa = () => {
                 <Link
                     to={{
                         pathname: "/export",
-                        columns: columns, 
-                        filtered: filtered, 
+                        columns: columns,
+                        filtered: filtered,
                         setColumn: setColumn,
-                        onDragEnd: onDragEnd
+                        onDragEnd: onDragEnd,
+                        modals: modals
                     }}
                 >
                     <button type="button" className="btn-default btn-2 btn-lg">

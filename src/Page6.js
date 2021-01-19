@@ -1,148 +1,74 @@
 import React, { Component } from "react";
 import ReactToPrint from "react-to-print";
 import { useLocation, Link } from "react-router-dom";
-import {DragDropContext} from 'react-beautiful-dnd';
-import { v4 } from 'uuid';
-
-import { Modal } from 'react-bootstrap';
-// import { Modal, InputGroup, FormControl, Button } from 'react-bootstrap';
-
+import { DragDropContext } from 'react-beautiful-dnd';
+import { Row, Modal, Col } from 'react-bootstrap';
+import {MODALS, CIRCLEDATA2} from './components/GlobalVar';
 import Venn from './components/Venn';
 import Logo from './components/CS_Logo';
 import BackButton from './components/BackButton';
-import Twitter from './components/Twitter';
-import Facebook from './components/Facebook';
-import Linkedin from './components/Linkedin';
-import Whatsapp from './components/Whatsapp';
-// import Trash from './components/trash';
-// import Add from './components/Add';
+
+import {
+    FacebookShareButton,
+    FacebookIcon,
+    LinkedinShareButton,
+    LinkedinIcon,
+    TwitterShareButton,
+    TwitterIcon,
+    WhatsappShareButton,
+    WhatsappIcon,
+} from "react-share";
 
 
-const Intermediate  = () => {
-  let {columns, filtered} = useLocation();
-  const { setColumn, onDragEnd }  = useLocation();
-  
-  if (!columns){
-      columns = {
-        [v4()]: {
-            id: 'r1',
-            name: 'what you can be PAID FOR',
-            items: [],
-            top: '118px',
-            left: '254px',
-            width: '283px',
-            maxWidth: '283px',
-            height: '82px',
-        },
-        [v4()]: {
-            id: 'r2',
-            name: 'what the WORLD NEEDS',
-            items: [],
-            top: '292px',
-            left: '46px',
-            width: '130px',
-            maxWidth: '150px',
-            height: '258px'
-        },
-        [v4()]: {
-            id: 'r3',
-            name: 'what you LOVE',
-            items: [],
-            top: '642px',
-            left: '259px',
-            width: '271px',
-            maxWidth: '283px',
-            height: '89px'
-        },
-        [v4()]: {
-            id: 'r4',
-            name: 'what you are GOOD AT',
-            items: [],
-            top: '291px',
-            left: '614px',
-            width: '125px',
-            maxWidth: '150px',
-            height: '261px'
-        },
-        [v4()]: {
-            id: 'r5',
-            name: '', // blue yellow
-            items: [],
-            top: '223px',
-            left: '199px',
-            width: '128px',
-            maxWidth: '150px',
-            height: '134px'
-        },
-        [v4()]: {
-            id: 'r6',
-            name: '', // green blue
-            items: [],
-            top: '490px',
-            left: '198px',
-            width: '129px',
-            maxWidth: '150px',
-            height: '130px'
-        },
-        [v4()]: {
-            id: 'r7',
-            name: '', // green red
-            items: [],
-            top: '497px',
-            left: '461px',
-            width: '134px',
-            maxWidth: '150px',
-            height: '128px'
-        },
-        [v4()]: {
-            id: 'r8',
-            name: '', // center
-            items: [],
-            top: '362px',
-            left: '325px',
-            width: '132px',
-            maxWidth: '150px',
-            height: '125px'
-        },
-        [v4()]: {
-            id: 'r9',
-            name: '', // red yellow
-            items: [],
-            top: '223px',
-            left: '458px',
-            width: '144px',
-            maxWidth: '150px',
-            height: '134px',
-        },
-        'add': {
-            id: 'r10',
-            name: '', // add activity
-            items: [],
-            top: '',
-            left: '',
-            width: '',
-            height: ''
-        },
-    };
-      filtered = Object.fromEntries(Object.entries(columns).filter(([colId]) => colId !== 'add'))
-  }
+const Intermediate = () => {
+    let { columns, filtered, modals } = useLocation();
+    const { setColumn, onDragEnd } = useLocation();
 
-  return (
-     <div className="venn-diagram">
-        <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
-            <div className="page-break">
-                <Venn filtered = {filtered} columns ={columns} setColumn = {setColumn}/>
-            </div>
-        </DragDropContext>
-     </div>
+    if (!columns) {
+        modals =  MODALS;
+        columns =  CIRCLEDATA2;
+
+    filtered = Object.fromEntries(Object.entries(columns).filter(([colId]) => colId !== 'add'))
+    }
+
+    return (
+        <div className="venn-diagram">
+            <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
+                <div className="page-break">
+                    <Venn filtered={filtered} columns={columns} setColumn={setColumn} />
+                    <br/>
+                    <h5 className="subtitle my-5 text-center"> Steps to Ikigai</h5>
+                    <div className="export-steps-container">
+                        <Row>
+                            {Object.entries(modals).map(([id, modal]) => {
+                                return (
+                                    <>  
+                                        <Col> 
+                                            <h5>{id}</h5>
+                                            <p className="modal-items-container">
+                                                {modal.items.map((item)=>{
+                                                    return (
+                                                        <p className="modal-item">{item.intext}</p>
+                                                    )}    
+                                                )}
+                                            </p>
+                                        </Col>
+                                    </>
+                                )}
+                            )}
+                        </Row>
+                    </div>
+                </div>
+            </DragDropContext>
+        </div>
     );
 }
 
 class ComponentToPrint extends Component {
     render() {
         return (
-            <Intermediate/>
-        ); 
+            <Intermediate />
+        );
     }
 }
 
@@ -155,40 +81,7 @@ class Export extends Component {
         }
     }
 
-    addItem() {
-        // create item with unique id
-        if (!this.state.newItem.slice()) {
-            return;
-        }
-
-        const newItem = {
-            id: 1 + Math.random(),
-            value: this.state.newItem.slice()
-        };
-
-        const list = [...this.state.list];
-
-        list.push(newItem);
-
-        this.setState({
-            list,
-            newItem: ""
-        })
-    }
-
-    deleteItem(id) {
-        const list = [...this.state.list];
-        const updatedList = list.filter(item => item.id !== id);
-        this.setState({ list: updatedList });
-    }
-
-    handleInputChange = (key, value) => {
-        this.setState({
-            [key]: value
-        });
-    }
-
-    state={
+    state = {
         showModal: false
     }
 
@@ -198,10 +91,13 @@ class Export extends Component {
         })
     }
 
+
     render() {
+
         return (
+
             <>
-                <Logo/>
+                <Logo />
                 <Modal show={this.show} onHide={this.handleClose}>
                     <Modal.Header closeButton>
                         <Modal.Title>Are you sure?</Modal.Title>
@@ -230,48 +126,21 @@ class Export extends Component {
                                 pathname: "/your-ikigai-chart",
                             }}
                         >
-                            <BackButton onClick={this.toggleModal}/>
+                            <BackButton onClick={this.toggleModal} />
                         </Link>
                     </div>
                     <p className="subtitle">Your Ikigai, Visualised</p>
                     <div className="page-print">
                         <ComponentToPrint ref={(el) => (this.componentRef = el)} />
                     </div>
-                    {/* <div className="steps-container container my-5">
-                        <ul>
-                            {this.state.list.map(item => {
-                                return (
-                                    <li key={item.id}>
-                                        {item.value}
-                                        <button className="btn-delete" onClick={() => this.deleteItem(item.id)}><Trash /></button>
-                                    </li>
-                                )
-                            })}
-                        </ul>
-                        <InputGroup>
-                            <FormControl
-                                placeholder="Enter step..."
-                                aria-label="Enter step..."
-                                aria-describedby="basic-addon2"
-                                className="steps-input"
-                                name="step"
-                                value={this.state.newItem}
-                                onChange={e => this.handleInputChange("newItem", e.target.value)}
-                                onKeyPress={e => e.key === "Enter" && this.addItem()}
-                            />
-                            <InputGroup.Append>
-                                <Button className="btn-add" onClick={() => this.addItem()} disabled={!this.state.newItem}><Add /></Button>
-                            </InputGroup.Append>
-                        </InputGroup>
-                    </div> */}
 
                     <ReactToPrint
                         trigger={() => (
-                        <div className="btn-container-center">
-                            <button type="button" className="btn-default btn-2 btn-lg btn-width-fit">
-                                Export Report
+                            <div className="btn-container-center">
+                                <button type="button" className="btn-default btn-2 btn-lg btn-width-fit">
+                                    Export Report
                             </button>
-                        </div>
+                            </div>
                         )}
                         content={() => this.componentRef}
                         documentTitle="Your_ikigai"
@@ -282,10 +151,38 @@ class Export extends Component {
                             <div className="share-container container">
                                 <p>Share:</p>
                                 <ul>
-                                    <li className="hvr-float"><a href="https://twitter.com/" target="__blank"><Twitter /></a></li>
-                                    <li className="hvr-float"><a href="https://facebook.com/" target="__blank"><Facebook /></a></li>
-                                    <li className="hvr-float"><a href="https://linkedin.com/" target="__blank"><Linkedin /></a></li>
-                                    <li className="hvr-float"><a href="https://whatsapp.com/" target="__blank"><Whatsapp /></a></li>
+                                    <li className="hvr-float">
+                                        <FacebookShareButton
+                                            url={"https://u.careersocius.com/ikigai"}
+                                            quote={"Find out your ikigai here"}
+                                        >
+                                            <FacebookIcon size={32} round />
+                                        </FacebookShareButton>
+                                    </li>
+                                    <li className="hvr-float">
+                                        <TwitterShareButton
+                                            url={"https://u.careersocius.com/ikigai"}
+                                            quote={"Find out your ikigai here"}
+                                        >
+                                            <TwitterIcon size={32} round />
+                                        </TwitterShareButton>
+                                    </li>
+                                    <li className="hvr-float">
+                                        <LinkedinShareButton
+                                            url={"https://u.careersocius.com/ikigai"}
+                                            quote={"Find out your ikigai here"}
+                                        >
+                                            <LinkedinIcon size={32} round />
+                                        </LinkedinShareButton>
+                                    </li>
+                                    <li className="hvr-float">
+                                        <WhatsappShareButton
+                                            url={"https://u.careersocius.com/ikigai"}
+                                            quote={"Find out your ikigai here"}
+                                        >
+                                            <WhatsappIcon size={32} round />
+                                        </WhatsappShareButton>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
