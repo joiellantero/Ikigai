@@ -6,14 +6,37 @@ import { Modal, Button, InputGroup, FormControl } from 'react-bootstrap';
 import Add from './Add';
 
 
-function ModalContent() {
+function ModalContent(props) {
 
-    const [data1, setData] = useState(null)
+    const [text, setText] = useState('')
 
-    function getData(val) {
-        setData(val.target.value)
-        // console.warn(val.target.value)
+    function handleChange(event) {
+        event.preventDefault()
+        setText(event.target.value);
     }
+
+    function handleAdd() {
+        if (!text) {
+            return;
+        }
+        const newList = props.modals['vocation'].items.concat(text);
+        const newModals = {
+            ...props.modals,
+            'vocation': {
+                ...props.modals['vocation'],
+                items: newList
+            }
+        };
+
+        props.setModals(newModals);
+        setText('');
+        setShow(false);
+    }
+
+    // function getData(val) {
+    //     setData(val.target.value)
+    //     // console.warn(val.target.value)
+    // }
 
     const [show, setShow] = useState(false);
 
@@ -30,20 +53,23 @@ function ModalContent() {
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Vocation</Modal.Title>
+                    <Modal.Title>{props.modals['vocation'].name}</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>This intersection represents your vocation. <br />
-                What are some steps can you take to enjoy your vocation more?
-                <p> {data1} </p>
+                <Modal.Body>{props.modals['vocation'].body1}<br />
+                {props.modals['vocation'].body2}<br /><br />
+                
+                {props.modals['vocation'].items.map((step)=>{
+                    return <p>--{step}</p>;
+                    })
+                }
 
-
-                    {/* <input type="text" onChange={getData} /> */}
-                    <InputGroup size="sm" className="mb-3" onChange={getData}>
+                    <input type="text" onChange={handleChange} />
+                    {/* <InputGroup size="sm" className="mb-3" onChange={getData}>
                         <InputGroup.Prepend>
                             <InputGroup.Text id="inputGroup-sizing-sm"></InputGroup.Text>
                         </InputGroup.Prepend>
                         <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
-                    </InputGroup>
+                    </InputGroup> */}
 
                 </Modal.Body>
                 <Modal.Footer>
@@ -51,19 +77,19 @@ function ModalContent() {
                     <button type="button" className="btn-secondary btn-lg" onClick={handleClose}>
                         Close
                     </button>
-                    <button type="button" className="btn-default btn-lg" onClick={handleClose}>
+                    <button type="button" className="btn-default btn-lg" onClick={handleAdd}>
                         Save
                     </button>
 
 
-                    <Link
+                    {/* <Link
                         to={{
                             pathname: "/export",
                             data1: data1
                         }}
                     >
                         {console.log(data1)}
-                    </Link>
+                    </Link> */}
 
                 </Modal.Footer>
             </Modal>

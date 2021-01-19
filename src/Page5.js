@@ -24,32 +24,6 @@ const Circa = () => {
     const handleShow = () => setShow(true);
     let circleData = null;
 
-    const modalItems = {
-        [v4()]: {
-            name: 'Vocation',
-            body1: 'This intersection represents your vocation.',
-            body2: 'What are some steps can you take to enjoy your vocation more?',
-            items: []
-        },
-        [v4()]: {
-            name: 'Profession',
-            body1: 'This intersection represents your profession.',
-            body2: 'In your profession, how can you help the people and community around you?',
-            items: []
-        },
-        [v4()]: {
-            name: 'Mission',
-            body1: 'This intersection represents your mission.',
-            body2: 'What are some steps you can take to hone your craft?',
-            items: []
-        },
-        [v4()]: {
-            name: 'Passion',
-            body1: 'This intersection represents your passion.',
-            body2: 'Are you able to turn your passion into something you can be paid for?',
-            items: []
-        }
-    }
 
 
     if (cols) {
@@ -271,7 +245,7 @@ const Circa = () => {
 
     const [columns, setColumn] = useState(circleData);
     const filtered = Object.fromEntries(Object.entries(columns).filter(([colId]) => colId !== 'add'))
-    const [text, setText] = React.useState('');
+    const [text, setText] = useState('');
 
     function handleChange(event) {
         event.preventDefault()
@@ -357,6 +331,35 @@ const Circa = () => {
         }
     };
 
+    const modalItems = {
+        ['vocation']: {
+            name: 'Vocation',
+            body1: 'This intersection represents your vocation.',
+            body2: 'What are some steps can you take to enjoy your vocation more?',
+            items: ['hello', 'how', 'are', 'you']
+        },
+        ['profession']: {
+            name: 'Profession',
+            body1: 'This intersection represents your profession.',
+            body2: 'In your profession, how can you help the people and community around you?',
+            items: []
+        },
+        ['mission']: {
+            name: 'Mission',
+            body1: 'This intersection represents your mission.',
+            body2: 'What are some steps you can take to hone your craft?',
+            items: []
+        },
+        ['passion']: {
+            name: 'Passion',
+            body1: 'This intersection represents your passion.',
+            body2: 'Are you able to turn your passion into something you can be paid for?',
+            items: []
+        }
+    }
+
+    const [modals, setModals] = useState(modalItems);
+
     window.onbeforeunload = function () {
         return "Data will be lost if you leave the page, are you sure?";
     };
@@ -404,7 +407,7 @@ const Circa = () => {
                         <Col xs={9} className="page5-left-column">
                             <Venn filtered={filtered} columns={columns} setColumn={setColumn} />
                             <div className="btn-modal-1">
-                                <Modal1 />
+                                <Modal1 id = 'vocation' modals = {modals} setModals = {setModals}/>
                             </div>
                             <div className="btn-modal-2">
                                 <Modal2 />
