@@ -22,6 +22,7 @@ const Circa = () => {
     const handleShow = () => setShow(true);
     const [nextBtn, setNextBtn] = useState(0);
     let circleData = null;
+    let counter = 0;
 
     if (cols) {
         const rectangleData = [[], [], [], []]
@@ -276,13 +277,14 @@ const Circa = () => {
     const [modals, setModals] = useState(MODALS);
 
     const handleNext = () => {
-        let counter = 0;
+        counter = 0;
 
         Object.entries(modals).map(([columnId, modal]) => {
             if (modal.items.length>0){
                 counter += 1;
-                }
-            })
+            }
+        })
+
         console.log(counter);
     }
 
@@ -367,6 +369,7 @@ const Circa = () => {
                         type="button" 
                         className="btn-default btn-2 btn-lg"
                         onClick={handleNext}
+                        // disabled={counter !== 4}
                     >
                         Next
                     </button>
