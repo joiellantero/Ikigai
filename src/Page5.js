@@ -276,11 +276,14 @@ const Circa = () => {
     const [modals, setModals] = useState(MODALS);
 
     const handleNext = () => {
-        Object.keys(modals).reduce(
-            function (id, modal) {
-                const current = 1 ? modal[id].items : 0;
-                return 
-        }, 0);
+        let counter = 0;
+
+        Object.entries(modals).map(([columnId, modal]) => {
+            if (modal.items.length>0){
+                counter += 1;
+                }
+            })
+        console.log(counter);
     }
 
     window.onbeforeunload = function () {
