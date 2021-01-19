@@ -105,7 +105,7 @@ const Far = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    window.onbeforeunload = function() {
+    window.onbeforeunload = function () {
         return "Data will be lost if you leave the page, are you sure?";
     };
 
@@ -135,7 +135,7 @@ const Far = () => {
             </Modal>
             <div className="page-container-4">
                 <div className="btn-back">
-                    <BackButton onClick={handleShow}/>
+                    <BackButton onClick={handleShow} />
                 </div>
                 <div className="page-content">
                     <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>

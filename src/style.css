@@ -4,7 +4,7 @@ body {
     font-family: "Nunito", sans-serif !important;
 }
 
-.subtitle{
+.subtitle {
     font-weight: 700;
     font-size: larger;
 }
@@ -15,7 +15,8 @@ body {
     outline: 0 none !important;
 }
 
-.btn-default, .btn-secondary{
+.btn-default,
+.btn-secondary {
     border-radius: 50px !important;
     color: white;
     width: 100px;
@@ -39,7 +40,7 @@ body {
     transition-timing-function: ease-out;
 }
 
-.btn-default{
+.btn-default {
     background-color: #283972 !important;
 }
 
@@ -47,7 +48,7 @@ body {
     background-color: #FF5B5B !important;
 }
 
-.btn-width-fit{
+.btn-width-fit {
     width: fit-content !important;
 }
 
@@ -115,7 +116,7 @@ body {
     transform: translateX(-3px);
 }
 
-.btn-container-center{
+.btn-container-center {
     display: flex;
     justify-content: center;
     margin: 100px;
@@ -144,13 +145,19 @@ body {
     bottom: 0px;
 }
 
-.info-btn:hover{
+.info-btn:hover {
     cursor: help;
 }
 
-.modal-content{
+.modal-content {
     border: none !important;
     outline: none !important;
+}
+
+.modal-header .close:focus,
+.modal-header .close:active {
+    box-shadow: none;
+    outline: none;
 }
 
 .container {
@@ -169,36 +176,35 @@ body {
     opacity: 0;
 }
 
-input.form-control:focus{
+input.form-control:focus {
     border-color: rgba(0, 0, 0, 0);
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(0, 0, 0, 0.2);
     outline: 0 none;
 }
 
-.tooltip{  
+.tooltip {
     border-radius: 8px;
     padding: 10px 10px 0 10px !important;
 }
 
-.tooltip b{
+.tooltip b {
     text-align: center;
     font-size: 12px;
     font-weight: 800;
     text-transform: uppercase;
 }
 
-.tooltip p{
+.tooltip p {
     text-align: left;
 }
 
-.tooltip .tooltip-inner { 
-    background-color: rgba(0, 0, 0, 0); 
+.tooltip .tooltip-inner {
+    background-color: rgba(0, 0, 0, 0);
 }
 
-.tooltip .arrow{
+.tooltip .arrow {
     visibility: hidden;
 }
-
 
 .pill-container:hover .intext {
     transform: translateX(-10px);
@@ -231,17 +237,26 @@ input.form-control:focus{
     position: relative;
 }
 
-.btn-delete-container {
+.btn-delete-container,
+.btn-delete-container-2 {
     border-radius: 50%;
-    -webkit-transition: transform 0.3s ease-in-out;
-    -moz-transition: transform 0.3s ease-in-out;
-    transition: transform 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
     transition-delay: 0.1s;
     transform: scale(0);
     opacity: 0;
 }
 
-.rounded-pill:hover .btn-delete-container {
+.btn-delete-container-2 svg {
+    height: 17px;
+    width: 17px;
+    margin-left: 3px;
+    margin-bottom: 4px;
+}
+
+.rounded-pill:hover .btn-delete-container,
+.step-input:hover .btn-delete-container-2 {
     transform: scale(1);
     cursor: pointer;
     opacity: 1;
@@ -261,7 +276,7 @@ input.form-control:focus{
     margin: 30px;
 }
 
-.main-header-text p{
+.main-header-text p {
     margin: 0;
 }
 
@@ -293,13 +308,14 @@ input.form-control:focus{
     margin-top: 130px;
 }
 
+
 /* ----- Venn Diagram Labels ----- */
 
-.venn-labels p{
+.venn-labels p {
     position: absolute;
 }
 
-.venn-labels p.c1{
+.venn-labels p.c1 {
     text-align: right;
     font-weight: 700;
     color: #7E88AA;
@@ -309,7 +325,7 @@ input.form-control:focus{
     z-index: -99;
 }
 
-.venn-labels p.c2{
+.venn-labels p.c2 {
     text-align: left;
     font-weight: 700;
     color: #FF9D9D;
@@ -319,7 +335,7 @@ input.form-control:focus{
     z-index: -99;
 }
 
-.venn-labels p.c3{
+.venn-labels p.c3 {
     text-align: center;
     font-weight: 700;
     color: #5fd6b3;
@@ -329,7 +345,7 @@ input.form-control:focus{
     z-index: -99;
 }
 
-.venn-labels p.c4{
+.venn-labels p.c4 {
     text-align: center;
     font-weight: 700;
     color: #f1e161;
@@ -339,7 +355,7 @@ input.form-control:focus{
     z-index: -99;
 }
 
-.venn-labels .behind p{
+.venn-labels .behind p {
     position: absolute;
     z-index: -100;
     font-weight: 300;
@@ -348,29 +364,29 @@ input.form-control:focus{
     font-size: 1.3em;
 }
 
-.venn-labels .behind p.ikigai{
+.venn-labels .behind p.ikigai {
     text-transform: uppercase;
     color: red;
     top: 407px;
     left: 365px;
 }
 
-.venn-labels .behind p.vocation{
+.venn-labels .behind p.vocation {
     top: 285px;
     left: 220px;
 }
 
-.venn-labels .behind p.profession{
+.venn-labels .behind p.profession {
     top: 285px;
     left: 470px;
 }
 
-.venn-labels .behind p.mission{
+.venn-labels .behind p.mission {
     top: 541px;
     left: 230px;
 }
 
-.venn-labels .behind p.passion{
+.venn-labels .behind p.passion {
     top: 541px;
     left: 480px;
 }
@@ -496,7 +512,7 @@ input.form-control:focus{
     margin: 50px auto;
 }
 
-.page-container-4 .rounded-pill.with-btn-delete{
+.page-container-4 .rounded-pill.with-btn-delete {
     overflow: hidden;
 }
 
@@ -637,7 +653,7 @@ input.form-control:focus{
     display: block;
 }
 
-.row-container{
+.row-container {
     width: 70vw;
 }
 
@@ -777,13 +793,34 @@ header {
     text-align: center;
 }
 
-.step-to-ikigai-btn{
+.step-to-ikigai-btn {
     border: none;
     outline: none;
     border-radius: 50%;
     position: absolute;
     background: none;
     z-index: inherit;
+}
+
+
+/* modals */
+
+.btn-modal {
+    background: none;
+    border: none;
+    position: absolute;
+    z-index: 200;
+    transform: perspective(1px) translateZ(0px);
+}
+
+.btn-modal:focus,
+.btn-modal:active {
+    outline: none !important;
+    border: none !important;
+}
+
+.page5-left-column {
+    position: relative;
 }
 
 
@@ -801,7 +838,7 @@ header {
     height: 100vh;
 }
 
-.page-container-6 .btn-container-center{
+.page-container-6 .btn-container-center {
     margin: 50px;
 }
 
@@ -822,11 +859,11 @@ header {
     font-weight: 600;
 }
 
-.page-container-6 .container.end{
+.page-container-6 .container.end {
     margin: 50px 0 100px 0;
 }
 
-.page-container-6 .end p{
+.page-container-6 .end p {
     margin: 0;
 }
 
@@ -836,6 +873,25 @@ header {
 
 .page-container-6 .steps-container {
     width: 70%;
+}
+
+.export-steps-container h5 {
+    text-transform: capitalize;
+    text-align: center;
+}
+
+.export-steps-container p.modal-item {
+    background-color: #F5F5F5;
+    margin: 10px;
+    padding: 2px 8px 2px 8px !important;
+    border-radius: 50px;
+    width: fit-content;
+    text-align: center;
+}
+
+.export-steps-container .col .modal-items-container {
+    display: block; 
+    margin: 0 auto;
 }
 
 .steps-container svg.icon-tabler-trash {
@@ -870,17 +926,21 @@ header {
     outline: none;
 }
 
-.steps-container button.btn-add {
-    border: none;
-    background-color: #283972;
+.steps-container .btn-add.disabled,
+.steps-container .btn-add:disabled {
+    border: 1px solid #CED4DA !important;
+    background-color: white !important;
 }
 
-.steps-container button.btn-add:hover,
-.steps-container button.btn-add:active,
-.steps-container button.btn-add:focus {
-    background-color: #05164e;
-    border: none;
-    outline: none;
+.steps-container .btn-add,
+.steps-container .btn-add:hover,
+.steps-container .btn-add:active,
+.steps-container .btn-add:focus {
+    border: 1px solid #05164e !important;
+    background-color: white !important;
+    cursor: pointer;
+    box-shadow: none !important;
+    outline: 0 none !important;
 }
 
 .steps-container button:disabled,
@@ -889,9 +949,13 @@ header {
     color: #666666;
 }
 
+.steps-container button.btn-add svg.icon-tabler-plus {
+    stroke: #666666;
+}
+
 .steps-container button.btn-add:hover svg.icon-tabler-plus,
 .steps-container button.btn-add:hover svg.icon-tabler-trash {
-    stroke: #ffffff;
+    stroke: #05164e;
 }
 
 .steps-container ul {
@@ -939,18 +1003,19 @@ header {
     background: #00e676;
 }
 
-.page-print{
+.page-print {
     display: table;
     margin: 0 auto;
 }
 
-.print-component{
+.print-component {
     display: blcok;
     margin: 0 auto;
 }
-  
+
 @media print {
-    html, body {
+    html,
+    body {
         height: initial !important;
         overflow: initial !important;
         -webkit-print-color-adjust: exact;
@@ -960,12 +1025,17 @@ header {
 @media print {
     .page-break {
         margin-top: 1rem;
-        margin-left: 6rem;
+        margin-left: 7rem;
         display: block;
         page-break-before: auto;
     }
+
+    .page-break h5.subtitle, 
+    .export-steps-container{
+        margin-left: -7rem;
+    }
 }
-  
+
 @page {
     size: auto;
     margin: 20mm;
