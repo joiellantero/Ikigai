@@ -345,7 +345,7 @@ const Circa = () => {
                     </div>
                 </DragDropContext>
             </div>
-            <div className="btn-container-center mt-0">
+            <div className="btn-container-center mt-5">
                 <OverlayTrigger
                     key="top"
                     placement="top"
