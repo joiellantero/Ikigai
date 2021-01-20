@@ -41,7 +41,16 @@ body {
 }
 
 .btn-default {
-    background-color: #283972 !important;
+    background-color: #283972;
+}
+
+.btn-default.anchor {
+    text-align: center;
+}
+
+.btn-default.anchor:hover {
+    text-decoration: none;
+    color: white;
 }
 
 .btn-secondary {
@@ -98,7 +107,7 @@ body {
 }
 
 @media only screen and (max-width: 768px) {
-    .btn-back{
+    .btn-back {
         left: 50px;
     }
 }
@@ -182,6 +191,10 @@ input.form-control:focus {
     outline: 0 none;
 }
 
+.tooltip #tooltip-top {
+    text-align: center !important;
+}
+
 .tooltip {
     border-radius: 8px;
     padding: 10px 10px 0 10px !important;
@@ -260,10 +273,6 @@ input.form-control:focus {
     transform: scale(1);
     cursor: pointer;
     opacity: 1;
-}
-
-.text-center {
-    overflow: scroll;
 }
 
 .dark-blue {
@@ -462,38 +471,40 @@ input.form-control:focus {
 
 /* ----- PAGE 2 ----- */
 
-.page-container-2, 
-.page-container-3{
+.page-container-2,
+.page-container-3 {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.page-container-2 img.center{
+.page-container-2 img.center {
     width: 450px;
 }
 
 .page-container-2 .p-pg-2,
-.page-container-3 .p-pg-2{
+.page-container-3 .p-pg-2 {
     margin: 20px auto;
     width: 50%;
 }
 
-@media only screen and (max-width: 768px){
+@media only screen and (max-width: 768px) {
     .page-container-2 .p-pg-2,
-    .page-container-3 .p-pg-2{
+    .page-container-3 .p-pg-2 {
         width: 80%;
     }
 }
 
+
 /* ----- PAGE 3 ----- */
-.page-container-3 .container{
+
+.page-container-3 .container {
     display: block;
 }
 
-@media only screen and (max-width: 768px){
-    .page-container-3 .container{
+@media only screen and (max-width: 768px) {
+    .page-container-3 .container {
         margin-top: 250px;
     }
 }
@@ -535,7 +546,6 @@ input.form-control:focus {
     min-width: 350px;
     width: 40vw;
     height: 40vh;
-    overflow: scroll;
     margin: 0;
 }
 
@@ -603,8 +613,11 @@ input.form-control:focus {
     margin: 10px auto;
 }
 
-.page-container-5 .container.circle-add {
+.page-container-5 .circle-add {
     margin-top: 100px;
+    position: absolute;
+    top: 265px;
+    left: 830px;
 }
 
 .question {
@@ -651,10 +664,6 @@ input.form-control:focus {
 
 .venn-container .circle-add .pill-container {
     display: block;
-}
-
-.row-container {
-    width: 70vw;
 }
 
 .answers {
@@ -835,7 +844,7 @@ header {
 .page-container-6 {
     margin-top: 8vh;
     text-align: center;
-    height: 100vh;
+    height: 100%;
 }
 
 .page-container-6 .btn-container-center {
@@ -878,11 +887,12 @@ header {
 .export-steps-container h5 {
     text-transform: capitalize;
     text-align: center;
+    margin-bottom: 25px;
 }
 
 .export-steps-container p.modal-item {
     background-color: #F5F5F5;
-    margin: 10px;
+    margin: 10px auto;
     padding: 2px 8px 2px 8px !important;
     border-radius: 50px;
     width: fit-content;
@@ -890,8 +900,7 @@ header {
 }
 
 .export-steps-container .col .modal-items-container {
-    display: block; 
-    margin: 0 auto;
+    display: block;
 }
 
 .steps-container svg.icon-tabler-trash {
@@ -1029,9 +1038,8 @@ header {
         display: block;
         page-break-before: auto;
     }
-
-    .page-break h5.subtitle, 
-    .export-steps-container{
+    .page-break h5.subtitle,
+    .export-steps-container {
         margin-left: -7rem;
     }
 }

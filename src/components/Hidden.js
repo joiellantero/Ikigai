@@ -5,14 +5,13 @@ import Note from './Note'
 const Hidden = (props) => {
     const { id, col, columns, top, left, width, maxWidth, height, handleColumn } = props;
 
-    return ( <
-        Droppable droppableId = { id } > {
-            (provided, snapshot) => ( <
-                div className = "hid"
-                ref = { provided.innerRef } {...provided.droppableProps }
-                style = {
-                    {
-                        borderStyle: snapshot.isDraggingOver ? '' : '',
+    return (
+        <Droppable droppableId = {id} >
+            {(provided)=> (
+                <div 
+                    className="hid" 
+                    ref = {provided.innerRef} {...provided.droppableProps} 
+                    style = {{
                         top: top,
                         left: left,
                         minWidth: width,
@@ -32,13 +31,13 @@ const Hidden = (props) => {
                         intext = { note.intext }
                         handleColumn = { handleColumn }
                         index = { index }
-                        />
+                       />
                     )
-                } <
-                /div>
+                } 
+                </div>
             )
-        } <
-        /Droppable>
+        } 
+        </Droppable>
     );
 }
 
