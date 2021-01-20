@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import { DragDropContext } from "react-beautiful-dnd";
-import { DATA_COLUMNS } from './components/GlobalVar';
+import { RECTANGLE_DATA } from './components/GlobalVar';
 import { Modal } from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
@@ -52,7 +52,7 @@ const onDragEnd = (result, columns, setColumn) => {
 };
 
 const Far = () => {
-    const [columns, setColumn] = useState(DATA_COLUMNS);
+    const [columns, setColumn] = useState(RECTANGLE_DATA);
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -130,5 +130,3 @@ const Far = () => {
 };
 
 export default Far;
-
-

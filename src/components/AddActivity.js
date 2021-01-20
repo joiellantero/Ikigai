@@ -51,40 +51,46 @@ const AddActivity = (props) => {
             setText('');
         }
     }
-    return (
-        <Droppable droppableId='add'>
-            {(provided) => (
-                <>
-                    <div ref={provided.innerRef} {...provided.droppableProps}>
-                        {provided.placeholder}
-                    </div>
+    return ( <
+        Droppable droppableId = 'add' > {
+            (provided) => ( <
+                >
+                <
+                div ref = { provided.innerRef } {...provided.droppableProps } > { provided.placeholder } <
+                /div>
 
-                    <div className="pills-location">
-                        <Form.Control className='form rounded-pill' value={text}
-                            onChange={handleChange}
-                            onBlur={handleAdd}
-                            onKeyPress={handleKeyPress}
-                            placeholder="Add activity..."
+                <
+                div className = "pills-location" >
+                <
+                Form.Control className = 'form rounded-pill'
+                value = { text }
+                onChange = { handleChange }
+                onBlur = { handleAdd }
+                onKeyPress = { handleKeyPress }
+                placeholder = "Add activity..." /
+                >
+                <
+                /div> <
+                div className = "pill-container" > {
+                    columns['add'].items.map((element, index) =>
+                        <
+                        Note columnId = 'add'
+                        col = { columns['add'] }
+                        columns = { columns }
+                        items = { columns['add'].items }
+                        key = { element.id }
+                        id = { element.id }
+                        intext = { element.intext }
+                        handleColumn = { setColumn }
+                        index = { index }
                         />
-                    </div>
-                    <div className="pill-container">
-                        {columns['add'].items.map((element, index) =>
-                            <Note
-                                columnId='add'
-                                col={columns['add']}
-                                columns={columns}
-                                items={columns['add'].items}
-                                key={element.id}
-                                id={element.id}
-                                intext={element.intext}
-                                handleColumn={setColumn}
-                                index={index}
-                            />
-                        )}
-                    </div>
-                </>
-            )}
-        </Droppable>
+                    )
+                } <
+                /div> <
+                />
+            )
+        } <
+        /Droppable>
     )
 }
 

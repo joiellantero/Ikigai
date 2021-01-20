@@ -6,7 +6,7 @@ import { v4 } from 'uuid';
 import "./style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Row, Col, Modal } from 'react-bootstrap';
-import {MODALS, CIRCLEDATA2} from './components/GlobalVar';
+import {CIRCLE_DATA, MODAL_DATA} from './components/GlobalVar';
 import BackButton from './components/BackButton';
 import Logo from './components/CS_Logo';
 import AddActivity from './components/AddActivity';
@@ -180,7 +180,7 @@ const Circa = () => {
         };
     }
     else {
-        circleData = CIRCLEDATA2;
+        circleData = CIRCLE_DATA;
     }
 
     const [columns, setColumn] = useState(circleData);
@@ -272,7 +272,7 @@ const Circa = () => {
     };
 
 
-    const [modals, setModals] = useState(MODALS);
+    const [modals, setModals] = useState(MODAL_DATA);
 
     window.onbeforeunload = function () {
         return "Data will be lost if you leave the page, are you sure?";
