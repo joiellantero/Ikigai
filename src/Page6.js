@@ -95,8 +95,7 @@ class Export extends Component {
     render() {
 
         return (
-
-            <>
+            <div className="page-container-6" >
                 <Logo />
                 <Modal show={this.show} onHide={this.handleClose}>
                     <Modal.Header closeButton>
@@ -119,7 +118,7 @@ class Export extends Component {
                     </Modal.Footer>
                 </Modal>
                 <Logo />
-                <div className="page-container-6 container">
+                <div className="container">
                     <div className="btn-back">
                         <Link
                             to={{
@@ -195,7 +194,7 @@ class Export extends Component {
                         <p> All the best in your pursuit of ikigai!</p>
                     </div>
                 </div>
-            </>
+            </div>
         );
     }
 }

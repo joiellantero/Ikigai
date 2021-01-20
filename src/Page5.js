@@ -5,7 +5,7 @@ import { v4 } from 'uuid';
 
 import "./style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Row, Col, Modal } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import {MODALS, CIRCLEDATA2} from './components/GlobalVar';
 import BackButton from './components/BackButton';
 import Logo from './components/CS_Logo';
@@ -307,11 +307,11 @@ const Circa = () => {
                     </Link>
                 </Modal.Footer>
             </Modal>
-            <div className="venn-diagram" style={{ display: 'table', margin: '0 auto' }}>
+            <div className="btn-back">
+                <BackButton onClick={handleShow} />
+            </div>
+            <div className="page-container-5 venn-diagram" style={{ display: 'table', margin: '0 auto' }}>
                 <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
-                    <div className="btn-back">
-                        <BackButton onClick={handleShow} />
-                    </div>
                     <div className="main-header-text">
                         <p className="subtitle my-5">Introducing your ikigai chart.</p>
                         <div className="instructions">
@@ -322,29 +322,27 @@ const Circa = () => {
                             <p>Is this what the world needs? (If yes, move to blue circle)</p>
                         </div>
                     </div>
-                    <Row className="row-container mt-5">
-                        <Col xs={9} className="page5-left-column">
-                            <Venn filtered={filtered} columns={columns} setColumn={setColumn} />
-                            
-                            {Object.entries(modals).map(([id, modal]) => {
-                                return (
-                                    <ModalSteps 
-                                        id = {id} 
-                                        modals = {modals} 
-                                        modal = {modal} 
-                                        setModals = {setModals} 
-                                        setVocation={setVocation}
-                                        setProfession={setProfession}
-                                        setMission={setMission}
-                                        setPassion={setPassion}
-                                    />
-                                )}
+                    <div className="page5-left-column mt-5">
+                        <Venn filtered={filtered} columns={columns} setColumn={setColumn} />
+                        
+                        {Object.entries(modals).map(([id, modal]) => {
+                            return (
+                                <ModalSteps 
+                                    id = {id} 
+                                    modals = {modals} 
+                                    modal = {modal} 
+                                    setModals = {setModals} 
+                                    setVocation={setVocation}
+                                    setProfession={setProfession}
+                                    setMission={setMission}
+                                    setPassion={setPassion}
+                                />
                             )}
-                        </Col>
-                        <Col xs={3} className="circle-add mt-5">
-                            <AddActivity handleAdd={handleAdd} handleChange={handleChange} handleKeyPress={handleKeyPress} columns={columns} setColumn={setColumn} />
-                        </Col>
-                    </Row>
+                        )}
+                    </div>
+                    <div className="circle-add mt-5">
+                        <AddActivity handleAdd={handleAdd} handleChange={handleChange} handleKeyPress={handleKeyPress} columns={columns} setColumn={setColumn} />
+                    </div>
                 </DragDropContext>
             </div>
             <div className="btn-container-center">
