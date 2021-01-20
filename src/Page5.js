@@ -5,8 +5,8 @@ import { v4 } from 'uuid';
 
 import "./style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Modal } from 'react-bootstrap';
-import {MODALS, CIRCLEDATA2} from './components/GlobalVar';
+import { Modal, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import {MODAL_DATA, CIRCLE_DATA} from './components/GlobalVar';
 import BackButton from './components/BackButton';
 import Logo from './components/CS_Logo';
 import AddActivity from './components/AddActivity';
@@ -185,7 +185,7 @@ const Circa = () => {
         };
     }
     else {
-        circleData = CIRCLEDATA2;
+        circleData = CIRCLE_DATA;
     }
 
     const [columns, setColumn] = useState(circleData);
@@ -277,7 +277,7 @@ const Circa = () => {
     };
 
 
-    const [modals, setModals] = useState(MODALS);
+    const [modals, setModals] = useState(MODAL_DATA);
 
     window.onbeforeunload = function () {
         return "Data will be lost if you leave the page, are you sure?";
@@ -345,25 +345,46 @@ const Circa = () => {
                     </div>
                 </DragDropContext>
             </div>
-            <div className="btn-container-center">
-                <Link
-                    to={{
-                        pathname: "/export",
-                        columns: columns,
-                        filtered: filtered,
-                        setColumn: setColumn,
-                        onDragEnd: onDragEnd,
-                        modals: modals
-                    }}
+            <div className="btn-container-center mt-0">
+                <OverlayTrigger
+                    key="top"
+                    placement="top"
+                    overlay={
+                        <Tooltip 
+                            variant="primary"
+                            id={`tooltip-top`} 
+                            style={{ 
+                                paddingTop: '0px',
+                                background: !(vocation && profession && mission && passion) ? '#7384B9' : '',
+                            }}
+                        >
+                            {!(vocation && profession && mission && passion) ?
+                                <p>Please fill all 4 steps (vocation, profession, vission, passion) to Ikigai to proceed. </p>
+                            : ''}
+                        </Tooltip>
+                    } 
                 >
-                    <button 
-                        type="button" 
-                        className="btn-default btn-2 btn-lg"
-                        disabled={!(vocation && profession && mission && passion)}
-                    >
-                        Next
-                    </button>
-                </Link>
+                    <span>
+                        <Link
+                            to={{
+                                pathname: "/export",
+                                columns: columns,
+                                filtered: filtered,
+                                setColumn: setColumn,
+                                onDragEnd: onDragEnd,
+                                modals: modals
+                            }}
+                            type="button" 
+                            className="btn-default btn-2 btn-lg anchor"
+                            style={{
+                                pointerEvents: !(vocation && profession && mission && passion) ? 'none' : '',
+                                backgroundColor: !(vocation && profession && mission && passion) ? '#7384b9' : '#283972'
+                            }}
+                        >
+                            Next
+                        </Link>
+                    </span>
+                </OverlayTrigger>
             </div>
         </>
     );

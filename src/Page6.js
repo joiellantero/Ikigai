@@ -3,7 +3,7 @@ import ReactToPrint from "react-to-print";
 import { useLocation, Link } from "react-router-dom";
 import { DragDropContext } from 'react-beautiful-dnd';
 import { Row, Modal, Col } from 'react-bootstrap';
-import {MODALS, CIRCLEDATA2} from './components/GlobalVar';
+import {MODAL_DATA, CIRCLE_DATA} from './components/GlobalVar';
 import Venn from './components/Venn';
 import Logo from './components/CS_Logo';
 import BackButton from './components/BackButton';
@@ -25,8 +25,8 @@ const Intermediate = () => {
     const { setColumn, onDragEnd } = useLocation();
 
     if (!columns) {
-        modals =  MODALS;
-        columns =  CIRCLEDATA2;
+        modals =  MODAL_DATA;
+        columns =  CIRCLE_DATA;
 
     filtered = Object.fromEntries(Object.entries(columns).filter(([colId]) => colId !== 'add'))
     }

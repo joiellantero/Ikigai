@@ -1,6 +1,6 @@
 import { v4 } from 'uuid';
 
-export const DATA_COLUMNS = {
+export const RECTANGLE_DATA = {
     [v4()]: {
         id: "c1",
         heading1: "What the world",
@@ -47,7 +47,7 @@ export const DATA_COLUMNS = {
     },
 };
 
-export const MODALS = {
+export const MODAL_DATA = {
     'vocation': {
         name: 'Vocation',
         body1: 'This intersection represents your vocation.',
@@ -82,7 +82,7 @@ export const MODALS = {
     }
 }
 
-export const CIRCLEDATA2 = {
+export const CIRCLE_DATA = {
     [v4()]: {
         id: 'r1',
         name: 'what you can be PAID FOR',

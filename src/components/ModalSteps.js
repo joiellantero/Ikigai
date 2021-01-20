@@ -105,7 +105,7 @@ function ModalSteps(props) {
             </button>
 
             <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
+                <Modal.Header>
                     <Modal.Title>{modal.name}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
