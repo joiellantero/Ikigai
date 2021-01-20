@@ -1,6 +1,6 @@
 import { v4 } from 'uuid';
 
-export const DATA_COLUMNS = {
+export const RECTANGLE_DATA = {
     [v4()]: {
         id: "c1",
         heading1: "What the world",
@@ -47,43 +47,42 @@ export const DATA_COLUMNS = {
     },
 };
 
-
-export const MODALS = {
+export const MODAL_DATA = {
     'vocation': {
         name: 'Vocation',
         body1: 'This intersection represents your vocation.',
         body2: 'What are some steps can you take to enjoy your vocation more?',
-        top: '378px',
-        left: '227px',
+        top: '367px',
+        left: '214px',
         items: []
     },
     'profession': {
         name: 'Profession',
         body1: 'This intersection represents your profession.',
         body2: 'In your profession, how can you help the people and community around you?',
-        top: '378px',
-        left: '554px',
+        top: '367px',
+        left: '539px',
         items: []
     },
     'mission': {
         name: 'Mission',
         body1: 'This intersection represents your mission.',
         body2: 'What are some steps you can take to hone your craft?',
-        top: '441px',
-        left: '225px',
+        top: '456px',
+        left: '214px',
         items: []
     },
     'passion': {
         name: 'Passion',
         body1: 'This intersection represents your passion.',
         body2: 'Are you able to turn your passion into something you can be paid for?',
-        top: '443px',
-        left: '554px',
+        top: '456px',
+        left: '535px',
         items: []
     }
 }
 
-export const CIRCLEDATA2 = {
+export const CIRCLE_DATA = {
     [v4()]: {
         id: 'r1',
         name: 'what you can be PAID FOR',

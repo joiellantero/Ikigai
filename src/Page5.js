@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, Link } from "react-router-dom";
 import { DragDropContext } from "react-beautiful-dnd";
 import { v4 } from 'uuid';
 
 import "./style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Row, Col, Modal } from 'react-bootstrap';
-import {MODALS, CIRCLEDATA2} from './components/GlobalVar';
+import { Modal, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import {MODAL_DATA, CIRCLE_DATA} from './components/GlobalVar';
 import BackButton from './components/BackButton';
 import Logo from './components/CS_Logo';
 import AddActivity from './components/AddActivity';
@@ -20,8 +20,13 @@ const Circa = () => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    let circleData = null;
 
+    const [vocation, setVocation] = useState(false);
+    const [profession, setProfession] = useState(false);
+    const [mission, setMission] = useState(false);
+    const [passion, setPassion] = useState(false);
+
+    let circleData = null;
     if (cols) {
         const rectangleData = [[], [], [], []]
         let i = 0
@@ -180,7 +185,7 @@ const Circa = () => {
         };
     }
     else {
-        circleData = CIRCLEDATA2;
+        circleData = CIRCLE_DATA;
     }
 
     const [columns, setColumn] = useState(circleData);
@@ -272,7 +277,7 @@ const Circa = () => {
     };
 
 
-    const [modals, setModals] = useState(MODALS);
+    const [modals, setModals] = useState(MODAL_DATA);
 
     window.onbeforeunload = function () {
         return "Data will be lost if you leave the page, are you sure?";
@@ -302,11 +307,11 @@ const Circa = () => {
                     </Link>
                 </Modal.Footer>
             </Modal>
-            <div className="venn-diagram" style={{ display: 'table', margin: '0 auto' }}>
+            <div className="btn-back">
+                <BackButton onClick={handleShow} />
+            </div>
+            <div className="page-container-5 venn-diagram" style={{ display: 'table', margin: '0 auto' }}>
                 <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
-                    <div className="btn-back">
-                        <BackButton onClick={handleShow} />
-                    </div>
                     <div className="main-header-text">
                         <p className="subtitle my-5">Introducing your ikigai chart.</p>
                         <div className="instructions">
@@ -317,37 +322,69 @@ const Circa = () => {
                             <p>Is this what the world needs? (If yes, move to blue circle)</p>
                         </div>
                     </div>
-                    <Row className="row-container mt-5">
-                        <Col xs={9} className="page5-left-column">
-                            <Venn filtered={filtered} columns={columns} setColumn={setColumn} />
-                            
-                            {Object.entries(modals).map(([id, modal]) => {
-                                return (
-                                    <ModalSteps id = {id} modals = {modals} modal = {modal} setModals = {setModals}></ModalSteps>
-                                )}
+                    <div className="page5-left-column mt-5">
+                        <Venn filtered={filtered} columns={columns} setColumn={setColumn} />
+                        
+                        {Object.entries(modals).map(([id, modal]) => {
+                            return (
+                                <ModalSteps 
+                                    id = {id} 
+                                    modals = {modals} 
+                                    modal = {modal} 
+                                    setModals = {setModals} 
+                                    setVocation={setVocation}
+                                    setProfession={setProfession}
+                                    setMission={setMission}
+                                    setPassion={setPassion}
+                                />
                             )}
-                        </Col>
-                        <Col xs={3} className="circle-add mt-5">
-                            <AddActivity handleAdd={handleAdd} handleChange={handleChange} handleKeyPress={handleKeyPress} columns={columns} setColumn={setColumn} />
-                        </Col>
-                    </Row>
+                        )}
+                    </div>
+                    <div className="circle-add mt-5">
+                        <AddActivity handleAdd={handleAdd} handleChange={handleChange} handleKeyPress={handleKeyPress} columns={columns} setColumn={setColumn} />
+                    </div>
                 </DragDropContext>
             </div>
-            <div className="btn-container-center">
-                <Link
-                    to={{
-                        pathname: "/export",
-                        columns: columns,
-                        filtered: filtered,
-                        setColumn: setColumn,
-                        onDragEnd: onDragEnd,
-                        modals: modals
-                    }}
+            <div className="btn-container-center mt-5">
+                <OverlayTrigger
+                    key="top"
+                    placement="top"
+                    overlay={
+                        <Tooltip 
+                            variant="primary"
+                            id={`tooltip-top`} 
+                            style={{ 
+                                paddingTop: '0px',
+                                background: !(vocation && profession && mission && passion) ? '#7384B9' : '',
+                            }}
+                        >
+                            {!(vocation && profession && mission && passion) ?
+                                <p>Please fill all 4 steps (vocation, profession, vission, passion) to Ikigai to proceed. </p>
+                            : ''}
+                        </Tooltip>
+                    } 
                 >
-                    <button type="button" className="btn-default btn-2 btn-lg">
-                        Next
-                    </button>
-                </Link>
+                    <span>
+                        <Link
+                            to={{
+                                pathname: "/export",
+                                columns: columns,
+                                filtered: filtered,
+                                setColumn: setColumn,
+                                onDragEnd: onDragEnd,
+                                modals: modals
+                            }}
+                            type="button" 
+                            className="btn-default btn-2 btn-lg anchor"
+                            style={{
+                                pointerEvents: !(vocation && profession && mission && passion) ? 'none' : '',
+                                backgroundColor: !(vocation && profession && mission && passion) ? '#7384b9' : '#283972'
+                            }}
+                        >
+                            Next
+                        </Link>
+                    </span>
+                </OverlayTrigger>
             </div>
         </>
     );

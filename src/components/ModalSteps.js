@@ -6,12 +6,47 @@ import { v4 } from 'uuid';
 import Trash from './trash';
 
 function ModalSteps(props) {
-    const { modal, modals, setModals, id } = props;
+    const { modal, modals, setModals, id, setVocation, setProfession, setMission, setPassion} = props;
 
     const [text, setText] = useState('')
     const [show, setShow] = useState(false);
 
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+        if (modal.items.length > 0){
+            switch (id) {
+                case 'vocation':
+                    setVocation(true);
+                    break;
+                case 'profession':
+                    setProfession(true);
+                    break;
+                case 'mission':
+                    setMission(true);
+                    break;
+                case 'passion':
+                    setPassion(true);
+                    break;
+            }
+        }
+        else {
+            switch (id) {
+                case 'vocation':
+                    setVocation(false);
+                    break;
+                case 'profession':
+                    setProfession(false);
+                    break;
+                case 'mission':
+                    setMission(false);
+                    break;
+                case 'passion':
+                    setPassion(false);
+                    break;
+            }
+        }
+        setShow(false)
+    }
+    
     const handleShow = () => setShow(true);
 
     const [isShown, setIsShown] = useState(false);
@@ -25,6 +60,7 @@ function ModalSteps(props) {
         if (!text) {
             return;
         }
+
         const newList = modal.items.concat({ id: v4(), intext: text });
         const newModals = {
             ...modals,
@@ -44,20 +80,7 @@ function ModalSteps(props) {
                 return;
             }
         
-        if (!text) {
-            return;
-        }
-        const newList = modal.items.concat({ id: v4(), intext: text });
-        const newModals = {
-            ...modals,
-            [id]: {
-                ...modal,
-                items: newList
-            }
-        };
-
-        setModals(newModals);
-        setText('');
+            handleAdd();
         }
     }
 
@@ -82,7 +105,7 @@ function ModalSteps(props) {
             </button>
 
             <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
+                <Modal.Header>
                     <Modal.Title>{modal.name}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>

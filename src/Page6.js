@@ -3,7 +3,7 @@ import ReactToPrint from "react-to-print";
 import { useLocation, Link } from "react-router-dom";
 import { DragDropContext } from 'react-beautiful-dnd';
 import { Row, Modal, Col } from 'react-bootstrap';
-import {MODALS, CIRCLEDATA2} from './components/GlobalVar';
+import {MODAL_DATA, CIRCLE_DATA} from './components/GlobalVar';
 import Venn from './components/Venn';
 import Logo from './components/CS_Logo';
 import BackButton from './components/BackButton';
@@ -25,8 +25,8 @@ const Intermediate = () => {
     const { setColumn, onDragEnd } = useLocation();
 
     if (!columns) {
-        modals =  MODALS;
-        columns =  CIRCLEDATA2;
+        modals =  MODAL_DATA;
+        columns =  CIRCLE_DATA;
 
     filtered = Object.fromEntries(Object.entries(columns).filter(([colId]) => colId !== 'add'))
     }
@@ -95,8 +95,7 @@ class Export extends Component {
     render() {
 
         return (
-
-            <>
+            <div className="page-container-6" >
                 <Logo />
                 <Modal show={this.show} onHide={this.handleClose}>
                     <Modal.Header closeButton>
@@ -119,7 +118,7 @@ class Export extends Component {
                     </Modal.Footer>
                 </Modal>
                 <Logo />
-                <div className="page-container-6 container">
+                <div className="container">
                     <div className="btn-back">
                         <Link
                             to={{
@@ -195,7 +194,7 @@ class Export extends Component {
                         <p> All the best in your pursuit of ikigai!</p>
                     </div>
                 </div>
-            </>
+            </div>
         );
     }
 }
