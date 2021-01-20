@@ -21,16 +21,16 @@ const Hidden = (props) => {
                 } >
                 { provided.placeholder } {
                     col.items.map((note, index) =>
-                        <
-                        Note columnId = { id }
-                        col = { col }
-                        columns = { columns }
-                        items = { col.items }
-                        key = { note.id }
-                        id = { note.id }
-                        intext = { note.intext }
-                        handleColumn = { handleColumn }
-                        index = { index }
+                        <Note 
+                            columnId = { id }
+                            col = { col }
+                            columns = { columns }
+                            items = { col.items }
+                            key = { note.id }
+                            id = { note.id }
+                            intext = { note.intext }
+                            handleColumn = { handleColumn }
+                            index = { index }
                        />
                     )
                 } 
