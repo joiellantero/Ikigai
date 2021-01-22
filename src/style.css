@@ -980,6 +980,7 @@ header {
 .steps-container .btn-add.disabled,
 .steps-container .btn-add:disabled {
     background-color: white !important;
+    border-color: #93BC38 !important;
     box-shadow: none !important;
     outline: 0 none !important;
     cursor: not-allowed !important;
