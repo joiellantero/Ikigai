@@ -400,6 +400,48 @@ input.form-control:focus {
     left: 480px;
 }
 
+.venn-labels .behind p.empty {
+    top: 316px;
+    left: 360px;
+    stroke-width: 0.264;
+    font-size: 12px;
+    font-weight: 300;
+    font-style: italic;
+    fill: #4d4d4d;
+}
+
+.venn-labels .behind p.useless {
+    top: 404px;
+    left: 477px;
+    stroke-width: 0.264;
+    font-size: 12px;
+    font-weight: 300;
+    font-style: italic;
+    fill: #4d4d4d;
+    width: 43px;
+}
+
+.venn-labels .behind p.well {
+    top: 516px;
+    left: 360px;
+    stroke-width: 0.264;
+    font-size: 12px;
+    font-weight: 300;
+    font-style: italic;
+    fill: #4d4d4d;
+}
+
+.venn-labels .behind p.uncertain {
+    top: 405px;
+    left: 265px;
+    stroke-width: 0.264;
+    font-size: 12px;
+    font-weight: 300;
+    font-style: italic;
+    fill: #4d4d4d;
+    width: 50px;
+}
+
 
 /* ----- PAGE 1 ----- */
 
