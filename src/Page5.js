@@ -377,6 +377,7 @@ const Circa = () => {
                             type="button" 
                             className="btn-default btn-2 btn-lg anchor"
                             style={{
+                                cursor: !(vocation && profession && mission && passion) ? 'not-allowed' : 'pointer',
                                 pointerEvents: !(vocation && profession && mission && passion) ? 'none' : '',
                                 backgroundColor: !(vocation && profession && mission && passion) ? '#7384b9' : '#283972'
                             }}
