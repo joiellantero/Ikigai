@@ -18,7 +18,7 @@ ReactDOM.render(
             <Route exact path="/" component={Page1} />
             <Route path="/intro" component={Page2} />
             <Route path="/what-is-ikigai" component={Page3} />
-            <Route path="/lets-find-out-ikigai" component={Page4} />
+            <Route path="/lets-find-our-ikigai" component={Page4} />
             <Route path="/your-ikigai-chart" component={Page5} />
             <Route path="/export" component={Page6} />
         </Switch>

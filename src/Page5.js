@@ -297,7 +297,7 @@ const Circa = () => {
                     </button>
                     <Link
                         to={{
-                            pathname: "/lets-find-out-ikigai",
+                            pathname: "/lets-find-our-ikigai",
                             cols: columns
                         }}
                     >
