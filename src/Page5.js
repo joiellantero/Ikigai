@@ -359,7 +359,7 @@ const Circa = () => {
                             }}
                         >
                             {!(vocation && profession && mission && passion) ?
-                                <p>Please fill all 4 steps (Vocation, Profession, Mission, Passion) to Ikigai to proceed. </p>
+                                <p>Please fill all 4 steps to Ikigai(Vocation, Profession, Mission, Passion) before proceeding. </p>
                             : ''}
                         </Tooltip>
                     } 
