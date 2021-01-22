@@ -81,34 +81,30 @@ export const MODAL_DATA = {
         items: []
     },
     'enjoyable': {
-        body1: 'If you have an activity in this section, you will be comfortable',
-        body2: 'but you might feel empty.',
-        body3: 'How can you make what you do more enjoyable?',
+        body1: 'If you have an activity in this section, you will be comfortable, but you might feel empty.',
+        body2: 'How can you make what you do more enjoyable?',
         top: '266px',
         left: '377px',
         items: []
     },
     'help': {
-        body1: 'If you have an activity in this section, you will be satisfied',
-        body2: 'but you might feel uselessness.',
-        body3: 'How can you help the world with what you do?',
+        body1: 'If you have an activity in this section, you will be satisfied, but you might feel useless.',
+        body2: 'How can you help the world with what you do?',
         top: '410px',
         left: '519px',
         items: []
     },
     'monetize': {
-        body1: 'If you have an activity in this section, you will be fulfilled',
-        body2: 'but you will not have wealth.',
-        body3: 'Are you able to monetize this?',
+        body1: 'If you have an activity in this section, you will be fulfilled, but you will not have wealth.',
+        body2: 'Are you able to monetize this?',
         top: '547px',
         left: '374px',
         items: []
     },
     'skillset': {
-        body1: 'If you have an activity in this section, you will be motivated',
-        body2: 'But you might feel uncertain about your skills.',
-        body3: 'How can you improve your skillset?',
-        top: '409x',
+        body1: 'If you have an activity in this section, you will be motivated, but you might feel uncertain about your skills.',
+        body2: 'How can you improve your skillset?',
+        top: '409px',
         left: '232px',
         items: []
     }
