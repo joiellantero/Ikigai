@@ -951,12 +951,12 @@ header {
 .steps-container .btn-add:hover,
 .steps-container .btn-add:active,
 .steps-container .btn-add:focus {
-    background-color: #FF5A5B !important;
+    background-color: #93BC38 !important;
     cursor: pointer;
     box-shadow: none !important;
     outline: 0 none !important;
-    border-color: #FF5A5B;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 4px #FF5A5B !important;
+    border-color: #93BC38;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 4px #93BC38 !important;
 }
 
 .steps-container button:disabled,
@@ -965,12 +965,14 @@ header {
     color: #666666;
 }
 
-.steps-container button[disabled]:hover{
+.steps-container button[disabled]:hover,
+.steps-container button[disabled]:focus{
     background-color: transparent !important;
+    box-shadow: none !important;
 }
 
 .steps-container button.btn-add:disabled svg.icon-tabler-plus {
-    stroke: #FF5A5B !important;
+    stroke: #93BC38 !important;
 }
 
 .steps-container button.btn-add svg.icon-tabler-plus,
