@@ -937,19 +937,26 @@ header {
 
 .steps-container .btn-add.disabled,
 .steps-container .btn-add:disabled {
-    border: 1px solid #CED4DA !important;
     background-color: white !important;
+    box-shadow: none !important;
+    outline: 0 none !important;
+    cursor: not-allowed !important;
+}
+
+.btn-primary, .btn-primary.disabled .btn-primary:disabled{
+    border-color: none !important;
 }
 
 .steps-container .btn-add,
 .steps-container .btn-add:hover,
 .steps-container .btn-add:active,
 .steps-container .btn-add:focus {
-    border: 1px solid #05164e !important;
-    background-color: white !important;
+    background-color: #FF5A5B !important;
     cursor: pointer;
     box-shadow: none !important;
     outline: 0 none !important;
+    border-color: #FF5A5B;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 4px #FF5A5B !important;
 }
 
 .steps-container button:disabled,
@@ -958,13 +965,18 @@ header {
     color: #666666;
 }
 
-.steps-container button.btn-add svg.icon-tabler-plus {
-    stroke: #666666;
+.steps-container button[disabled]:hover{
+    background-color: transparent !important;
 }
 
+.steps-container button.btn-add:disabled svg.icon-tabler-plus {
+    stroke: #FF5A5B !important;
+}
+
+.steps-container button.btn-add svg.icon-tabler-plus,
 .steps-container button.btn-add:hover svg.icon-tabler-plus,
 .steps-container button.btn-add:hover svg.icon-tabler-trash {
-    stroke: #05164e;
+    stroke: white;
 }
 
 .steps-container ul {
