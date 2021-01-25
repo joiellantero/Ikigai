@@ -4,6 +4,7 @@ import './style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import centerLogo from './images/ikigai-logo.png';
 import cornerLogo from './images/csjournaling.png';
+import CFALogo from './svg/CfA_B.svg'
 
 function Page1() {
 
@@ -11,6 +12,12 @@ function Page1() {
         <div className="page-container-1">
             <div className="corner-logo">
                 <img src={cornerLogo} alt="#CSJournaling" />
+                <div className="cfa-logo">
+                    <p>Powered by</p>
+                    <object type="image/svg+xml" data={CFALogo}>
+                        <img src={CFALogo} alt="cfa-logo" />
+                    </object>
+                </div>
             </div>
 
             <div className="center-logo">
