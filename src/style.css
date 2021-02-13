@@ -650,6 +650,12 @@ input.form-control:focus {
     position: relative;
 }
 
+@media only screen and (max-width: 768px) {
+    .page-container-5 {
+        margin-top: 120px;
+    }
+}
+
 .page-container-5 .instructions p {
     margin: 0;
 }
