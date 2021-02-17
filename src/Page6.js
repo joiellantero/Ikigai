@@ -145,8 +145,8 @@ class Export extends Component {
                         documentTitle="Your_ikigai"
                     />
 
-                    <div class="card card-shadow mt-5">
-                        <div class="card-body">
+                    <div className="card card-shadow mt-5">
+                        <div className="card-body">
                             <div className="share-container container">
                                 <p>Share:</p>
                                 <ul>

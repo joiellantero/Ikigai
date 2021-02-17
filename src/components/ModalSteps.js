@@ -121,6 +121,7 @@ function ModalSteps(props) {
                             <div 
                                 className="step-input my-2"
                                 onMouseEnter={() => setIsShown(true)}
+                                key={step.id}
                             >
                                 {index+1}. {step.intext}
 

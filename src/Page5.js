@@ -310,7 +310,7 @@ const Circa = () => {
             <div className="btn-back">
                 <BackButton onClick={handleShow} />
             </div>
-            <div className="page-container-5 venn-diagram" style={{ display: 'table', margin: '0 auto' }}>
+            <div className="page-container-5 venn-diagram" style={{ display: 'table'}}>
                 <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
                     <div className="main-header-text">
                         <p className="subtitle my-5">Introducing your ikigai chart.</p>
@@ -328,7 +328,8 @@ const Circa = () => {
                         {Object.entries(modals).map(([id, modal]) => {
                             return (
                                 <ModalSteps 
-                                    id = {id} 
+                                    id = {id}
+                                    key = {id} 
                                     modals = {modals} 
                                     modal = {modal} 
                                     setModals = {setModals} 

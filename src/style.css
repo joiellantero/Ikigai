@@ -104,6 +104,7 @@ body {
     transition-duration: 0.3s;
     -webkit-transition-property: transform;
     transition-property: transform;
+    z-index: 1;
 }
 
 @media only screen and (max-width: 768px) {
