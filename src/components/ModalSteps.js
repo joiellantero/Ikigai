@@ -101,11 +101,10 @@ function ModalSteps(props) {
 
         setModals(newModals);
     }
-
     return (
         <>
             <button className="btn-modal" onClick={handleShow} style = {{ top: modal.top, left: modal.left }}>
-                <Add />
+                <Add color={modal.items.length === 0 ? "grey" : "green"}/>
             </button>
 
             <Modal show={show} onHide={handleClose}>
