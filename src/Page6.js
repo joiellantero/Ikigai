@@ -138,7 +138,7 @@ class Export extends Component {
                             <div className="btn-container-center">
                                 <button type="button" className="btn-default btn-2 btn-lg btn-width-fit">
                                     Export Report
-                            </button>
+                                </button>
                             </div>
                         )}
                         content={() => this.componentRef}
