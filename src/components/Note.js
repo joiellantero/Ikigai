@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { EditText } from 'react-edit-text';
 import Trash from './trash';
 import { Draggable } from 'react-beautiful-dnd';
