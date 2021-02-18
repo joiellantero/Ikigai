@@ -6,7 +6,6 @@ import { Draggable } from 'react-beautiful-dnd';
 
 const Note = (props) => {
     const items = props.items;
-    const [isShown, setIsShown] = useState(false);
 
     const handleEdit = ({name, value}) => {
         if (!value){
@@ -54,7 +53,6 @@ const Note = (props) => {
                 {(provided, snapshot)=>(
                     <div 
                         className='rounded-pill with-btn-delete draggable' 
-                        onMouseEnter={() => setIsShown(true)}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                         ref ={provided.innerRef} 
@@ -70,11 +68,9 @@ const Note = (props) => {
                             onSave={handleEdit}
                         />
 
-                        {isShown && (
-                            <span className="btn-delete-container" onClick={() => deleteNote(props.id)}>
-                                <Trash />
-                            </span>
-                        )}
+                        <span className="btn-delete-container" onClick={() => deleteNote(props.id)}>
+                            <Trash />
+                        </span>
                     </div>
                 )}
             </Draggable>
