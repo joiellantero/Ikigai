@@ -39,138 +39,139 @@ const Circa = () => {
         });
 
         circleData = {
+            // Default parent container dimensions should be 800x800
             [v4()]: {
                 id: 'r1',
                 name: 'what you can be PAID FOR',
                 items: rectangleData[3],
-                top: '118px',
-                left: '254px',
-                width: '283px',
-                maxWidth: '283px',
-                height: '82px',
+                top: '15%',
+                left: '32%',
+                width: '35%',
+                maxWidth: '35%',
+                height: '10%',
             },
             [v4()]: {
                 id: 'r2',
                 name: 'what the WORLD NEEDS',
                 items: rectangleData[0],
-                top: '292px',
-                left: '48px',
-                width: '130px',
-                maxWidth: '150px',
-                height: '258px'
+                top: '36.5%',
+                left: '6%',
+                width: '16.2%',
+                maxWidth: '18.8%',
+                height: '32.3%'
             },
             [v4()]: {
                 id: 'r3',
                 name: 'what you LOVE',
                 items: rectangleData[1],
-                top: '642px',
-                left: '259px',
-                width: '271px',
-                maxWidth: '283px',
-                height: '89px'
+                top: '80.3%',
+                left: '32.3%',
+                width: '33.9%',
+                maxWidth: '35%',
+                height: '11.1%'
             },
             [v4()]: {
                 id: 'r4',
                 name: 'what you are GOOD AT',
                 items: rectangleData[2],
-                top: '291px',
-                left: '616px',
-                width: '120px',
-                maxWidth: '150px',
-                height: '261px'
+                top: '36.4%',
+                left: '77%',
+                width: '15%',
+                maxWidth: '18.8%',
+                height: '32.6%'
             },
             [v4()]: {
                 id: 'r5',
                 name: '', // blue yellow
                 items: [],
-                top: '223px',
-                left: '199px',
-                width: '128px',
-                maxWidth: '150px',
-                height: '134px'
+                top: '27.9%',
+                left: '24.9%',
+                width: '16%',
+                maxWidth: '18.8%',
+                height: '16.8%'
             },
             [v4()]: {
                 id: 'r6',
                 name: '', // green blue
                 items: [],
-                top: '490px',
-                left: '198px',
-                width: '129px',
-                maxWidth: '150px',
-                height: '130px'
+                top: '61.3%',
+                left: '24.8%',
+                width: '16.1%',
+                maxWidth: '18.8%',
+                height: '16.3%'
             },
             [v4()]: {
                 id: 'r7',
                 name: '', // green red
                 items: [],
-                top: '497px',
-                left: '461px',
-                width: '134px',
-                maxWidth: '150px',
-                height: '128px'
+                top: '62.1%',
+                left: '57.6%',
+                width: '16.8%',
+                maxWidth: '18.8%',
+                height: '16%'
             },
             [v4()]: {
                 id: 'r8',
                 name: '', // center
                 items: [],
-                top: '362px',
-                left: '325px',
-                width: '119px',
-                maxWidth: '150px',
-                height: '125px'
+                top: '45.3%',
+                left: '40.6%',
+                width: '14.9%',
+                maxWidth: '18.8%',
+                height: '15.6%'
             },
             [v4()]: {
                 id: 'r9',
                 name: '', // red yellow
                 items: [],
-                top: '230px',
-                left: '460px',
-                width: '132px',
-                maxWidth: '150px',
-                height: '127px'
+                top: '28.8%',
+                left: '57.5%',
+                width: '16.5%',
+                maxWidth: '18.8%',
+                height: '15.9%'
             },
             [v4()]: {
                 id: 'r10',
                 name: '', // red yellow blue
                 items: [],
-                top: '257px',
-                left: '336px',
-                width: '115px',
-                height: '89px',
-                maxWidth: '125px',
+                top: '32.1%',
+                left: '42%',
+                width: '14.4%',
+                height: '11.1%',
+                maxWidth: '15.6%',
             },
 
             [v4()]: {
                 id: 'r11',
                 name: '', // red blue green
                 items: [],
-                top: '503px',
-                left: '339px',
-                width: '109px',
-                maxWidth: '115px',
-                height: '84px',
+                top: '62.9%',
+                left: '42.4%',
+                width: '13.6%',
+                maxWidth: '14.4%',
+                height: '10.5%',
             },
 
             [v4()]: {
                 id: 'r12',
                 name: '', // yellow blue green
                 items: [],
-                top: '368px',
-                left: '227px',
-                width: '85px',
-                maxWidth: '100px',
-                height: '112px',
+                top: '46%',
+                left: '28.4%',
+                width: '10.6%',
+                maxWidth: '12.5%',
+                height: '14%',
             },
 
             [v4()]: {
                 id: 'r13',
                 name: '', // yellow green red
                 items: [],
-                top: '370px',
-                left: '470px',
-                width: '78px',
-                maxWidth: '150px',
-                height: '111px',
+                top: '46.3%',
+                left: '58.8%',
+                width: '9.8%',
+                maxWidth: '18.8%',
+                height: '13.9%',
             },
 
             'add': {

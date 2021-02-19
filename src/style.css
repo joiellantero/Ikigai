@@ -350,9 +350,9 @@ input.form-control:focus {
     text-align: right;
     font-weight: 700;
     color: #7E88AA;
-    top: 408px;
-    left: -87px;
-    width: 104px;
+    top: 51%;
+    left: -10.9%;
+    width: 13%;
     z-index: -99;
 }
 
@@ -360,9 +360,9 @@ input.form-control:focus {
     text-align: left;
     font-weight: 700;
     color: #FF9D9D;
-    top: 403px;
-    left: 770px;
-    width: 104px;
+    top: 50.4%;
+    left: 96.3%;
+    width: 13%;
     z-index: -99;
 }
 
@@ -370,9 +370,9 @@ input.form-control:focus {
     text-align: center;
     font-weight: 700;
     color: #5fd6b3;
-    top: 788px;
-    left: 326px;
-    width: 135px;
+    top: 98.5%;
+    left: 40.8%;
+    width: 16.9%;
     z-index: -99;
 }
 
@@ -380,9 +380,9 @@ input.form-control:focus {
     text-align: center;
     font-weight: 700;
     color: #f1e161;
-    top: 36px;
-    left: 290px;
-    width: 203px;
+    top: 4.5%;
+    left: 36.3%;
+    width: 25.4%;
     z-index: -99;
 }
 
@@ -398,33 +398,33 @@ input.form-control:focus {
 .venn-labels .behind p.ikigai {
     text-transform: uppercase;
     color: red;
-    top: 407px;
-    left: 365px;
+    top: 50.9%;
+    left: 45.6%;
 }
 
 .venn-labels .behind p.vocation {
-    top: 285px;
-    left: 220px;
+    top: 35.6%;
+    left: 27.5%;
 }
 
 .venn-labels .behind p.profession {
-    top: 285px;
-    left: 470px;
+    top: 35.6%;
+    left: 58.8%;
 }
 
 .venn-labels .behind p.mission {
-    top: 541px;
-    left: 230px;
+    top: 67.6%;
+    left: 28.8%;
 }
 
 .venn-labels .behind p.passion {
-    top: 541px;
-    left: 480px;
+    top: 67.6%;
+    left: 60%;
 }
 
 .venn-labels .behind p.empty {
-    top: 316px;
-    left: 360px;
+    top: 39.5%;
+    left: 45%;
     stroke-width: 0.264;
     font-size: 12px;
     font-weight: 300;
@@ -433,19 +433,19 @@ input.form-control:focus {
 }
 
 .venn-labels .behind p.useless {
-    top: 404px;
-    left: 477px;
+    top: 50.5%;
+    left: 59.6%;
     stroke-width: 0.264;
     font-size: 12px;
     font-weight: 300;
     font-style: italic;
     fill: #4d4d4d;
-    width: 43px;
+    width: 5.4%;
 }
 
 .venn-labels .behind p.well {
-    top: 516px;
-    left: 360px;
+    top: 64.5%;
+    left: 45%;
     stroke-width: 0.264;
     font-size: 12px;
     font-weight: 300;
@@ -454,14 +454,14 @@ input.form-control:focus {
 }
 
 .venn-labels .behind p.uncertain {
-    top: 405px;
-    left: 265px;
+    top: 50.6%;
+    left: 33.1%;
     stroke-width: 0.264;
     font-size: 12px;
     font-weight: 300;
     font-style: italic;
     fill: #4d4d4d;
-    width: 50px;
+    width: 6.3%;
 }
 
 
@@ -743,6 +743,8 @@ input.form-control:focus {
 .venn-container {
     position: relative;
     margin: 0 auto;
+    height: 600px;
+    width: 600px;
 }
 
 .venn-container .circle-add .pill-container {
