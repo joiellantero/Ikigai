@@ -311,7 +311,7 @@ const Circa = () => {
             <div className="btn-back">
                 <BackButton onClick={handleShow} />
             </div>
-            <div className="page-container-5 venn-diagram" style={{ display: 'table'}}>
+            <div className="page-container-5 venn-diagram">
                 <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
                     <div className="main-header-text">
                         <p className="subtitle my-5">Introducing your ikigai chart.</p>

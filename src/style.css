@@ -648,8 +648,11 @@ input.form-control:focus {
 /* ----- PAGE 5 ----- */
 
 .page-container-5 {
+    display: 'table';
     height: 130vh;
     position: relative;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 @media only screen and (max-width: 768px) {
