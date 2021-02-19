@@ -743,8 +743,8 @@ input.form-control:focus {
 .venn-container {
     position: relative;
     margin: 0 auto;
-    height: 600px;
-    width: 600px;
+    height: 800px;
+    width: 800px;
 }
 
 .venn-container .circle-add .pill-container {
