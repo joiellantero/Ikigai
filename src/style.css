@@ -380,9 +380,9 @@ input.form-control:focus {
     text-align: center;
     font-weight: 700;
     color: #f1e161;
-    top: 4.5%;
-    left: 36.3%;
-    width: 25.4%;
+    top: 1%;
+    left: 40%;
+    width: 20%;
     z-index: -99;
 }
 
@@ -648,8 +648,7 @@ input.form-control:focus {
 /* ----- PAGE 5 ----- */
 
 .page-container-5 {
-    display: 'table';
-    height: 130vh;
+    display: table;
     position: relative;
     margin-left: auto;
     margin-right: auto;
@@ -746,8 +745,6 @@ input.form-control:focus {
 .venn-container {
     position: relative;
     margin: 0 auto;
-    height: 800px;
-    width: 800px;
 }
 
 .venn-container .circle-add .pill-container {
@@ -866,6 +863,10 @@ input.form-control:focus {
     font-weight: 500;
 }
 
+.text-strike {
+    text-decoration: line-through;
+}
+
 .text-title {
     font-size: 4px;
     font-style: italic;
@@ -899,6 +900,10 @@ header {
     z-index: inherit;
 }
 
+.page-5-next-button {
+    margin-top: 20px;
+}
+
 
 /* modals */
 
@@ -918,6 +923,9 @@ header {
 
 .page5-left-column {
     position: relative;
+    max-height: 800px;
+    max-width: 800px;
+    margin: auto;
 }
 
 

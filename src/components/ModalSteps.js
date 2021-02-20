@@ -137,8 +137,8 @@ function ModalSteps(props) {
                         <InputGroup>
                             <FormControl
                                 placeholder="Enter step..."
-                                ariaLabel="Enter step..."
-                                ariaDescribedby="basic-addon2"
+                                aria-label="Enter step..."
+                                aria-describedby="basic-addon2"
                                 className="steps-input"
                                 name="step"
                                 onChange={handleChange}

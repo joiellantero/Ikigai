@@ -347,26 +347,22 @@ const Circa = () => {
                     </div>
                 </DragDropContext>
             </div>
-            <div className="btn-container-center mt-5">
-                <OverlayTrigger
-                    key="top"
-                    placement="top"
-                    overlay={
-                        <Tooltip 
-                            variant="primary"
-                            id={`tooltip-top`} 
-                            style={{ 
-                                paddingTop: '0px',
-                                background: !(vocation && profession && mission && passion) ? '#7384B9' : '',
-                            }}
-                        >
-                            {!(vocation && profession && mission && passion) ?
-                                <p>Please fill all 4 steps to Ikigai(Vocation, Profession, Mission, Passion) before proceeding. </p>
-                            : ''}
-                        </Tooltip>
-                    } 
-                >
-                    <span>
+            <div>
+                <p className="main-header-text">
+                    <br /> <br />
+                    Please fill all 4 steps to Ikigai before proceeding.:
+                    <br />
+                    <b className={vocation ? "text-strike" : ""}>Vocation</b>
+                    <br />
+                    <b className={profession ? "text-strike" : ""}>Profession</b>
+                    <br />
+                    <b className={mission ? "text-strike" : ""}>Mission</b>
+                    <br />
+                    <b className={passion ? "text-strike" : ""}>Passion</b>
+                </p>
+            </div>
+            <div className="btn-container-center page-5-next-button">
+                <span>
                         <Link
                             to={{
                                 pathname: "/export",
@@ -387,7 +383,6 @@ const Circa = () => {
                             Next
                         </Link>
                     </span>
-                </OverlayTrigger>
             </div>
         </>
     );
