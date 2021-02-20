@@ -5,7 +5,7 @@ import { v4 } from 'uuid';
 
 import "./style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Modal, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import {CIRCLE_DATA, MODAL_DATA} from './components/GlobalVar';
 import BackButton from './components/BackButton';
 import Logo from './components/CS_Logo';

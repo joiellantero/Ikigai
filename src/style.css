@@ -344,6 +344,7 @@ input.form-control:focus {
 
 .venn-labels p {
     position: absolute;
+    font-size: min(3vw, 1rem);
 }
 
 .venn-labels p.c1 {
@@ -392,7 +393,7 @@ input.form-control:focus {
     font-weight: 300;
     font-style: italic;
     color: grey;
-    font-size: 1.3em;
+    font-size: min(3vw, 1.3em);
 }
 
 .venn-labels .behind p.ikigai {
@@ -426,7 +427,7 @@ input.form-control:focus {
     top: 39.5%;
     left: 45%;
     stroke-width: 0.264;
-    font-size: 12px;
+    font-size: min(2.3vw, 0.7em);
     font-weight: 300;
     font-style: italic;
     fill: #4d4d4d;
@@ -436,7 +437,7 @@ input.form-control:focus {
     top: 50.5%;
     left: 59.6%;
     stroke-width: 0.264;
-    font-size: 12px;
+    font-size: min(2.3vw, 0.7em);
     font-weight: 300;
     font-style: italic;
     fill: #4d4d4d;
@@ -447,7 +448,7 @@ input.form-control:focus {
     top: 64.5%;
     left: 45%;
     stroke-width: 0.264;
-    font-size: 12px;
+    font-size: min(2.3vw, 0.7em);
     font-weight: 300;
     font-style: italic;
     fill: #4d4d4d;
@@ -457,7 +458,7 @@ input.form-control:focus {
     top: 50.6%;
     left: 33.1%;
     stroke-width: 0.264;
-    font-size: 12px;
+    font-size: min(2.3vw, 0.7em);
     font-weight: 300;
     font-style: italic;
     fill: #4d4d4d;
