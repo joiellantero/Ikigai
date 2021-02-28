@@ -744,6 +744,8 @@ input.form-control:focus {
 }
 
 .venn-container {
+    max-height: 800px;
+    max-width: 800px;
     position: relative;
     margin: 0 auto;
 }
