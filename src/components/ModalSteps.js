@@ -12,6 +12,7 @@ function ModalSteps(props) {
     const [show, setShow] = useState(false);
 
     const handleClose = () => {
+        handleAdd();
         if (modal.items.length > 0){
             switch (id) {
                 case 'vocation':
