@@ -10,6 +10,7 @@ function ModalSteps(props) {
 
     const [text, setText] = useState('')
     const [show, setShow] = useState(false);
+    const inputField = React.useRef(null);
 
     const handleClose = () => {
         handleAdd();
@@ -52,7 +53,10 @@ function ModalSteps(props) {
         setShow(false)
     }
     
-    const handleShow = () => setShow(true);
+    const handleShow = () => {
+        setShow(true);
+        setTimeout(()=>{inputField.current && inputField.current.focus()}, 1);
+    }
 
     const [isShown, setIsShown] = useState(false);
 
@@ -144,6 +148,7 @@ function ModalSteps(props) {
                                 name="step"
                                 onChange={handleChange}
                                 onKeyPress={handleKeyPress}
+                                ref={inputField}
                                 value = {text}
                             />
                             <InputGroup.Append>
