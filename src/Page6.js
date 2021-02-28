@@ -30,7 +30,6 @@ const Intermediate = () => {
 
     filtered = Object.fromEntries(Object.entries(columns).filter(([colId]) => colId !== 'add'))
     }
-
     return (
         <div className="venn-diagram">
             <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
@@ -42,18 +41,16 @@ const Intermediate = () => {
                         <Row>
                             {Object.entries(modals).map(([id, modal]) => {
                                 return (
-                                    <>  
-                                        <Col> 
-                                            <h5>{id}</h5>
-                                            <p className="modal-items-container">
-                                                {modal.items.map((item)=>{
-                                                    return (
-                                                        <p className="modal-item">{item.intext}</p>
-                                                    )}    
-                                                )}
-                                            </p>
-                                        </Col>
-                                    </>
+                                    <Col key={id}> 
+                                        <h5>{id}</h5>
+                                        <div className="modal-items-container">
+                                            {modal.items.map((item)=>{
+                                                return (
+                                                    <p key={item.id} className="modal-item">{item.intext}</p>
+                                                )}    
+                                            )}
+                                        </div>
+                                    </Col>
                                 )}
                             )}
                         </Row>
