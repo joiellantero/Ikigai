@@ -12,7 +12,11 @@
 Ikigai is a Japanese concept meaning "a reason for being". In this project, we are building a React webapp which aims to help you find your ikigai.
 
 
-### Local Deployment
+### 🔗 Visit the website
+- Deployed in Netlify: [Visit website](https://cfa-cs-ikigai.netlify.app/)
+
+
+### 🖥 Local Deployment
 
 1. Clone the repository
 
@@ -40,14 +44,13 @@ Ikigai is a Japanese concept meaning "a reason for being". In this project, we a
 
 5. Find your Ikigai
 
-### Frameworks and Technologies
+### 🛠 Frameworks and Technologies
 
 - ReactJS
 - React Bootstrap
-- HTML5
-- CSS3
+- HTML5 & CSS3
 
-### Authors
+### 👨‍💼 Authors
 
 - [Joie Llantero](https://github.com/joiellantero)
 - [Nasir Khalid](https://github.com/NasirKhalidQ)
