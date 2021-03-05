@@ -1,7 +1,5 @@
-import { v4 } from 'uuid';
-
 export const RECTANGLE_DATA = {
-    [v4()]: {
+    cNeed: {
         id: "c1",
         heading1: "What the world",
         heading2: "NEEDS",
@@ -12,7 +10,7 @@ export const RECTANGLE_DATA = {
         hover2: "Are you helping to solve an actual problem?",
         hover3: "Is what you’re doing bringing beauty or utility to others, helping out, and shaping the world around you?"
     },
-    [v4()]: {
+    cLove: {
         id: "c2",
         heading1: "What you",
         heading2: "LOVE",
@@ -23,7 +21,7 @@ export const RECTANGLE_DATA = {
         hover2: "What are some activities truly enjoy doing about? Is there an activity or cause you enthusiastically talk about for hours on end?",
         hover3: "If you weren’t concerned about money, what would you be doing?"
     },
-    [v4()]: {
+    cGood: {
         id: "c3",
         heading1: "What you are",
         heading2: "GOOD AT",
@@ -34,7 +32,7 @@ export const RECTANGLE_DATA = {
         hover2: "Is there an activity that your friends/family/community have sought your advice/opinion on before?",
         hover3: "Are you among the best in your workplace/community at this? With some more education and experience, could you master what you do?"
     },
-    [v4()]: {
+    cPaid: {
         id: "c4",
         heading1: "What You Can Be",
         heading2: "PAID FOR",
@@ -48,7 +46,7 @@ export const RECTANGLE_DATA = {
 };
 
 export const MODAL_DATA = {
-    'vocation': {
+    vocation: {
         name: 'Vocation',
         body1: 'This intersection represents your vocation.',
         body2: 'What are some steps can you take to enjoy your vocation more?',
@@ -56,7 +54,7 @@ export const MODAL_DATA = {
         left: '26.8%',
         items: []
     },
-    'profession': {
+    profession: {
         name: 'Profession',
         body1: 'This intersection represents your profession.',
         body2: 'In your profession, how can you help the people and community around you?',
@@ -64,7 +62,7 @@ export const MODAL_DATA = {
         left: '67.4%',
         items: []
     },
-    'mission': {
+    mission: {
         name: 'Mission',
         body1: 'This intersection represents your mission.',
         body2: 'What are some steps you can take to hone your craft?',
@@ -72,7 +70,7 @@ export const MODAL_DATA = {
         left: '26.8%',
         items: []
     },
-    'passion': {
+    passion: {
         name: 'Passion',
         body1: 'This intersection represents your passion.',
         body2: 'Are you able to turn your passion into something you can be paid for?',
@@ -80,28 +78,28 @@ export const MODAL_DATA = {
         left: '66.9%',
         items: []
     },
-    'enjoyable': {
+    enjoyable: {
         body1: 'If you have an activity in this section, you will be comfortable, but you might feel empty.',
         body2: 'How can you make what you do more enjoyable?',
         top: '33.3%',
         left: '47.1%',
         items: []
     },
-    'help': {
+    help: {
         body1: 'If you have an activity in this section, you will be satisfied, but you might feel useless.',
         body2: 'How can you help the world with what you do?',
         top: '51.3%',
         left: '64.9%',
         items: []
     },
-    'monetize': {
+    monetize: {
         body1: 'If you have an activity in this section, you will be fulfilled, but you will not have wealth.',
         body2: 'Are you able to monetize this?',
         top: '68.4%',
         left: '46.8%',
         items: []
     },
-    'skillset': {
+    skillset: {
         body1: 'If you have an activity in this section, you will be motivated, but you might feel uncertain about your skills.',
         body2: 'How can you improve your skillset?',
         top: '51.1%',
@@ -112,7 +110,7 @@ export const MODAL_DATA = {
 
 export const CIRCLE_DATA = {
     // Default parent container dimensions should be 800x800
-    [v4()]: {
+    cPaid: {
         id: 'r1',
         name: 'what you can be PAID FOR',
         items: [],
@@ -122,7 +120,7 @@ export const CIRCLE_DATA = {
         maxWidth: '35%',
         height: '10%',
     },
-    [v4()]: {
+    cNeed: {
         id: 'r2',
         name: 'what the WORLD NEEDS',
         items: [],
@@ -132,7 +130,7 @@ export const CIRCLE_DATA = {
         maxWidth: '18.8%',
         height: '32.3%'
     },
-    [v4()]: {
+    cLove: {
         id: 'r3',
         name: 'what you LOVE',
         items: [],
@@ -142,7 +140,7 @@ export const CIRCLE_DATA = {
         maxWidth: '35%',
         height: '11.1%'
     },
-    [v4()]: {
+    cGood: {
         id: 'r4',
         name: 'what you are GOOD AT',
         items: [],
@@ -152,7 +150,7 @@ export const CIRCLE_DATA = {
         maxWidth: '18.8%',
         height: '32.6%'
     },
-    [v4()]: {
+    cVocation: {
         id: 'r5',
         name: '', // blue yellow
         items: [],
@@ -162,7 +160,7 @@ export const CIRCLE_DATA = {
         maxWidth: '18.8%',
         height: '16.8%'
     },
-    [v4()]: {
+    cMission: {
         id: 'r6',
         name: '', // green blue
         items: [],
@@ -172,7 +170,7 @@ export const CIRCLE_DATA = {
         maxWidth: '18.8%',
         height: '16.3%'
     },
-    [v4()]: {
+    cPassion: {
         id: 'r7',
         name: '', // green red
         items: [],
@@ -182,7 +180,7 @@ export const CIRCLE_DATA = {
         maxWidth: '18.8%',
         height: '16%'
     },
-    [v4()]: {
+    cIkigai: {
         id: 'r8',
         name: '', // center
         items: [],
@@ -192,7 +190,7 @@ export const CIRCLE_DATA = {
         maxWidth: '18.8%',
         height: '15.6%'
     },
-    [v4()]: {
+    cProfession: {
         id: 'r9',
         name: '', // red yellow
         items: [],
@@ -202,7 +200,7 @@ export const CIRCLE_DATA = {
         maxWidth: '18.8%',
         height: '15.9%'
     },
-    [v4()]: {
+    cEmpty: {
         id: 'r10',
         name: '', // red yellow blue
         items: [],
@@ -213,7 +211,7 @@ export const CIRCLE_DATA = {
         maxWidth: '15.6%',
     },
 
-    [v4()]: {
+    cWell: {
         id: 'r11',
         name: '', // red blue green
         items: [],
@@ -224,7 +222,7 @@ export const CIRCLE_DATA = {
         height: '10.5%',
     },
 
-    [v4()]: {
+    cUncertain: {
         id: 'r12',
         name: '', // yellow blue green
         items: [],
@@ -235,7 +233,7 @@ export const CIRCLE_DATA = {
         height: '14%',
     },
 
-    [v4()]: {
+    cUseless: {
         id: 'r13',
         name: '', // yellow green red
         items: [],
@@ -246,7 +244,7 @@ export const CIRCLE_DATA = {
         height: '13.9%',
     },
 
-    'add': {
+    add: {
         id: 'r14',
         name: '', // add activity
         items: [],

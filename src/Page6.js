@@ -28,7 +28,7 @@ const Intermediate = () => {
         modals =  MODAL_DATA;
         columns =  CIRCLE_DATA;
 
-    filtered = Object.fromEntries(Object.entries(columns).filter(([colId]) => colId !== 'add'))
+        filtered = Object.fromEntries(Object.entries(columns).filter(([colId]) => colId !== 'add'))
     }
     return (
         <div className="venn-diagram">
@@ -72,6 +72,7 @@ class ComponentToPrint extends Component {
 class Export extends Component {
     constructor(props) {
         super(props);
+        window.localStorage.clear();
         this.state = {
             newItem: "",
             list: [],

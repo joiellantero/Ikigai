@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import { DragDropContext } from "react-beautiful-dnd";
 import { RECTANGLE_DATA } from './components/GlobalVar';
-import { Modal } from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
 
@@ -51,43 +50,36 @@ const onDragEnd = (result, columns, setColumn) => {
     }
 };
 
-const Far = () => {
-    const [columns, setColumn] = useState(RECTANGLE_DATA);
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+const initRectData = () => {
+    let rectData = Object.assign({}, RECTANGLE_DATA);
+    for (const key in rectData) {
+        const value = localStorage.getItem(key);
+        rectData[key].items = value ? JSON.parse(value) : [];
+    }
+    return rectData;
+}
 
-    window.onbeforeunload = function () {
-        return "Data will be lost if you leave the page, are you sure?";
-    };
+const Far = () => {
+    const [columns, setColumn] = useState(initRectData);
+
+    React.useEffect(() => {
+        for (const key in columns) {
+            localStorage.setItem(key, JSON.stringify(columns[key].items));
+        }
+    }, [columns]);
 
     return (
         <>
             <Logo />
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Are you sure?</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>Going back to the previous page will erase your progress? Do you want to begin from scratch?</Modal.Body>
-                <Modal.Footer>
-                    <button className="btn-default btn-lg" onClick={handleClose}>
-                        No
-                    </button>
-                    <Link
-                        to={{
-                            pathname: "/what-is-ikigai",
-                            cols: columns
-                        }}
-                    >
-                        <button className="btn-secondary btn-lg">
-                            Yes
-                        </button>
-                    </Link>
-                </Modal.Footer>
-            </Modal>
             <div className="page-container-4">
                 <div className="btn-back">
-                    <BackButton onClick={handleShow} />
+                    <Link
+                        to={{
+                            pathname: "/what-is-ikigai"
+                        }}
+                    >
+                        <BackButton />
+                    </Link>
                 </div>
                 <div className="page-content">
                     <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
@@ -113,8 +105,7 @@ const Far = () => {
                         <div className="btn-container center">
                             <Link
                                 to={{
-                                    pathname: "/your-ikigai-chart",
-                                    cols: columns
+                                    pathname: "/your-ikigai-chart"
                                 }}
                             >
                                 <button type="button" className="btn-default btn-2 btn-lg">

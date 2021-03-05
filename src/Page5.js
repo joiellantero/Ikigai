@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useLocation, Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 import { DragDropContext } from "react-beautiful-dnd";
 import { v4 } from 'uuid';
 
@@ -15,178 +15,38 @@ import Venn from './components/Venn';
 import ModalSteps from "./components/ModalSteps";
 
 
+const initCircleData = () => {
+    let circleData = Object.assign({}, CIRCLE_DATA);
+    for (const key in circleData) {
+        const value = localStorage.getItem(key);
+        circleData[key].items = value ? JSON.parse(value) : [];
+    }
+    return circleData;
+}
+
+const initModalData = () => {
+    let modalData = Object.assign({}, MODAL_DATA);
+    for (const key in modalData) {
+        const value = localStorage.getItem(key);
+        modalData[key].items = value ? JSON.parse(value) : [];
+    }
+    return modalData;
+}
+
 const Circa = () => {
-    const { cols } = useLocation();
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    let circleData = null;
-    if (cols) {
-        const rectangleData = [[], [], [], []]
-        let i = 0
-
-        Object.entries(cols).map(([, column]) => {
-            return (
-                rectangleData[i] = column.items,
-                i += 1
-            );
-        });
-
-        circleData = {
-            // Default parent container dimensions should be 800x800
-            [v4()]: {
-                id: 'r1',
-                name: 'what you can be PAID FOR',
-                items: rectangleData[3],
-                top: '15%',
-                left: '32%',
-                width: '35%',
-                maxWidth: '35%',
-                height: '10%',
-            },
-            [v4()]: {
-                id: 'r2',
-                name: 'what the WORLD NEEDS',
-                items: rectangleData[0],
-                top: '36.5%',
-                left: '6%',
-                width: '16.2%',
-                maxWidth: '18.8%',
-                height: '32.3%'
-            },
-            [v4()]: {
-                id: 'r3',
-                name: 'what you LOVE',
-                items: rectangleData[1],
-                top: '80.3%',
-                left: '32.3%',
-                width: '33.9%',
-                maxWidth: '35%',
-                height: '11.1%'
-            },
-            [v4()]: {
-                id: 'r4',
-                name: 'what you are GOOD AT',
-                items: rectangleData[2],
-                top: '36.4%',
-                left: '77%',
-                width: '15%',
-                maxWidth: '18.8%',
-                height: '32.6%'
-            },
-            [v4()]: {
-                id: 'r5',
-                name: '', // blue yellow
-                items: [],
-                top: '27.9%',
-                left: '24.9%',
-                width: '16%',
-                maxWidth: '18.8%',
-                height: '16.8%'
-            },
-            [v4()]: {
-                id: 'r6',
-                name: '', // green blue
-                items: [],
-                top: '61.3%',
-                left: '24.8%',
-                width: '16.1%',
-                maxWidth: '18.8%',
-                height: '16.3%'
-            },
-            [v4()]: {
-                id: 'r7',
-                name: '', // green red
-                items: [],
-                top: '62.1%',
-                left: '57.6%',
-                width: '16.8%',
-                maxWidth: '18.8%',
-                height: '16%'
-            },
-            [v4()]: {
-                id: 'r8',
-                name: '', // center
-                items: [],
-                top: '45.3%',
-                left: '40.6%',
-                width: '14.9%',
-                maxWidth: '18.8%',
-                height: '15.6%'
-            },
-            [v4()]: {
-                id: 'r9',
-                name: '', // red yellow
-                items: [],
-                top: '28.8%',
-                left: '57.5%',
-                width: '16.5%',
-                maxWidth: '18.8%',
-                height: '15.9%'
-            },
-            [v4()]: {
-                id: 'r10',
-                name: '', // red yellow blue
-                items: [],
-                top: '32.1%',
-                left: '42%',
-                width: '14.4%',
-                height: '11.1%',
-                maxWidth: '15.6%',
-            },
-
-            [v4()]: {
-                id: 'r11',
-                name: '', // red blue green
-                items: [],
-                top: '62.9%',
-                left: '42.4%',
-                width: '13.6%',
-                maxWidth: '14.4%',
-                height: '10.5%',
-            },
-
-            [v4()]: {
-                id: 'r12',
-                name: '', // yellow blue green
-                items: [],
-                top: '46%',
-                left: '28.4%',
-                width: '10.6%',
-                maxWidth: '12.5%',
-                height: '14%',
-            },
-
-            [v4()]: {
-                id: 'r13',
-                name: '', // yellow green red
-                items: [],
-                top: '46.3%',
-                left: '58.8%',
-                width: '9.8%',
-                maxWidth: '18.8%',
-                height: '13.9%',
-            },
-
-            'add': {
-                id: 'r14',
-                name: '', // add activity
-                items: [],
-                top: '',
-                left: '',
-                width: '',
-                height: ''
-            },
-        };
-    }
-    else {
-        circleData = CIRCLE_DATA;
-    }
-
-    const [columns, setColumn] = useState(circleData);
+    const [columns, setColumn] = useState(initCircleData);
     const filtered = Object.fromEntries(Object.entries(columns).filter(([colId]) => colId !== 'add'))
     const [text, setText] = useState('');
+
+    useEffect(() => {
+        for (const [key, col] of Object.entries(columns)) {
+            localStorage.setItem(key, JSON.stringify(col.items));
+        }
+    }, [columns]) 
 
     function handleChange(event) {
         event.preventDefault()
@@ -200,7 +60,7 @@ const Circa = () => {
         const newList = columns['add'].items.concat({ id: v4(), intext: text });
         const newColumns = {
             ...columns,
-            'add': {
+            add: {
                 ...columns['add'],
                 items: newList
             }
@@ -273,11 +133,17 @@ const Circa = () => {
     };
 
 
-    const [modals, setModals] = useState(MODAL_DATA);
+    const [modals, setModals] = useState(initModalData);
 
-    window.onbeforeunload = function () {
-        return "Data will be lost if you leave the page, are you sure?";
-    };
+    useEffect(() => {
+        for (const key in modals) {
+            localStorage.setItem(key, JSON.stringify(modals[key].items));
+        }
+    }, [modals]);
+
+    // window.onbeforeunload = function () {
+    //     return "Data will be lost if you leave the page, are you sure?";
+    // };
 
     return (
         <>
@@ -286,25 +152,41 @@ const Circa = () => {
                 <Modal.Header closeButton>
                     <Modal.Title>Are you sure?</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Going back to the previous page will erase your progress? Do you want to begin from scratch?</Modal.Body>
+                <Modal.Body>
+                    Exporting the current modal will erase all stored data.
+                    <br/>
+                    Do you want to proceed?
+                </Modal.Body>
                 <Modal.Footer>
                     <button className="btn-default btn-lg" onClick={handleClose}>
                         No
                     </button>
                     <Link
                         to={{
-                            pathname: "/lets-find-our-ikigai",
-                            cols: columns
+                            pathname: "/export",
+                            columns: columns,
+                            filtered: filtered,
+                            setColumn: setColumn,
+                            onDragEnd: onDragEnd,
+                            modals: modals
                         }}
                     >
-                        <button className="btn-secondary btn-lg">
+                        <button
+                            className="btn-secondary btn-lg"
+                        >
                             Yes
                         </button>
                     </Link>
                 </Modal.Footer>
             </Modal>
             <div className="btn-back">
-                <BackButton onClick={handleShow} />
+                <Link
+                    to={{
+                        pathname: "/lets-find-our-ikigai"
+                    }}
+                >
+                    <BackButton/>
+                </Link>
             </div>
             <div className="page-container-5 venn-diagram">
                 <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
@@ -340,27 +222,17 @@ const Circa = () => {
             </div>
             <br/>
             <div className="btn-container-center page-5-next-button">
-                <span>
-                        <Link
-                            to={{
-                                pathname: "/export",
-                                columns: columns,
-                                filtered: filtered,
-                                setColumn: setColumn,
-                                onDragEnd: onDragEnd,
-                                modals: modals
-                            }}
-                            type="button" 
-                            className="btn-default btn-2 btn-lg anchor"
-                            style={{
-                                cursor: 'pointer',
-                                pointerEvents: '',
-                                backgroundColor: '#283972'
-                            }}
-                        >
-                            Next
-                        </Link>
-                    </span>
+                <span
+                    className="btn-default btn-2 btn-lg anchor"
+                    style={{
+                        cursor: 'pointer',
+                        pointerEvents: '',
+                        backgroundColor: '#283972'
+                    }} 
+                    onClick={handleShow}
+                >
+                    Next
+                </span>
             </div>
         </>
     );
