@@ -866,10 +866,6 @@ input.form-control:focus {
     font-weight: 500;
 }
 
-.text-strike {
-    text-decoration: line-through;
-}
-
 .text-title {
     font-size: 4px;
     font-style: italic;

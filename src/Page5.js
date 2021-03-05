@@ -21,11 +21,6 @@ const Circa = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const [vocation, setVocation] = useState(false);
-    const [profession, setProfession] = useState(false);
-    const [mission, setMission] = useState(false);
-    const [passion, setPassion] = useState(false);
-
     let circleData = null;
     if (cols) {
         const rectangleData = [[], [], [], []]
@@ -334,10 +329,6 @@ const Circa = () => {
                                     modals = {modals} 
                                     modal = {modal} 
                                     setModals = {setModals} 
-                                    setVocation={setVocation}
-                                    setProfession={setProfession}
-                                    setMission={setMission}
-                                    setPassion={setPassion}
                                 />
                             )}
                         )}
@@ -346,20 +337,6 @@ const Circa = () => {
                         <AddActivity handleAdd={handleAdd} handleChange={handleChange} handleKeyPress={handleKeyPress} columns={columns} setColumn={setColumn} />
                     </div>
                 </DragDropContext>
-            </div>
-            <div>
-                <p className="main-header-text">
-                    <br /> <br />
-                    Please fill all 4 steps to Ikigai before proceeding.:
-                    <br />
-                    <b className={vocation ? "text-strike" : ""}>Vocation</b>
-                    <br />
-                    <b className={profession ? "text-strike" : ""}>Profession</b>
-                    <br />
-                    <b className={mission ? "text-strike" : ""}>Mission</b>
-                    <br />
-                    <b className={passion ? "text-strike" : ""}>Passion</b>
-                </p>
             </div>
             <div className="btn-container-center page-5-next-button">
                 <span>
@@ -375,9 +352,9 @@ const Circa = () => {
                             type="button" 
                             className="btn-default btn-2 btn-lg anchor"
                             style={{
-                                cursor: !(vocation && profession && mission && passion) ? 'not-allowed' : 'pointer',
-                                pointerEvents: !(vocation && profession && mission && passion) ? 'none' : '',
-                                backgroundColor: !(vocation && profession && mission && passion) ? '#7384b9' : '#283972'
+                                cursor: 'pointer',
+                                pointerEvents: '',
+                                backgroundColor: '#283972'
                             }}
                         >
                             Next
