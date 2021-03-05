@@ -423,48 +423,6 @@ input.form-control:focus {
     left: 60%;
 }
 
-.venn-labels .behind p.empty {
-    top: 39.5%;
-    left: 45%;
-    stroke-width: 0.264;
-    font-size: min(2.3vw, 0.7em);
-    font-weight: 300;
-    font-style: italic;
-    fill: #4d4d4d;
-}
-
-.venn-labels .behind p.useless {
-    top: 50.5%;
-    left: 59.6%;
-    stroke-width: 0.264;
-    font-size: min(2.3vw, 0.7em);
-    font-weight: 300;
-    font-style: italic;
-    fill: #4d4d4d;
-    width: 5.4%;
-}
-
-.venn-labels .behind p.well {
-    top: 64.5%;
-    left: 45%;
-    stroke-width: 0.264;
-    font-size: min(2.3vw, 0.7em);
-    font-weight: 300;
-    font-style: italic;
-    fill: #4d4d4d;
-}
-
-.venn-labels .behind p.uncertain {
-    top: 50.6%;
-    left: 33.1%;
-    stroke-width: 0.264;
-    font-size: min(2.3vw, 0.7em);
-    font-weight: 300;
-    font-style: italic;
-    fill: #4d4d4d;
-    width: 6.3%;
-}
-
 
 /* ----- PAGE 1 ----- */
 

@@ -23,11 +23,6 @@ const CircleSVG = () => {
                     <p className="profession">Profession</p>
                     <p className="mission">Mission</p>
                     <p className="passion">Passion</p>
-                    <p className="empty">feeling empty</p>
-                    <p className="useless">feeling useless</p>
-                    <p className="well">fairly well-off</p>
-                    <p className="uncertain">feeling uncertain</p>
-
                 </div>
             </div>
         </>

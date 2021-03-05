@@ -338,6 +338,7 @@ const Circa = () => {
                     </div>
                 </DragDropContext>
             </div>
+            <br/>
             <div className="btn-container-center page-5-next-button">
                 <span>
                         <Link
