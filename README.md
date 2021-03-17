@@ -2,7 +2,7 @@
 
 # Ikigai Project
 
-[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg?style=flat-square)](https://www.gnu.org/licenses/gpl-3.0)
 [![Dependencies](https://img.shields.io/david/joiellantero/Ikigai?color=green&style=flat-square)](https://img.shields.io/david/joiellantero/Ikigai?color=green&style=flat-square)
 [![Website](https://img.shields.io/website?style=flat-square&url=https%3A%2F%2Fcfa-cs-ikigai.netlify.app%2F)](https://img.shields.io/website?style=flat-square&url=https%3A%2F%2Fcfa-cs-ikigai.netlify.app%2F)
 
@@ -58,4 +58,4 @@ Ikigai is a Japanese concept meaning "a reason for being". In this project, we a
 
 ### License
 
-- This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/joiellantero/Ikigai/blob/master/LICENSE) file for details
+- This project is licensed under the GNU General Public License v3.0 - see the [LICENSE.md](https://github.com/joiellantero/Ikigai/blob/master/LICENSE) file for details
