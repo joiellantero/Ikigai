@@ -16,12 +16,36 @@ import ModalSteps from "./components/ModalSteps";
 
 
 const initCircleData = () => {
-    let circleData = Object.assign({}, CIRCLE_DATA);
-    for (const key in circleData) {
-        const value = localStorage.getItem(key);
-        circleData[key].items = value ? JSON.parse(value) : [];
+    let circleData = JSON.parse(JSON.stringify(CIRCLE_DATA));
+    let storedData = localStorage.getItem('cData');
+    if (!storedData) {
+        return circleData;
+    }
+    storedData = JSON.parse(storedData);
+    for (const [itemName, category] of Object.entries(storedData)) {
+        circleData[category].items.push({id: v4(), intext: itemName });
     }
     return circleData;
+}
+
+const storeCircleData = (columns) => {
+    const toStore = {};
+    for (const key in columns) {
+        if (key === 'add') {
+            continue;
+        }
+        for (const item of columns[key].items) {
+            const name = item.intext;
+            toStore[name] = toStore[name] || [];
+            toStore[name].push(...key.split(""));
+        }
+    }
+    for (const key in toStore) {
+        const storedList = [...new Set(toStore[key])];
+        storedList.sort();
+        toStore[key] = storedList.join('');
+    }
+    localStorage.setItem('cData', JSON.stringify(toStore));
 }
 
 const initModalData = () => {
@@ -42,11 +66,23 @@ const Circa = () => {
     const filtered = Object.fromEntries(Object.entries(columns).filter(([colId]) => colId !== 'add'))
     const [text, setText] = useState('');
 
-    useEffect(() => {
-        for (const [key, col] of Object.entries(columns)) {
-            localStorage.setItem(key, JSON.stringify(col.items));
-        }
-    }, [columns]) 
+    const onUnloadCleanup = React.useCallback(
+        (e) => {
+            storeCircleData(columns);
+            return "circleUnloading";
+        },
+        [columns],
+    );
+
+    React.useEffect(
+        () => {
+            window.addEventListener('beforeunload', onUnloadCleanup);
+            return () => {
+                window.removeEventListener('beforeunload', onUnloadCleanup);
+            };
+        },
+        [onUnloadCleanup]
+    );
 
     function handleChange(event) {
         event.preventDefault()
@@ -181,6 +217,7 @@ const Circa = () => {
             </Modal>
             <div className="btn-back">
                 <Link
+                    onClick={onUnloadCleanup}
                     to={{
                         pathname: "/lets-find-our-ikigai"
                     }}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import { DragDropContext } from "react-beautiful-dnd";
+import { v4 } from 'uuid';
 import { RECTANGLE_DATA } from './components/GlobalVar';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
@@ -51,22 +52,60 @@ const onDragEnd = (result, columns, setColumn) => {
 };
 
 const initRectData = () => {
-    let rectData = Object.assign({}, RECTANGLE_DATA);
-    for (const key in rectData) {
-        const value = localStorage.getItem(key);
-        rectData[key].items = value ? JSON.parse(value) : [];
+    let rectData = JSON.parse(JSON.stringify(RECTANGLE_DATA));
+    let storedData = localStorage.getItem('cData');
+    if (!storedData) {
+        return rectData;
+    }
+    storedData = JSON.parse(storedData);
+    for (const name in storedData) {
+        const categories = storedData[name].split("");
+        for (const cat of categories) {
+            rectData[cat].items.push({id: v4(), intext: name });
+        }
     }
     return rectData;
+}
+
+const storeRectData = (columns) => {
+    const toStore = {};
+    for (const key in columns) {
+        for (const item of columns[key].items) {
+            const name = item.intext; 
+            if (!(name in toStore)) {
+                toStore[name] = [];
+            }
+            toStore[name].push(key);
+        }
+    }
+    for (const key in toStore) {
+        const storedList = [...new Set(toStore[key])];
+        storedList.sort();
+        toStore[key] = storedList.join('');
+    }
+    localStorage.setItem('cData', JSON.stringify(toStore));
 }
 
 const Far = () => {
     const [columns, setColumn] = useState(initRectData);
 
-    React.useEffect(() => {
-        for (const key in columns) {
-            localStorage.setItem(key, JSON.stringify(columns[key].items));
-        }
-    }, [columns]);
+    const onUnloadCleanup = React.useCallback(
+        (e) => {
+            storeRectData(columns);
+            return "rectUnloading";
+        },
+        [columns],
+    );
+
+    React.useEffect(
+        () => {
+            window.addEventListener('beforeunload', onUnloadCleanup);
+            return () => {
+                window.removeEventListener('beforeunload', onUnloadCleanup);
+            };
+        },
+        [onUnloadCleanup]
+    );
 
     return (
         <>
@@ -74,6 +113,7 @@ const Far = () => {
             <div className="page-container-4">
                 <div className="btn-back">
                     <Link
+                        onClick={onUnloadCleanup}
                         to={{
                             pathname: "/what-is-ikigai"
                         }}
@@ -104,6 +144,7 @@ const Far = () => {
                         </div>
                         <div className="btn-container center">
                             <Link
+                                onClick={onUnloadCleanup}
                                 to={{
                                     pathname: "/your-ikigai-chart"
                                 }}

@@ -1,5 +1,5 @@
 export const RECTANGLE_DATA = {
-    cNeed: {
+    n: {
         id: "c1",
         heading1: "What the world",
         heading2: "NEEDS",
@@ -10,7 +10,7 @@ export const RECTANGLE_DATA = {
         hover2: "Are you helping to solve an actual problem?",
         hover3: "Is what you’re doing bringing beauty or utility to others, helping out, and shaping the world around you?"
     },
-    cLove: {
+    l: {
         id: "c2",
         heading1: "What you",
         heading2: "LOVE",
@@ -21,7 +21,7 @@ export const RECTANGLE_DATA = {
         hover2: "What are some activities truly enjoy doing about? Is there an activity or cause you enthusiastically talk about for hours on end?",
         hover3: "If you weren’t concerned about money, what would you be doing?"
     },
-    cGood: {
+    g: {
         id: "c3",
         heading1: "What you are",
         heading2: "GOOD AT",
@@ -32,7 +32,7 @@ export const RECTANGLE_DATA = {
         hover2: "Is there an activity that your friends/family/community have sought your advice/opinion on before?",
         hover3: "Are you among the best in your workplace/community at this? With some more education and experience, could you master what you do?"
     },
-    cPaid: {
+    p: {
         id: "c4",
         heading1: "What You Can Be",
         heading2: "PAID FOR",
@@ -110,9 +110,9 @@ export const MODAL_DATA = {
 
 export const CIRCLE_DATA = {
     // Default parent container dimensions should be 800x800
-    cPaid: {
+    p: { // cPaid
         id: 'r1',
-        name: 'what you can be PAID FOR',
+        name: 'what you can be PAID FOR', // yellow
         items: [],
         top: '15%',
         left: '32%',
@@ -120,9 +120,9 @@ export const CIRCLE_DATA = {
         maxWidth: '35%',
         height: '10%',
     },
-    cNeed: {
+    n: {  // cNeed
         id: 'r2',
-        name: 'what the WORLD NEEDS',
+        name: 'what the WORLD NEEDS', // blue
         items: [],
         top: '36.5%',
         left: '6%',
@@ -130,9 +130,9 @@ export const CIRCLE_DATA = {
         maxWidth: '18.8%',
         height: '32.3%'
     },
-    cLove: {
+    l: {  //  cLove
         id: 'r3',
-        name: 'what you LOVE',
+        name: 'what you LOVE', // green
         items: [],
         top: '80.3%',
         left: '32.3%',
@@ -140,9 +140,9 @@ export const CIRCLE_DATA = {
         maxWidth: '35%',
         height: '11.1%'
     },
-    cGood: {
+    g: {  //  cGood
         id: 'r4',
-        name: 'what you are GOOD AT',
+        name: 'what you are GOOD AT', // red
         items: [],
         top: '36.4%',
         left: '77%',
@@ -150,7 +150,7 @@ export const CIRCLE_DATA = {
         maxWidth: '18.8%',
         height: '32.6%'
     },
-    cVocation: {
+    np: {  //  cVocation
         id: 'r5',
         name: '', // blue yellow
         items: [],
@@ -160,7 +160,7 @@ export const CIRCLE_DATA = {
         maxWidth: '18.8%',
         height: '16.8%'
     },
-    cMission: {
+    ln: {  //  cMission
         id: 'r6',
         name: '', // green blue
         items: [],
@@ -170,7 +170,7 @@ export const CIRCLE_DATA = {
         maxWidth: '18.8%',
         height: '16.3%'
     },
-    cPassion: {
+    gl: {  //  cPassion
         id: 'r7',
         name: '', // green red
         items: [],
@@ -180,7 +180,7 @@ export const CIRCLE_DATA = {
         maxWidth: '18.8%',
         height: '16%'
     },
-    cIkigai: {
+    glnp: {  //  cIkigai
         id: 'r8',
         name: '', // center
         items: [],
@@ -190,7 +190,7 @@ export const CIRCLE_DATA = {
         maxWidth: '18.8%',
         height: '15.6%'
     },
-    cProfession: {
+    gp: {  //  cProfession
         id: 'r9',
         name: '', // red yellow
         items: [],
@@ -200,7 +200,7 @@ export const CIRCLE_DATA = {
         maxWidth: '18.8%',
         height: '15.9%'
     },
-    cEmpty: {
+    gnp: {  //  cEmpty
         id: 'r10',
         name: '', // red yellow blue
         items: [],
@@ -211,7 +211,7 @@ export const CIRCLE_DATA = {
         maxWidth: '15.6%',
     },
 
-    cWell: {
+    gln: {  //  cWell
         id: 'r11',
         name: '', // red blue green
         items: [],
@@ -222,7 +222,7 @@ export const CIRCLE_DATA = {
         height: '10.5%',
     },
 
-    cUncertain: {
+    lnp: {  //  cUncertain
         id: 'r12',
         name: '', // yellow blue green
         items: [],
@@ -233,7 +233,7 @@ export const CIRCLE_DATA = {
         height: '14%',
     },
 
-    cUseless: {
+    glp: {  //  cUseless
         id: 'r13',
         name: '', // yellow green red
         items: [],
