@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ReactToPrint from "react-to-print";
 import { useLocation, Link } from "react-router-dom";
 import { DragDropContext } from 'react-beautiful-dnd';
-import { Row, Modal, Col } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import {MODAL_DATA, CIRCLE_DATA} from './components/GlobalVar';
 import Venn from './components/Venn';
 import Logo from './components/CS_Logo';
@@ -38,22 +38,18 @@ const Intermediate = () => {
                     <br/>
                     <h5 className="subtitle my-5 text-center"> Steps to Ikigai</h5>
                     <div className="export-steps-container">
-                        <Row>
-                            {Object.entries(modals).map(([id, modal]) => {
-                                return (
-                                    <Col key={id}> 
-                                        <h5>{id}</h5>
-                                        <div className="modal-items-container">
-                                            {modal.items.map((item)=>{
-                                                return (
-                                                    <p key={item.id} className="modal-item">{item.intext}</p>
-                                                )}    
-                                            )}
-                                        </div>
-                                    </Col>
-                                )}
+                        {Object.entries(modals).filter(([id, modal]) => modal.items.length > 0).map(([id, modal]) => {
+                            return (
+                                <div key={id}> 
+                                    <h5>{id}</h5>
+                                    {modal.items.map((item)=>{
+                                        return (
+                                            <p key={item.id}>- {item.intext}</p>
+                                        )}    
+                                    )}
+                                </div>
                             )}
-                        </Row>
+                        )}
                     </div>
                 </div>
             </DragDropContext>
