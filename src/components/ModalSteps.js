@@ -6,52 +6,21 @@ import { v4 } from 'uuid';
 import Trash from './trash';
 
 function ModalSteps(props) {
-    const { modal, modals, setModals, id, setVocation, setProfession, setMission, setPassion} = props;
+    const { modal, modals, setModals, id } = props;
 
     const [text, setText] = useState('')
     const [show, setShow] = useState(false);
+    const inputField = React.useRef(null);
 
     const handleClose = () => {
-        if (modal.items.length > 0){
-            switch (id) {
-                case 'vocation':
-                    setVocation(true);
-                    break;
-                case 'profession':
-                    setProfession(true);
-                    break;
-                case 'mission':
-                    setMission(true);
-                    break;
-                case 'passion':
-                    setPassion(true);
-                    break;
-                default:
-                    break;
-            }
-        }
-        else {
-            switch (id) {
-                case 'vocation':
-                    setVocation(false);
-                    break;
-                case 'profession':
-                    setProfession(false);
-                    break;
-                case 'mission':
-                    setMission(false);
-                    break;
-                case 'passion':
-                    setPassion(false);
-                    break;
-                default:
-                    break;
-            }
-        }
+        handleAdd();
         setShow(false)
     }
     
-    const handleShow = () => setShow(true);
+    const handleShow = () => {
+        setShow(true);
+        setTimeout(()=>{inputField.current && inputField.current.focus()}, 1);
+    }
 
     const [isShown, setIsShown] = useState(false);
 
@@ -101,11 +70,10 @@ function ModalSteps(props) {
 
         setModals(newModals);
     }
-
     return (
         <>
             <button className="btn-modal" onClick={handleShow} style = {{ top: modal.top, left: modal.left }}>
-                <Add />
+                <Add color={modal.items.length === 0 ? "grey" : "green"}/>
             </button>
 
             <Modal show={show} onHide={handleClose}>
@@ -121,6 +89,7 @@ function ModalSteps(props) {
                             <div 
                                 className="step-input my-2"
                                 onMouseEnter={() => setIsShown(true)}
+                                key={step.id}
                             >
                                 {index+1}. {step.intext}
 
@@ -143,6 +112,7 @@ function ModalSteps(props) {
                                 name="step"
                                 onChange={handleChange}
                                 onKeyPress={handleKeyPress}
+                                ref={inputField}
                                 value = {text}
                             />
                             <InputGroup.Append>

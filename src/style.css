@@ -104,6 +104,7 @@ body {
     transition-duration: 0.3s;
     -webkit-transition-property: transform;
     transition-property: transform;
+    z-index: 1;
 }
 
 @media only screen and (max-width: 768px) {
@@ -246,6 +247,7 @@ input.form-control:focus {
 .rounded-pill.with-btn-delete .btn-delete-container {
     position: absolute;
     right: 12px;
+    z-index: 1;
 }
 
 .rounded-pill {
@@ -342,15 +344,16 @@ input.form-control:focus {
 
 .venn-labels p {
     position: absolute;
+    font-size: min(3vw, 1rem);
 }
 
 .venn-labels p.c1 {
     text-align: right;
     font-weight: 700;
     color: #7E88AA;
-    top: 408px;
-    left: -87px;
-    width: 104px;
+    top: 51%;
+    left: -10.9%;
+    width: 13%;
     z-index: -99;
 }
 
@@ -358,9 +361,9 @@ input.form-control:focus {
     text-align: left;
     font-weight: 700;
     color: #FF9D9D;
-    top: 403px;
-    left: 770px;
-    width: 104px;
+    top: 50.4%;
+    left: 96.3%;
+    width: 13%;
     z-index: -99;
 }
 
@@ -368,9 +371,9 @@ input.form-control:focus {
     text-align: center;
     font-weight: 700;
     color: #5fd6b3;
-    top: 788px;
-    left: 326px;
-    width: 135px;
+    top: 98.5%;
+    left: 40.8%;
+    width: 16.9%;
     z-index: -99;
 }
 
@@ -378,9 +381,9 @@ input.form-control:focus {
     text-align: center;
     font-weight: 700;
     color: #f1e161;
-    top: 36px;
-    left: 290px;
-    width: 203px;
+    top: 1%;
+    left: 40%;
+    width: 20%;
     z-index: -99;
 }
 
@@ -390,76 +393,34 @@ input.form-control:focus {
     font-weight: 300;
     font-style: italic;
     color: grey;
-    font-size: 1.3em;
+    font-size: min(3vw, 1.3em);
 }
 
 .venn-labels .behind p.ikigai {
     text-transform: uppercase;
     color: red;
-    top: 407px;
-    left: 365px;
+    top: 50.9%;
+    left: 45.6%;
 }
 
 .venn-labels .behind p.vocation {
-    top: 285px;
-    left: 220px;
+    top: 35.6%;
+    left: 27.5%;
 }
 
 .venn-labels .behind p.profession {
-    top: 285px;
-    left: 470px;
+    top: 35.6%;
+    left: 58.8%;
 }
 
 .venn-labels .behind p.mission {
-    top: 541px;
-    left: 230px;
+    top: 67.6%;
+    left: 28.8%;
 }
 
 .venn-labels .behind p.passion {
-    top: 541px;
-    left: 480px;
-}
-
-.venn-labels .behind p.empty {
-    top: 316px;
-    left: 360px;
-    stroke-width: 0.264;
-    font-size: 12px;
-    font-weight: 300;
-    font-style: italic;
-    fill: #4d4d4d;
-}
-
-.venn-labels .behind p.useless {
-    top: 404px;
-    left: 477px;
-    stroke-width: 0.264;
-    font-size: 12px;
-    font-weight: 300;
-    font-style: italic;
-    fill: #4d4d4d;
-    width: 43px;
-}
-
-.venn-labels .behind p.well {
-    top: 516px;
-    left: 360px;
-    stroke-width: 0.264;
-    font-size: 12px;
-    font-weight: 300;
-    font-style: italic;
-    fill: #4d4d4d;
-}
-
-.venn-labels .behind p.uncertain {
-    top: 405px;
-    left: 265px;
-    stroke-width: 0.264;
-    font-size: 12px;
-    font-weight: 300;
-    font-style: italic;
-    fill: #4d4d4d;
-    width: 50px;
+    top: 67.6%;
+    left: 60%;
 }
 
 
@@ -646,8 +607,16 @@ input.form-control:focus {
 /* ----- PAGE 5 ----- */
 
 .page-container-5 {
-    height: 130vh;
+    display: table;
     position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media only screen and (max-width: 768px) {
+    .page-container-5 {
+        margin-top: 120px;
+    }
 }
 
 .page-container-5 .instructions p {
@@ -692,7 +661,7 @@ input.form-control:focus {
     margin-top: 100px;
     position: absolute;
     top: 265px;
-    left: 830px;
+    left: 103%;
 }
 
 .question {
@@ -733,6 +702,8 @@ input.form-control:focus {
 }
 
 .venn-container {
+    height: 800px;
+    width: 800px;
     position: relative;
     margin: 0 auto;
 }
@@ -886,6 +857,10 @@ header {
     z-index: inherit;
 }
 
+.page-5-next-button {
+    margin-top: 20px;
+}
+
 
 /* modals */
 
@@ -905,6 +880,9 @@ header {
 
 .page5-left-column {
     position: relative;
+    max-height: 800px;
+    max-width: 800px;
+    margin: auto;
 }
 
 
@@ -959,10 +937,20 @@ header {
     width: 70%;
 }
 
-.export-steps-container h5 {
-    text-transform: capitalize;
+.export-steps-container {
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
+}
+
+.export-steps-container h5 {
+    font-weight: bold;
+    text-transform: capitalize;
+    margin-top: 1em;
+    margin-bottom: 0.3em;
+}
+
+.export-steps-container p {
+    margin-bottom: 0.1em;
 }
 
 .export-steps-container p.modal-item {

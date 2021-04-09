@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ReactToPrint from "react-to-print";
 import { useLocation, Link } from "react-router-dom";
 import { DragDropContext } from 'react-beautiful-dnd';
-import { Row, Modal, Col } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import {MODAL_DATA, CIRCLE_DATA} from './components/GlobalVar';
 import Venn from './components/Venn';
 import Logo from './components/CS_Logo';
@@ -28,9 +28,8 @@ const Intermediate = () => {
         modals =  MODAL_DATA;
         columns =  CIRCLE_DATA;
 
-    filtered = Object.fromEntries(Object.entries(columns).filter(([colId]) => colId !== 'add'))
+        filtered = Object.fromEntries(Object.entries(columns).filter(([colId]) => colId !== 'add'))
     }
-
     return (
         <div className="venn-diagram">
             <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
@@ -39,24 +38,18 @@ const Intermediate = () => {
                     <br/>
                     <h5 className="subtitle my-5 text-center"> Steps to Ikigai</h5>
                     <div className="export-steps-container">
-                        <Row>
-                            {Object.entries(modals).map(([id, modal]) => {
-                                return (
-                                    <>  
-                                        <Col> 
-                                            <h5>{id}</h5>
-                                            <p className="modal-items-container">
-                                                {modal.items.map((item)=>{
-                                                    return (
-                                                        <p className="modal-item">{item.intext}</p>
-                                                    )}    
-                                                )}
-                                            </p>
-                                        </Col>
-                                    </>
-                                )}
+                        {Object.entries(modals).filter(([id, modal]) => modal.items.length > 0).map(([id, modal]) => {
+                            return (
+                                <div key={id}> 
+                                    <h5>{id}</h5>
+                                    {modal.items.map((item)=>{
+                                        return (
+                                            <p key={item.id}>- {item.intext}</p>
+                                        )}    
+                                    )}
+                                </div>
                             )}
-                        </Row>
+                        )}
                     </div>
                 </div>
             </DragDropContext>
@@ -75,6 +68,7 @@ class ComponentToPrint extends Component {
 class Export extends Component {
     constructor(props) {
         super(props);
+        window.localStorage.clear();
         this.state = {
             newItem: "",
             list: [],
@@ -138,15 +132,15 @@ class Export extends Component {
                             <div className="btn-container-center">
                                 <button type="button" className="btn-default btn-2 btn-lg btn-width-fit">
                                     Export Report
-                            </button>
+                                </button>
                             </div>
                         )}
                         content={() => this.componentRef}
                         documentTitle="Your_ikigai"
                     />
 
-                    <div class="card card-shadow mt-5">
-                        <div class="card-body">
+                    <div className="card card-shadow mt-5">
+                        <div className="card-body">
                             <div className="share-container container">
                                 <p>Share:</p>
                                 <ul>
