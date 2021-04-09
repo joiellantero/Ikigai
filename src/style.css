@@ -943,6 +943,7 @@ header {
 }
 
 .export-steps-container h5 {
+    font-weight: bold;
     text-transform: capitalize;
     margin-top: 1em;
     margin-bottom: 0.3em;
