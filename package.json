@@ -11,7 +11,7 @@
     "@testing-library/user-event": "^12.8.3",
     "bootstrap": "^4.6.0",
     "dragula": "^3.7.3",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "react": "^17.0.1",
     "react-beautiful-dnd": "^13.0.0",
     "react-bootstrap": "^1.5.2",
