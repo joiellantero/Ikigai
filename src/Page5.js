@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { useLocation, Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 import { DragDropContext } from "react-beautiful-dnd";
 import { v4 } from 'uuid';
 
 import "./style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Modal, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import {CIRCLE_DATA, MODAL_DATA} from './components/GlobalVar';
 import BackButton from './components/BackButton';
 import Logo from './components/CS_Logo';
@@ -15,182 +15,74 @@ import Venn from './components/Venn';
 import ModalSteps from "./components/ModalSteps";
 
 
+const initCircleData = () => {
+    let circleData = JSON.parse(JSON.stringify(CIRCLE_DATA));
+    let storedData = localStorage.getItem('cData');
+    if (!storedData) {
+        return circleData;
+    }
+    storedData = JSON.parse(storedData);
+    for (const [itemName, category] of Object.entries(storedData)) {
+        circleData[category].items.push({id: v4(), intext: itemName });
+    }
+    return circleData;
+}
+
+const storeCircleData = (columns) => {
+    const toStore = {};
+    for (const key in columns) {
+        if (key === 'add') {
+            continue;
+        }
+        for (const item of columns[key].items) {
+            const name = item.intext;
+            toStore[name] = toStore[name] || [];
+            toStore[name].push(...key.split(""));
+        }
+    }
+    for (const key in toStore) {
+        const storedList = [...new Set(toStore[key])];
+        storedList.sort();
+        toStore[key] = storedList.join('');
+    }
+    localStorage.setItem('cData', JSON.stringify(toStore));
+}
+
+const initModalData = () => {
+    let modalData = Object.assign({}, MODAL_DATA);
+    for (const key in modalData) {
+        const value = localStorage.getItem(key);
+        modalData[key].items = value ? JSON.parse(value) : [];
+    }
+    return modalData;
+}
+
 const Circa = () => {
-    const { cols } = useLocation();
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const [vocation, setVocation] = useState(false);
-    const [profession, setProfession] = useState(false);
-    const [mission, setMission] = useState(false);
-    const [passion, setPassion] = useState(false);
-
-    let circleData = null;
-    if (cols) {
-        const rectangleData = [[], [], [], []]
-        let i = 0
-
-        Object.entries(cols).map(([, column]) => {
-            return (
-                rectangleData[i] = column.items,
-                i += 1
-            );
-        });
-
-        circleData = {
-            [v4()]: {
-                id: 'r1',
-                name: 'what you can be PAID FOR',
-                items: rectangleData[3],
-                top: '118px',
-                left: '254px',
-                width: '283px',
-                maxWidth: '283px',
-                height: '82px',
-            },
-            [v4()]: {
-                id: 'r2',
-                name: 'what the WORLD NEEDS',
-                items: rectangleData[0],
-                top: '292px',
-                left: '48px',
-                width: '130px',
-                maxWidth: '150px',
-                height: '258px'
-            },
-            [v4()]: {
-                id: 'r3',
-                name: 'what you LOVE',
-                items: rectangleData[1],
-                top: '642px',
-                left: '259px',
-                width: '271px',
-                maxWidth: '283px',
-                height: '89px'
-            },
-            [v4()]: {
-                id: 'r4',
-                name: 'what you are GOOD AT',
-                items: rectangleData[2],
-                top: '291px',
-                left: '616px',
-                width: '120px',
-                maxWidth: '150px',
-                height: '261px'
-            },
-            [v4()]: {
-                id: 'r5',
-                name: '', // blue yellow
-                items: [],
-                top: '223px',
-                left: '199px',
-                width: '128px',
-                maxWidth: '150px',
-                height: '134px'
-            },
-            [v4()]: {
-                id: 'r6',
-                name: '', // green blue
-                items: [],
-                top: '490px',
-                left: '198px',
-                width: '129px',
-                maxWidth: '150px',
-                height: '130px'
-            },
-            [v4()]: {
-                id: 'r7',
-                name: '', // green red
-                items: [],
-                top: '497px',
-                left: '461px',
-                width: '134px',
-                maxWidth: '150px',
-                height: '128px'
-            },
-            [v4()]: {
-                id: 'r8',
-                name: '', // center
-                items: [],
-                top: '362px',
-                left: '325px',
-                width: '119px',
-                maxWidth: '150px',
-                height: '125px'
-            },
-            [v4()]: {
-                id: 'r9',
-                name: '', // red yellow
-                items: [],
-                top: '230px',
-                left: '460px',
-                width: '132px',
-                maxWidth: '150px',
-                height: '127px'
-            },
-            [v4()]: {
-                id: 'r10',
-                name: '', // red yellow blue
-                items: [],
-                top: '257px',
-                left: '336px',
-                width: '115px',
-                height: '89px',
-                maxWidth: '125px',
-            },
-
-            [v4()]: {
-                id: 'r11',
-                name: '', // red blue green
-                items: [],
-                top: '503px',
-                left: '339px',
-                width: '109px',
-                maxWidth: '115px',
-                height: '84px',
-            },
-
-            [v4()]: {
-                id: 'r12',
-                name: '', // yellow blue green
-                items: [],
-                top: '368px',
-                left: '227px',
-                width: '85px',
-                maxWidth: '100px',
-                height: '112px',
-            },
-
-            [v4()]: {
-                id: 'r13',
-                name: '', // yellow green red
-                items: [],
-                top: '370px',
-                left: '470px',
-                width: '78px',
-                maxWidth: '150px',
-                height: '111px',
-            },
-
-            'add': {
-                id: 'r14',
-                name: '', // add activity
-                items: [],
-                top: '',
-                left: '',
-                width: '',
-                height: ''
-            },
-        };
-    }
-    else {
-        circleData = CIRCLE_DATA;
-    }
-
-    const [columns, setColumn] = useState(circleData);
+    const [columns, setColumn] = useState(initCircleData);
     const filtered = Object.fromEntries(Object.entries(columns).filter(([colId]) => colId !== 'add'))
     const [text, setText] = useState('');
+
+    const onUnloadCleanup = React.useCallback(
+        (e) => {
+            storeCircleData(columns);
+            return "circleUnloading";
+        },
+        [columns],
+    );
+
+    React.useEffect(
+        () => {
+            window.addEventListener('beforeunload', onUnloadCleanup);
+            return () => {
+                window.removeEventListener('beforeunload', onUnloadCleanup);
+            };
+        },
+        [onUnloadCleanup]
+    );
 
     function handleChange(event) {
         event.preventDefault()
@@ -204,7 +96,7 @@ const Circa = () => {
         const newList = columns['add'].items.concat({ id: v4(), intext: text });
         const newColumns = {
             ...columns,
-            'add': {
+            add: {
                 ...columns['add'],
                 items: newList
             }
@@ -277,11 +169,17 @@ const Circa = () => {
     };
 
 
-    const [modals, setModals] = useState(MODAL_DATA);
+    const [modals, setModals] = useState(initModalData);
 
-    window.onbeforeunload = function () {
-        return "Data will be lost if you leave the page, are you sure?";
-    };
+    useEffect(() => {
+        for (const key in modals) {
+            localStorage.setItem(key, JSON.stringify(modals[key].items));
+        }
+    }, [modals]);
+
+    // window.onbeforeunload = function () {
+    //     return "Data will be lost if you leave the page, are you sure?";
+    // };
 
     return (
         <>
@@ -290,27 +188,44 @@ const Circa = () => {
                 <Modal.Header closeButton>
                     <Modal.Title>Are you sure?</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Going back to the previous page will erase your progress? Do you want to begin from scratch?</Modal.Body>
+                <Modal.Body>
+                    Exporting the current modal will erase all stored data.
+                    <br/>
+                    Do you want to proceed?
+                </Modal.Body>
                 <Modal.Footer>
                     <button className="btn-default btn-lg" onClick={handleClose}>
                         No
                     </button>
                     <Link
                         to={{
-                            pathname: "/lets-find-our-ikigai",
-                            cols: columns
+                            pathname: "/export",
+                            columns: columns,
+                            filtered: filtered,
+                            setColumn: setColumn,
+                            onDragEnd: onDragEnd,
+                            modals: modals
                         }}
                     >
-                        <button className="btn-secondary btn-lg">
+                        <button
+                            className="btn-secondary btn-lg"
+                        >
                             Yes
                         </button>
                     </Link>
                 </Modal.Footer>
             </Modal>
             <div className="btn-back">
-                <BackButton onClick={handleShow} />
+                <Link
+                    onClick={onUnloadCleanup}
+                    to={{
+                        pathname: "/lets-find-our-ikigai"
+                    }}
+                >
+                    <BackButton/>
+                </Link>
             </div>
-            <div className="page-container-5 venn-diagram" style={{ display: 'table', margin: '0 auto' }}>
+            <div className="page-container-5 venn-diagram">
                 <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
                     <div className="main-header-text">
                         <p className="subtitle my-5">Introducing your ikigai chart.</p>
@@ -328,14 +243,11 @@ const Circa = () => {
                         {Object.entries(modals).map(([id, modal]) => {
                             return (
                                 <ModalSteps 
-                                    id = {id} 
+                                    id = {id}
+                                    key = {id} 
                                     modals = {modals} 
                                     modal = {modal} 
                                     setModals = {setModals} 
-                                    setVocation={setVocation}
-                                    setProfession={setProfession}
-                                    setMission={setMission}
-                                    setPassion={setPassion}
                                 />
                             )}
                         )}
@@ -345,47 +257,19 @@ const Circa = () => {
                     </div>
                 </DragDropContext>
             </div>
-            <div className="btn-container-center mt-5">
-                <OverlayTrigger
-                    key="top"
-                    placement="top"
-                    overlay={
-                        <Tooltip 
-                            variant="primary"
-                            id={`tooltip-top`} 
-                            style={{ 
-                                paddingTop: '0px',
-                                background: !(vocation && profession && mission && passion) ? '#7384B9' : '',
-                            }}
-                        >
-                            {!(vocation && profession && mission && passion) ?
-                                <p>Please fill all 4 steps to Ikigai(Vocation, Profession, Mission, Passion) before proceeding. </p>
-                            : ''}
-                        </Tooltip>
-                    } 
+            <br/>
+            <div className="btn-container-center page-5-next-button">
+                <span
+                    className="btn-default btn-2 btn-lg anchor"
+                    style={{
+                        cursor: 'pointer',
+                        pointerEvents: '',
+                        backgroundColor: '#283972'
+                    }} 
+                    onClick={handleShow}
                 >
-                    <span>
-                        <Link
-                            to={{
-                                pathname: "/export",
-                                columns: columns,
-                                filtered: filtered,
-                                setColumn: setColumn,
-                                onDragEnd: onDragEnd,
-                                modals: modals
-                            }}
-                            type="button" 
-                            className="btn-default btn-2 btn-lg anchor"
-                            style={{
-                                cursor: !(vocation && profession && mission && passion) ? 'not-allowed' : 'pointer',
-                                pointerEvents: !(vocation && profession && mission && passion) ? 'none' : '',
-                                backgroundColor: !(vocation && profession && mission && passion) ? '#7384b9' : '#283972'
-                            }}
-                        >
-                            Next
-                        </Link>
-                    </span>
-                </OverlayTrigger>
+                    Next
+                </span>
             </div>
         </>
     );

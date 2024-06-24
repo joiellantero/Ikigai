@@ -39,7 +39,7 @@ function Page3() {
                 </p>
                 <div className="btn-container-center">
                     <Link to="/lets-find-our-ikigai">
-                        <button type="button" class="btn-default btn-2 btn-lg">Next</button>
+                        <button type="button" className="btn-default btn-2 btn-lg">Next</button>
                     </Link>
                 </div>
             </Container>

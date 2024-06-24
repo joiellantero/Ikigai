@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import { DragDropContext } from "react-beautiful-dnd";
+import { v4 } from 'uuid';
 import { RECTANGLE_DATA } from './components/GlobalVar';
-import { Modal } from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
 
@@ -51,43 +51,75 @@ const onDragEnd = (result, columns, setColumn) => {
     }
 };
 
-const Far = () => {
-    const [columns, setColumn] = useState(RECTANGLE_DATA);
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+const initRectData = () => {
+    let rectData = JSON.parse(JSON.stringify(RECTANGLE_DATA));
+    let storedData = localStorage.getItem('cData');
+    if (!storedData) {
+        return rectData;
+    }
+    storedData = JSON.parse(storedData);
+    for (const name in storedData) {
+        const categories = storedData[name].split("");
+        for (const cat of categories) {
+            rectData[cat].items.push({id: v4(), intext: name });
+        }
+    }
+    return rectData;
+}
 
-    window.onbeforeunload = function () {
-        return "Data will be lost if you leave the page, are you sure?";
-    };
+const storeRectData = (columns) => {
+    const toStore = {};
+    for (const key in columns) {
+        for (const item of columns[key].items) {
+            const name = item.intext; 
+            if (!(name in toStore)) {
+                toStore[name] = [];
+            }
+            toStore[name].push(key);
+        }
+    }
+    for (const key in toStore) {
+        const storedList = [...new Set(toStore[key])];
+        storedList.sort();
+        toStore[key] = storedList.join('');
+    }
+    localStorage.setItem('cData', JSON.stringify(toStore));
+}
+
+const Far = () => {
+    const [columns, setColumn] = useState(initRectData);
+
+    const onUnloadCleanup = React.useCallback(
+        (e) => {
+            storeRectData(columns);
+            return "rectUnloading";
+        },
+        [columns],
+    );
+
+    React.useEffect(
+        () => {
+            window.addEventListener('beforeunload', onUnloadCleanup);
+            return () => {
+                window.removeEventListener('beforeunload', onUnloadCleanup);
+            };
+        },
+        [onUnloadCleanup]
+    );
 
     return (
         <>
             <Logo />
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Are you sure?</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>Going back to the previous page will erase your progress? Do you want to begin from scratch?</Modal.Body>
-                <Modal.Footer>
-                    <button className="btn-default btn-lg" onClick={handleClose}>
-                        No
-                    </button>
-                    <Link
-                        to={{
-                            pathname: "/what-is-ikigai",
-                            cols: columns
-                        }}
-                    >
-                        <button className="btn-secondary btn-lg">
-                            Yes
-                        </button>
-                    </Link>
-                </Modal.Footer>
-            </Modal>
             <div className="page-container-4">
                 <div className="btn-back">
-                    <BackButton onClick={handleShow} />
+                    <Link
+                        onClick={onUnloadCleanup}
+                        to={{
+                            pathname: "/what-is-ikigai"
+                        }}
+                    >
+                        <BackButton />
+                    </Link>
                 </div>
                 <div className="page-content">
                     <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumn)}>
@@ -112,9 +144,9 @@ const Far = () => {
                         </div>
                         <div className="btn-container center">
                             <Link
+                                onClick={onUnloadCleanup}
                                 to={{
-                                    pathname: "/your-ikigai-chart",
-                                    cols: columns
+                                    pathname: "/your-ikigai-chart"
                                 }}
                             >
                                 <button type="button" className="btn-default btn-2 btn-lg">

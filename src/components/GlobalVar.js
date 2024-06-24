@@ -1,7 +1,5 @@
-import { v4 } from 'uuid';
-
 export const RECTANGLE_DATA = {
-    [v4()]: {
+    n: {
         id: "c1",
         heading1: "What the world",
         heading2: "NEEDS",
@@ -12,7 +10,7 @@ export const RECTANGLE_DATA = {
         hover2: "Are you helping to solve an actual problem?",
         hover3: "Is what you’re doing bringing beauty or utility to others, helping out, and shaping the world around you?"
     },
-    [v4()]: {
+    l: {
         id: "c2",
         heading1: "What you",
         heading2: "LOVE",
@@ -23,7 +21,7 @@ export const RECTANGLE_DATA = {
         hover2: "What are some activities truly enjoy doing about? Is there an activity or cause you enthusiastically talk about for hours on end?",
         hover3: "If you weren’t concerned about money, what would you be doing?"
     },
-    [v4()]: {
+    g: {
         id: "c3",
         heading1: "What you are",
         heading2: "GOOD AT",
@@ -34,7 +32,7 @@ export const RECTANGLE_DATA = {
         hover2: "Is there an activity that your friends/family/community have sought your advice/opinion on before?",
         hover3: "Are you among the best in your workplace/community at this? With some more education and experience, could you master what you do?"
     },
-    [v4()]: {
+    p: {
         id: "c4",
         heading1: "What You Can Be",
         heading2: "PAID FOR",
@@ -48,204 +46,205 @@ export const RECTANGLE_DATA = {
 };
 
 export const MODAL_DATA = {
-    'vocation': {
+    vocation: {
         name: 'Vocation',
         body1: 'This intersection represents your vocation.',
         body2: 'What are some steps can you take to enjoy your vocation more?',
-        top: '367px',
-        left: '214px',
+        top: '45.9%',
+        left: '26.8%',
         items: []
     },
-    'profession': {
+    profession: {
         name: 'Profession',
         body1: 'This intersection represents your profession.',
         body2: 'In your profession, how can you help the people and community around you?',
-        top: '367px',
-        left: '539px',
+        top: '45.9%',
+        left: '67.4%',
         items: []
     },
-    'mission': {
+    mission: {
         name: 'Mission',
         body1: 'This intersection represents your mission.',
         body2: 'What are some steps you can take to hone your craft?',
-        top: '456px',
-        left: '214px',
+        top: '57%',
+        left: '26.8%',
         items: []
     },
-    'passion': {
+    passion: {
         name: 'Passion',
         body1: 'This intersection represents your passion.',
         body2: 'Are you able to turn your passion into something you can be paid for?',
-        top: '456px',
-        left: '535px',
+        top: '57%',
+        left: '66.9%',
         items: []
     },
-    'enjoyable': {
+    enjoyable: {
         body1: 'If you have an activity in this section, you will be comfortable, but you might feel empty.',
         body2: 'How can you make what you do more enjoyable?',
-        top: '266px',
-        left: '377px',
+        top: '33.3%',
+        left: '47.1%',
         items: []
     },
-    'help': {
+    help: {
         body1: 'If you have an activity in this section, you will be satisfied, but you might feel useless.',
         body2: 'How can you help the world with what you do?',
-        top: '410px',
-        left: '519px',
+        top: '51.3%',
+        left: '64.9%',
         items: []
     },
-    'monetize': {
+    monetize: {
         body1: 'If you have an activity in this section, you will be fulfilled, but you will not have wealth.',
         body2: 'Are you able to monetize this?',
-        top: '547px',
-        left: '374px',
+        top: '68.4%',
+        left: '46.8%',
         items: []
     },
-    'skillset': {
+    skillset: {
         body1: 'If you have an activity in this section, you will be motivated, but you might feel uncertain about your skills.',
         body2: 'How can you improve your skillset?',
-        top: '409px',
-        left: '232px',
+        top: '51.1%',
+        left: '29%',
         items: []
     }
 }
 
 export const CIRCLE_DATA = {
-    [v4()]: {
+    // Default parent container dimensions should be 800x800
+    p: { // cPaid
         id: 'r1',
-        name: 'what you can be PAID FOR',
+        name: 'what you can be PAID FOR', // yellow
         items: [],
-        top: '118px',
-        left: '254px',
-        width: '283px',
-        maxWidth: '283px',
-        height: '82px',
+        top: '15%',
+        left: '32%',
+        width: '35%',
+        maxWidth: '35%',
+        height: '10%',
     },
-    [v4()]: {
+    n: {  // cNeed
         id: 'r2',
-        name: 'what the WORLD NEEDS',
+        name: 'what the WORLD NEEDS', // blue
         items: [],
-        top: '292px',
-        left: '48px',
-        width: '130px',
-        maxWidth: '150px',
-        height: '258px'
+        top: '36.5%',
+        left: '6%',
+        width: '16.2%',
+        maxWidth: '18.8%',
+        height: '32.3%'
     },
-    [v4()]: {
+    l: {  //  cLove
         id: 'r3',
-        name: 'what you LOVE',
+        name: 'what you LOVE', // green
         items: [],
-        top: '642px',
-        left: '259px',
-        width: '271px',
-        maxWidth: '283px',
-        height: '89px'
+        top: '80.3%',
+        left: '32.3%',
+        width: '33.9%',
+        maxWidth: '35%',
+        height: '11.1%'
     },
-    [v4()]: {
+    g: {  //  cGood
         id: 'r4',
-        name: 'what you are GOOD AT',
+        name: 'what you are GOOD AT', // red
         items: [],
-        top: '291px',
-        left: '616px',
-        width: '120px',
-        maxWidth: '150px',
-        height: '261px'
+        top: '36.4%',
+        left: '77%',
+        width: '15%',
+        maxWidth: '18.8%',
+        height: '32.6%'
     },
-    [v4()]: {
+    np: {  //  cVocation
         id: 'r5',
         name: '', // blue yellow
         items: [],
-        top: '223px',
-        left: '199px',
-        width: '128px',
-        maxWidth: '150px',
-        height: '134px'
+        top: '27.9%',
+        left: '24.9%',
+        width: '16%',
+        maxWidth: '18.8%',
+        height: '16.8%'
     },
-    [v4()]: {
+    ln: {  //  cMission
         id: 'r6',
         name: '', // green blue
         items: [],
-        top: '490px',
-        left: '198px',
-        width: '129px',
-        maxWidth: '150px',
-        height: '130px'
+        top: '61.3%',
+        left: '24.8%',
+        width: '16.1%',
+        maxWidth: '18.8%',
+        height: '16.3%'
     },
-    [v4()]: {
+    gl: {  //  cPassion
         id: 'r7',
         name: '', // green red
         items: [],
-        top: '497px',
-        left: '461px',
-        width: '134px',
-        maxWidth: '150px',
-        height: '128px'
+        top: '62.1%',
+        left: '57.6%',
+        width: '16.8%',
+        maxWidth: '18.8%',
+        height: '16%'
     },
-    [v4()]: {
+    glnp: {  //  cIkigai
         id: 'r8',
         name: '', // center
         items: [],
-        top: '362px',
-        left: '325px',
-        width: '119px',
-        maxWidth: '150px',
-        height: '125px'
+        top: '45.3%',
+        left: '40.6%',
+        width: '14.9%',
+        maxWidth: '18.8%',
+        height: '15.6%'
     },
-    [v4()]: {
+    gp: {  //  cProfession
         id: 'r9',
         name: '', // red yellow
         items: [],
-        top: '230px',
-        left: '460px',
-        width: '132px',
-        maxWidth: '150px',
-        height: '127px'
+        top: '28.8%',
+        left: '57.5%',
+        width: '16.5%',
+        maxWidth: '18.8%',
+        height: '15.9%'
     },
-    [v4()]: {
+    gnp: {  //  cEmpty
         id: 'r10',
         name: '', // red yellow blue
         items: [],
-        top: '257px',
-        left: '336px',
-        width: '115px',
-        height: '89px',
-        maxWidth: '125px',
+        top: '32.1%',
+        left: '42%',
+        width: '14.4%',
+        height: '11.1%',
+        maxWidth: '15.6%',
     },
 
-    [v4()]: {
+    gln: {  //  cWell
         id: 'r11',
         name: '', // red blue green
         items: [],
-        top: '503px',
-        left: '339px',
-        width: '109px',
-        maxWidth: '115px',
-        height: '84px',
+        top: '62.9%',
+        left: '42.4%',
+        width: '13.6%',
+        maxWidth: '14.4%',
+        height: '10.5%',
     },
 
-    [v4()]: {
+    lnp: {  //  cUncertain
         id: 'r12',
         name: '', // yellow blue green
         items: [],
-        top: '368px',
-        left: '227px',
-        width: '85px',
-        maxWidth: '100px',
-        height: '112px',
+        top: '46%',
+        left: '28.4%',
+        width: '10.6%',
+        maxWidth: '12.5%',
+        height: '14%',
     },
 
-    [v4()]: {
+    glp: {  //  cUseless
         id: 'r13',
         name: '', // yellow green red
         items: [],
-        top: '370px',
-        left: '470px',
-        width: '78px',
-        maxWidth: '150px',
-        height: '111px',
+        top: '46.3%',
+        left: '58.8%',
+        width: '9.8%',
+        maxWidth: '18.8%',
+        height: '13.9%',
     },
 
-    'add': {
+    add: {
         id: 'r14',
         name: '', // add activity
         items: [],
